@@ -50,9 +50,11 @@ Route::get('/template/projets','interface_ProjetController@index');
 Route::get('/template/profil_equipe', function () {
     return view('template.profil_equipe');
 });
+Route::get('template/{id}/profil_member', 'interface_AccueilController@details');
+/*
 Route::get('/template/profil_member', function () {
     return view('template.profil_member');
-});
+});*/
 Route::get('/template/contact', function () {
     return view('template.contact');
 });

@@ -107,7 +107,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_heading_top ed_toppadder50">
-                            <h3>Choose how you want to learn</h3>
+                            <h3>Choose how you want to membres</h3>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -119,7 +119,7 @@
                                             <img src="{{asset($membre->photo)}}" alt="item1" class="img-responsive">
                                         </div>
                                         <div class="ed_item_description center">
-                                            <h4><a href="instructor_dashboard.html">{{$membre->name}} {{$membre->prenom}}</a></h4>
+                                            <h4><a href="{{ url('template/'.$membre->id.'/profil_member')}}">{{$membre->name}} {{$membre->prenom}}</a></h4>
                                             <h5><strong>Grade : </strong> {{$membre->grade}}</h5>
                                             <div class="btn-group">
                                                 <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('/in.png')}}"></a>

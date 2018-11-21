@@ -1,15 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Http\Requests\projetRequest;
 use App\Projet;
-use App\User;
-use Auth;
 use App\ProjetUser;
-use App\Parametre;
+
+
+
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use App\Http\Requests\userRequest;
+use App\Http\Requests\userEditRequest;
+use App\Parametre;
+use App\User;
+use App\Equipe;
+use App\Role;
+use Auth;
 
 class interface_AccueilController extends Controller
 {
@@ -27,4 +36,21 @@ class interface_AccueilController extends Controller
                                                 ]);
     	
     }
+
+    public function details($id)
+    {
+        $membre = User::find($id);
+        $equipes = Equipe::all();
+        $roles = Role::all();
+        $labo = Parametre::find('1');
+
+
+        return view('template.profil_member')->with([
+            'membre' => $membre,
+            'equipes' => $equipes,
+            'roles' => $roles,
+            'labo'=>$labo,
+            
+        ]);;
+    } 
 }

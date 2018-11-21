@@ -28,9 +28,9 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="ed_sidebar_wrapper">
                         <div class="ed_profile_img">
-                            <img src="http://placehold.it/263X263" alt="Dashboard Image">
+                            <img class="img-responsive" width="100%" src="{{asset($membre->photo)}}" alt="Dashboard Image">
                         </div>
-                        <h3>Professor1 name firstname</h3>
+                        <h3>{{$membre->name}} {{$membre->prenom}}</h3>
                         <div class="ed_tabs_left">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#dashboard" data-toggle="tab">à propos</a></li>
@@ -45,13 +45,24 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="dashboard">
                                 <div class="ed_dashboard_tab_info">
-                                    <h1>Bienvenue sur le profil du <span>Professeur 1</span></h1>
-                                        <p><strong>Grade : </strong>Professeur</p>
-                                        <p><strong>équipe : </strong>Système d'information et connaissance</p>
-                                        <p><strong>Email : </strong>chikh@azeddine.com </p>
-                                        <p><strong>Date de naissance : </strong>12/12/1956</p>
-                                        <p><strong>Email : </strong>chikh@azeddine.com </p>
-                                </div>
+                                    <h1>Bienvenue sur le profil du <span>{{$membre->name}} {{$membre->prenom}}</span></h1>
+                                        <p><strong>Grade : </strong>{{$membre->grade}}</p>
+                                        @if ($membre->equipe_id)
+                                        <p><strong>équipe : </strong>{{$membre->equipe->intitule}}</p>
+                                        @endif
+                                        
+                                        <p><strong>Email : </strong> {{$membre->email}} </p>
+                                        @if ($membre->date_naissance && ( $membre->autorisation_public_date_naiss || Auth::user()->role->nom == 'admin' || Auth::id() == $membre->id))
+                                        <p><strong>Date de naissance : </strong>{{$membre->date_naissance}}</p>
+                                        @endif
+                                        @if ($membre->num_tel && ( $membre->autorisation_public_date_naiss || Auth::user()->role->nom == 'admin' || Auth::id() == $membre->id))
+                                        <p><strong>N° De Télépone : </strong>{{$membre->num_tel}}</p>
+                                        @endif
+                                        <div class="btn-group">
+                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('/in.png')}}"></a>
+                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('/rg.png')}}"></a>
+                                            </div>
+                                    </div>
                                 
                             </div>
                             <div class="tab-pane" id="courses">
@@ -69,65 +80,87 @@
                                                 <div class="ed_inner_dashboard_info">
                                                     
                                                     <div class="row">
-                                                        <div class="ed_mostrecomeded_course_slider">
-                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ed_bottompadder20">
-                                                                <div class="ed_item_img">
-                                                                    <img src="http://placehold.it/248X156" alt="item1" class="img-responsive">
-                                                                </div>
-                                                                <div class="ed_item_description ed_most_recomended_data">
-                                                                    <h4><a href="course_single.html">Project Learning</a><span></span></h4>
-                                                                    <div class="row">
-                                                                        <div class="ed_rating">
-                                                                            <div class="col-lg-6 col-md-5 col-sm-6 col-xs-6">
-                                                                                
-                                                                                    <div class="ed_views">
-                                                                                        <i class="fa fa-users"></i>
-                                                                                        <span>35 Members</span>
+                                                            <div class="ed_mostrecomeded_course_slider">
+                                                                @if (count($membre->projets))
+                                                                @foreach ($membre->projets as $projet)
+                                                        
+                                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ed_bottompadder20">
+                                                                    <div class="ed_item_img">
+                                                                        <img src="http://placehold.it/248X156" alt="item1" class="img-responsive">
+                                                                    </div>
+                                                                    <div class="ed_item_description ed_most_recomended_data">
+                                                                        <h4><strong><a href="course_single.html">{{$projet->intitule}}</a></strong></h4>
+                                                                        <div class="row">
+                                                                            <div class="ed_rating">
+                                                                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                    
+                                                                                            <div class="course_detail">
+                                                                                                <div class="course_faculty">
+                                                                                                        <strong> TYPE  :  <a href="instructor_dashboard.html"> {{$projet->type}} </a></strong>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            
+                                                                                        
                                                                                     </div>
+                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                    
+                                                                                        <div class="ed_views">
+                                                                                            <i class="fa fa-users"></i>
+                                                                                            <span>{{count($projet->users)}} Members</span>
+                                                                                        </div>
+                                                                                    
+                                                                                </div>
                                                                                 
                                                                             </div>
-                                                                            
                                                                         </div>
+                                                                        <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
+                                                                        <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                     </div>
-                                                                    <p>Project-Based Learning is a flexible tool for framing given academic standards into flexible tool for framing.</p>
-                                                                    <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                 </div>
-                                                            </div>
+                                                                
+                                                                
+                                                                
                                                             
-                                                            
-                                                            
-                                                        </div>
+                                                        @endforeach
+                                                                @else
+                                                                    <h3>vide</h3>
+                                                                @endif
+                                                       
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane" id="result" style="">
                                                 <div class="ed_dashboard_inner_tab">
-                                                        <div class="ed_add_students pub" ><a href="">
-                                                                <strong>TYPE : Publication</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; 20/01/1997</strong><br>
-                                                                <span>student started course course status 1 weeks, 4 days ago
-                                                                        student started course course status 1 weeks, 4 days ago
-                                                                        student started course course status 1 weeks, 4 days ago
-                                                                </span>
-                                                
-                                                            </a>
-                                                            </div>
-                                                            <div class="ed_add_students pub" ><a href="">
-                                                                    <strong>TYPE : Publication</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; 20/01/1997</strong><br>
-                                                                    <span>student started course course status 1 weeks, 4 days ago
-                                                                            student started course course status 1 weeks, 4 days ago
-                                                                            student started course course status 1 weeks, 4 days ago
-                                                                    </span>
+                                                    @if (count($membre->articles))
+                                                    @foreach ($membre->articles as $article)
+                                                    <div class="ed_add_students pub" ><a href="">
+                                                         <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->annee}}</strong><br>
+                                                         <span>{{$article->titre}}
+                                                         </span>
+                                         
+                                                     </a>
+                                                     </div>
+                                                    @endforeach
+                                                    @else
+                                                        <h3>vide</h3>
+                                                    @endif
+                                                       
                                                     
-                                                                </a>
-                                                                </div>
                                                 </div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane" id="status" style="">
                                                 <div class="ed_dashboard_inner_tab">
-                                                    <h2>Titre de La these</h2>
-                                                    <p>Sed ultricies posuere magna elementum laoreet. Suspendisse elementum sagittis nisl, id pellentesque purus auctor finibus. Donec elementum quam est, a condimentum diam tempor ac. Sed quis magna lobortis,
-                                                        pulvinar est at, commodo mauris. Nunc in mollis erat. Integer aliquet orci non auctor pretium. Pellentesque eu nisl augue. Curabitur vitae est ut sem luctus tristique. Suspendisse euismod sapien
-                                                        facilisis tellus aliquam pellentesque.</p>
+                                                    @if ($membre->these)
+                                                    <h5><strong>Encadreur :</strong> {{$membre->these->encadreur_int}}{{$membre->these->encadreur_ext}}<br>
+                                                        <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}{{$membre->these->coencadreur_ext}} 
+                                                    </h5>
+                                                    <h3><strong>Titre : </strong>{{$membre->these->titre}}</h3>
+                                                    <p>{{$membre->these->sujet}}</p>
+                                                    @else
+                                                        <h3>Vide</h3>
+                                                    @endif
+                                                    
                                                         
                                                 </div>
                                             </div>
