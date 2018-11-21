@@ -1,0 +1,64 @@
+/*
+Copyright (c) 2016 Himanshu Softtech.
+------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:	Educo
+Version:	2.0.0
+Assigned to:	Themeforest
+-------------------------------------------------------------------
+
+[Table of contents]
+
+1. Body
+
+-------------------------------------------------------------------*/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #9798a2;
+	-webkit-font-smoothing: antialiased;
+}
+a {
+	color: #80828d;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	color: #535465;
+	text-decoration: underline;
+}
+a:focus {
+	outline: none;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+	line-height: 1.1;
+	color: #4a4750;
+}
+img {
+	max-width: 100%;
+}
+input {
+	outline: none;
+}
+textarea {
+	outline: none;
+}
+#educo_wrapper{
+	width:100%;
+	float:left;
+	position:relative;
+	}
+
+
+
+
+
+	
+
+
+
+

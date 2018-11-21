@@ -1,0 +1,49 @@
+/*
+Copyright (c) 2016 Himanshu Softtech.
+------------------------------------------------------------------
+[Main Stylesheet]
+
+Project:	Educo
+Version:	2.0.0
+Assigned to:	Themeforest
+-------------------------------------------------------------------*/
+
+@import url("fonts.css");
+@import url("bootstrap.css");
+@import url("font-awesome.css");
+@import url("owl.carousel.css");
+@import url("animate.css");
+@import url("style.css");
+@import url("../js/plugins/revel/settings.css");
+.center {
+    text-align: center;
+}
+
+.li_slide:hover .voir {
+    color: #fff;
+}
+
+.voir {
+    color: #167ac6;
+}
+
+.pub {
+    padding: 10px 0px 10px 10px;
+    border-bottom: 1px solid #167ac6;
+    margin: 1px;
+    border-top: 1px solid #167ac6;
+}
+
+.icon,
+strong {
+    color: #167ac6 !important;
+}
+
+.btn-group a {
+    padding: 6px 2px;
+}
+
+.accueil_profil {
+    height: 260px;
+    border-radius: 13rem;
+}
