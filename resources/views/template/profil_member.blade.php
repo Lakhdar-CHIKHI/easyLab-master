@@ -47,15 +47,15 @@
                                 <div class="ed_dashboard_tab_info">
                                     <h1>Bienvenue sur le profil du <span>{{$membre->name}} {{$membre->prenom}}</span></h1>
                                         <p><strong>Grade : </strong>{{$membre->grade}}</p>
-                                        @if ($membre->equipe_id)
+                                        @if ($membre->equipe)
                                         <p><strong>équipe : </strong>{{$membre->equipe->intitule}}</p>
                                         @endif
                                         
                                         <p><strong>Email : </strong> {{$membre->email}} </p>
-                                        @if ($membre->date_naissance && ( $membre->autorisation_public_date_naiss || Auth::user()->role->nom == 'admin' || Auth::id() == $membre->id))
+                                        @if ($membre->date_naissance && ( $membre->autorisation_public_date_naiss ))
                                         <p><strong>Date de naissance : </strong>{{$membre->date_naissance}}</p>
                                         @endif
-                                        @if ($membre->num_tel && ( $membre->autorisation_public_date_naiss || Auth::user()->role->nom == 'admin' || Auth::id() == $membre->id))
+                                        @if ($membre->num_tel && ( $membre->autorisation_public_date_naiss ))
                                         <p><strong>N° De Télépone : </strong>{{$membre->num_tel}}</p>
                                         @endif
                                         <div class="btn-group">
