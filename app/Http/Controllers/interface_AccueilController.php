@@ -53,4 +53,17 @@ class interface_AccueilController extends Controller
             
         ]);;
     } 
+
+    public function detail_projet($id)
+    {
+        $labo =  Parametre::find('1');
+        $projet = Projet::find($id);
+        $membres = Projet::find($id)->users()->orderBy('name')->get();
+
+        return view('template.detail_projet')->with([
+            'projet' => $projet,
+            'membres'=>$membres,
+            'labo'=>$labo,
+        ]);;
+    } 
 }

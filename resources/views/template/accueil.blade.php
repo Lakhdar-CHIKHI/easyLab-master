@@ -190,7 +190,7 @@
                                         <img src="http://placehold.it/263X165" alt="item1" class="img-responsive">
                                     </div>
                                     <div class="ed_item_description ed_most_recomended_data">
-                                        <h4><strong><a href="course_single.html">{{ $projet->intitule }} </a></strong></h4>
+                                        <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
                                         <div class="row">
                                             <div class="ed_rating">
                                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">

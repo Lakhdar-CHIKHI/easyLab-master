@@ -61,9 +61,11 @@ Route::get('/template/contact', function () {
 Route::get('/template/detail_actualite', function () {
     return view('template.detail_actualite');
 });
-Route::get('/template/detail_projet', function () {
+
+Route::get('template/{id}/detail_projet', 'interface_AccueilController@detail_projet');
+/*Route::get('/template/detail_projet', function () {
     return view('template.detail_projet');
-});
+});*/
 
 //======================================= FIN ==================================================
 

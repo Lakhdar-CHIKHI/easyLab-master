@@ -32,7 +32,7 @@
                             <img src="../images/content/2_2.jpg" alt="item1" class="img-responsive">
                         </div>
                         <div class="ed_item_description ed_most_recomended_data">
-                            <h4><strong><a href="course_single.html">{{ $projet->intitule }} </a></strong></h4>
+                            <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
                             <div class="row">
                                 <div class="ed_rating">
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
