@@ -33,7 +33,7 @@
                                 <img src="{{asset($equipe->chef->photo)}}" alt="item1" class="img-responsive img-circle" style="width:100%;">
                             </div>
                             <div class="ed_team_member_description">
-                                    <a href="instructor_dashboard.html"><h4><strong>{{$equipe->achronymes}}</strong></h4></a>
+                                <a href="{{ url('template/'.$equipe->id.'/detail_equipe')}}"><h4><strong>{{$equipe->achronymes}}</strong></h4></a>
                                 <h5>Chef. {{$equipe->chef->name}} {{$equipe->chef->prenom}}</h5>
                                 <p>{{$equipe->intitule}} </p>
                             </div>

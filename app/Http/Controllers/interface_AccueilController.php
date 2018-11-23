@@ -66,4 +66,20 @@ class interface_AccueilController extends Controller
             'labo'=>$labo,
         ]);;
     } 
+
+    public function detail_equipe($id)
+    {
+        $labo =  Parametre::find('1');
+        $equipe = equipe::find($id);
+        $membres = equipe::find($id)->membres()->orderBy('name')->get();
+
+        return view('template.detail_equipe')->with([
+            'equipe' => $equipe,
+            'membres'=>$membres,
+            'labo'=>$labo,
+        ]);;
+    } 
+
+
+
 }

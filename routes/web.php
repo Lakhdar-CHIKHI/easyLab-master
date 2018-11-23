@@ -67,6 +67,11 @@ Route::get('template/{id}/detail_projet', 'interface_AccueilController@detail_pr
     return view('template.detail_projet');
 });*/
 
+Route::get('template/{id}/detail_equipe', 'interface_AccueilController@detail_equipe');
+/*Route::get('/template/detail_projet', function () {
+    return view('template.detail_projet');
+});*/
+
 
 
 
