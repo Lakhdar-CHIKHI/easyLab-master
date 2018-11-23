@@ -67,6 +67,15 @@ Route::get('template/{id}/detail_projet', 'interface_AccueilController@detail_pr
     return view('template.detail_projet');
 });*/
 
+
+
+
+
+
+
+
+
+
 //======================================= FIN ==================================================
 
 
