@@ -76,24 +76,37 @@
             <div class="ed_form_box">
                 <div class="container">
                     <div class="ed_search_form">
-                        <form class="form-inline">
+                <form class="form-inline form-search" action="{{url('chercher')}}" method="post"  id="contact_form" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="text" placeholder="Course Name" class="form-control" id="course">
+                                    <select type="text" name="choix_pub"  class="form-control"  value="{{old('choix_pub')}}">*
+                                            
+                                            <option>Projets</option>
+                                            <option>Articles</option>
+                                            
+                                          </select>
+                                
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Location" class="form-control" id="location">
+                                    <select type="text" name="choix_pub_detail" class="form-control" value="{{old('choix_pub_detail')}}">*
+                                        <option></option>
+                                            <option>Poster</option>
+                                            <option>Article court</option>
+                                            <option>Article long</option>
+                                            <option>Publication(Revue)</option>
+                                            <option>Chapitre d'un livre</option>
+                                            <option>Livre</option>
+                                            <option>Brevet</option> 
+                                          </select>
+                                
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Language" class="form-control" id="language">
+                                <input type="text" placeholder="Nom" name="nom" class="form-control" id="nom_pub">
                             </div>
+                            
                             <div class="form-group">
-                                <input type="text" placeholder="Type" class="form-control" id="type">
-                            </div>
-                            <div class="form-group">
-                                <div class="ed_dots">
-                                    <p><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></p>
-                                </div>
-                                <button type="button" class="btn ed_btn pull-right ed_orange">search</button>
+                                
+                                <button type="submit" class="btn ed_btn pull-right ed_orange">Chercher</button>
                             </div>
                         </form>
                     </div>

@@ -22,6 +22,7 @@
     </div>
     <!--Breadcrumb end-->
     <!--Section fourteen Contact form start-->
+    
     <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
             <div class="container">
                 <div class="row">
@@ -30,29 +31,57 @@
                             <h3>Envoie-nous un message</h3>
                         </div>
                     </div>
+                    
                     <div class="ed_contact_form ed_toppadder60">
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                            
+                        @endif
+                            <form action="{{url('send')}}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <input type="text" id="uname" class="form-control" placeholder="Votre nom">
+                                <input type="text"  name="uname" class="form-control" placeholder="Votre nom">
+                                @if ($errors->has('uname'))
+                                    <br>
+                                    <div class="alert alert-danger">{{ $errors->first('uname') }}</div>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <input type="email" id="umail" class="form-control" placeholder="Votre email">
+                                <input type="email" name="umail" class="form-control" placeholder="Votre email">
+                                @if ($errors->has('umail'))
+                                    <br>
+                                    <div class="alert alert-danger">{{ $errors->first('umail') }}</div>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <input type="text" id="sub" class="form-control" placeholder="Sujet">
+                                <input type="text" name="sub" class="form-control" placeholder="Sujet">
+                                @if ($errors->has('sub'))
+                                    <br>
+                                    <div class="alert alert-danger">{{ $errors->first('sub') }}</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <textarea id="msg" class="form-control" rows="6" placeholder="Message"></textarea>
+                                <textarea name="msg" class="form-control" rows="6" placeholder="Message"></textarea>
+                                @if ($errors->has('msg'))
+                                    <br>
+                                    <div class="alert alert-danger">{{ $errors->first('msg') }}</div>
+                                @endif
                             </div>
-                            <button id="ed_submit" class="btn ed_btn ed_orange pull-right">envoyer</button>
+                            <input type="submit" id="ed_submit" class="btn ed_btn ed_orange pull-right" value="envoyer">
                             <p id="err"></p>
                         </div>
+                    </form> 
                     </div>
+                
                 </div>
             </div>
         </div>
+    
         <!--Section fourteen Contact form start-->
         <!--Section fifteen Contact form start-->
         <div class="ed_event_single_contact_address ed_toppadder70 ed_bottompadder70">

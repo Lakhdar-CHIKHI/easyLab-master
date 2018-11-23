@@ -47,3 +47,7 @@ strong {
     height: 260px;
     border-radius: 13rem;
 }
+
+.form-search {
+    text-align: center !important;
+}

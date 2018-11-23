@@ -6,6 +6,7 @@ use App\Article;
 use App\Equipe;
 use App\Parametre;
 use Illuminate\Support\Facades\Input;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +67,47 @@ Route::get('template/{id}/detail_projet', 'interface_AccueilController@detail_pr
 /*Route::get('/template/detail_projet', function () {
     return view('template.detail_projet');
 });*/
+
+
+Route::any('chercher', 'interface_AccueilController@chercher');
+/*Route::any('chercher', function () {
+    
+    
+        if (Input::get ( 'nom2' ) || Input::get ( 'nom' )=="") {
+            //echo Input::get ( 'nom2' );
+            $type_pub = Input::get ( 'type_pub' );
+            $type_pub_detail = Input::get ( 'type_pub_detail' );
+            $nom = Input::get ( 'nom2' );
+            
+            if ($type_pub =="Projets") {
+                $projets = Projet::where('type','LIKE','%'.$type_pub_detail.'%')->Where('intitule','LIKE','%'.$nom.'%')->paginate(1);
+            //$projets->setPath('custom/url');
+                $projets->appends(array('choix_pub'=>Input::get('type_pub'),'choix_pub_detail'=>Input::get('type_pub_detail'),'nom'=>Input::get('nom2')));
+               /*  return view('template.projets')->with([
+                'projets' => $projets,
+            ]); */
+           /* return View('template.projets')->with('projets',$projets);
+                
+            }
+        }
+        if (Input::get ( 'nom' ) || Input::get ( 'nom' )=="") {
+            $type_pub = Input::get ( 'choix_pub' );
+            $type_pub_detail = Input::get ( 'choix_pub_detail' );
+            $nom = Input::get ( 'nom' );
+        if ($type_pub =="Projets") {
+            $projets = Projet::where('type','LIKE','%'.$type_pub_detail.'%')->Where('intitule','LIKE','%'.$nom.'%')->paginate(1);
+        //$projets->setPath('custom/url');
+            $projets->appends(array('type_pub'=>Input::get('choix_pub'),'type_pub_detail'=>Input::get('choix_pub_detail'),'nom2'=>Input::get('nom')));
+           /*  return view('template.projets')->with([
+            'projets' => $projets,
+        ]); */
+       /* return View('template.projets')->with('projets',$projets);
+            
+        }}
+
+});*/
+
+Route::post('send', 'interface_mailController@send');
 
 //======================================= FIN ==================================================
 
