@@ -65,50 +65,50 @@
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="description">
                                         <div class="ed_course_tabconetent" >
-                                           <div class="container">
-                                                <h3>Résumé</h3>
+                                                <table class="table table-striped">
+                                                    @if($article->conference)
+                                                    <tr>
+                                                        <td>Nom de la conférence</td>
+                                                        <td>{{$article->conference}}</td>
+                                                    </tr>  
+                                                    @endif
+                                                    @if($article->journal)  
+                                                    <tr>
+                                                        <td>Nom du journal</td>
+                                                        <td>{{$article->journal}}</td>
+                                                    </tr> 
+                                                    @endif
+                                                    @if($article->ISSN)  
+                                                       <tr>
+                                                    <td> ISSN</td>
+                                                    <td>{{$article->ISSN}}</td>
+                                                    </tr> 
+                                                    @endif
+                                                    @if($article->ISBN)  
+                                                    <tr>
+                                                        <td>ISBN</td>
+                                                        <td>{{$article->ISBN}}</td>
+                                                    </tr> 
+                                                    @endif
+                                                    <tr>
+                                                        <td>Lieu</td>
+                                                        <td>@if($article->lieu_ville){{$article->lieu_ville}}, @endif @if($article->lieu_pays ){{$article->lieu_pays}}@endif</td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <td>Date</td>
+                                                        <td>@if($article->mois){{$article->mois}}, @endif @if($article->annee) {{$article->annee}}@endif</td>
+                                                    </tr> 
+                                                    @if($article->doi)
+                                                    <tr>
+                                                        <td>DOI</td>
+                                                        <td>{{$article->doi }}</td>
+                                                    </tr> 
+                                                    @endif
+                                                    
+                                                </table>
+                                                <h4>Résumé</h4>
                                                 <p>{{$article->resume}}</p>
                                                 <br>
-                                           
-                                            <br>
-                                            <br>
-                                             <h3>Nom de la conférence </h3>
-                                            <p>{{$article->conference}}</p>
-                                            
-                                            <br>
-                                            <br>
-                                             <h3>Nom du journal </h3>
-                                            <p>{{$article->journal}}</p>
-
-                                            <br>
-                                            <br>
-                                            <br>
-                                             <h3>ISSN </h3>
-                                            <p>{{$article->ISSN }}</p>
-
-                                            <br>
-                                            <br>
-                                             <h3>ISBN </h3>
-                                            <p>{{$article->ISBN }}</p>
-
-                                            <br>
-                                            <br>
-                                             <h3>Lieu </h3>
-                                            <p>{{$article->lieu_ville }},{{$article->lieu_pays}}</p>
-
-
-                                            <br>
-                                            <br>
-                                             <h3>Date </h3>
-                                            <p>{{$article->mois}}, {{$article->annee}}</p>
-
-                                            <br>
-                                            <br>
-                                            <br>
-                                             <h3>DOI </h3>
-                                            <p>{{$article->doi }}</p>
-
-                                           </div>
                                              
                                         </div>
                                         
