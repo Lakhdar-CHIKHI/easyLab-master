@@ -162,7 +162,7 @@
                         <div class="ed_video_section">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <div class="ed_video">
-                                    <img src="http://placehold.it/544X334" style="cursor:pointer" alt="1">
+                                    <img src="{{asset('images/content/pro_lab.jpg')}}" style="cursor:pointer" alt="1">
                                     <div class="ed_img_overlay">
                                         <a href="#"><i class="fa fa-chevron-right"></i></a>
                                     </div>
@@ -173,10 +173,10 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="ed_video_section_discription">
-                            <h4>Daily life of studying at Educo</h4>
-                            <p>Nam cursus imperdiet elit. Fusce sollicitudin eget nulla in condimentum. Nullam dignissim id magna non tempus. Vivamus molestie nulla nec pharetra dignissim. Suspendisse auctor nisi et neque vehicula pulvinar. Quisque quis
-                                tempus magna. Quisque sed luctus nunc sapien.</p>
-                            <span><a href="#" class="btn ed_btn ed_orange">see more</a></span>
+                            <h4>Laboratoire De Recherche Informatique Tlemcen ( LRIT )</h4>
+                            <p>La recherche scientifique constitue un enjeu déterminant au 21éme siècle eu égard aux défis technologiques et à la mondialisation qui sera le champ de confrontation entre les nations industrialisées et modernes, confrontation
+                                qui risque de reléguer au second plan les sociétés qui ne se donnent pas les moyens de se développer.</p>
+                            <span><a href="{{url('template/apropos')}}" class="btn ed_btn ed_orange">Voir Plus</a></span>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                                 
                                 <div class="item">
                                     <div class="ed_item_img">
-                                        <img src="http://placehold.it/263X165" alt="item1" class="img-responsive">
+                                        <img src="{{asset('/images/content/2_2.jpg')}}" alt="item1" class="img-responsive">
                                     </div>
                                     <div class="ed_item_description ed_most_recomended_data">
                                         <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>

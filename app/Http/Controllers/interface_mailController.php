@@ -24,6 +24,6 @@ class interface_mailController extends Controller
        $message->from($request->umail,$request->uname);
    });
    
-   return redirect('template.contact')->with('success','Message Envoyer avec success');
+   return redirect('template/contact')->with('success','Message Envoyer avec success');
 }
 }

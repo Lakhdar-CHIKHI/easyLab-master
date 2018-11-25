@@ -48,6 +48,8 @@ Route::get('/template/projets', function () {
 });*/
 Route::get('/template/projets','interface_ProjetController@index');
 
+Route::get('/template/articles','interface_ArticleController@index');
+
 Route::get('/template/profil_equipe', function () {
     return view('template.profil_equipe');
 });
@@ -64,9 +66,18 @@ Route::get('/template/detail_actualite', function () {
 });
 
 Route::get('template/{id}/detail_projet', 'interface_AccueilController@detail_projet');
+
+
+Route::get('template/{id}/detail_article', 'interface_ArticleController@details');
 /*Route::get('/template/detail_projet', function () {
     return view('template.detail_projet');
 });*/
+
+Route::get('template/{id}/detail_equipe', 'interface_AccueilController@detail_equipe');
+/*Route::get('/template/detail_projet', function () {
+    return view('template.detail_projet');
+});*/
+
 
 
 Route::any('chercher', 'interface_AccueilController@chercher');
@@ -108,6 +119,15 @@ Route::any('chercher', 'interface_AccueilController@chercher');
 });*/
 
 Route::post('send', 'interface_mailController@send');
+
+
+
+
+
+
+
+
+
 
 //======================================= FIN ==================================================
 

@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2">
                             <div class="educo_logo">
-                                <a href="index.html"><img src="{{asset('images/header/logo2.png')}}" alt="logo" style="margin-top: -13px;"></a>
+                                <a href="index.html"><img src="{{asset('images/header/logo2.png')}}" alt="logo" style="margin-top: -3px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">

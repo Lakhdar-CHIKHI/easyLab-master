@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-4 col-sm-6">
                     <div class="page_title">
-                        <h2>Educo Student</h2>
+                        <h2>{{$membre->name}} {{$membre->prenom}}</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-8 col-sm-6">
@@ -15,6 +15,9 @@
                         <li><a href="index.html">accueil</a></li>
                         <li><i class="fa fa-chevron-left"></i></li>
                         <li><a href="dashboard.html">Profil member</a></li>
+                        <li><i class="fa fa-chevron-left"></i></li>
+                        <li><a href="dashboard.html">{{$membre->name}} {{$membre->prenom}}</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -85,6 +88,7 @@
                                                                 @foreach ($membre->projets as $projet)
                                                         
                                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ed_bottompadder20">
+                                                                    <div class="ed_mostrecomeded_course">
                                                                     <div class="ed_item_img">
                                                                         <img src="http://placehold.it/248X156" alt="item1" class="img-responsive">
                                                                     </div>
@@ -116,6 +120,7 @@
                                                                         <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
                                                                         <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                     </div>
+                                                                </div>    
                                                                 </div>
                                                                 
                                                                 
