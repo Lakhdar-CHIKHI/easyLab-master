@@ -85,6 +85,7 @@
                                                                 @foreach ($membre->projets as $projet)
                                                         
                                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ed_bottompadder20">
+                                                                    <div class="ed_mostrecomeded_course">
                                                                     <div class="ed_item_img">
                                                                         <img src="http://placehold.it/248X156" alt="item1" class="img-responsive">
                                                                     </div>
@@ -116,6 +117,7 @@
                                                                         <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
                                                                         <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                     </div>
+                                                                </div>    
                                                                 </div>
                                                                 
                                                                 

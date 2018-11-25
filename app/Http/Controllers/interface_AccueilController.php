@@ -19,6 +19,8 @@ use App\User;
 use App\Equipe;
 use App\Role;
 use Auth;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
 
 class interface_AccueilController extends Controller
 {
@@ -72,9 +74,14 @@ class interface_AccueilController extends Controller
         $labo =  Parametre::find('1');
         $equipe = equipe::find($id);
         $membres = equipe::find($id)->membres()->orderBy('name')->get();
+        $projets = [];
     foreach ($membres as $membre){
-          $projets =user::find($id)->projets()->orderBy('intitule')->get();
+          $tmp =$membre->projets()->orderBy('intitule')->get();
+          foreach ($tmp as $projet) {
+              array_push($projets,$projet);
+          }
         }
+        
     
 
         
