@@ -55,7 +55,7 @@
                             </div>
                             
                             <p>{{$article->resume}}</p>
-                            <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                           
                         </div>
                     </div>
                 </div>
