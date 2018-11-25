@@ -72,10 +72,14 @@ class interface_AccueilController extends Controller
         $labo =  Parametre::find('1');
         $equipe = equipe::find($id);
         $membres = equipe::find($id)->membres()->orderBy('name')->get();
-    foreach ($membres as $membre){
-          $projets =user::find($id)->projets()->orderBy('intitule')->get();
-        }
-    
+       
+/*foreach($membres as $membre){
+  $projets =$membre->projets()->orderBy('intitule')->get();
+  }
+  */       
+  foreach($membres as $membre){
+    $projets =$membre->projets()->orderBy('intitule')->get();
+    }  
 
         
         return view('template.detail_equipe')->with([
