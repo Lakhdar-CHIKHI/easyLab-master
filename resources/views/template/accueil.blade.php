@@ -15,7 +15,7 @@
                                     <!-- SLIDE  -->
                                     <li data-transition="slotslide-horizontal">
                                         <!-- MAIN IMAGE -->
-                                        <img src="http://placehold.it/1800X597" alt="">
+                                        <img src="{{asset('images/content/labo.jpg')}}" alt="">
                                         <div class="ed_course_single_image_overlay"></div>
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['170','175','155','115']" data-width="none" data-height="none"
@@ -27,11 +27,11 @@
                                         <!-- LAYER NR. 2 -->
                                         <div class="li_slide tp-caption NotGeneric-CallToAction ed_btn ed_green tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['50','65','65','45']" data-y="['top','top','top','top']" data-voffset="['350','276','226','151']" data-whitespace="nowrap"
                                             data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; "><a href="" class="voir"> voir plus </a></div>
+                                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; "><a href="{{ url('template/apropos')}}" class="voir"> voir plus </a></div>
                                     </li>
                                     <li data-transition="slotslide-vertical">
                                         <!-- MAIN IMAGE -->
-                                        <img src="http://placehold.it/1800X597" alt="">
+                                        <img src="{{asset('images/content/2_2.jpg')}}" alt="">
                                         <div class="ed_course_single_image_overlay"></div>
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['170','175','155','115']" data-width="none" data-height="none"
@@ -43,11 +43,11 @@
                                         <!-- LAYER NR. 2 -->
                                         <div class="li_slide tp-caption NotGeneric-CallToAction ed_btn ed_green tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['350','276','226','151']" data-whitespace="nowrap"
                                             data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; "><a href="" class="voir"> voir plus </a></div>
+                                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; "><a href="{{ url('template/liste_equipes')}}" class="voir"> voir plus </a></div>
                                     </li>
                                     <li data-transition="slotslide-horizontal">
                                             <!-- MAIN IMAGE -->
-                                            <img src="http://placehold.it/1800X597" alt="">
+                                            <img src="{{asset('images/content/labo.jpg')}}" alt="">
                                             <div class="ed_course_single_image_overlay"></div>
                                             <!-- LAYER NR. 1 -->
                                             <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['170','175','155','115']" data-width="none" data-height="none"
@@ -59,7 +59,7 @@
                                             <!-- LAYER NR. 2 -->
                                             <div class="li_slide tp-caption NotGeneric-CallToAction ed_btn ed_green tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['50','65','65','45']" data-y="['top','top','top','top']" data-voffset="['350','276','226','151']" data-whitespace="nowrap"
                                                 data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                                data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; "><a href="" class="voir"> voir plus </a> </div>
+                                                data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; "><a href="{{ url('template/projets')}}" class="voir"> voir plus </a> </div>
                                         </li>
                                     <!-- SLIDE  -->
                                 </ul>
@@ -120,7 +120,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_heading_top ed_toppadder50">
-                            <h3>Choose how you want to membres</h3>
+                            <h3>Membres de Laboratoire ( LRIT )</h3>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -135,8 +135,8 @@
                                             <h4><a href="{{ url('template/'.$membre->id.'/profil_member')}}">{{$membre->name}} {{$membre->prenom}}</a></h4>
                                             <h5><strong>Grade : </strong> {{$membre->grade}}</h5>
                                             <div class="btn-group">
-                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('/in.png')}}"></a>
-                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('/rg.png')}}"></a>
+                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('images/icons/in.png')}}"></a>
+                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('images/icons/rg.png')}}"></a>
                                             </div>
                                         </div>
                                     </div>  
@@ -189,7 +189,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_heading_top ed_bottompadder80">
-                            <h3>Learner recommended Projects</h3>
+                            <h3>Projets de Laboratoire ( LRIT )</h3>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -226,7 +226,7 @@
                                         </div>
                                         <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
                                         
-                                        <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                                        <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                     </div>
                                 </div>
                                 @endforeach

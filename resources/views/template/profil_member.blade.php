@@ -59,8 +59,8 @@
                                         <p><strong>N° De Télépone : </strong>{{$membre->num_tel}}</p>
                                         @endif
                                         <div class="btn-group">
-                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('/in.png')}}"></a>
-                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('/rg.png')}}"></a>
+                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('images/icons/in.png')}}"></a>
+                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('images/icons/rg.png')}}"></a>
                                             </div>
                                     </div>
                                 
@@ -114,7 +114,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
-                                                                        <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                                                                        <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                     </div>
                                                                 </div>
                                                                 

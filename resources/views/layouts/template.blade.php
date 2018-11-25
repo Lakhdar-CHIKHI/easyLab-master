@@ -15,7 +15,7 @@
     
     <!-- end theme style -->
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="../images/header/logo2.png">
+    <link rel="shortcut icon" type="image/png" href="{{asset('images/header/logo2.png')}}">
 </head>
 <body>
         <div id="educo_wrapper">
@@ -30,18 +30,37 @@
                                 <a href="#" id="login_button">Se Connecter</a>
                                 <div id="login_one" class="ed_login_form">
                                     <h3>Se Connecter</h3>
-                                    <form class="form">
+                                    <form class="form" method="POST" action="{{ route('login')}}" >
+                                            @csrf
                                         <div class="form-group">
                                             <label class="control-label">Adresse E-mail :</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" name="email" class="form-control" required autofocus>
+                                            @if ($errors->has('email'))
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Mot de passe :</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" name="password" class="form-control"  required>
+                                            @if ($errors->has('password'))
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit">Connexion</button>
-                                            <a href="signup.html">sign up</a>
+                                                
+                                                <label>
+                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Se souvenir de moi') }}
+                                                </label>
+                                            </div>
+                                        <div class="form-group">
+                                            <button type="submit"> {{ __('Connexion') }}</button>
+                                            <a  href="{{ route('password.request') }}">
+                                                    {{ __('Mot de passe oublié?') }}
+                                                </a>
                                         </div>
                                     </form>
                                 </div>
@@ -55,7 +74,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2">
                             <div class="educo_logo">
-                                <a href="index.html"><img src="../images/header/logo2.png" alt="logo" style="margin-top: -13px;"></a>
+                                <a href="index.html"><img src="{{asset('images/header/logo2.png')}}" alt="logo" style="margin-top: -13px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
@@ -67,7 +86,11 @@
                                     </li>
                                     <li><a href="{{ url('template/apropos')}}">à Propos</a></li>
                                     <li><a href="{{ url('template/actualites')}}">actualités</a></li>
-                                    <li><a href="{{ url('template/projets')}}">Projets</a>                                  
+                                    <li><a href="#">Activités</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ url('template/projets')}}">Projets</a></li>
+                                            <li><a href="{{ url('template/articles')}}">Articles</a></li>
+                                        </ul>                                  
                                     </li>
                                     <li><a href="{{ url('template/liste_equipes')}}">équipes</a>                                      
                                     </li>
@@ -94,9 +117,10 @@
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="widget text-widget">
                                 <p>
-                                    <a href="index.html"><img src="../images/header/logo2.png" alt="Footer Logo"></a>
+                                    <a href="index.html"><img src="{{asset('images/header/logo2.png')}}" alt="Footer Logo"></a>
                                 </p>
-                                <p>Edution is an outstanding PSD template targeting educational institutions, helping them establish strong identity on the internet without any real developing knowledge. </p>
+                                <p>La recherche scientifique constitue un enjeu déterminant au 21éme siècle eu égard aux défis technologiques et à la mondialisation qui sera le champ de confrontation entre les nations industrialisées et modernes, confrontation
+                                    qui risque de reléguer au second plan les sociétés qui ne se donnent pas les moyens de se développer. </p>
                                 
                             </div>
                         </div>
