@@ -36,7 +36,7 @@ class ArticleController extends Controller
 	 	$article = Article::find($id);
 	 	$membres = Article::find($id)->users()->orderBy('name')->get();
 
-	 	return view('article.details')->with([
+			return view('article.details')->with([
 	 		'article' => $article,
 	 		'membres'=>$membres,
 	 		'labo'=>$labo,
