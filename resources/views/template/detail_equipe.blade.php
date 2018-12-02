@@ -191,7 +191,7 @@
                             <img src="{{asset('images/content/2_2.jpg')}}" alt="item1" class="img-responsive">
                         </div>
                         <div class="ed_item_description ed_most_recomended_data">
-                            <h4><strong><a href="{{ url('template/'.$article->id.'/detail_projet')}}">{{ $article->titre }} </a></strong></h4>
+                            <h4><strong><a href="{{ url('template/'.$article->id.'/detail_article')}}">{{ $article->titre }} </a></strong></h4>
                             <div class="row">
                                 <div class="ed_rating">
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -212,8 +212,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <p>{{$projet->resume}}</p>
-                            <a href="{{ url('template/'.$article->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                            <p>{{$article->resume}}</p>
+                            <a href="{{ url('template/'.$article->id.'/detail_article')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

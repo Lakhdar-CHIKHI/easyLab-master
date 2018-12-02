@@ -139,7 +139,7 @@
                                                 <div class="ed_dashboard_inner_tab">
                                                     @if (count($membre->articles))
                                                     @foreach ($membre->articles as $article)
-                                                    <div class="ed_add_students pub" ><a href="">
+                                                <div class="ed_add_students pub" ><a href="{{url('template/'.$article->id.'/detail_article')}}">
                                                          <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->annee}}</strong><br>
                                                          <span>{{$article->titre}}
                                                          </span>

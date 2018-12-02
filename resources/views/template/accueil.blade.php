@@ -112,6 +112,16 @@
                     </div>
                 </div>
             </div>
+           <!-- <div class="ed_form_box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 carre">lakhdarlakhdarlakhdarlakhdarlakhdar </div>
+                        <div class="col-md-2 carre">lakhdar</div>
+                        <div class="col-md-2 carre">lakhdar</div>
+                        <div class="col-md-2 carre">lakhdar</div>
+                    </div>
+                </div>
+            </div>-->
             <!--Slider form end-->
         </div>
         <!--Our expertise section one start -->
@@ -120,27 +130,47 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_heading_top ed_toppadder50">
-                            <h3>Membres de Laboratoire ( LRIT )</h3>
+                            <h3>Projets de Laboratoire ( LRIT )</h3>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_populer_areas_slider">
                             <div class="owl-carousel owl-theme">
-                                @foreach ($membres as $membre)
-                                <div class="item">
-                                        <div class="ed_item_img accueil_profil">
-                                            <img src="{{asset($membre->photo)}}" alt="item1" class="img-responsive">
+                                    @foreach ($projets as $projet)
+                                    
+                                
+                                    <div class="item ed_mostrecomeded_course">
+                                        <div class="ed_item_img">
+                                        <img src="{{asset('images/content/2_2.jpg')}}" alt="item1" class="img-responsive">
                                         </div>
-                                        <div class="ed_item_description center">
-                                            <h4><a href="{{ url('template/'.$membre->id.'/profil_member')}}">{{$membre->name}} {{$membre->prenom}}</a></h4>
-                                            <h5><strong>Grade : </strong> {{$membre->grade}}</h5>
-                                            <div class="btn-group">
-                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('images/icons/in.png')}}"></a>
-                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('images/icons/rg.png')}}"></a>
+                                        <div class="ed_item_description ed_most_recomended_data">
+                                            <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
+                                            <div class="row">
+                                                <div class="ed_rating">
+                                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                                        
+                                                            <div class="course_detail">
+                                                                <div class="course_faculty">
+                                                                        <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $projet->type }} </a></strong>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        <div class="ed_views">
+                                                            <i class="fa fa-users"></i>
+                                                            <span> {{count($projet->users)}} Members</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
+                                            
+                                            <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                         </div>
-                                    </div>  
-                                @endforeach
+                                    </div>
+                                    @endforeach
                                 
                                 
                             </div>
@@ -189,47 +219,28 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_heading_top ed_bottompadder80">
-                            <h3>Projets de Laboratoire ( LRIT )</h3>
+                            <h3>Memebres de Laboratoire ( LRIT )</h3>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_mostrecomeded_course_slider ed_mostrecomededcourseslider">
                             <div id="owl-demo3" class="owl-carousel owl-theme">
-                                @foreach ($projets as $projet)
-                                    
-                                
-                                <div class="item">
-                                    <div class="ed_item_img">
-                                        <img src="{{asset('/images/content/2_2.jpg')}}" alt="item1" class="img-responsive">
-                                    </div>
-                                    <div class="ed_item_description ed_most_recomended_data">
-                                        <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
-                                        <div class="row">
-                                            <div class="ed_rating">
-                                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                                                    
-                                                        <div class="course_detail">
-                                                            <div class="course_faculty">
-                                                                    <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $projet->type }} </a></strong>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    
-                                                </div>
-                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                                    <div class="ed_views">
-                                                        <i class="fa fa-users"></i>
-                                                        <span> {{count($projet->users)}} Members</span>
-                                                    </div>
+                                    @foreach ($membres as $membre)
+                                    <div class="item">
+                                            <div class="ed_item_img accueil_profil">
+                                                <img src="{{asset($membre->photo)}}" alt="item1" class="img-responsive">
+                                            </div>
+                                            <div class="ed_item_description center">
+                                                <h4><a href="{{ url('template/'.$membre->id.'/profil_member')}}">{{$membre->name}} {{$membre->prenom}}</a></h4>
+                                                <h5><strong>Grade : </strong> {{$membre->grade}}</h5>
+                                                <div class="btn-group">
+                                                    <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('images/icons/in.png')}}"></a>
+                                                    <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('images/icons/rg.png')}}"></a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
-                                        
-                                        <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                                @endforeach
+                                        </div>  
+                                    @endforeach
+                                
                             </div>
                         </div>
                     </div>

@@ -141,16 +141,26 @@ class interface_AccueilController extends Controller
                 array_push($projets,$projet);
             }
             }
-
+           
         foreach ($membres as $membre){
             $tmp =$membre->articles()->orderBy('titre')->get();
             foreach ($tmp as $article) {
+               /* $objet = [];
+                $objet['id']=$article->id;
+                $objet['type']=$article->type;
+                $objet['titre']=$article->titre;
+                $objet['resume']=$article->resume;
+                $articles[$i++]=$objet;
+                */
                 array_push($articles,$article);
             }
           }
         
-    
-
+          
+          //$articles = array_unique($articles,SORT_REGULAR);
+          //$articles = (array) $articles;
+          //var_dump($articles);
+          
         
         return view('template.detail_equipe')->with([
             'equipe' => $equipe,

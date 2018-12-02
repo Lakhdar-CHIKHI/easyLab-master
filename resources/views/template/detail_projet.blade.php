@@ -29,9 +29,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ed_course_single_item">
-                        <div class="ed_course_single_image">
-                            <img src="http://placehold.it/806X387" alt="event image">
-                        </div>
+                        
                         <div class="ed_course_single_info">
                             <h2>{{$projet->intitule}}<span><div class="ed_views">
                                     <i class="fa fa-users"></i>
