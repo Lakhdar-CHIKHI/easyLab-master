@@ -73,6 +73,14 @@ Route::get('template/{id}/detail_equipe', 'interface_AccueilController@detail_eq
 });*/
 
 
+/*            */
+
+Route::get('partenaires','PartenaireController@index');
+Route::get('partenaires/create','PartenaireController@create');
+Route::post('partenaires','PartenaireController@store');
+Route::get('partenaires/{id}/details','PartenaireController@details');
+Route::put('partenaires/{id}','PartenaireController@update');
+Route::delete('partenaires/{id}','PartenaireController@destroy');
 
 
 
