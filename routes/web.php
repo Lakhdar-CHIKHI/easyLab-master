@@ -80,6 +80,14 @@ Route::get('dashboard','dashController@index');
 Route::get('parametre','ParametreController@create');
 Route::post('parametre','ParametreController@store');
 
+Route::get('materiels','MaterielController@index');
+/*Route::get('theses/create','TheseController@create');
+Route::post('theses','TheseController@store')->middleware('thesecond');
+Route::get('theses/{id}/details','TheseController@details');
+Route::get('theses/{id}/edit','TheseController@edit');
+Route::put('theses/{id}','TheseController@update');
+Route::delete('theses/{id}','TheseController@destroy');
+*/
 Route::get('theses','TheseController@index');
 Route::get('theses/create','TheseController@create');
 Route::post('theses','TheseController@store')->middleware('thesecond');
