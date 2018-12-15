@@ -5,7 +5,7 @@
 @section('header_page')
 
        <h1>
-        Equipes
+        Partenaires
         <small>Détails</small>
       </h1>
         <ol class="breadcrumb">
@@ -23,7 +23,7 @@
           </a>
         </li>
 
-         <li class="active">
+         <li >
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
             <span>Equipes</span>
@@ -65,6 +65,26 @@
           </a>
         </li>
         
+        <li class="active">
+          <a href="{{url('partenaires')}}">
+            <i class="fa fa-group"></i> 
+            <span>Partenaires</span>
+          </a>
+        </li>
+
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Contacts</span>
+            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
+            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
+          </ul>
+        </li>
+
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -166,7 +186,7 @@
                         <label class="col-md-3 control-label">Nom</label>  
                         <div class="col-md-9 inputGroupContainer">
                           <div class="input-group" style="width: 70%">
-                            <input  name="intitule" class="form-control" value="{{$partenaire->nom}}" type="text">
+                            <input  name="nom" class="form-control" value="{{$partenaire->nom}}" type="text">
                           </div>
                         </div>
                       </div>
@@ -215,7 +235,16 @@
     </div>
 
             <div class="col-md-4">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src=" {{asset($partenaire->logo)}}" alt="User profile picture">
+
+              <h3 class="profile-username text-center">{{$partenaire->nom}} </h3>
+
+             
+             
+            </div>
               <!-- USERS LIST -->
+
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Membres de l'équipe</h3>

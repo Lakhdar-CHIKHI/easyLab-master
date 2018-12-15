@@ -73,7 +73,7 @@ Route::get('template/{id}/detail_equipe', 'interface_AccueilController@detail_eq
 });*/
 
 
-/*            */
+/*    partenaires        */
 
 Route::get('partenaires','PartenaireController@index');
 Route::get('partenaires/create','PartenaireController@create');
@@ -82,7 +82,16 @@ Route::get('partenaires/{id}/details','PartenaireController@details');
 Route::put('partenaires/{id}','PartenaireController@update');
 Route::delete('partenaires/{id}','PartenaireController@destroy');
 
+/*      contacts      */
 
+Route::get('contacts','ContactController@index');
+Route::get('contacts/create','ContactController@create');
+Route::post('contacts','ContactController@store');
+Route::get('contacts/{id}/details','ContactController@details');
+Route::get('trombinoscopecontacts','ContactController@trombi');
+Route::get('contacts/{id}/edit','ContactController@edit');
+Route::put('contacts/{id}','ContactController@update');
+Route::delete('contacts/{id}','ContactController@destroy');
 
 
 

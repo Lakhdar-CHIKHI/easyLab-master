@@ -29,7 +29,7 @@
           </a>
         </li>
         
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-user"></i> <span>Membres</span>
             <span class="pull-right-container">
@@ -63,7 +63,26 @@
           </a>
         </li>
         
-       
+        
+        <li >
+          <a href="{{url('partenaires')}}">
+            <i class="fa fa-group"></i> 
+            <span>Partenaires</span>
+          </a>
+        </li>
+
+         <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Contacts</span>
+            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
+            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
+          </ul>
+        </li>
         
           @if(Auth::user()->role->nom == 'admin' )
 

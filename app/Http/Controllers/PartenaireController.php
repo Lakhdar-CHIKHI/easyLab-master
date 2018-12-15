@@ -109,7 +109,7 @@ class PartenaireController extends Controller
                 $partenaire->type = $request->input('type');
                 $partenaire->pays = $request->input('pays');
                 $partenaire->ville = $request->input('ville');
-                $partenaire->logo = $request->input('logo');
+              
 
             $partenaire->save();
 

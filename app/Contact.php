@@ -28,14 +28,14 @@ class Contact extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function these()
+    public function theses()
     {
-        return $this->hasOne('App\These');
+        return $this->belongsToMany('App\These');
     }
 
-    public function equipe()
+    public function partenaire()
     {
-        return $this->belongsTo('App\Equipe');
+        return $this->belongsTo('App\Partenaire');
     }
 
 

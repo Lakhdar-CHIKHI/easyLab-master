@@ -29,7 +29,7 @@
           </a>
         </li>
         
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-user"></i> <span>Membres</span>
             <span class="pull-right-container">
@@ -63,7 +63,26 @@
           </a>
         </li>
         
-       
+        
+        <li >
+          <a href="{{url('partenaires')}}">
+            <i class="fa fa-group"></i> 
+            <span>Partenaires</span>
+          </a>
+        </li>
+
+         <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Contacts</span>
+            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
+            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
+          </ul>
+        </li>
         
           @if(Auth::user()->role->nom == 'admin' )
 
@@ -84,16 +103,13 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src=" {{asset($membre->photo)}}" alt="User profile picture">
+              
+              <h3 class="profile-username text-center">{{$contact->nom}} {{$contact->prenom}}</h3>
 
-              <h3 class="profile-username text-center">{{$membre->name}} {{$membre->prenom}}</h3>
-
-              <p class="text-muted text-center">{{$membre->grade}}</p>
+              <p class="text-muted text-center">{{$contact->fonction}}</p>
               <div class="text-center">
                 <div class="btn-group">
-              <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-              <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('/rg.png')}}"></a>
-                </div>
+               </div>
               </div>
             </div>
             <!-- /.box-body -->
@@ -104,48 +120,34 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">A propos</a></li>
-              @if(Auth::id() == $membre->id || Auth::user()->role->nom == 'admin' )
+          
               <li><a href="#activity1" data-toggle="tab">Modifier</a></li>
-              @endif
               <li><a href="#timeline" data-toggle="tab">Articles</a></li>
             </ul>
 
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                 <div class="box-body">
-                  @if($membre->date_naissance && ( $membre->autorisation_public_date_naiss || Auth::user()->role->nom == 'admin' || Auth::id() == $membre->id))
-                  <div class="row">
-                  <div class="col-md-3">
-                    <strong>Date de naissance</strong>
-                  </div>
-                  <div class="col-md-9">
-                    <p class="text-muted">
-                      {{$membre->date_naissance}}
-                    </p>
-                  </div>
-                  </div>
-                  @endif
+                
 
-                  @if($membre->num_tel && ( $membre->autorisation_public_date_naiss || Auth::user()->role->nom == 'admin' || Auth::id() == $membre->id))
                   <div class="row" style="margin-top: 10px">
                   <div class="col-md-3">
                     <strong>N° de télépone</strong>
                   </div>
                   <div class="col-md-9">
                     <p class="text-muted">
-                      {{$membre->num_tel}}
+                      {{$contact->tel}}
                     </p>
                   </div>
               	  </div>
-                  @endif
-
-                  @if($membre->equipe_id)
+                 
+                  @if($contact->partenaire_id)
                 <div class="row" style="margin-top: 10px">
                 <div class="col-md-3">
-                  <strong><i class="fa fa-group  margin-r-5"></i>Equipe</strong>                
+                  <strong><i class="fa fa-group  margin-r-5"></i>Partenaire</strong>                
                  </div>
                   <div class="col-md-9">
-                    <a href="#">{{$membre->equipe->intitule}}</a>
+                    <a href="#">{{$contact->partenaire->nom}}</a>
                   </div>
                 </div>
                 @endif
@@ -155,30 +157,30 @@
                    <strong><i class="fa fa-envelope margin-r-5"></i>Email</strong>
                  </div> 
                  <div class="col-md-9" style="padding-top: 10px">
-                   {{$membre->email}}
+                   {{$contact->adresse_mail}}
                  </div>
                 </div>
 
 
               <strong><i class="margin-r-5"></i></strong>
               <hr>
-              @if($membre->these)
+             <!-- @if($contact->these)
                 <div class="col-md-3">
                   <strong><i class="fa fa-graduation-cap margin-r-5"></i> Thèse </strong>                
                  </div>
                   <div class="col-md-9">
                     <p class="text-muted">
-                      <strong> Titre : </strong> {{$membre->these->titre}}
+                      <strong> Titre : </strong> {{$contact->these->titre}}
                       </p>
                     <p class="text-muted">
                       
-                      <strong>Résumé :</strong>  {{$membre->these->sujet}}
+                      <strong>Résumé :</strong>  {{$contact->these->sujet}}
                     </p>
                      <p class="text-muted">
-                      <strong>Encadreur :</strong> {{$membre->these->encadreur_int}}{{$membre->these->encadreur_ext}}
+                      <strong>Encadreur :</strong> {{$contact->these->encadreur_int}}{{$contact->these->encadreur_ext}}
                       </p>
                       <p class="text-muted">
-                     <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}{{$membre->these->coencadreur_ext}}
+                     <strong>Coencadreur :</strong> {{$contact->these->coencadreur_int}}{{$contact->these->coencadreur_ext}}
                      </p>
                     
                   </div>
@@ -191,7 +193,7 @@
 
             
               <div class="tab-pane" id="timeline">
-                 <div class="box-body" style="padding-top: 30px;">
+                <div class="box-body" style="padding-top: 30px;">
 
                   <div class="pull-right">
                 <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
@@ -203,14 +205,14 @@
                   <th>Type</th>
                   <th>Titre</th>
                   <th>Année</th>
-                  @if((Auth::id() != $membre->id))
+                  @if((Auth::id() != $contact->id))
                   <th>Actions</th>
                   @endif
                 </tr>
                 </thead>
-                <tbody>
-                  <!-- modifier -->
-                  @foreach ($membre->articles as $article) 
+                <tbody> -->
+                  <!-- modifier -->    <!-- 
+                  @foreach ($contact->articles as $article) 
                   <tr>
                     <td>{{$article->type}}</td>
                     <td>{{$article->titre}}</td>
@@ -242,22 +244,20 @@
                       
                     </td>
                   </tr>
-                  @endforeach
+                  @endforeach      modifier -->
                 <!-- fin modifier -->
-                 </tbody>
+              <!-- modifier   </tbody>
                 <tfoot>
                 <tr>
                   <th>Titre</th>
                   <th>Type</th>
                   
                   <th>Année</th>
-                  @if((Auth::id() != $membre->id))
-                  <th>Actions</th>
-                  @endif
+                  
                 </tr>
                 </tfoot>
               </table>
-            </div>
+            </div> -->  
               </div>
 
 
@@ -265,7 +265,7 @@
 
 
           <div class="tab-pane" id="activity1">
-            <form class="well form-horizontal" action=" {{url('membres/'. $membre->id) }} " method="post"  id="contact_form">
+            <form class="well form-horizontal" action=" {{url('contacts/'. $contact->id) }} " method="post"  id="contact_form">
 
             	<input type="hidden" name="_method" value="PUT">
               {{ csrf_field() }}
@@ -274,12 +274,12 @@
 
                       <div class="form-group ">
                         <label class="col-md-3 control-label">Nom</label>  
-                        <div class="col-md-9 inputGroupContainer @if($errors->get('name')) has-error @endif">
+                        <div class="col-md-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
                           <div class="input-group"  style="width: 40%">
-                            <input  name="name" class="form-control" value="{{$membre->name}}" type="text">
+                            <input  name="nom" class="form-control" value="{{$contact->nom}}" type="text">
                             <span class="help-block">
-                                @if($errors->get('name'))
-                                  @foreach($errors->get('name') as $message)
+                                @if($errors->get('nom'))
+                                  @foreach($errors->get('nom') as $message)
                                     <li> {{ $message }} </li>
                                   @endforeach
                                 @endif
@@ -294,7 +294,7 @@
                         <label class="col-md-3 control-label">Prénom</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('prenom')) has-error @endif">
                           <div class="input-group"  style="width: 40%">
-                            <input  name="prenom" value="{{$membre->prenom}}" class="form-control"  type="text">
+                            <input  name="prenom" value="{{$contact->prenom}}" class="form-control"  type="text">
                             <span class="help-block">
                                 @if($errors->get('prenom'))
                                   @foreach($errors->get('prenom') as $message)
@@ -307,60 +307,22 @@
                       </div>
 
 
-                       <div class="form-group"> 
-                          <label class="col-md-3 control-label">Grade</label>
-                            <div class="col-md-9 selectContainer @if($errors->get('grade')) has-error @endif">
-                              <div class="input-group" style="width: 40%">
-                                  <select name="grade" class="form-control selectpicker">
-                                  	<option>{{$membre->grade}}</option>
-                                    <option>MAA</option>
-                                    <option>MAB</option>
-                                    <option >MCA</option>
-                                    <option >MCB</option>
-                                    <option>Doctorant</option>
-                                    <option >Professeur</option>
-                                  </select>
-                                  <span class="help-block">
-                                @if($errors->get('grade'))
-                                  @foreach($errors->get('grade') as $message)
-                                    <li> {{ $message }} </li>
-                                  @endforeach
-                                @endif
-                            </span>
-                              </div>
-                            </div>
-                      </div>
-
-                      @if((Auth::user()->role->nom == 'admin') && (Auth::id() != $membre->id))
-                      <div class="form-group">
-                         <label class="col-md-3 control-label">Role</label>
-                             <div class="col-md-9 inputGroupContainer">
-                               <div class="input-group"  style="width: 40%">
-                                  <select class="form-control" id="role_id" lass="form-control" name="role_id">
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role->id }}" {{ ($membre->role_id == $role->id) ? 'selected' : '' }}>{{ $role->nom }}</option>
-                                        @endforeach
-                                  </select>
-                                </div>
-                              </div>
-                          </div>
-                        @endif
 
 
                       <div class="form-group"> 
-                          <label class="col-md-3 control-label">Equipe</label>
-                            <div class="col-md-9 selectContainer @if($errors->get('equipe')) has-error @endif">
+                          <label class="col-md-3 control-label">Partenaire</label>
+                            <div class="col-md-9 selectContainer @if($errors->get('partenaire')) has-error @endif">
                               <div class="input-group"  style="width: 40%">
-                                  <select name="equipe_id" class="form-control selectpicker">
-                                    <option value="{{$membre->equipe_id}}">{{$membre->equipe->intitule}}</option>
-                                    @foreach($equipes as $equipe)
-                                    <option value="{{$equipe->id}}">{{$equipe->intitule}}</option>
+                                  <select name="partenaire_id" class="form-control selectpicker">
+                                    <option value="{{$contact->partenaire_id}}">{{$contact->partenaire->nom}}</option>
+                                    @foreach($partenaires as $partenaire)
+                                    <option value="{{$partenaire->id}}">{{$partenaire->nom}}</option>
                                     @endforeach
                                     
                                   </select>
                                   <span class="help-block">
-                                @if($errors->get('equipe_id'))
-                                  @foreach($errors->get('equipe_id') as $message)
+                                @if($errors->get('partenaire_id'))
+                                  @foreach($errors->get('partenaire_id') as $message)
                                     <li> {{ $message }} </li>
                                   @endforeach
                                 @endif
@@ -371,12 +333,12 @@
 
                       <div class="form-group">
                         <label class="col-md-3 control-label">E-Mail</label>  
-                          <div class="col-md-9 inputGroupContainer @if($errors->get('email')) has-error @endif">
+                          <div class="col-md-9 inputGroupContainer @if($errors->get('adresse_mail')) has-error @endif">
                             <div class="input-group"  style="width: 40%">
-                                <input name="email" type="email" class="form-control" value="{{$membre->email}}">
+                                <input name="adresse_mail" type="email" class="form-control" value="{{$contact->adresse_mail}}">
                                 <span class="help-block">
-                                @if($errors->get('email'))
-                                  @foreach($errors->get('email') as $message)
+                                @if($errors->get('adresse_mail'))
+                                  @foreach($errors->get('adresse_mail') as $message)
                                     <li> {{ $message }} </li>
                                   @endforeach
                                 @endif
@@ -384,97 +346,34 @@
                             </div>
                           </div>
                       </div>
-                       @if((Auth::id() == $membre->id))
-                      <div class="form-group">
-                        <label class="col-md-3 control-label">Password</label>  
-                          <div class="col-md-9 inputGroupContainer">
-                            <div class="input-group"  style="width: 40%">
-                                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder ="Entrez un nouveau mot de passe">
-                            </div>
-                          </div>
-                      </div>
-                      @endif
+                     
 
-                    <div class="row">
-                      <div class="col-md-7">
-                      <div class="form-group">
-                            <label class="col-md-6 control-label">Date_Naissance</label>  
-                            <div class="col-md-6 inputGroupContainer input-group Date">
-                              <input name="date_naissance" type="text" class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datepicker" value="{{$membre->date_naissance}}">
-                            </div>
-                      </div>
-                      </div>
-                      <div class="col-md-1">
-                      <div class="form-group" title="Publique?">
-                            <label class="col-md-4 control-label">
-                              <input name="autorisation_public_date_naiss" type="checkbox" class="flat-red" value="{{$membre->autorisation_public_date_naiss}}" @if($membre->autorisation_public_date_naiss) checked @endif>
-                            </label> 
-                           </div>
-                         </div>
-                    </div>
-
+                 
                     <div class="row">
                       <div class="col-md-7">
                       <div class="form-group">
                               <label class="col-md-6 control-label">N° Téléphone</label>  
                                 <div class="col-md-6 input-group">
-                                <input name="num_tel" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{$membre->num_tel}}">
+                                <input name="tel" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{$contact->tel}}">
                               </div>
                         </div>
                       </div>
-                      <div class="col-md-1">
-                      <div class="form-group" title="Publique?">
-                            <label class="col-md-4 control-label">
-                              <input name="autorisation_public_num_tel" type="checkbox" class="flat-red" value="{{$membre->autorisation_public_num_tel}}" @if($membre->autorisation_public_num_tel) checked @endif >
-                            </label> 
-                           </div>
-                         </div>
+                  
                     </div>
 
-                    <div class="row">
-                      <div class="col-md-7">
-                      <div class="form-group">
-                              <label class="col-md-6 control-label">Linkedin</label>  
-                                <div class="col-md-6 inputGroupContainer">
-                                <div class="input-group">
-                                <input name="lien_linkedin" type="text" class="form-control" value ="{{$membre->lien_linkedin}}">
-                              </div>
-                              </div>
-                        </div>
-                     </div>
-                     <!-- <div class="col-md-1">
-                      <div class="form-group" title="Publique?">
-                            <label class="col-md-4 control-label">
-                              <input name="autorisation_public_linkedin" type="checkbox" class="flat-red" value="{{$membre->autorisation_public_linkedin}}">
-                            </label> 
-                           </div>
-                         </div> -->
-                    </div>
+                
 
-                    <div class="row">
-                      <div class="col-md-7">
-                      <div class="form-group">
-                              <label class="col-md-6 control-label">ResearshGate</label>  
-                                <div class="col-md-6 inputGroupContainer">
-                                <div class="input-group">
-                                <input name="lien_rg" type="email" class="form-control" value="{{$membre->lien_rg}}">
-                              </div>
-                              </div>
-                          </div>
-                     </div>
-                     <!-- <div class="col-md-1">
-                      <div class="form-group" title="Publique?">
-                            <label class="col-md-4 control-label">
-                              <input name="autorisation_public_rg" type="checkbox" class="flat-red" value= "{{$membre->autorisation_public_linkedin}}">
-                            </label> 
-                           </div>
-                         </div> -->
+
+                    
+
+            
+                        
                     </div>
 
               </fieldset>
 
               <div style="padding-top: 30px; margin-left: 35%;">
-              <a href="{{url('membres')}}" class=" btn btn-lg btn-default"><i class="fa  fa-mail-reply"></i> &nbsp;Annuler</a>
+              <a href="{{url('contacts')}}" class=" btn btn-lg btn-default"><i class="fa  fa-mail-reply"></i> &nbsp;Annuler</a>
                <button type="submit" class=" btn btn-lg btn-primary"><i class="fa fa-check"></i> Valider</button> 
                   </div>
             </form>

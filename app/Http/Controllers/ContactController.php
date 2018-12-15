@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Http\Requests\ContactRequest;
-use App\Http\Requests\ContactEditRequest;
+use App\Http\Requests\contactRequest;
+use App\Http\Requests\contactEditRequest;
 use App\Parametre;
 use App\Contact;
 use App\Partenaire;
@@ -23,32 +23,32 @@ class ContactController extends Controller
 
      public function index()
     {
-        $membres = User::all(); 
+        $contacts = Contact::all(); 
         $labo = Parametre::find('1');
 
-        return view('membre.index' , ['membres' => $membres],['labo'=>$labo]);
+        return view('contact.index' , ['contacts' => $contacts],['labo'=>$labo]);
     }
 
     public function trombi()
     {
         // $membres = User::all()->orderBy('name'); 
         $labo = Parametre::find('1');
-        $membres = DB::table('users')->distinct('id')->orderBy('name')->get(); 
+        $contacts = DB::table('contacts')->distinct('id')->orderBy('name')->get(); 
 
-        return view('membre.trombinoscope', ['membres' => $membres],['labo'=>$labo]);
+        return view('contact.trombinoscope', ['contacts' => $contacts],['labo'=>$labo]);
     } 
 
     public function details($id)
     {
-        $membre = User::find($id);
-        $equipes = Equipe::all();
+        $contact = Contact::find($id);
+        $partenaires = Partenaire::all();
         $roles = Role::all();
         $labo = Parametre::find('1');
 
 
-        return view('membre.details')->with([
-            'membre' => $membre,
-            'equipes' => $equipes,
+        return view('contact.details')->with([
+            'contact' => $contact,
+            'partenaires' => $partenaires,
             'roles' => $roles,
             'labo'=>$labo,
             
@@ -60,62 +60,46 @@ class ContactController extends Controller
         $labo = Parametre::find('1');
         if( Auth::user()->role->nom == 'admin')
             {
-                $equipes = Equipe::all();
-                return view('membre.create' , ['equipes' => $equipes],['labo'=>$labo]);
+                $partenaires = Partenaire::all();
+                return view('contact.create' , ['partenaires' => $partenaires],['labo'=>$labo]);
             }
             else{
                 return view('errors.403',['labo'=>$labo]);
             }
     }
 
-    public function store(userRequest $request)
+    public function store(contactRequest $request)
     {
-        $membre = new User();
+        $contact = new Contact();
         $labo = Parametre::find('1');
-        if($request->hasFile('img')){
-            $file = $request->file('img');
-            $file_name = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('/uploads/photo'),$file_name);
+      
 
-        }
-        else{
-            $file_name="userDefault.png";
-        }
+            $contact->nom = $request->input('nom');
+            $contact->prenom = $request->input('prenom');
+            $contact->adresse_mail = $request->input('adresse_mail');
+            $contact->fonction = $request->input('fonction');
+            $contact->nature_de_cooperation = $request->input('nature_de_cooperation');
+            $contact->partenaire_id = $request->input('partenaire');
+            $contact->tel = $request->input('tel');
+        
 
-            $membre->name = $request->input('name');
-            $membre->prenom = $request->input('prenom');
-            $membre->email = $request->input('email');
-            $membre->date_naissance = $request->input('date_naissance');
-            $membre->grade = $request->input('grade');
-            $membre->password = Hash::make($request->input('password'));
-            $membre->equipe_id = $request->input('equipe');
-            $membre->num_tel = $request->input('num_tel');
-            // $membre->autorisation_public_linkedin = $request->input('autorisation_public_linkedin');
-            $membre->autorisation_public_num_tel = $request->input('autorisation_public_num_tel');
-            $membre->autorisation_public_photo = $request->input('autorisation_public_photo');
-            $membre->autorisation_public_date_naiss = $request->input('autorisation_public_date_naiss');
-            // $membre->autorisation_public_rg = $request->input('autorisation_public_rg');
-            $membre->lien_rg = $request->input('lien_rg');
-            $membre->lien_linkedin = $request->input('lien_linkedin');
-            $membre->photo = 'uploads/photo/'.$file_name;
-
-            $membre->save();
-        return redirect('membres');
+            $contact->save();
+        return redirect('contacts');
 
     }
 
     public function edit($id)
     {
 
-        $membre = User::find($id);
-        $equipes = Equipe::all();
+        $contact = Contact::find($id);
+        $partenaires = Partenaire::all();
         $roles = Role::all();
         $labo = Parametre::find('1');
 
 
-        return view('membre.edit')->with([
-            'membre' => $membre,
-            'equipes' => $equipes,
+        return view('contact.edit')->with([
+            'contact' => $contact,
+            'partenaires' => $partenaires,
             'roles' => $roles,
             'labo'=>$labo,
             
@@ -123,45 +107,22 @@ class ContactController extends Controller
     
     }
 
-    public function update(userEditRequest $request , $id)
+    public function update(contactEditRequest $request , $id)
     {
       
-        $membre = User::find($id);
-        $labo = Parametre::find('1');
+        $contact->nom = $request->input('nom');
+            $contact->prenom = $request->input('prenom');
+            $contact->adresse_mail = $request->input('adresse_mail');
+            $contact->fonction = $request->input('fonction');
+            $contact->nature_de_cooperation = $request->input('nature_de_cooperation');
+            $contact->partenaire_id = $request->input('partenaire');
+            $contact->tel = $request->input('tel');
         
-        if($request->hasFile('img')){
-            $file = $request->file('img');
-            $file_name = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('/uploads/photo'),$file_name);
 
-                        }
+            $contact->save();
+   
 
-        $membre->name = $request->input('name');
-        $membre->prenom = $request->input('prenom');
-        $membre->email = $request->input('email');
-        $membre->date_naissance = $request->input('date_naissance');
-        $membre->grade = $request->input('grade');
-                if((Auth::id() == $membre->id))
-                {
-                $membre->password =Hash::make($request->input('password'));
-                }
-        $membre->equipe_id = $request->input('equipe_id');
-        $membre->num_tel = $request->input('num_tel');
-       
-        $membre->autorisation_public_num_tel = $request->input('autorisation_public_num_tel');
-        $membre->autorisation_public_photo = $request->input('autorisation_public_photo');
-        $membre->autorisation_public_date_naiss = $request->input('autorisation_public_date_naiss');
-
-        $membre->lien_rg = $request->input('lien_rg');
-        $membre->lien_linkedin = $request->input('lien_linkedin');
-        if ((Auth::user()->role->nom == 'admin')&& (Auth::id() != $membre->id))
-            {
-          $membre->role_id = $request->role_id;
-            }
-          
-        $membre->save();
-
-        return redirect('membres/'.$id.'/details');
+        return redirect('contacts/'.$id.'/details');
 
     }
 
@@ -170,9 +131,9 @@ class ContactController extends Controller
     {
         if( Auth::user()->role->nom == 'admin')
             {
-        $membre = User::find($id);
-        $membre->delete();
-        return redirect('membres');
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect('contacts');
             }
     }
     

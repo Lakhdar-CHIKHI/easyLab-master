@@ -10,7 +10,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="{{url('membres')}}">Membres</a></li>
+        <li><a href="{{url('contacts')}}">Contacts</a></li>
         <li class="active">Liste</li>
       </ol>
 
@@ -30,7 +30,7 @@
           </a>
         </li>
         
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-user"></i> <span>Membres</span>
             <span class="pull-right-container">
@@ -64,7 +64,26 @@
           </a>
         </li>
         
-       
+        
+        <li >
+          <a href="{{url('partenaires')}}">
+            <i class="fa fa-group"></i> 
+            <span>Partenaires</span>
+          </a>
+        </li>
+
+         <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Contacts</span>
+            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
+            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
+          </ul>
+        </li>
         
           @if(Auth::user()->role->nom == 'admin' )
 
@@ -83,7 +102,7 @@
           <div class="container" style="padding-top: 30px">
           <div class="row" style="padding-bottom: 20px">
             <div class="box-header col-xs-9">
-              <h3 class="box-title">Liste des membres</h3>
+              <h3 class="box-title">Liste des contacts</h3>
             </div>
             
           </div>
@@ -93,7 +112,7 @@
             <div class="box-body">
               @if(Auth::user()->role->nom == 'admin' )
               <div class=" pull-right">
-                <a href="{{url('membres/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> Nouveau membre</a>
+                <a href="{{url('contacts/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> Nouveau contact</a>
               </div>
                @endif
 <!-- 
@@ -106,43 +125,43 @@
                   <th>Nom</th>
                   <th>Prénom</th>
                   <th>Email</th>
-                  <th>Grade</th>
+                  <th>Fonction</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($membres as $membre)
+                  @foreach($contacts as $contact)
                   <tr>
-                    <td>{{$membre->name}}</td>
-                    <td>{{$membre->prenom}}</td>
-                    <td>{{$membre->email}}</td>
-                    <td>{{$membre->grade}}</td>
+                    <td>{{$contact->nom}}</td>
+                    <td>{{$contact->prenom}}</td>
+                    <td>{{$contact->adresse_mail}}</td>
+                    <td>{{$contact->fonction}}</td>
                     <td>
                       <div class="btn-group">
                         
-                        <form action="{{ url('membres/'.$membre->id)}}" method="post">
+                        <form action="{{ url('contacts/'.$contact->id)}}" method="post">
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
 
-                            <a href="{{ url('membres/'.$membre->id.'/details')}}" class="btn btn-info">
+                            <a href="{{ url('contacts/'.$contact->id.'/details')}}" class="btn btn-info">
                               <i class="fa fa-eye"></i>
                             </a>
-                             @if(Auth::id() == $membre->id || Auth::user()->role->nom == 'admin' )
-                            <a href="{{url('membres/'.$membre->id.'/edit')}}" class="btn btn-default">
+                             @if(Auth::id() == $contact->id || Auth::user()->role->nom == 'admin' )
+                            <a href="{{url('contacts/'.$contact->id.'/edit')}}" class="btn btn-default">
                               <i class="fa fa-edit"></i>
                             </a>
                             @endif
-                            @if(Auth::id() != $membre->id && Auth::user()->role->nom != 'membre' )
+                            
                             <!-- <button  type="submit" class="btn btn-danger ">
                                 <i class="fa fa-trash-o"></i>
                             </button> -->
 
-                             <a href="#supprimer{{ $membre->id }}Modal" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-                      <div class="modal fade" id="supprimer{{ $membre->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $membre->id }}ModalLabel" aria-hidden="true">
+                             <a href="#supprimer{{ $contact->id }}Modal" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                      <div class="modal fade" id="supprimer{{ $contact->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $contact->id }}ModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header">
-                                    <!--   <h5 class="modal-title" id="supprimer{{ $membre->id }}ModalLabel">Supprimer</h5> -->
+                                    <!--   <h5 class="modal-title" id="supprimer{{ $contact->id }}ModalLabel">Supprimer</h5> -->
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                       </button>
@@ -151,7 +170,7 @@
                                       Voulez-vous vraiment effectuer la suppression ? 
                                   </div>
                                   <div class="modal-footer">
-                                      <form class="form-inline" action="{{ url('membres/'.$membre->id)}}"  method="POST">
+                                      <form class="form-inline" action="{{ url('contacts/'.$contact->id)}}"  method="POST">
                                           @method('DELETE')
                                           @csrf
                                       <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
@@ -162,7 +181,7 @@
                           </div>
                       </div>
 
-                            @endif
+                        
                         </form>
                     </div>
                     </td>
