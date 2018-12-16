@@ -114,13 +114,22 @@
                   <hr>
 
                   <div class="col-md-3">
-                    <strong><i class="fa fa-user margin-r-5"></i> Encadreur</strong>
+                    <strong><i class="fa fa-user margin-r-5"></i> Encadreur Interne</strong>
                   </div>
                   <div class="col-md-9">
                     {{ $these->encadreur_int}}
-                    {{ $these->encadreur_ext}}
+                  
                   </div>
+                  <strong><i class="margin-r-5"></i></strong>
+                  <hr>
 
+                  <div class="col-md-3">
+                    <strong><i class="fa fa-user margin-r-5"></i> Encadreur Externe</strong>
+                  </div>
+                  <div class="col-md-9">
+                  
+                    {{ $these->encext->nom}}   {{ $these->encext->prenom}}
+                  </div>
                   <strong><i class="margin-r-5"></i></strong>
                   <hr>
 
@@ -129,7 +138,17 @@
                   </div>
                   <div class="col-md-9">
                     {{ $these->coencadreur_int }}
-                    {{ $these->coencadreur_ext }}
+               
+                  </div>
+                  <strong><i class="margin-r-5"></i></strong>
+                  <hr>
+
+                  <div class="col-md-3">
+                    <strong><i class="fa fa-user margin-r-5"></i> Coencadreur Externe</strong>
+                  </div>
+                  <div class="col-md-9">
+                 
+                    {{ $these->cooencext->nom }}{{ $these->cooencext->prenom }}
                   </div>
 
                   <strong><i class="margin-r-5"></i></strong>

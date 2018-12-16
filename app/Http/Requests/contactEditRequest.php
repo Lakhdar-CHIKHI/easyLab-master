@@ -23,11 +23,14 @@ class contactEditRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
-           'name' => 'required',
-            'prenom' => 'required',
-            'email' => 'required',
-            'grade' => 'required',
+            'nom' => 'required',
+            
+            
+
+
         ];
+
     }
 }

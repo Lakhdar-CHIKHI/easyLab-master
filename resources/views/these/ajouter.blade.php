@@ -167,9 +167,13 @@
                         <label class="col-xs-3 control-label">Encadreur externe</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input  name="encadreur_ext" class="form-control" placeholder="Nom" type="text" value="{{old('encadreur_ext')}}">
+                            <select name="encadreur_ext" class="form-control select2">
+                              <option></option>
+                               @foreach($contacts as $contact)
+                              <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
+                               @endforeach
+                            </select>
                           </div>
-                          <span>*Vous devrez obligatoirement remplir un des champs(encadreur interne ou externe)</span>
                         </div>
                   </div> 
 
@@ -191,11 +195,13 @@
                         <label class="col-xs-3 control-label">CoEncadreur externe</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input  name="coencadreur_ext" class="form-control" placeholder="Nom" type="text" value="{{old('coencadreur_ext')}}">
+                            <select name="coencadreur_ext" class="form-control select2">
+                              <option></option>
+                               @foreach($contacts as $contact)
+                              <option value="{{$contact->id}} ">{{$contact->nom}} {{$contact->prenom}}</option>
+                               @endforeach
+                            </select>
                           </div>
-                         
-                          <span>*Vous devrez obligatoirement remplir un des champs(coencadreur interne ou externe)</span>
-                         
                         </div>
                   </div> 
                 

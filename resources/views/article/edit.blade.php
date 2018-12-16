@@ -145,6 +145,25 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">Contacts</label>
+                    <div class="col-md-9 inputGroupContainer">
+                      <div style="width: 70%">
+                        <select name="contact[]" class="form-control select2" multiple="multiple" data-placeholder="Selectionnez les Membres Internes">
+                          <option>
+                             @foreach ($article->contacts as $contact) 
+                              <option value="{{$contact->id}}" selected>
+                                  {{ $contact->nom }} {{ $contact->prenom }}
+                              </option>
+                            @endforeach
+                          </option>
+                         @foreach($contacts as $contact)
+                              <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                  </div>
 
                    
 

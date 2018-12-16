@@ -111,7 +111,11 @@
                   <tr>
                     <td>{{ $projet->intitule }}</td>
                     <td>{{ $projet->type }}</td>
-                    <td>{{ $projet->partenaires }}</td>
+                    <td> @foreach ($projet->contacts as $contact) 
+                      <ul>
+                          <li><a href="{{url('contacts/'.$contact->id.'/details')}}">{{ $contact->nom }} {{ $contact->prenom }}</a></li>
+                      </ul>
+                    @endforeach</td>
                     <td><a href="{{url('membres/'.$projet->chef_id.'/details')}}">{{ $projet->chef->name}} {{ $projet->chef->prenom}}</a></td>
                     <td>
                       @foreach ($projet->users as $user) 

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\projetRequest;
 use App\Projet;
 use App\User;
+use App\Contact;
 use Auth;
+use App\ProjetContact;
 use App\ProjetUser;
 use App\Parametre;
 use Illuminate\Http\UploadedFile;
@@ -34,9 +36,10 @@ class ProjetController extends Controller
         $labo =  Parametre::find('1');
         $projet = Projet::find($id);
         $membres = Projet::find($id)->users()->orderBy('name')->get();
-
+        $contacts = Projet::find($id)->contacts()->orderBy('nom')->get();
         return view('projet.details')->with([
             'projet' => $projet,
+            'contacts'=>$contacts,
             'membres'=>$membres,
             'labo'=>$labo,
         ]);;
@@ -48,10 +51,16 @@ class ProjetController extends Controller
         $labo =  Parametre::find('1');
         if( Auth::user()->role->nom == 'admin')
             {
+             $contacts = Contact::all();
     	 	 $membres = User::all();
              $projet = Projet::all();
-    	 	return view('projet.create', ['membres' => $membres],['labo'=>$labo]);
-            }
+    	 	
+             return view('projet.create')->with([
+                'projet' => $projet,
+                'membres'=>$membres,
+                'contacts'=>$contacts,
+                'labo'=>$labo,
+            ]);; }
              else{
                 return view('errors.403',['labo'=>$labo]);
             }
@@ -74,7 +83,7 @@ class ProjetController extends Controller
 	 	$projet->intitule = $request->input('intitule');
 	 	$projet->resume = $request->input('resume');
 	 	$projet->type = $request->input('type');
-	 	$projet->partenaires = $request->input('partenaires');
+	 	
 	 	$projet->lien = $request->input('lien');
         $projet->chef_id = $request->input('chef_id');
 	 	
@@ -90,6 +99,14 @@ class ProjetController extends Controller
             $projet_user->save();
 
          } 
+         $contacts =  $request->input('contact');
+         foreach ($contacts as $key => $value) {
+             $projet_contact = new ProjetContact();
+             $projet_contact->projet_id = $projet->id;
+             $projet_contact->contact_id = $value;
+             $projet_contact->save();
+ 
+          } 
 
 	 	return redirect('projets');
 
@@ -99,7 +116,8 @@ class ProjetController extends Controller
     //récuperer un article puis le mettre dans le formulaire
 	 public function edit($id){
 
-	 	$projet = Projet::find($id);
+         $projet = Projet::find($id);
+         $contacts = Contact::all(); 
 	 	 $membres = User::all();
          $labo =  Parametre::find('1');
 
@@ -107,6 +125,7 @@ class ProjetController extends Controller
 
 	 	return view('projet.edit')->with([
             'projet' => $projet,
+            'contacts'=>$contacts,
             'membres' => $membres,
             'labo'=>$labo,
         ]);;
@@ -131,7 +150,6 @@ class ProjetController extends Controller
         $projet->intitule = $request->input('intitule');
         $projet->resume = $request->input('resume');
         $projet->type = $request->input('type');
-        $projet->partenaires = $request->input('partenaires');
         $projet->lien = $request->input('lien');
         $projet->chef_id = $request->input('chef_id');
 
@@ -148,7 +166,14 @@ class ProjetController extends Controller
             $projet_user->save();
 
          } 
-
+         $contacts =  $request->input('contact');
+         foreach ($contacts as $key => $value) {
+             $projet_contact = new ProjetContact();
+             $projet_contact->projet_id = $projet->id;
+             $projet_contact->contact_id = $value;
+             $projet_contact->save();
+ 
+          } 
 
 	 	return redirect('projets');
 

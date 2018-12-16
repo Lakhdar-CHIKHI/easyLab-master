@@ -110,7 +110,7 @@ class ContactController extends Controller
     public function update(contactEditRequest $request , $id)
     {
       
-        $contact->nom = $request->input('nom');
+            $contact->nom = $request->input('nom');
             $contact->prenom = $request->input('prenom');
             $contact->adresse_mail = $request->input('adresse_mail');
             $contact->fonction = $request->input('fonction');

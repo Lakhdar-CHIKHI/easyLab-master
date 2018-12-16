@@ -134,12 +134,23 @@
 
                   <div class="form-group ">
                         <label class="col-xs-3 control-label">Partenaires</label>  
-                        <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
-                            <input  name="partenaires" class="form-control" value="{{ $projet -> partenaires}}" type="text">
-                          </div>
-                        </div>
-                  </div> 
+                        <div class="col-md-9 inputGroupContainer">
+                      <div style="width: 70%">
+                        <select name="contact[]" class="form-control select2 " multiple="multiple" data-placeholder="Selectionnez les Membres">
+                          <option>
+                             @foreach ($projet->contacts as $contact) 
+                              <option value="{{$contact->id}}" selected >
+                                  {{ $contact->nom }} {{ $contact->prenom }}
+                              </option>
+                            @endforeach
+                          </option>
+                           @foreach($contacts as $contact)
+                              <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
+                           @endforeach
+                        </select>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="form-group ">
                         <label class="col-xs-3 control-label">Chef du projet</label>  

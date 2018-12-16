@@ -16,7 +16,7 @@ class Contact extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','photo',
+        'nom', 'prenom', 'adresse_mail', 
     ];
 
     /**
@@ -28,9 +28,9 @@ class Contact extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function theses()
+    public function these()
     {
-        return $this->belongsToMany('App\These');
+        return $this->hasOne('App\These');
     }
 
     public function partenaire()

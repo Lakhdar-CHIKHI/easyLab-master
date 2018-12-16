@@ -14,4 +14,12 @@ class These extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function encext()
+    {
+        return $this->belongsTo('App\Contact',"encadreur_ext");
+    }
+    public function cooencext()
+    {
+        return $this->belongsTo('App\Contact',"coencadreur_ext");
+    }
 }
