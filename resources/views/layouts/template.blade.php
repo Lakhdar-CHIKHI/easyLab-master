@@ -167,7 +167,6 @@
      <script type="text/javascript" src="{{asset('js/plugins/countto/jquery.appear.js')}}"></script>
      <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
-
      <!--main js file end-->
 </body>
 </html>
