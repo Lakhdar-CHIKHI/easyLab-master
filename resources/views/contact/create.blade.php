@@ -101,7 +101,7 @@
       <div class="col-xs-12">
         <div class="box">
             
-          <div class="container col-xs-12">
+          <div class="container col-md-12">
 
             <form class="well form-horizontal" method="POST" action="{{url('contacts')}}" id="contact_form" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -111,9 +111,9 @@
                 <legend><center><h2><b>Nouveau Membre</b></h2></center></legend><br>
 
                 <!-- Text input-->
-                    <div class="col-md-5">
+                    <div class="col-md-12">
 
-                      <div class="form-group ">
+                      <div class="form-group col-md-8">
                         <label class="col-md-3 control-label">Nom *</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
                           <div class="input-group">
@@ -133,7 +133,7 @@
 
                        <!-- Text input-->
 
-                      <div class="form-group">
+                      <div class="form-group col-md-8">
                         <label class="col-md-3 control-label">Prénom *</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('prenom')) has-error @endif">
                           <div class="input-group">
@@ -153,8 +153,8 @@
 
                       
 
-                      <div class="form-group"> 
-                          <label class="col-md-3 control-label">Partenaire *</label>
+                      <div class="form-group col-md-8 "> 
+                          <label class="col-md-3 control-label">Partenaire * </label>
                             <div class="col-md-9 selectContainer @if($errors->get('partenaire')) has-error @endif">
                               <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-users"></i></span>
@@ -166,6 +166,7 @@
                                   </select>
 
                               </div>
+                            
 
                               <span class="help-block">
                                 @if($errors->get('partenaire_id'))
@@ -176,9 +177,13 @@
                             </span>
 
                             </div>
+                            
                       </div>
+                      <div class="col-md-2 pull-left" style="padding-bottom: 20px">
+                <a href="{{url('partenaires/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"></i> <i class="fa fa-group"></i></a>
+            </div>
 
-                      <div class="form-group">
+                      <div class="form-group col-md-8">
                         <label class="col-md-3 control-label">E-Mail *</label>  
                           <div class="col-md-9 inputGroupContainer @if($errors->get('adresse_mail')) has-error @endif">
                             <div class="input-group">
@@ -198,7 +203,7 @@
                     
                     
                 
-                    <div class="form-group ">
+                    <div class="form-group col-md-8">
                         <label class="col-md-3 control-label">Fonction*</label>  
                         <div class="col-md-9 ">
                           <div class="input-group">
@@ -208,7 +213,7 @@
                            
                         </div>
                       </div>
-                      <div class="form-group ">
+                      <div class="form-group col-md-8">
                         <label class="col-md-3 control-label">Nature de cooperation*</label>  
                         <div class="col-md-9 ">
                           <div class="input-group">
@@ -220,7 +225,7 @@
                       </div>
 
 
-<div class="form-group ">
+<div class="form-group col-md-8">
                         <label class="col-md-3 control-label">N° Téléphone *</label>  
                         <div class="col-md-9 ">
                           <div class="input-group">

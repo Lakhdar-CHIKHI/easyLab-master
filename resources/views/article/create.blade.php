@@ -80,7 +80,7 @@
       <div class="col-xs-12">
         <div class="box">
             
-          <div class="container col-xs-12">
+          <div class="container col-md-12">
 
             <form class="well form-horizontal" action="{{ url('articles') }}" method="post"  id="contact_form" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -89,7 +89,7 @@
                 <!-- Form Name -->
                 <legend><center><h2><b>Nouvel article</b></h2></center></legend><br>
 
-                  <div class="form-group ">
+               <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Titre (*)</label>  
                         <div class="col-xs-9 inputGroupContainer  @if($errors->get('titre')) has-error @endif">
                           <div style="width: 70%">
@@ -106,7 +106,7 @@
                         </div>
                   </div>  
 
-                  <div class="form-group">
+                 <div class="form-group  col-md-8">
                       <label class="col-md-3 control-label">Résumé (*)</label>
                       <div class="col-md-9 inputGroupContainer  @if($errors->get('resume')) has-error @endif">
                         <div style="width: 70%">
@@ -121,8 +121,7 @@
                         </div>
                       </div>
                   </div>
-
-                  <div class="form-group ">
+<div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Type (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('type')) has-error @endif">
                           <div style="width: 70%">
@@ -146,8 +145,7 @@
                           </div>
                         </div>
                   </div>
-
-                 <div class="form-group ">
+<div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Membres internes (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('membre[]')) has-error @endif">
                           <div style="width: 70%">
@@ -170,7 +168,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+                 <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Membres externes</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('contact[]')) has-error @endif">
                           <div style="width: 70%">
@@ -186,9 +184,11 @@
                           </div>
                         </div>
                   </div>  
- 
+                  <div class="col-md-1 pull-left">
+                <a href="{{url('contacts/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> </a>
+              </div>
 
-                  <div class="form-group ">
+             <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Ville (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('ville')) has-error @endif">
                           <div style="width: 70%">
@@ -204,7 +204,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+              <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Pays (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('pays')) has-error @endif">
                           <div style="width: 70%">
@@ -220,7 +220,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+            <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Nom de la conférence</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
@@ -229,7 +229,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+             <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Nom du journal</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
@@ -238,7 +238,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+              <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">ISSN</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
@@ -247,7 +247,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+              <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">ISBN</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
@@ -256,7 +256,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
+              <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Mois (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('mois')) has-error @endif">
                           <div style="width: 70%">
@@ -273,7 +273,7 @@
                   </div>
 
 
-                   <div class="form-group ">
+              <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Année (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('annee')) has-error @endif">
                           <div style="width: 70%">
@@ -289,7 +289,7 @@
                         </div>
                   </div>
 
-                  <div class="form-group ">
+             <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">DOI</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
@@ -298,7 +298,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group">
+             <div class="form-group  col-md-8">
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">

@@ -82,7 +82,7 @@
       <div class="col-xs-12">
         <div class="box">
             
-          <div class="container col-xs-12">
+          <div class="container col-md-12">
 
             <form class="well form-horizontal" action="{{url('projets')}}" method="post"  id="contact_form" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -92,7 +92,7 @@
                 <!-- Form Name -->
                 <legend><center><h2><b>Nouveau projet</b></h2></center></legend><br>
 
-                  <div class="form-group ">
+                  <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Intitulé (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('intitule')) has-error @endif">
                           <div style="width: 70%">
@@ -108,7 +108,7 @@
                         </div>
                   </div>  
 
-                  <div class="form-group">
+                  <div class="form-group  col-md-8">
                       <label class="col-md-3 control-label">Résumé (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('resume')) has-error @endif">
                         <div style="width: 70%">
@@ -124,7 +124,7 @@
                       </div>
                   </div>
 
-                  <div class="form-group ">
+                  <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Type (*)</label>  
 
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('type')) has-error @endif">
@@ -151,8 +151,8 @@
                   </div> 
 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Partenaires</label>  
+                  <div class="form-group  col-md-8">
+                        <label class="col-xs-3 control-label">Membres externes</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('contact[]')) has-error @endif">
                       <div style="width: 70%">
                         <select name ="contact[]"  class="form-control select2 " multiple="multiple" data-placeholder="Selectionnez les Membres" value="{{old('contact[]')}}">
@@ -164,7 +164,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group ">
+                  <div class="col-md-1">
+                <a href="{{url('contacts/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> </a>
+              </div>
+                  <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Chef du projet (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('chef_id')) has-error @endif">
                           <div style="width: 70%">
@@ -185,7 +188,7 @@
                         </div>
                   </div>  
 
-                  <div class="form-group">
+                  <div class="form-group  col-md-8">
                     <label class="col-md-3 control-label">Membres (*)</label>
                     <div class="col-md-9 inputGroupContainer @if($errors->get('membre[]')) has-error @endif">
                       <div style="width: 70%">
@@ -206,7 +209,7 @@
                   </div>
 
 
-                  <div class="form-group ">
+                  <div class="form-group  col-md-8">
                         <label class="col-xs-3 control-label">Lien</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
@@ -215,7 +218,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group">
+                  <div class="form-group  col-md-8">
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">

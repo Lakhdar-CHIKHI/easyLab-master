@@ -118,7 +118,7 @@
                   <hr>
 
                   <div class="col-md-3">
-                    <strong><i class="fa fa-group  margin-r-5"></i>Partenaires</strong>
+                    <strong><i class="fa fa-group  margin-r-5"></i>Membres externes</strong>
                   </div>
                   <div class="col-md-9">
                     @foreach($contacts as $contact)

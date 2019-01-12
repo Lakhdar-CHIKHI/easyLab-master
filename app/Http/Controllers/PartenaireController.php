@@ -77,7 +77,7 @@ class PartenaireController extends Controller
         else{
             $file_name="nologo.png";
         }
-
+        $partenaire->create_id =  Auth::user()->id;
         $partenaire->nom = $request->input('nom');
         $partenaire->type = $request->input('type');
         $partenaire->pays = $request->input('pays');
@@ -102,7 +102,7 @@ class PartenaireController extends Controller
             $file->move(public_path('/uploads/photo'),$file_name);
 
                         }
-        if( Auth::user()->role->nom == 'admin')
+        if( Auth::user()->role->nom == 'admin' || Auth::user()->id ==$partenaire->create_id)
             {
 
                 $partenaire->nom = $request->input('nom');
@@ -123,7 +123,7 @@ class PartenaireController extends Controller
 
     public function destroy($id)
     {
-        if( Auth::user()->role->nom == 'admin')
+        if( Auth::user()->role->nom == 'admin' | Auth::user()->id ==$partenaire->create_id)
             {
         $partenaire = Partenaire::find($id);
         $partenaire->delete();

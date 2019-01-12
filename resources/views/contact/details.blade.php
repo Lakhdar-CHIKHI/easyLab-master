@@ -120,9 +120,11 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">A propos</a></li>
-          
-              <li><a href="#activity1" data-toggle="tab">Modifier</a></li>
+              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$contact->create_id)
+              <li><a href="#activity1" data-toggle="tab">Modifier</a></li> @endif
               <li><a href="#timeline" data-toggle="tab">Articles</a></li>
+              <li><a href="#timeline2" data-toggle="tab">Theses Encadre</a></li>
+              <li><a href="#timeline3" data-toggle="tab">Theses CooEncadre</a></li>
             </ul>
 
             <div class="tab-content">
@@ -164,7 +166,7 @@
 
               <strong><i class="margin-r-5"></i></strong>
               <hr>
-             <!-- @if($contact->these)
+             @if($contact->these)
                 <div class="col-md-3">
                   <strong><i class="fa fa-graduation-cap margin-r-5"></i> Thèse </strong>                
                  </div>
@@ -210,8 +212,8 @@
                   @endif
                 </tr>
                 </thead>
-                <tbody> -->
-                  <!-- modifier -->    <!-- 
+                <tbody> 
+                  <!-- modifier -->    
                   @foreach ($contact->articles as $article) 
                   <tr>
                     <td>{{$article->type}}</td>
@@ -244,9 +246,7 @@
                       
                     </td>
                   </tr>
-                  @endforeach      modifier -->
-                <!-- fin modifier -->
-              <!-- modifier   </tbody>
+                  @endforeach        </tbody>
                 <tfoot>
                 <tr>
                   <th>Titre</th>
@@ -257,18 +257,166 @@
                 </tr>
                 </tfoot>
               </table>
-            </div> -->  
+            </div>  
               </div>
 
 
 
 
 
+            
+              <div class="tab-pane" id="timeline2">
+                <div class="box-body" style="padding-top: 30px;">
+
+                  <div class="pull-right">
+                <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
+              </div>
+                   
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Titre</th>
+                  <th>Année</th>
+                  @if((Auth::id() != $contact->id))
+                  <th>Actions</th>
+                  @endif
+                </tr>
+                </thead>
+                <tbody> 
+                  <!-- modifier -->    
+                  @foreach ($contact->thesese as $these) 
+                  <tr>
+                    <td>{{$these->type}}</td>
+                    <td>{{$these->titre}}</td>
+                
+                    <td>{{$these->annee}}</td>
+                    <td>
+                     
+                      <div class="btn-group">
+                        <form action="{{ url('theses/'.$these->id)}}" method="post">
+                          
+                          {{csrf_field()}}
+                          {{method_field('DELETE')}}
+
+                        <a href="{{ url('theses/'.$these->id.'/details')}}" class="btn btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        @if(Auth::user()->role->nom == 'admin' || Auth::user()->id == $these->deposer)
+                        <a href="{{ url('theses/'.$these->id.'/edit')}}" class="btn btn-default">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        @endif
+                        @if( Auth::user()->role->nom != 'membre' || Auth::user()->id == $these->deposer)
+                        <button type="submit" class="btn btn-danger ">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                        @endif
+                        </form>
+                      </div>
+                      
+                    </td>
+                  </tr>
+                  @endforeach        </tbody>
+                <tfoot>
+                <tr>
+                  <th>Titre</th>
+                  <th>Type</th>
+                  
+                  <th>Année</th>
+                  
+                </tr>
+                </tfoot>
+              </table>
+            </div>  
+              </div>
+
+
+
+
+
+
+
+
+
+            
+              <div class="tab-pane" id="timeline3">
+                <div class="box-body" style="padding-top: 30px;">
+
+                  <div class="pull-right">
+                <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
+              </div>
+                   
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Titre</th>
+                  <th>Année</th>
+                  @if((Auth::id() != $contact->id))
+                  <th>Actions</th>
+                  @endif
+                </tr>
+                </thead>
+                <tbody> 
+                  <!-- modifier -->    
+                  @foreach ($contact->thesesc as $these) 
+                  <tr>
+                    <td>{{$these->type}}</td>
+                    <td>{{$these->titre}}</td>
+                
+                    <td>{{$these->annee}}</td>
+                    <td>
+                     
+                      <div class="btn-group">
+                        <form action="{{ url('theses/'.$these->id)}}" method="post">
+                          
+                          {{csrf_field()}}
+                          {{method_field('DELETE')}}
+
+                        <a href="{{ url('theses/'.$these->id.'/details')}}" class="btn btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        @if(Auth::user()->role->nom == 'admin' || Auth::user()->id == $these->deposer)
+                        <a href="{{ url('theses/'.$these->id.'/edit')}}" class="btn btn-default">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        @endif
+                        @if( Auth::user()->role->nom != 'membre' || Auth::user()->id == $these->deposer)
+                        <button type="submit" class="btn btn-danger ">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                        @endif
+                        </form>
+                      </div>
+                      
+                    </td>
+                  </tr>
+                  @endforeach        </tbody>
+                <tfoot>
+                <tr>
+                  <th>Titre</th>
+                  <th>Type</th>
+                  
+                  <th>Année</th>
+                  
+                </tr>
+                </tfoot>
+              </table>
+            </div>  
+              </div>
+
+
+
+
+
+              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$contact->create_id)
           <div class="tab-pane" id="activity1">
             <form class="well form-horizontal" action=" {{url('contacts/'. $contact->id) }} " method="post"  id="contact_form">
 
             	<input type="hidden" name="_method" value="PUT">
               {{ csrf_field() }}
+
 
               <fieldset>
 
@@ -330,7 +478,25 @@
                               </div>
                             </div>
                       </div>
-
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Fonction</label>  
+                          <div class="col-md-9 inputGroupContainer">
+                            <div class="input-group"  style="width: 40%">
+                                <input name="fonction" type="text" class="form-control" value="{{$contact->fonction}}">
+                                
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Nature de cooperation</label>  
+                          <div class="col-md-9 inputGroupContainer">
+                            <div class="input-group"  style="width: 40%">
+                                <input name="nature_de_cooperation" type="text" class="form-control" value="{{$contact->nature_de_cooperation}}">
+                                
+                            </div>
+                          </div>
+                      </div>
+                 
                       <div class="form-group">
                         <label class="col-md-3 control-label">E-Mail</label>  
                           <div class="col-md-9 inputGroupContainer @if($errors->get('adresse_mail')) has-error @endif">
@@ -378,9 +544,12 @@
                   </div>
             </form>
           </div>
+          @endif
 
               <!-- /.tab-pane -->
             </div>
+          
+
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->

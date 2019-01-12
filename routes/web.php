@@ -3,6 +3,9 @@ use App\User;
 use App\These;
 use App\Projet;
 use App\Article;
+use App\Cntact;
+use App\Partenaire;
+use App\Stage;
 use App\Equipe;
 use App\Parametre;
 use Illuminate\Support\Facades\Input;
@@ -94,7 +97,15 @@ Route::put('contacts/{id}','ContactController@update');
 Route::delete('contacts/{id}','ContactController@destroy');
 
 
+/*  Stage      */
 
+Route::get('stages','StageController@index');
+Route::get('stages/create','StageController@create');
+Route::post('stages','StageController@store');
+Route::get('stages/{id}/details','StageController@details');
+Route::get('stages/{id}/edit','StageController@edit');
+Route::put('stages/{id}','StageController@update');
+Route::delete('stages/{id}','StageController@destroy');
 
 
 

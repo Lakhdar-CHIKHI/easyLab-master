@@ -16,5 +16,8 @@ class Partenaire extends Model
     {
     	return $this->hasMany('App\Contact');
     }
-
+    public function create_id()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

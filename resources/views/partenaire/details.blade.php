@@ -102,8 +102,8 @@
       <div class="nav-tabs-custom">
        <ul class="nav nav-tabs">
               <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
-              @if(Auth::user()->role->nom == 'admin' )
-
+              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$partenaire->create_id->id)
+            
               <li><a href="#modifier" data-toggle="tab">Modifier</a></li>
               @endif
             </ul>
@@ -175,7 +175,8 @@
           </ul>
         </div>
       </div>
-
+      @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$partenaire->create_id->id)
+            
       <div class="tab-pane" id="modifier">
           <form class="well form-horizontal" action="{{url('partenaires/'. $partenaire->id) }} " method="post"  id="contact_form">
             <input type="hidden" name="_method" value="PUT">
@@ -229,7 +230,7 @@
                <button type="submit" class=" btn btn-lg btn-primary"><i class="fa fa-check"></i> Modifier</button> 
               </div>
             </form>
-      </div>
+      </div> @endif
       </div>
       </div>
     </div>
@@ -252,12 +253,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
+                  <ul class="list clearfix">
                     @foreach($contacts as $contact)
                     <li>
-                      <img src="{{asset($contact->photo)}}" alt="User Image">
-                      <a class="users-list-name" href="{{url('contacts/'.$contact->id.'/details')}}">{{$contact->name}}</a>
-                      <span class="users-list-date">{{$contact->prenom}}</span>
+                     
+                      <a class="users-list-name" href="{{url('contacts/'.$contact->id.'/details')}}">{{$contact->nom}} {{$contact->prenom}}</a>
+                      <span class="users-list-date">{{$contact->fonction}}</span>
                     </li>
                     @endforeach
                   </ul>
