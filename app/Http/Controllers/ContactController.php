@@ -59,16 +59,17 @@ class ContactController extends Controller
     public function create()
     {
         $labo = Parametre::find('1');
-        if( Auth::user()->role->nom == 'admin')
-            {
+       
                 $partenaires = Partenaire::all();
                 return view('contact.create' , ['partenaires' => $partenaires],['labo'=>$labo]);
-            }
-            else{
-                return view('errors.403',['labo'=>$labo]);
-            }
+           
     }
-
+    
+    public function createpop()
+    {
+        $partenaires = Partenaire::all();
+        return $partenaires;
+    }
     public function store(contactRequest $request)
     {
         $contact = new Contact();
@@ -78,10 +79,8 @@ class ContactController extends Controller
             $contact->nom = $request->input('nom');
             $contact->prenom = $request->input('prenom');
             
-            $contact->create_id =  Auth::user()->id;
             $contact->adresse_mail = $request->input('adresse_mail');
             $contact->fonction = $request->input('fonction');
-            $contact->nature_de_cooperation = $request->input('nature_de_cooperation');
             $contact->partenaire_id = $request->input('partenaire');
             $contact->tel = $request->input('tel');
         
@@ -90,6 +89,28 @@ class ContactController extends Controller
         return redirect('contacts');
 
     }
+    public function storepop(ContactRequest $request)
+    { 
+        $contact = new Contact();
+        $labo = Parametre::find('1');
+      
+
+            $contact->nom = $request->input('nom');
+            $contact->prenom = $request->input('prenom');
+            
+            $contact->adresse_mail = $request->input('adresse_mail');
+            $contact->fonction = $request->input('fonction');
+           
+            $contact->partenaire_id = $request->input('partenaire');
+            $contact->tel = $request->input('tel');
+        
+
+            $contact->save();
+            $contacts = Contact::all();
+     return $contacts;
+    }
+
+
 
     public function edit($id)
     {
@@ -112,14 +133,13 @@ class ContactController extends Controller
 
     public function update(contactEditRequest $request , $id)
     {
-        if( Auth::user()->role->nom == 'admin' || Auth::user()->id ==$contact->create_id)
-        {
+        $contact = Contact::find($id);
             $contact->nom = $request->input('nom');
             $contact->prenom = $request->input('prenom');
             $contact->adresse_mail = $request->input('adresse_mail');
             $contact->fonction = $request->input('fonction');
-            $contact->nature_de_cooperation = $request->input('nature_de_cooperation');
-            $contact->partenaire_id = $request->input('partenaire');
+    
+            $contact->partenaire_id = $request->input('partenaire_id');
             $contact->tel = $request->input('tel');
         
 
@@ -127,18 +147,17 @@ class ContactController extends Controller
    
 
         return redirect('contacts/'.$id.'/details');
-    }   
-    else{
-            return view('errors.403',['labo'=>$labo]);
-        }
+   
     }
 
     
     public function destroy($id)
     {
-        if( Auth::user()->role->nom == 'admin'| Auth::user()->id ==$partenaire->create_id)
-            {
         $contact = Contact::find($id);
+
+        if( Auth::user()->role->nom == 'admin')
+            {
+        
         $contact->delete();
         return redirect('contacts');
             }

@@ -40,10 +40,7 @@ class Contact extends Authenticatable
     {
         return $this->belongsTo('App\Partenaire');
     }
-    public function create_id()
-    {
-        return $this->belongsTo('App\User');
-    }
+    
 
 
     public function projet()

@@ -89,10 +89,14 @@
                 <!-- Form Name -->
                 <legend><center><h2><b>Nouvel article</b></h2></center></legend><br>
 
-               <div class="form-group  col-md-8">
+       
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Titre (*)</label>  
                         <div class="col-xs-9 inputGroupContainer  @if($errors->get('titre')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="titre" class="form-control" placeholder="Titre" type="text" value="{{old('titre')}}">
                             <span class="help-block">
                                 @if($errors->get('titre'))
@@ -106,10 +110,19 @@
                         </div>
                   </div>  
 
-                 <div class="form-group  col-md-8">
+             
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                       <label class="col-md-3 control-label">Résumé (*)</label>
                       <div class="col-md-9 inputGroupContainer  @if($errors->get('resume')) has-error @endif">
-                        <div style="width: 70%">
+                        <div style="width: 100%">
                           <textarea name="resume" class="form-control" rows="3" placeholder="Résumé ...">{{old('resume')}}</textarea>
                           <span class="help-block">
                                 @if($errors->get('resume'))
@@ -121,10 +134,19 @@
                         </div>
                       </div>
                   </div>
-<div class="form-group  col-md-8">
+
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Type (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('type')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <select name="type" class="form-control select">
                               <option></option>
                               <option>Poster</option>
@@ -145,10 +167,19 @@
                           </div>
                         </div>
                   </div>
-<div class="form-group  col-md-8">
+
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Membres internes (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('membre[]')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <select name="membre[]" class="form-control select2" multiple="multiple">
                               
                                @foreach($membres as $membre)
@@ -168,11 +199,20 @@
                         </div>
                   </div> 
 
-                 <div class="form-group  col-md-8">
+          
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Membres externes</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('contact[]')) has-error @endif">
-                          <div style="width: 70%">
-                            <select name="contact[]" class="form-control select2" multiple="multiple">
+                          <div style="width: 100%">
+                            <select name="contact[]" id="contact" class="form-control select2" multiple="multiple">
                               
                                @foreach($contacts as $contact)
                               <option value="{{$contact->id}}">
@@ -185,13 +225,21 @@
                         </div>
                   </div>  
                   <div class="col-md-1 pull-left">
-                <a href="{{url('contacts/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> </a>
+                  <a  type="button" id="create-contact" class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#modalForm"><i class="fa fa-user-plus"></i> </a>
               </div>
 
-             <div class="form-group  col-md-8">
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Ville (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('ville')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="ville" class="form-control" placeholder="Lieu " type="text" value="{{old('ville')}}">
                             <span class="help-block">
                                 @if($errors->get('ville'))
@@ -204,10 +252,18 @@
                         </div>
                   </div> 
 
-              <div class="form-group  col-md-8">
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Pays (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('pays')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="pays" class="form-control" placeholder="Lieu" type="text" value="{{old('pays')}}">
                             <span class="help-block">
                                 @if($errors->get('pays'))
@@ -220,46 +276,90 @@
                         </div>
                   </div> 
 
-            <div class="form-group  col-md-8">
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Nom de la conférence</label>  
                         <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="conference" class="form-control" type="text" value="{{old('conference')}}">
                           </div>
                         </div>
                   </div> 
 
-             <div class="form-group  col-md-8">
+   
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Nom du journal</label>  
                         <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="journal" class="form-control" type="text" value="{{old('journal')}}">
                           </div>
                         </div>
                   </div> 
 
-              <div class="form-group  col-md-8">
+      
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">ISSN</label>  
                         <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="issn" class="form-control" type="numbers" value="{{old('issn')}}">
                           </div>
                         </div>
                   </div> 
 
-              <div class="form-group  col-md-8">
+      
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">ISBN</label>  
                         <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="isbn" class="form-control" type="numbers" value="{{old('isbn')}}">
                           </div>
                         </div>
                   </div> 
 
-              <div class="form-group  col-md-8">
+        
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Mois (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('mois')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input type="text" name="mois" class="form-control pull-right" value="{{old('mois')}}">
                             <span class="help-block">
                                 @if($errors->get('mois'))
@@ -273,10 +373,19 @@
                   </div>
 
 
-              <div class="form-group  col-md-8">
+        
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Année (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('annee')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input type="text" name="annee" class="form-control pull-right" value="{{old('annee')}}">
                             <span class="help-block">
                                 @if($errors->get('annee'))
@@ -289,24 +398,48 @@
                         </div>
                   </div>
 
-             <div class="form-group  col-md-8">
+           
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">DOI</label>  
                         <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="doi" class="form-control" placeholder="URL" type="text" value="{{old('doi')}}">
                           </div>
                         </div>
                   </div> 
 
-             <div class="form-group  col-md-8">
+         
+         </div>
+
+
+
+
+
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
-                        <div style="width: 70%">
+                        <div style="width: 100%">
                           <input name="detail" type="file" id="exampleInputFile" value="{{old('detail')}}">
                         </div>
                       </div>
                   </div>
                   
+         </div>
+
+
+
+
+
 
               </fieldset>
 
@@ -319,5 +452,8 @@
          </div><!-- /.container -->
        </div>
       </div>
+
+ 
+
  @endsection
  

@@ -101,11 +101,51 @@ Route::delete('contacts/{id}','ContactController@destroy');
 
 Route::get('stages','StageController@index');
 Route::get('stages/create','StageController@create');
+Route::post('stages/date','StageController@selectmembre');
 Route::post('stages','StageController@store');
 Route::get('stages/{id}/details','StageController@details');
 Route::get('stages/{id}/edit','StageController@edit');
 Route::put('stages/{id}','StageController@update');
 Route::delete('stages/{id}','StageController@destroy');
+/* dans create */
+
+Route::get('projets/createpop','ContactController@createpop');
+Route::post('projets/storepop','ContactController@storepop');
+Route::post('projets/storepopP','PartenaireController@storepopP');
+
+Route::get('articles/createpop','ContactController@createpop');
+Route::post('articles/storepop','ContactController@storepop');
+Route::post('articles/storepopP','PartenaireController@storepopP');
+
+Route::get('stages/createpop','ContactController@createpop');
+Route::post('stages/storepop','ContactController@storepop');
+Route::post('stages/storepopP','PartenaireController@storepopP');
+
+
+Route::post('contacts/storepopP','PartenaireController@storepopP');
+/*    dans edit  */
+Route::get('projets/{id}/createpop','ContactController@createpop');
+Route::post('projets/{id}/storepop','ContactController@storepop');
+Route::post('projets/{id}/storepopP','PartenaireController@storepopP');
+
+Route::get('articles/{id}/createpop','ContactController@createpop');
+Route::post('articles/{id}/storepop','ContactController@storepop');
+Route::post('articles/{id}/storepopP','PartenaireController@storepopP');
+
+Route::get('stages/{id}/createpop','ContactController@createpop');
+Route::post('stages/{id}/storepop','ContactController@storepop');
+Route::post('stages/{id}/storepopP','PartenaireController@storepopP');
+
+Route::post('stages/{id}/date','StageController@selectmembre');
+Route::post('contacts/{id}/storepopP','PartenaireController@storepopP');
+
+
+
+
+
+
+
+
 
 
 

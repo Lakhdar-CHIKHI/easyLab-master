@@ -8,6 +8,7 @@ use App\Projet;
 use App\User;
 use App\Contact;
 use Auth;
+use App\Partenaire;
 use App\ProjetContact;
 use App\ProjetUser;
 use App\Parametre;
@@ -49,8 +50,7 @@ class ProjetController extends Controller
 	 public function create()
      {
         $labo =  Parametre::find('1');
-        if( Auth::user()->role->nom == 'admin')
-            {
+        
              $contacts = Contact::all();
     	 	 $membres = User::all();
              $projet = Projet::all();
@@ -60,12 +60,8 @@ class ProjetController extends Controller
                 'membres'=>$membres,
                 'contacts'=>$contacts,
                 'labo'=>$labo,
-            ]);; }
-             else{
-                return view('errors.403',['labo'=>$labo]);
-            }
+            ]);;
     }
-
 
 	 public function store(projetRequest $request){
 

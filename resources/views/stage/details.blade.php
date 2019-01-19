@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
- @section('title','LRI | Détails thèse')
+ @section('title','LRI | Détails  Stage')
 
 @section('header_page')
     <h1>
-      Thèse
+    Stages
       <small>Détails</small>
     </h1>
     <ol class="breadcrumb">

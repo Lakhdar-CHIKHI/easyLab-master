@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title','LRI | Ajouter une thèse')
+@section('title','LRI | Ajouter un  Stage')
 
 @section('header_page')
 
       <h1>
-        Thèses
-        <small>Nouvelle</small>
+      Stages
+        <small>Nouveau</small>
       </h1>
       <ol class="breadcrumb">
       <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
@@ -89,12 +89,14 @@
               <fieldset>
 
                 <!-- Form Name -->
-                <legend><center><h2><b>Nouveau stage</b></h2></center></legend><br>
+                <legend><center><h2><b>Nouveau Stage</b></h2></center></legend><br>
+             
 
-                  <div class="form-group">
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-xs-3 control-label">Titre (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('titre')) has-error @endif">
-                          <div style="width: 70%">
+                          <div style="width: 100%">
                             <input  name="titre" class="form-control" placeholder="Titre" type="text" value="{{old('titre')}}">
                               <span class="help-block">
                                 @if($errors->get('titre'))
@@ -108,10 +110,13 @@
                         </div>
                   </div>  
 
-                  <div class="form-group">
+                  </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                       <label class="col-md-3 control-label">Sujet (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('sujet')) has-error @endif" >
-                        <div style="width: 70%">
+                        <div style="width: 100%">
                           <textarea name="sujet" class="form-control" rows="3" placeholder="Entrez ...">{{old('sujet')}}</textarea>
 
                             <span class="help-block">
@@ -126,12 +131,50 @@
                       </div>
                   </div>
 
-                  <div class="form-group ">
+                  </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
+                        <label class="col-xs-3 control-label">Date d'inscription (*)</label>  
+                        <div class="col-xs-9 inputGroupContainer @if($errors->get('date_debut')) has-error @endif">
+                          <div style="width: 100%">
+                            <input name="date_debut" id="date_debut" type="date" class="form-control pull-right"  data-mask id="datepicker" value="{{old('date_debut')}}">
+
+                            <span class="help-block">
+                                @if($errors->get('date_debut'))
+                                  @foreach($errors->get('date_debut') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+
+                          </div>
+                        </div>
+                  </div>
+                  </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
+                        <label class="col-xs-3 control-label">Date de fin</label>  
+                        <div class="col-xs-9 inputGroupContainer">
+                          <div style="width: 100%">
+                            <input name="date_soutenance" type="date" class="form-control pull-right"   value="{{old('date_soutenance')}}">
+                          </div>
+                        </div>
+                  </div>
+
+
+
+                  </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-xs-3 control-label">Présenté par (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('user_id')) has-error @endif">
-                          <div style="width: 70%">
-                            <select name="user_id" class="form-control select2" >
+                          <div style="width: 100%">
+                            <select name="user_id" id="user" class="form-control select2" >
                               <option{{old('user_id')}}></option>
+                              
                                @foreach($membres as $membre)
                               <option value="{{$membre->id}}">{{$membre->name}} {{$membre->prenom}}</option>
                                @endforeach
@@ -149,11 +192,14 @@
                         </div>
                   </div>  
                   
-                  <div class="form-group ">
+                  </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-xs-3 control-label">Lieu (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('part_id')) has-error @endif">
-                          <div style="width: 70%">
-                            <select name="part_id" class="form-control select2" >
+                          <div style="width: 100%">
+                            <select name="part_id" id="partenaireC" class="form-control select2" >
                               <option{{old('part_id')}}></option>
                                @foreach($partenaires as $partenaire)
                               <option value="{{$partenaire->id}}">{{$partenaire->nom}} </option>
@@ -167,45 +213,24 @@
                                   @endforeach
                                 @endif
                             </span>
-
+                            </div> 
                           </div>
-                        </div>
-                  </div>  
-
+                         
+                          </div>     
+         <div class="col-md-2 pull-left" style="padding-bottom: 20px">
+                <a id="create-part" type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#modalFormpart"><i class="fa fa-plus"></i> <i class="fa fa-group"></i></a>
+            </div>  </div> 
                 
 
                  
-                   <div class="form-group ">
-                        <label class="col-xs-3 control-label">Date d'inscription (*)</label>  
-                        <div class="col-xs-9 inputGroupContainer @if($errors->get('date_debut')) has-error @endif">
-                          <div style="width: 70%">
-                            <input name="date_debut" type="text" class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datepicker" value="{{old('date_debut')}}">
 
-                            <span class="help-block">
-                                @if($errors->get('date_debut'))
-                                  @foreach($errors->get('date_debut') as $message)
-                                    <li> {{ $message }} </li>
-                                  @endforeach
-                                @endif
-                            </span>
+      
 
-                          </div>
-                        </div>
-                  </div>
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Date de fin</label>  
-                        <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
-                            <input name="date_soutenance" type="text" class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datepicker" value="{{old('date_soutenance')}}">
-                          </div>
-                        </div>
-                  </div>
-
-                  <div class="form-group">
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
-                        <div style="width: 70%">
+                        <div style="width: 100%">
                           <input name="detail" type="file" id="exampleInputFile">
                         </div>
                       </div>
@@ -223,5 +248,7 @@
          </div><!-- /.container -->
        </div>
       </div>
+ 
+ 
 
 @endsection

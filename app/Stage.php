@@ -14,6 +14,9 @@ class Stage extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+  
+    
     public function partenaire()
     {
         return $this->belongsTo('App\Partenaire');

@@ -110,7 +110,13 @@
                 <!-- Form Name -->
                 <legend><center><h2><b>Nouveau partenaire</b></h2></center></legend><br>
 
-                  <div class="form-group">
+             
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                         <label class="col-xs-3 control-label">nom (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
                           <div style="width: 70%">
@@ -127,7 +133,13 @@
                         </div>
                   </div>  
 
-                  <div class="form-group">
+                   </div>
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                       <label class="col-md-3 control-label">type</label>
                       <div class="col-md-9 inputGroupContainer" >
                         <div style="width: 70%">
@@ -136,7 +148,13 @@
                       </div>
                   </div>
 
-                  <div class="form-group">
+             </div>
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                       <label class="col-md-3 control-label">Pays (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
                         <div style="width: 70%">
@@ -153,7 +171,13 @@
                         </div>
                       </div>
                   </div>
-                  <div class="form-group">
+                   </div>
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                       <label class="col-md-3 control-label">Ville (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
                         <div style="width: 70%">
@@ -170,10 +194,13 @@
                         </div>
                       </div>
                   </div>
+                  </div>
 
-                 <div class="row">
-                         <div class="col-md-9">
-                           <div class="form-group">
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                               <label class="col-md-4 control-label">Photo</label>  
                               <div class="col-md-8 inputGroupContainer">
                               <input name="img" type="file" >
@@ -184,7 +211,13 @@
 
            
                   
+    </div>
 
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
               </fieldset>
 
               <div class="row" style="padding-top: 30px; margin-left: 35%;">

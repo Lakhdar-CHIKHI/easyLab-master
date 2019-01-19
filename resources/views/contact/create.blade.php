@@ -5,7 +5,7 @@
 @section('header_page')
 
       <h1>
-        Membres
+        Contacts
         <small>Nouveau</small>
       </h1>
       <ol class="breadcrumb">
@@ -113,7 +113,10 @@
                 <!-- Text input-->
                     <div class="col-md-12">
 
-                      <div class="form-group col-md-8">
+                  
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">Nom *</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
                           <div class="input-group">
@@ -133,7 +136,10 @@
 
                        <!-- Text input-->
 
-                      <div class="form-group col-md-8">
+                       </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">Prénom *</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('prenom')) has-error @endif">
                           <div class="input-group">
@@ -153,12 +159,15 @@
 
                       
 
-                      <div class="form-group col-md-8 "> 
+                      </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                           <label class="col-md-3 control-label">Partenaire * </label>
                             <div class="col-md-9 selectContainer @if($errors->get('partenaire')) has-error @endif">
                               <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                                  <select name="partenaire" class="form-control selectpicker">
+                                  <select name="partenaire" id="partenaireC" class="form-control selectpicker">
                                     <option></option>
                                      @foreach($partenaires as $partenaire)
                                     <option value="{{$partenaire->id}}">{{$partenaire->nom}}</option>
@@ -180,10 +189,19 @@
                             
                       </div>
                       <div class="col-md-2 pull-left" style="padding-bottom: 20px">
-                <a href="{{url('partenaires/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"></i> <i class="fa fa-group"></i></a>
+                <a id="create-part" type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#modalFormpart"><i class="fa fa-plus"></i> <i class="fa fa-group"></i></a>
             </div>
 
-                      <div class="form-group col-md-8">
+
+
+
+
+            
+
+            </div>
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">E-Mail *</label>  
                           <div class="col-md-9 inputGroupContainer @if($errors->get('adresse_mail')) has-error @endif">
                             <div class="input-group">
@@ -199,11 +217,10 @@
                             </span>
                           </div>
                       </div>
+                      </div>
 
-                    
-                    
-                
-                    <div class="form-group col-md-8">
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">Fonction*</label>  
                         <div class="col-md-9 ">
                           <div class="input-group">
@@ -213,19 +230,11 @@
                            
                         </div>
                       </div>
-                      <div class="form-group col-md-8">
-                        <label class="col-md-3 control-label">Nature de cooperation*</label>  
-                        <div class="col-md-9 ">
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input  name="nature_de_cooperation" placeholder="nature de cooperation" class="form-control"  type="text" value="{{old('nature_de_cooperation')}}">
-                           </div>
-                           
-                        </div>
+                   
                       </div>
 
 
-<div class="form-group col-md-8">
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">N° Téléphone *</label>  
                         <div class="col-md-9 ">
                           <div class="input-group">
@@ -256,6 +265,139 @@
          </div><!-- /.container -->
        </div>
       </div>
+   
+
+
+    
+<!-- Modal -->
+<div class="modal fade" id="modalFormpart" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+               <center><h2><b>Nouveau   Partenaire</b></h2></center>
+            </div>
+            
+            <!-- Modal Body -->
+            
+    
+            <form class="well form-horizontal" action=" {{url('partenaires')}} " method="post"  id="contact_form " enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <fieldset>
+
+                <!-- Form Name -->
+               
+
+              
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                        <label class="col-xs-3 control-label">nom (*)</label>  
+                        <div class="col-xs-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
+                          <div style="width: 100%">
+                            <input  name="nom" id="nomP" class="form-control" placeholder="nom" type="text" value="{{old('titre')}}">
+                              <span class="help-block">
+                                @if($errors->get('nom'))
+                                  @foreach($errors->get('nom') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+                              
+                          </div>
+                        </div>
+                  </div>  
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                      <label class="col-md-3 control-label">type</label>
+                      <div class="col-md-9 inputGroupContainer" >
+                        <div style="width: 100%">
+                          <input  name="type"  id="typeP" class="form-control" placeholder="intitule" type="text" value="{{old('type')}}">
+                        </div>
+                      </div>
+                  </div>
+
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                      <label class="col-md-3 control-label">Pays (*)</label>
+                      <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
+                        <div style="width: 100%">
+                          <textarea name="pays" id="paysP" class="form-control" rows="3" placeholder="Entrez ...">{{old('pays')}}</textarea>
+
+                            <span class="help-block">
+                                @if($errors->get('pays'))
+                                  @foreach($errors->get('pays') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                      <label class="col-md-3 control-label">Ville (*)</label>
+                      <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
+                        <div style="width: 100%">
+                          <textarea name="ville" id="villeP" class="form-control" rows="3" placeholder="Entrez ...">{{old('ville')}}</textarea>
+
+                            <span class="help-block">
+                                @if($errors->get('ville'))
+                                  @foreach($errors->get('ville') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+
+                        </div>
+                      </div>
+                  </div>
+
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                              <label class="col-md-4 control-label">Photo</label>  
+                              <div class="col-md-8 inputGroupContainer">
+                              <input name="img" id="imgP" type="file" >
+                             </div>
+                            </div>
+                            </div>
+
+
+           
+                  
+
+              </fieldset>
+
+              <div class="row" style="padding-top: 30px; margin-left: 35%;">
+              
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" id="submit_part" class="btn btn-primary submitBtn" ><i class="fa fa-check"></i> Valider</button>
+          </div>
+            </form>
+            </div>
+            
+            <!-- Modal Footer -->
+        
+        </div>
+    </div>
+</div>
+
+
+
+
 
   @endsection
 

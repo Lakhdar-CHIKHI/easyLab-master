@@ -1,11 +1,11 @@
         
 @extends('layouts.master')
 
-@section('title','LRI | Liste des membres')
+@section('title','LRI | Liste des Contacts')
 
 @section('header_page')
       <h1>
-        Membres
+      Contacts
         <small>Liste</small>
       </h1>
       <ol class="breadcrumb">

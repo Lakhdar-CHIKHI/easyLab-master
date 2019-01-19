@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
-@section('title','LRI | Profil')
+@section('title','LRI | Contact')
 
 @section('header_page')
 
 	  <h1>
-        Profil
+    Contacts
        
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Profil</li>
+        <li class="active">Contacts</li>
       </ol>
 
 @endsection
@@ -120,9 +120,10 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">A propos</a></li>
-              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$contact->create_id)
-              <li><a href="#activity1" data-toggle="tab">Modifier</a></li> @endif
+             
+              <li><a href="#activity1" data-toggle="tab">Modifier</a></li> 
               <li><a href="#timeline" data-toggle="tab">Articles</a></li>
+              <li><a href="#timeline4" data-toggle="tab">Projets</a></li>
               <li><a href="#timeline2" data-toggle="tab">Theses Encadre</a></li>
               <li><a href="#timeline3" data-toggle="tab">Theses CooEncadre</a></li>
             </ul>
@@ -274,9 +275,9 @@
                    
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-                  <th>Type</th>
-                  <th>Titre</th>
+                <tr><th>Titre</th>
+                  <th>Sujet</th>
+                  <th>Doctorant</th>
                   <th>Année</th>
                   @if((Auth::id() != $contact->id))
                   <th>Actions</th>
@@ -287,10 +288,10 @@
                   <!-- modifier -->    
                   @foreach ($contact->thesese as $these) 
                   <tr>
-                    <td>{{$these->type}}</td>
-                    <td>{{$these->titre}}</td>
-                
-                    <td>{{$these->annee}}</td>
+                  <td>{{$these->titre}}</td>
+                    <td>{{$these->sujet}}</td>
+                    <td><a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a></td>
+                                      <td>{{$these->date_debut}}</td>
                     <td>
                      
                       <div class="btn-group">
@@ -320,11 +321,13 @@
                   @endforeach        </tbody>
                 <tfoot>
                 <tr>
-                  <th>Titre</th>
-                  <th>Type</th>
-                  
+                <th>Titre</th>
+                  <th>Sujet</th>
+                  <th>Doctorant</th>
                   <th>Année</th>
-                  
+                  @if((Auth::id() != $contact->id))
+                  <th>Actions</th>
+                  @endif
                 </tr>
                 </tfoot>
               </table>
@@ -350,8 +353,9 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Type</th>
-                  <th>Titre</th>
+                <th>Titre</th>
+                  <th>Sujet</th>
+                  <th>Doctorant</th>
                   <th>Année</th>
                   @if((Auth::id() != $contact->id))
                   <th>Actions</th>
@@ -362,10 +366,10 @@
                   <!-- modifier -->    
                   @foreach ($contact->thesesc as $these) 
                   <tr>
-                    <td>{{$these->type}}</td>
-                    <td>{{$these->titre}}</td>
-                
-                    <td>{{$these->annee}}</td>
+                   <td>{{$these->titre}}</td>
+                <td>{{$these->sujet}}</td>
+                <td><a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a></td>
+                            <td>{{$these->date_debut}}</td>
                     <td>
                      
                       <div class="btn-group">
@@ -395,11 +399,106 @@
                   @endforeach        </tbody>
                 <tfoot>
                 <tr>
-                  <th>Titre</th>
-                  <th>Type</th>
-                  
+                <th>Titre</th>
+                  <th>Sujet</th>
+                  <th>Doctorant</th>
                   <th>Année</th>
+                  @if((Auth::id() != $contact->id))
+                  <th>Actions</th>
+                  @endif
+                </tr>
+                </tfoot>
+              </table>
+            </div>  
+              </div>
+
+
+              <div class="tab-pane" id="timeline4">
+                <div class="box-body" style="padding-top: 30px;">
+
+                  <div class="pull-right">
+                <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
+              </div>
+                   
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Intitulé</th>
+                  <th>Type</th>
+                   <th>Chef</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                  @foreach($contact->projets as $projet)
+                  <tr>
+                    <td>{{ $projet->intitule }}</td>
+                    <td>{{ $projet->type }}</td>
+                    <td><a href="{{url('membres/'.$projet->chef_id.'/details')}}">{{ $projet->chef->name}} {{ $projet->chef->prenom}}</a></td>
+                   
+                    <td>
+
+
+                      <form action="{{ url('projets/'.$projet->id)}}" method="post"> 
+
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                      <a href="{{ url('projets/'.$projet->id.'/details')}} " class="btn btn-info">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                      @if(Auth::user()->role->nom != 'membre' )
+                      <a href="{{ url('projets/'.$projet->id.'/edit')}}" class="btn btn-default">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                      @endif
+                      @if(Auth::user()->role->nom != 'membre' )
+                      <!-- <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i>
+                      </button> -->
+                       <a href="#supprimer{{ $projet->id }}Modal" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                      <div class="modal fade" id="supprimer{{ $projet->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $projet->id }}ModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                    <!--   <h5 class="modal-title" id="supprimer{{ $projet->id }}ModalLabel">Supprimer</h5> -->
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      Voulez-vous vraiment effectuer la suppression ? 
+                                  </div>
+                                  <div class="modal-footer">
+                                      <form class="form-inline" action="{{ url('projets/'.$projet->id)}}"  method="POST">
+                                          @method('DELETE')
+                                          @csrf
+                                      <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
+                                          <button type="submit" class="btn btn-danger">Oui</button>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                      @endif
+                      </form>
+                    </div>
+                    </td>
+                  </tr>
+                  @endforeach
+
                   
+
+
+                </tbody>
+                <tfoot>
+                 <tr>
+                  <th>Intitulé</th>
+                  <th>Type</th>
+                  <th>Chef</th>
+                  <th>Actions</th>
                 </tr>
                 </tfoot>
               </table>
@@ -410,7 +509,6 @@
 
 
 
-              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$contact->create_id)
           <div class="tab-pane" id="activity1">
             <form class="well form-horizontal" action=" {{url('contacts/'. $contact->id) }} " method="post"  id="contact_form">
 
@@ -420,10 +518,18 @@
 
               <fieldset>
 
-                      <div class="form-group ">
+             
+
+
+                
+
+
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">Nom</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
-                          <div class="input-group"  style="width: 40%">
+                          <div class="input-group"  style="width: 100%">
                             <input  name="nom" class="form-control" value="{{$contact->nom}}" type="text">
                             <span class="help-block">
                                 @if($errors->get('nom'))
@@ -437,11 +543,18 @@
                       </div>
 
                        <!-- Text input-->
+                       </div>
 
-                      <div class="form-group">
+
+                
+
+
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">Prénom</label>  
                         <div class="col-md-9 inputGroupContainer @if($errors->get('prenom')) has-error @endif">
-                          <div class="input-group"  style="width: 40%">
+                          <div class="input-group"  style="width: 100%">
                             <input  name="prenom" value="{{$contact->prenom}}" class="form-control"  type="text">
                             <span class="help-block">
                                 @if($errors->get('prenom'))
@@ -456,12 +569,19 @@
 
 
 
+                      </div>
 
-                      <div class="form-group"> 
+
+                
+
+
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                           <label class="col-md-3 control-label">Partenaire</label>
                             <div class="col-md-9 selectContainer @if($errors->get('partenaire')) has-error @endif">
-                              <div class="input-group"  style="width: 40%">
-                                  <select name="partenaire_id" class="form-control selectpicker">
+                              <div class="input-group"  style="width: 100%">
+                                  <select name="partenaire_id" id="partenaireC" class="form-control selectpicker">
                                     <option value="{{$contact->partenaire_id}}">{{$contact->partenaire->nom}}</option>
                                     @foreach($partenaires as $partenaire)
                                     <option value="{{$partenaire->id}}">{{$partenaire->nom}}</option>
@@ -477,30 +597,45 @@
                             </span>
                               </div>
                             </div>
+                      </div>  <div class="col-md-2 pull-left" style="padding-bottom: 20px">
+                <a id="create-part" type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#modalFormpart"><i class="fa fa-plus"></i> <i class="fa fa-group"></i></a>
+            </div>
+
+
+
                       </div>
-                      <div class="form-group">
+
+
+                
+
+
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">Fonction</label>  
                           <div class="col-md-9 inputGroupContainer">
-                            <div class="input-group"  style="width: 40%">
+                            <div class="input-group"  style="width: 100%">
                                 <input name="fonction" type="text" class="form-control" value="{{$contact->fonction}}">
                                 
                             </div>
                           </div>
                       </div>
-                      <div class="form-group">
-                        <label class="col-md-3 control-label">Nature de cooperation</label>  
-                          <div class="col-md-9 inputGroupContainer">
-                            <div class="input-group"  style="width: 40%">
-                                <input name="nature_de_cooperation" type="text" class="form-control" value="{{$contact->nature_de_cooperation}}">
-                                
-                            </div>
-                          </div>
                       </div>
-                 
-                      <div class="form-group">
+
+
+                
+
+
+
+                
+
+
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
                         <label class="col-md-3 control-label">E-Mail</label>  
                           <div class="col-md-9 inputGroupContainer @if($errors->get('adresse_mail')) has-error @endif">
-                            <div class="input-group"  style="width: 40%">
+                            <div class="input-group"  style="width: 100%">
                                 <input name="adresse_mail" type="email" class="form-control" value="{{$contact->adresse_mail}}">
                                 <span class="help-block">
                                 @if($errors->get('adresse_mail'))
@@ -515,17 +650,24 @@
                      
 
                  
-                    <div class="row">
-                      <div class="col-md-7">
-                      <div class="form-group">
-                              <label class="col-md-6 control-label">N° Téléphone</label>  
-                                <div class="col-md-6 input-group">
+                      </div>
+
+
+                
+
+
+
+
+<div class="form-group col-md-12 ">   <div class="form-group col-md-10 "> 
+                              <label class="col-md-3 control-label">N° Téléphone</label>  
+                                <div class="col-md-9 input-group">
+                                <div class="input-group"  style="width: 100%">
                                 <input name="tel" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{$contact->tel}}">
-                              </div>
+                                </div></div>
                         </div>
                       </div>
                   
-                    </div>
+                    
 
                 
 
@@ -544,7 +686,7 @@
                   </div>
             </form>
           </div>
-          @endif
+          
 
               <!-- /.tab-pane -->
             </div>
@@ -555,5 +697,135 @@
           <!-- /.nav-tabs-custom -->
         </div>
       </div>
+
+
+    
+<!-- Modal -->
+<div class="modal fade" id="modalFormpart" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+               <center><h2><b>Nouveau   Partenaire</b></h2></center>
+            </div>
+            
+            <!-- Modal Body -->
+            
+    
+            <form class="well form-horizontal" action=" {{url('partenaires')}} " method="post"  id="contact_form " enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <fieldset>
+
+                <!-- Form Name -->
+               
+
+              
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                        <label class="col-xs-3 control-label">nom (*)</label>  
+                        <div class="col-xs-9 inputGroupContainer @if($errors->get('nom')) has-error @endif">
+                          <div style="width: 100%">
+                            <input  name="nom" id="nomP" class="form-control" placeholder="nom" type="text" value="{{old('titre')}}">
+                              <span class="help-block">
+                                @if($errors->get('nom'))
+                                  @foreach($errors->get('nom') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+                              
+                          </div>
+                        </div>
+                  </div>  
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                      <label class="col-md-3 control-label">type</label>
+                      <div class="col-md-9 inputGroupContainer" >
+                        <div style="width: 100%">
+                          <input  name="type"  id="typeP" class="form-control" placeholder="intitule" type="text" value="{{old('type')}}">
+                        </div>
+                      </div>
+                  </div>
+
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                      <label class="col-md-3 control-label">Pays (*)</label>
+                      <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
+                        <div style="width: 100%">
+                          <textarea name="pays" id="paysP" class="form-control" rows="3" placeholder="Entrez ...">{{old('pays')}}</textarea>
+
+                            <span class="help-block">
+                                @if($errors->get('pays'))
+                                  @foreach($errors->get('pays') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                      <label class="col-md-3 control-label">Ville (*)</label>
+                      <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
+                        <div style="width: 100%">
+                          <textarea name="ville" id="villeP" class="form-control" rows="3" placeholder="Entrez ...">{{old('ville')}}</textarea>
+
+                            <span class="help-block">
+                                @if($errors->get('ville'))
+                                  @foreach($errors->get('ville') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
+
+                        </div>
+                      </div>
+                  </div>
+
+                  </div>
+
+
+<div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
+                              <label class="col-md-4 control-label">Photo</label>  
+                              <div class="col-md-8 inputGroupContainer">
+                              <input name="img" id="imgP" type="file" >
+                             </div>
+                            </div>
+                            </div>
+
+
+           
+                  
+
+              </fieldset>
+
+              <div class="row" style="padding-top: 30px; margin-left: 35%;">
+              
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" id="submit_part" class="btn btn-primary submitBtn" ><i class="fa fa-check"></i> Valider</button>
+          </div>
+            </form>
+            </div>
+            
+            <!-- Modal Footer -->
+        
+        </div>
+    </div>
+</div>
+
+
 
 @endsection
