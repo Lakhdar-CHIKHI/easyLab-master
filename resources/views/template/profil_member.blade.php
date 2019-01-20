@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-4 col-sm-6">
                     <div class="page_title">
-                        <h2>Educo Student</h2>
+                        <h2>{{$membre->name}} {{$membre->prenom}}</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-8 col-sm-6">
@@ -15,6 +15,9 @@
                         <li><a href="index.html">accueil</a></li>
                         <li><i class="fa fa-chevron-left"></i></li>
                         <li><a href="dashboard.html">Profil member</a></li>
+                        <li><i class="fa fa-chevron-left"></i></li>
+                        <li><a href="dashboard.html">{{$membre->name}} {{$membre->prenom}}</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -59,8 +62,8 @@
                                         <p><strong>N° De Télépone : </strong>{{$membre->num_tel}}</p>
                                         @endif
                                         <div class="btn-group">
-                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('/in.png')}}"></a>
-                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('/rg.png')}}"></a>
+                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('images/icons/in.png')}}"></a>
+                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('images/icons/rg.png')}}"></a>
                                             </div>
                                     </div>
                                 
@@ -85,6 +88,7 @@
                                                                 @foreach ($membre->projets as $projet)
                                                         
                                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ed_bottompadder20">
+                                                                    <div class="ed_mostrecomeded_course">
                                                                     <div class="ed_item_img">
                                                                         <img src="http://placehold.it/248X156" alt="item1" class="img-responsive">
                                                                     </div>
@@ -114,8 +118,9 @@
                                                                             </div>
                                                                         </div>
                                                                         <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
-                                                                        <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                                                                        <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                     </div>
+                                                                </div>    
                                                                 </div>
                                                                 
                                                                 
@@ -134,7 +139,7 @@
                                                 <div class="ed_dashboard_inner_tab">
                                                     @if (count($membre->articles))
                                                     @foreach ($membre->articles as $article)
-                                                    <div class="ed_add_students pub" ><a href="">
+                                                <div class="ed_add_students pub" ><a href="{{url('template/'.$article->id.'/detail_article')}}">
                                                          <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->annee}}</strong><br>
                                                          <span>{{$article->titre}}
                                                          </span>

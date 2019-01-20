@@ -29,7 +29,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="ed_mostrecomeded_course">
                         <div class="ed_item_img">
-                            <img src="../images/content/2_2.jpg" alt="item1" class="img-responsive">
+                            <img src="{{asset('/images/content/2_2.jpg')}} " alt="item1" class="img-responsive">
                         </div>
                         <div class="ed_item_description ed_most_recomended_data">
                             <h4><strong><a href="{{ url('template/'.$article->id.'/detail_article')}}">{{ $article->titre }} </a></strong></h4>
@@ -55,7 +55,7 @@
                             </div>
                             
                             <p>{{$article->resume}}</p>
-                           
+
                         </div>
                     </div>
                 </div>
