@@ -294,10 +294,18 @@
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">
-                          <input name="detail" type="file" id="exampleInputFile" value="{{old('detail')}}">
+                          <input name="detail" type="file" id="exampleInputFile" class="form-control" value="{{old('detail')}}" style="height: auto;">
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_article" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
                   
 
               </fieldset>

@@ -60,3 +60,48 @@ strong {
     border-radius: 5px;
     box-shadow: 0 0 20px;
 }
+
+.fixed_taille {
+    height: 45px;
+    overflow: hidden;
+}
+
+.fixed_taille_p {
+    height: 80px;
+    overflow: hidden;
+}
+
+.membre_style {
+    box-shadow: 0 0 10px;
+    /*margin-top: 15px;*/
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0px 0px 10px;
+}
+
+.projet_style {
+    box-shadow: 0 0 10px;
+    /*margin-top: 15px;*/
+    margin: 10px 0px 10px 13px;
+    border-radius: 10px;
+}
+
+.equipe_style {
+    box-shadow: 0 0 10px;
+    border-radius: 15px;
+}
+
+.owl-item.active {
+    margin-right: 25px !important;
+}
+
+.img_pr {
+    margin-bottom: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.reg {
+    width: 100%;
+    height: 100%;
+}

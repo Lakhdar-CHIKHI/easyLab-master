@@ -150,7 +150,7 @@
                       <h5 class="widget-user-desc">{{$equipe->achronymes}}</h5>
                     </div>
                     <div class="widget-user-image">
-                      <img class="img-circle" src="{{asset($equipe->chef->photo)}}" alt="User Avatar">
+                      <img class="img-circle" src="{{asset($equipe->logo)}}" alt="User Avatar">
                     </div>
                     <div class="box-footer">
                       <div class="row">

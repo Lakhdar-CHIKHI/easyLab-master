@@ -29,6 +29,7 @@ class CreateArticlesTable extends Migration
             $table->string('doi' ,100)->nullable();
             $table->string('membres_ext' ,100)->nullable();
             $table->string('detail')->nullable();
+            $table->string('image')->nullable();
             $table->integer('deposer')->nullable();
             $table->timestamps();
         });

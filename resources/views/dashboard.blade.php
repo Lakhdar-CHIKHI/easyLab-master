@@ -17,7 +17,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li >
+          <a href="{{url('actualites')}}">
+              <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+          </a>
+        </li>
         <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -131,9 +135,52 @@
 
                           <!-- ./col -->
   </div>
+  <div style="display:inline-flex;">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Nombre des articles par type (LRIT)</h3>
+  
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body" >
+        <div id="piechart"></div>
+        
+        
+        <?= $lava::render('PieChart', 'IMDB', 'piechart'); ?>
+        
+        
+      </div>
+      
+              <!-- /.box-body -->
+    </div>
+    <div class="box box-success" style="margin-left:1%;">
+      <div class="box-header with-border">
+        <h3 class="box-title">Nombre de membres par équipe (LRIT)</h3>
+  
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body" >
+        
+        <div id="piechart2"></div>
+        
+        <?= $lava::render('PieChart', 'IMDB2', 'piechart2'); ?>
+        
+      </div>
+      
+              <!-- /.box-body -->
+    </div>
+  </div>
   <div class="box box-success">
     <div class="box-header with-border">
-      <h3 class="box-title">Thèses/Articles</h3>
+      <h3 class="box-title">Nombre des articles pour un équipe chaque année</h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -141,10 +188,50 @@
         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
       </div>
     </div>
-    <div class="box-body">
-      <div class="chart">
-        <canvas id="barChart" style="height:230px"></canvas>
+    
+    <div class="box-body reg" >
+      <!--<div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+      
+      <canvas id="bar-chart-grouped" class="reg"></canvas>
+
+    </div>
+            <!-- /.box-body -->
+  </div>
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nombre d'articles publies chaque année</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
       </div>
+    </div>
+    
+    <div class="box-body" >
+      <!--<div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+      
+      <div id="chartContainer" style="height: 500px; width: 100%;"></div>
+      
+    </div>
+            <!-- /.box-body -->
+  </div>
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nombre de théses soutenues chaque année</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    
+    <div class="box-body" >
+      <!--<div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+      
+      <div id="chartContainer3" style="height: 500px; width: 100%;"></div>
+      
     </div>
             <!-- /.box-body -->
   </div>

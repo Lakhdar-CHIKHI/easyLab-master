@@ -21,7 +21,7 @@ class CreateProjetsTable extends Migration
             $table->string('partenaires')->nullable();
             $table->string('lien',100)->nullable();
             $table->string('detail')->nullable();
-
+            $table->string('image_projet')->nullable();
             $table->timestamps();
         });
     }

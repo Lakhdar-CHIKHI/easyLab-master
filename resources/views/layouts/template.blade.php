@@ -9,6 +9,7 @@
     <meta name="keywords" content="Educo, html template, Education template">
     <meta name="author" content="Kamleshyadav">
     <meta name="MobileOptimized" content="320">
+    
     <!--srart theme style -->
     <!--<link href="css/main.css" rel="stylesheet" type="text/css">-->
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -26,45 +27,129 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <p>Bienvenue au laboratoire ( LRIT ) </p>
-                            <div class="ed_info_wrapper">
-                                <a href="#" id="login_button">Se Connecter</a>
-                                <div id="login_one" class="ed_login_form">
-                                    <h3>Se Connecter</h3>
-                                    <form class="form" method="POST" action="{{ route('login')}}" >
-                                            @csrf
-                                        <div class="form-group">
-                                            <label class="control-label">Adresse E-mail :</label>
-                                            <input type="text" name="email" class="form-control" required autofocus>
-                                            @if ($errors->has('email'))
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Mot de passe :</label>
-                                            <input type="password" name="password" class="form-control"  required>
-                                            @if ($errors->has('password'))
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('password') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
+                            @if (Auth::user())
+                            <div class="ed_info_wrapper" style="margin-bottom: -4px;
+                            margin-top: -1px;">
+                                    
                                                 
-                                                <label>
-                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Se souvenir de moi') }}
-                                                </label>
+                                    <a href="#" id="login_button"><img src="{{asset(Auth::user()->photo)}}" class="img-circle" alt="User Image" style="width:5%;">
+                                      <span class="hidden-xs">{{Auth::user()->name}} {{Auth::user()->prenom}}</span>
+                                    </a>
+                                    <div id="login_one" class="ed_login_form">
+                                        
+                                            <div class="form-group" align="center">
+                                                  <img src="{{asset(Auth::user()->photo)}}" class="img-circle" alt="User Image">
+
                                             </div>
-                                        <div class="form-group">
-                                            <button type="submit"> {{ __('Connexion') }}</button>
-                                            <a  href="{{ route('password.request') }}">
-                                                    {{ __('Mot de passe oublié?') }}
-                                                </a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                                            <div class="form-group" align="center">
+                                                  <label>{{Auth::user()->name}} {{Auth::user()->prenom}}</label>
+                      
+                                            </div>
+                                            <div class="container col-md-12">
+                                              
+                                                  <div class="col-md-5">
+                                                          <a href="{{ url('membres/'.Auth::user()->id.'/details')}}" class="btn btn-default btn-flat ">Profil</a>
+
+                                                  </div>
+                                                      <div class="col-md-7">
+                                                              <!-- <a href="login_page/login.php" class="btn btn-default btn-flat">Déconnéxion</a> -->
+                                                              <button class="btn btn-default btn-flat" href="{{ route('logout') }} "
+                                                                 onclick="event.preventDefault();
+                                                                               document.getElementById('logout-form').submit();" style="margin-top: 0px;">
+                                                                  {{ __('Déconnecter') }}
+                                                              </button >
+                                                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                  @csrf
+                                                              </form>
+                                                            
+                                                
+                                              </div>
+                                                  
+                                            </div>
+                                            
+                                            
+                                    </div>        
+                  <!--<a href="#" id="login_button">Se Connecter</a>
+                  <div id="login_one" class="ed_login_form">
+                      <h3>Se Connecter</h3>
+                      <form class="form" method="POST" action="{{ route('login')}}" >
+                              @csrf
+                          <div class="form-group">
+                              <label class="control-label">Adresse E-mail :</label>
+                              <input type="text" name="email" class="form-control" required autofocus>
+                              @if ($errors->has('email'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('email') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">Mot de passe :</label>
+                              <input type="password" name="password" class="form-control"  required>
+                              @if ($errors->has('password'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('password') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                          <div class="form-group">
+                                  
+                                  <label>
+                                      <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Se souvenir de moi') }}
+                                  </label>
+                              </div>
+                          <div class="form-group">
+                              <button type="submit"> {{ __('Connexion') }}</button>
+                              <a  href="{{ route('password.request') }}">
+                                      {{ __('Mot de passe oublié?') }}
+                                  </a>
+                          </div>
+                      </form>
+                  </div>-->
+              </div>
+                            @else
+                            <div class="ed_info_wrapper">
+                                           
+                  <a href="#" id="login_button">Se Connecter</a>
+                  <div id="login_one" class="ed_login_form">
+                      <h3>Se Connecter</h3>
+                      <form class="form" method="POST" action="{{ route('login')}}" >
+                              @csrf
+                          <div class="form-group">
+                              <label class="control-label">Adresse E-mail :</label>
+                              <input type="text" name="email" class="form-control" required autofocus>
+                              @if ($errors->has('email'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('email') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">Mot de passe :</label>
+                              <input type="password" name="password" class="form-control"  required>
+                              @if ($errors->has('password'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('password') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                          <div class="form-group">
+                                  
+                                  <label>
+                                      <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Se souvenir de moi') }}
+                                  </label>
+                              </div>
+                          <div class="form-group">
+                              <button type="submit"> {{ __('Connexion') }}</button>
+                              <a  href="{{ route('password.request') }}">
+                                      {{ __('Mot de passe oublié?') }}
+                                  </a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+                            @endif
+                            
                         </div>
                     </div>
                 </div>

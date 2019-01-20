@@ -24,108 +24,42 @@ Route::get('/', function () {
 //===================================== Routes des intefaces ===================================
 
 Route::get('/template/accueil', 'interface_AccueilController@index');
-/*
-Route::get('/template/accueil', function () {
-    return view('template.accueil');
-});*/
-Route::get('/template/actualites', function () {
-    return view('template.actualites');
-});
-/*
-Route::get('/template/apropos', function () {
-    return view('template.apropos');
-});*/
-
-Route::get('/template/apropos', 'interface_apropos@index');
-/*Route::get('/template/liste_equipes', function () {
-    return view('template.liste_equipes');
-});*/
-Route::get('/template/liste_equipes','interface_EquipeController@index');
-
-/*
-Route::get('/template/projets', function () {
-    return view('template.projets');
-});*/
-Route::get('/template/projets','interface_ProjetController@index');
-
-Route::get('/template/articles','interface_ArticleController@index');
-
-Route::get('/template/profil_equipe', function () {
-    return view('template.profil_equipe');
-});
 Route::get('template/{id}/profil_member', 'interface_AccueilController@details');
-/*
-Route::get('/template/profil_member', function () {
-    return view('template.profil_member');
-});*/
+
+
+//===================================== Routes des intefaces ===================================
+Route::get('/template/apropos', 'interface_apropos@index');
 Route::get('/template/contact', function () {
     return view('template.contact');
 });
-Route::get('/template/detail_actualite', function () {
-    return view('template.detail_actualite');
-});
-
-Route::get('template/{id}/detail_projet', 'interface_AccueilController@detail_projet');
-
-
-Route::get('template/{id}/detail_article', 'interface_ArticleController@details');
-/*Route::get('/template/detail_projet', function () {
-    return view('template.detail_projet');
-});*/
-
-Route::get('template/{id}/detail_equipe', 'interface_AccueilController@detail_equipe');
-/*Route::get('/template/detail_projet', function () {
-    return view('template.detail_projet');
-});*/
-
-
-
-Route::any('chercher', 'interface_AccueilController@chercher');
-/*Route::any('chercher', function () {
-    
-    
-        if (Input::get ( 'nom2' ) || Input::get ( 'nom' )=="") {
-            //echo Input::get ( 'nom2' );
-            $type_pub = Input::get ( 'type_pub' );
-            $type_pub_detail = Input::get ( 'type_pub_detail' );
-            $nom = Input::get ( 'nom2' );
-            
-            if ($type_pub =="Projets") {
-                $projets = Projet::where('type','LIKE','%'.$type_pub_detail.'%')->Where('intitule','LIKE','%'.$nom.'%')->paginate(1);
-            //$projets->setPath('custom/url');
-                $projets->appends(array('choix_pub'=>Input::get('type_pub'),'choix_pub_detail'=>Input::get('type_pub_detail'),'nom'=>Input::get('nom2')));
-               /*  return view('template.projets')->with([
-                'projets' => $projets,
-            ]); */
-           /* return View('template.projets')->with('projets',$projets);
-                
-            }
-        }
-        if (Input::get ( 'nom' ) || Input::get ( 'nom' )=="") {
-            $type_pub = Input::get ( 'choix_pub' );
-            $type_pub_detail = Input::get ( 'choix_pub_detail' );
-            $nom = Input::get ( 'nom' );
-        if ($type_pub =="Projets") {
-            $projets = Projet::where('type','LIKE','%'.$type_pub_detail.'%')->Where('intitule','LIKE','%'.$nom.'%')->paginate(1);
-        //$projets->setPath('custom/url');
-            $projets->appends(array('type_pub'=>Input::get('choix_pub'),'type_pub_detail'=>Input::get('choix_pub_detail'),'nom2'=>Input::get('nom')));
-           /*  return view('template.projets')->with([
-            'projets' => $projets,
-        ]); */
-       /* return View('template.projets')->with('projets',$projets);
-            
-        }}
-
-});*/
-
 Route::post('send', 'interface_mailController@send');
-
-
-
-
-
-
-
+//===================================== Routes des actualité ===================================
+Route::get('/template/actualites','interface_actualite@index2');
+Route::get('actualite/create','interface_actualite@create');
+Route::get('actualites','interface_actualite@index');
+Route::post('actualites','interface_actualite@store');
+Route::delete('actualite/{id}','interface_actualite@destroy');
+Route::put('actualite/{id}','interface_actualite@update');
+Route::get('template/{id}/detail_actualite', 'interface_actualite@details');
+//===================================== Routes des equipe ===================================
+Route::get('/template/liste_equipes','interface_EquipeController@index');
+Route::get('template/{id}/detail_equipe', 'interface_EquipeController@detail_equipe');
+//===================================== Routes des Projet ===================================
+Route::get('/template/projets','interface_ProjetController@index');
+Route::get('/template/projets/search_projet','interface_ProjetController@search_projet');
+Route::get('/template/projets/{acr_groupe}','interface_ProjetController@search_projet_filter_groupe');
+Route::get('/template/projets/type/{type}','interface_ProjetController@search_projet_filter_type');
+Route::get('template/{id}/detail_projet', 'interface_ProjetController@detail_projet');
+//===================================== Routes des Article ===================================
+Route::get('/template/articles','interface_ArticleController@index');
+Route::get('/template/articles/search_article','interface_ArticleController@search_article');
+Route::get('/template/articles/{acr_groupe}','interface_ArticleController@search_article_filter_groupe');
+Route::get('/template/articles/type/{type}','interface_ArticleController@search_article_filter_type');
+Route::get('template/{id}/detail_article', 'interface_ArticleController@details');
+//===================================== Routes des Chart ===================================
+Route::get('charts', 'ChartsController@index');
+Route::get('charts/graph2', 'ChartsController@graph2');
+Route::get('charts/graph3', 'ChartsController@graph3');
 
 
 
