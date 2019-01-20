@@ -83,7 +83,9 @@
     @endsection
 
 @section('content')
-      
+
+
+    
     <div class="row">
       <div class="col-md-12">
         <div class="box col-xs-12">
@@ -95,8 +97,9 @@
             
           </div>
           </div>
-            
+                    
             <!-- /.box-header -->
+           
             <div class="box-body">
               @if(Auth::user()->role->nom == 'admin' )
               <div class=" pull-right">
@@ -299,7 +302,38 @@
                               </div>
                           </div>
                       </div>
-                    </div>
+                      </div>
+                    <a href="#modd{{ $materiel->numero }}Moda" role="button" class="glyphicon glyphicon-pencil btn_modifier" data-toggle="modal" data-id_modifier="{{ $materiel->numero }}" data-id_modifierr="{{ $materiel->nom_mat }}" ></a>
+                    <div class="modal fade" id="modd{{ $materiel->numero }}Moda" tabindex="-1" role="dialog" aria-labelledby="modd{{ $materiel->numero }}ModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      <form action="{{ url('materiels/modifier') }}" method="post">
+                                      {{ csrf_field() }}
+                                      <input type="hidden" name="num" value="{{$materiel->numero}}">
+                                      <table class="table table-striped table_modifier">
+                                      
+                                          <tr><td>modifier le libellé du materiel </td><td><input name="inpLib" type="text" class="libId{{$materiel->numero}}" ></td></tr>
+                                          <tr><td>modifier la catégorie du materiel </td><td><input name="inpCat" type="text" class="catId{{$materiel->numero}}"></td></tr>
+                                         <!--   <tr><td><button type="submit">ok</button></td></tr> -->
+                                      </table> 
+                                      <div class="modal-footer">
+                                      
+                                      <button type="submit" class="btn btn-danger" >OK</button>
+                                      <button type="button" class="btn " data-dismiss="modal">annuler</button>
+                                  </div>
+                                      </form>
+                                  </div> 
+                                  
+                              </div>
+                          </div>
+                      </div>
+                      </div>
                     </form>
                     </div>
                     </td>
@@ -319,11 +353,20 @@
             </div>
             <!-- /.box-body -->
           
-          </div>
-          
-        
+            
+            </div>
+
+
       </div>
       
     </div>
     
+    <!--pane2-->
+
+    <!--pane2-->
+
+    
+    </div>
+    <!--tab pane-->
+
  @endsection

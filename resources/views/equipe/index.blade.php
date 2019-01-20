@@ -61,13 +61,15 @@
             <span>Projets</span>
           </a>
         </li>
-        
+        @if(Auth::user()->role->nom == 'admin' )
         <li >
           <a href="{{url('materiels')}}">
             <i class="glyphicon glyphicon-blackboard"></i> 
             <span>Materiels</span>
           </a>
         </li>
+        @endif
+        
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>

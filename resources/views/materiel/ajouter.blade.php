@@ -117,8 +117,11 @@
                       <div style="width: 70%">
                         <select id="selectCat" name="cat_nom"  class="form-control select2 qte_act22" onchange="afficherQuantite()" >
                            @foreach($categories as $categorie)
+                          @if($categorie->affectable=='oui')
                           <option></option>
                           <option value="{{$categorie->nom_mat}}" >{{$categorie->nom_mat}}</option>                           
+                          
+                          @endif
                           @endforeach
                         </select>
                         <span class="help-block">
@@ -155,10 +158,10 @@
               </div>  
 
               <div class="form-group">
-                  <label class="col-md-3 control-label">Ajouter une nouvelle quantité</label>
+                  <label class="col-md-3 control-label">Libellé</label>
                   <div class="col-md-9 inputGroupContainer" >
                     <div style="width: 70%">
-                    <input name="quantity" type="number" min="1" class="form-control" placeholder="Nouvelle quantité >= 1" >
+                    <input name="libelle" type="text" class="form-control" placeholder="Réfférencement à la categorie" >
                     </div>
                   </div>
               </div>
@@ -169,19 +172,13 @@
               
           </fieldset>
           </form>
-          
-          
-              <br><br><br>
-
-              <div class="form-group">
-                  <label class="col-md-3 control-label">Si la catégorie n'existe pas </label>
-                  
-              </div>
+                    
+              <br>
 
               <form class="well form-horizontal" action=" {{url('materiells')}} " method="post"  id="contact_formm">
               {{ csrf_field() }}
           <fieldset>
-
+          <legend><center><h2><b>Nouvelle catégorie</b></h2></center></legend><br>
              <div class="form-group">
                   <label class="col-md-3 control-label">Nouvelle categorie(*)</label>
                   <div class="col-md-9 inputGroupContainer" >
@@ -198,6 +195,18 @@
                      
                     </div>
                   </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-3 control-label">affectable</label>
+                  <div class="col-md-9 inputGroupContainer" >
+                    <div style="width: 70%">
+                      <label >oui</label>
+                      <input type="radio" name="gender" value="oui">
+                      <br>
+                      <label >non</label>
+                      <input type="radio" name="gender" value="non">
+                    </div>
+                 </div>
               </div>
 
               <div class="row" style="padding-top: 30px; margin-left: 35%;">

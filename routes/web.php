@@ -89,6 +89,8 @@ Route::post('materiels/affectations/membre', 'MaterielController@affecter_mat_me
 Route::post('materiels/affectations/equipe', 'MaterielController@affecter_mat_equipe');
 Route::get('materiels/supprimer/{id}','MaterielController@supprimerMateriel');
 Route::post('materiels/historique','MaterielController@voirhistorique');
+Route::post('materiels/modifier','MaterielController@modifierA');
+
 //Route::post('materiels/quantite','MaterielController@quantite');
 /*
 Route::post('theses','TheseController@store')->middleware('thesecond');

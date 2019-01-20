@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
+    public function modifierA(Request $request){
+        DB::update("UPDATE materiels SET numero='".$request->input('inpLib')."' WHERE numero='".$request->input('num')."' ");
+        return redirect('materiels');
+    }
+
     public function quantite(Request $request){
         $result = DB::select("SELECT quantite_mat FROM `categories` WHERE nom_mat='".$request->input('nomMat')."'" );
         foreach ($result as $row) {
@@ -66,7 +71,10 @@ class MaterielController extends Controller
     }
 
     public function store(Request $request)
-    {   $result =DB::select("SELECT quantite_mat FROM `categories` WHERE nom_mat='".$request->input('cat_nom')."'" );
+    {   DB::insert("INSERT INTO `materiels` (`numero`, `nom_mat`) VALUES ('".$request->input('libelle')."', '".$request->input('cat_nom')."')");
+        return redirect('materiels');
+        /*
+        $result =DB::select("SELECT quantite_mat FROM `categories` WHERE nom_mat='".$request->input('cat_nom')."'" );
         $affichage = "";
         foreach ($result as $row) {
             $affichage="$row->quantite_mat";
@@ -86,16 +94,16 @@ class MaterielController extends Controller
 
                 $categorie->save();*/
 
-      return redirect('materiels');
+      //return redirect('materiels');
     }
     public function store2(Request $request)
     {
-        DB::insert("INSERT INTO categories (nom_mat,quantite_mat) VALUES ('".$request->input('nouvCat')."','".$request->input('nouvQua')."')");
-       
+        DB::insert("INSERT INTO categories (nom_mat,quantite_mat,affectable) VALUES ('".$request->input('nouvCat')."','".$request->input('nouvQua')."','".$request->input('gender')."')");
+      /* 
         for ($i = 1; $i <= $request->input('nouvQua') ; $i++) {
             DB::insert("INSERT INTO `materiels` (`numero`, `nom_mat`) VALUES ('".$request->input('nouvCat').$i."', '".$request->input('nouvCat')."')");
-        }
-        return redirect('materiels');
+        }*/
+        return redirect('materiels/create');
     }
 
     public function index()

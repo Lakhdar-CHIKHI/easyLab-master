@@ -1,5 +1,21 @@
 $(document).ready(function(){
-    
+
+  $('.btn_modifier').on('click',function(){
+    //alert($(this).data('id_historique'));
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      //  var id_user = $('.qte_act option:selected').val();
+        var numero_mat = $(this).data('id_modifier');
+        var cat_mat = $(this).data('id_modifierr');
+        //alert(id_user);
+       // alert(cat_mat);
+        $('.libId'+numero_mat).val(numero_mat);
+        $('.catId'+numero_mat).val(cat_mat);
+        //console.log(CSRF_TOKEN);
+        
+
+      
+ });
+
 $('.btn_historique').on('click',function(){
     //alert($(this).data('id_historique'));
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
