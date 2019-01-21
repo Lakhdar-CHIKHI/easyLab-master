@@ -17,7 +17,7 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('auth.login');
+        return redirect('/template/accueil');
     }
 
     /**
@@ -156,7 +156,18 @@ trait AuthenticatesUsers
 
         $request->session()->invalidate();
 
-        return redirect('/template/accueil');
+        return $this->loggedOut($request) ?: redirect('/template/accueil');
+    }
+
+    /**
+     * The user has logged out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    protected function loggedOut(Request $request)
+    {
+        //
     }
 
     /**

@@ -91,21 +91,117 @@
                 <!-- Form Name -->
                 <legend><center><h2><b>Informations du Laboratoire</b></h2></center></legend><br>
               <div class="form-group ">
-                        <label class="col-xs-4 control-label">Nom du labo</label>  
-                        <div class="col-xs-8 inputGroupContainer">
-                          <div style="width: 50%">
-                            <input  name="nom" class="form-control" placeholder="Le nom" type="text">
+                        <label class="col-md-3 control-label">Nom du laboratoire *</label>  
+                        <div class="col-lg-7 inputGroupContainer @if($errors->get('nom')) has-error @endif">
+                          <div class="input-group col-md-12" >
+                            <input  name="nom" class="form-control " placeholder="Le nom" type="text" value="{{old('nom')}}">
                           </div>
+                          <span class="help-block">
+                            @if($errors->get('nom'))
+                              @foreach($errors->get('nom') as $message)
+                                <li> {{ $message }} </li>
+                              @endforeach
+                            @endif
+                        </span>
                         </div>
-                  </div>  
-
+                  </div> 
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">A propos *</label>  
+                      <div class="col-md-7 inputGroupContainer @if($errors->get('propos')) has-error @endif">
+                        <div class="input-group col-md-12">
+                          
+                          <textarea  name="propos" placeholder="propos" class="form-control"  id="mytextarea" rows="10"  value="{{old('propos')}}"></textarea>
+                        </div>
+                          <span class="help-block">
+                              @if($errors->get('propos'))
+                                @foreach($errors->get('propos') as $message)
+                                  <li> {{ $message }} </li>
+                                @endforeach
+                              @endif
+                          </span>
+                      </div>
+                    </div> 
+                    <div class="form-group ">
+                      <label class="col-md-3 control-label">Lieu *</label>  
+                      <div class="col-md-7 inputGroupContainer @if($errors->get('lieu')) has-error @endif">
+                        <div class="input-group col-md-12">
+                          <input  name="lieu" class="form-control" placeholder="Lieu" type="text"style="height:auto;" value="{{old('lieu')}}">
+                        </div>
+                        <span class="help-block">
+                          @if($errors->get('lieu'))
+                            @foreach($errors->get('lieu') as $message)
+                              <li> {{ $message }} </li>
+                            @endforeach
+                          @endif
+                      </span>
+                      </div>
+                </div> 
+                <div class="form-group ">
+                  <label class="col-md-3 control-label">Mail *</label>  
+                  <div class="col-md-7 inputGroupContainer @if($errors->get('mail')) has-error @endif">
+                    <div class="input-group col-md-12">
+                      <input  name="mail" class="form-control" placeholder="Email" type="text"style="height:auto;" value="{{old('mail')}}">
+                    </div>
+                    <span class="help-block">
+                      @if($errors->get('mail'))
+                        @foreach($errors->get('mail') as $message)
+                          <li> {{ $message }} </li>
+                        @endforeach
+                      @endif
+                  </span>
+                  </div>
+            </div>
+            <div class="form-group ">
+              <label class="col-md-3 control-label">Téléphone *</label>  
+              <div class="col-md-7 inputGroupContainer @if($errors->get('tel')) has-error @endif">
+                <div class="input-group col-md-12">
+                  <input  name="tel" class="form-control" placeholder="Tél" type="text"style="height:auto;" value="{{old('tel')}}">
+                </div>
+                <span class="help-block">
+                  @if($errors->get('tel'))
+                    @foreach($errors->get('tel') as $message)
+                      <li> {{ $message }} </li>
+                    @endforeach
+                  @endif
+              </span>
+              </div>
+        </div> 
+        <div class="form-group ">
+          <label class="col-md-3 control-label">Fax *</label>  
+          <div class="col-md-7 inputGroupContainer @if($errors->get('fax')) has-error @endif">
+            <div class="input-group col-md-12">
+              <input  name="fax" class="form-control" placeholder="Fax" type="text" style="height:auto;" value="{{old('fax')}}">
+            </div>
+            <span class="help-block">
+              @if($errors->get('fax'))
+                @foreach($errors->get('fax') as $message)
+                  <li> {{ $message }} </li>
+                @endforeach
+              @endif
+          </span>
+          </div>
+    </div>
+            
+         
              
                    <div class="form-group" style="padding-top: 20px">
-                              <label class="col-md-4 control-label">Logo</label>  
-                              <div class="col-md-8 inputGroupContainer">
-                              <input name="logo" type="file" accept="image/*">
+                              <label class="col-md-3 control-label">Logo</label>  
+                              <div class="col-md-7 inputGroupContainer @if($errors->get('logo')) has-error @endif" >
+                              <input name="logo" class="form-control" type="file" accept="image/*" style="height:auto;" >
                              </div>
                      </div>
+                     <div class="form-group" style="padding-top: 20px">
+                        <label class="col-md-3 control-label @if($errors->get('img_lab')) has-error @endif">Photo LRIT</label>  
+                        <div class="col-md-7 inputGroupContainer">
+                        <input name="img_lab" class="form-control" type="file" accept="image/*"  style="height:auto;">
+                       </div>
+               </div>
+               <div class="form-group" style="padding-top: 20px">
+                  <label class="col-md-3 control-label @if($errors->get('video_lab')) has-error @endif">Video LRIT</label>  
+                  <div class="col-md-7 inputGroupContainer">
+                  <input name="video_lab" class="form-control" type="file" accept="video/*"  style="height:auto;">
+                 </div>
+         </div>
                     
 
               </fieldset>

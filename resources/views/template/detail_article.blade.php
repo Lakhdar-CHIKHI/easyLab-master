@@ -29,25 +29,31 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ed_course_single_item">
-                        
+
+                        <div class="ed_course_single_image">
+                                
+                                <img src="{{asset('images/content/'.$article->type.'.jpg')}} " alt="item1" class="img-responsive">
+                                
+                        </div>
+
                         <div class="ed_course_single_info">
-                            <h2>{{$article->titre}}<span><div class="ed_views">
-                                    <i class="fa fa-users"></i>
-                                    <span>&nbsp;  {{count($membres)}} members</span>
-                                </div> </span></h2>
+                            <h2>{{$article->titre}}</h2>
 
 
-                        <div class="ed_rating">
-                               
-                               
-                            </div>
+                        
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                                    <div class="course_detail">
+                                <div class="col-lg-8 col-md-4 col-sm-6 col-xs-6">
+                                   <h4> <div class="course_detail">
                                         <div class="course_faculty">
                                                 <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $article->type }} </a></strong>
                                         </div>
-                                    </div>
+                                    </div></h4>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                        <h4><span><div class="ed_views">
+                                                <i class="fa fa-users"></i>
+                                                <span>&nbsp;  {{count($membres)}} members</span>
+                                            </div> </span></h4>
                                 </div>
                                
                             </div>

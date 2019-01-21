@@ -16,7 +16,15 @@ class CreateParemetresTable extends Migration
         Schema::create('parametres', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom')->nullable();
+            $table->string('propos',2000)->nullable();
+            $table->string('lieu',500)->nullable();
+            $table->string('mail',50)->nullable();
+            $table->string('tel',50)->nullable();
+            $table->string('fax',50)->nullable();
             $table->string('logo')->nullable();
+            $table->string('image')->nullable();
+            $table->string('video')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -179,7 +179,7 @@
                         <label class="col-xs-3 control-label">Lien</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input  name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
+                            <input   name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
                           </div>
                         </div>
                   </div> 
@@ -190,10 +190,18 @@
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">
-                          <input name="detail" type="file">
+                          <input name="detail" type="file" class="form-control" style="height: auto;">
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_projet_mod" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
 
               </fieldset>
 

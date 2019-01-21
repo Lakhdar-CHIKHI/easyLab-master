@@ -159,7 +159,7 @@
       </div>
 
       <div class="tab-pane" id="modifier">
-          <form class="well form-horizontal" action="{{url('equipes/'. $equipe->id) }} " method="post"  id="contact_form">
+          <form class="well form-horizontal" action="{{url('equipes/'. $equipe->id) }} " method="post"  id="contact_form" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
               {{ csrf_field() }}
               <fieldset>
@@ -214,6 +214,22 @@
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo d'équipe</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_equipe_mod" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Logo</label>  
+                        <div class="col-md-9 inputGroupContainer">
+                          <div style="width: 70%">
+                              <input name="logo_mod" class="form-control" type="file" accept="image/*" style="height: auto;">
+                          </div>
+                       </div>
+                      </div>
  
 
               </fieldset>
@@ -232,26 +248,42 @@
               <!-- USERS LIST -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Membres de l'équipe</h3>
+                  <h3 class="box-title">Logo d'équipe</h3>
 
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
-                    @foreach($membres as $membre)
-                    <li>
-                      <img src="{{asset($membre->photo)}}" alt="User Image">
-                      <a class="users-list-name" href="{{url('membres/'.$membre->id.'/details')}}">{{$membre->name}}</a>
-                      <span class="users-list-date">{{$membre->prenom}}</span>
-                    </li>
-                    @endforeach
-                  </ul>
+                <img src="{{asset($equipe->logo)}}" class="img-fluid img-responsive img-rounded col-md-12" style="border-radius: 40px;padding: 5%;">
                   <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
               </div>
               <!--/.box -->
             </div>
+            <div class="col-md-4">
+                <!-- USERS LIST -->
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Membres de l'équipe</h3>
+  
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                      @foreach($membres as $membre)
+                      <li>
+                        <img src="{{asset($membre->photo)}}" alt="User Image">
+                        <a class="users-list-name" href="{{url('membres/'.$membre->id.'/details')}}">{{$membre->name}}</a>
+                        <span class="users-list-date">{{$membre->prenom}}</span>
+                      </li>
+                      @endforeach
+                    </ul>
+                    <!-- /.users-list -->
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!--/.box -->
+              </div>
 
             <!-- timeLine start -->
     

@@ -981,7 +981,7 @@ textarea:focus {
 
 .ed_item_img {
     overflow: hidden;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -1468,7 +1468,7 @@ a.ed_getinvolved:hover i {
     float: left;
     width: 100%;
     color: #272727;
-    padding: 5px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 .ed_stardiv {
@@ -4179,8 +4179,13 @@ a.ed_getinvolved:hover i {
     font-size: 13px;
 }
 
-.ed_courses .ed_mostrecomeded_course {
+
+/*.ed_courses*/
+
+.ed_mostrecomeded_course {
     margin-bottom: 30px;
+    box-shadow: 0px 0 10px;
+    border-radius: 5px;
 }
 
 .ed_courses .ed_blog_bottom_pagination {

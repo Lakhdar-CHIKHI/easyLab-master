@@ -73,7 +73,7 @@
             </section>
             <!--Slider end-->
             <!--Slider form start-->
-            <div class="ed_form_box">
+            <!--<div class="ed_form_box">
                 <div class="container">
                     <div class="ed_search_form">
                 <form class="form-inline form-search" action="{{url('chercher')}}" method="post"  id="contact_form" enctype="multipart/form-data">
@@ -111,17 +111,39 @@
                         </form>
                     </div>
                 </div>
-            </div>
-           <!-- <div class="ed_form_box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-2 carre">lakhdarlakhdarlakhdarlakhdarlakhdar </div>
-                        <div class="col-md-2 carre">lakhdar</div>
-                        <div class="col-md-2 carre">lakhdar</div>
-                        <div class="col-md-2 carre">lakhdar</div>
-                    </div>
-                </div>
             </div>-->
+           <div class="ed_form_box">
+                <div class="container">
+                    <div class="ed_search_form" align="center" style="padding:30px;border-radius: 10px;">
+                            
+                                    
+                                        <div class="ed_counter_wrapper" style="padding:30px 30px 10px 30px;border-radius: 10px;
+                                        box-shadow: 0 0 80px;">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="ed_counter">
+                                                            <h2 class="timer"  data-from="0" data-to="{{count($membres)}}" data-speed="3000"></h2>
+                                                            <h4><strong >EQUIPES DE LABORATOIRE</strong></h4>
+                                                        </div>
+                                                    </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="ed_counter">
+                                                    <h2 class="timer"  data-from="0" data-to="{{count($membres)}}" data-speed="3000"></h2>
+                                                    <h4><strong >MEMBRES DE LABORATOIRE</strong></h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="ed_counter">
+                                                    <h2 class="timer" data-from="0" data-to="{{count($projets)}}" data-speed="3000"></h2>
+                                                    <h4><strong >POJETS DE LABORATOIRE</strong></h4>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                
+                            </div>
+                </div>
+            </div>
             <!--Slider form end-->
         </div>
         <!--Our expertise section one start -->
@@ -139,18 +161,21 @@
                                     @foreach ($projets as $projet)
                                     
                                 
-                                    <div class="item ed_mostrecomeded_course">
-                                        <div class="ed_item_img">
-                                        <img src="{{asset('images/content/2_2.jpg')}}" alt="item1" class="img-responsive">
-                                        </div>
+                                    <div class="item ed_mostrecomeded_course projet_style">
+                                        <div class="ed_item_img img_pr">
+                                            @if ($projet->image !='')
+                                            <img src="{{asset($projet->image)}} " alt="item1" class="img-responsive">
+                                            @else
+                                            <img src="{{asset('images/content/'.$projet->type.'.jpg')}} " alt="item1" class="img-responsive">
+                                            @endif                                        </div>
                                         <div class="ed_item_description ed_most_recomended_data">
-                                            <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
+                                            <h4 class="fixed_taille"><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
                                             <div class="row">
                                                 <div class="ed_rating">
                                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                                         
                                                             <div class="course_detail">
-                                                                <div class="course_faculty">
+                                                                <div class="course_faculty fixed_taille">
                                                                         <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $projet->type }} </a></strong>
                                                                 </div>
                                                             </div>
@@ -165,7 +190,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
+                                            <div ><p class="fixed_taille_p">{{$projet->resume}}</p></div>
                                             
                                             <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                         </div>
@@ -226,7 +251,7 @@
                         <div class="ed_mostrecomeded_course_slider ed_mostrecomededcourseslider">
                             <div id="owl-demo3" class="owl-carousel owl-theme">
                                     @foreach ($membres as $membre)
-                                    <div class="item">
+                                    <div class="item membre_style">
                                             <div class="ed_item_img accueil_profil">
                                                 <img src="{{asset($membre->photo)}}" alt="item1" class="img-responsive">
                                             </div>
