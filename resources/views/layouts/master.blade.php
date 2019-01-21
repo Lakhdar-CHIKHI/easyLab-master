@@ -262,6 +262,9 @@
 <script src="{{ asset('js/charts.js')}}"></script>
 <script src="{{ asset('js/Chart.min.js')}}"></script>
 
+<script src="{{ asset('js/his.js')}}"></script>
+<script src="{{ asset('js/his2.js')}}"></script>
+
 
 <script>
   $(function () {

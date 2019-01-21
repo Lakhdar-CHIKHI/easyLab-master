@@ -52,6 +52,7 @@
                                     <a href="{{ url('template/'.$article->id.'/detail_article')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
+
                         </div>
                     @endforeach
                     @else

@@ -29,11 +29,13 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ed_course_single_item">
+
                         <div class="ed_course_single_image">
                                 
                                 <img src="{{asset('images/content/'.$article->type.'.jpg')}} " alt="item1" class="img-responsive">
                                 
                         </div>
+
                         <div class="ed_course_single_info">
                             <h2>{{$article->titre}}</h2>
 
