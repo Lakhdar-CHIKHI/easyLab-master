@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\User;
 use App\ArticleUser;
+use App\Contact;
+use App\ArticleContact;
 use App\Parametre;
 use Auth;
 use App\Http\Requests\articleRequest;
@@ -36,9 +38,12 @@ class ArticleController extends Controller
 	 	$article = Article::find($id);
 	 	$membres = Article::find($id)->users()->orderBy('name')->get();
 
-			return view('article.details')->with([
+		 $contacts = Article::find($id)->contacts()->orderBy('nom')->get();
+	 	return view('article.details')->with([
+
 	 		'article' => $article,
-	 		'membres'=>$membres,
+			 'membres'=>$membres,
+			 'contacts'=>$contacts,
 	 		'labo'=>$labo,
 	 	]);;
     }
@@ -49,10 +54,16 @@ class ArticleController extends Controller
 	 	$labo = Parametre::find('1');
 	 	// if( Auth::user()->role->nom == 'admin')
             {
+				$contacts = Contact::all();
 	 	$membres = User::all();
 	 	$article = Article::all();
 
-	 	return view('article.create',['membres'=>$membres],['labo'=>$labo]);
+		 return view('article.create')->with([
+           
+            'contacts'=>$contacts,
+            'membres'=>$membres,
+            'labo'=>$labo,
+        ]);;
 			 }
             // else{
             //     return view('errors.403');
@@ -96,7 +107,6 @@ class ArticleController extends Controller
 	 	$article->mois = $request->input('mois');
 	 	$article->annee = $request->input('annee');
 	 	$article->doi = $request->input('doi');
-	 	$article->membres_ext = $request->input('membres_ext');
 	 	$article->deposer = Auth::user()->id;
 	 	
 	 	
@@ -110,7 +120,14 @@ class ArticleController extends Controller
 	 	    $article_user->save();
 
          } 
-
+		 $contacts =  $request->input('contact');
+		 foreach ($contacts as $key => $value) {
+			  $article_contact = new ArticleContact();
+			  $article_contact->article_id = $article->id;
+			  $article_contact->contact_id = $value;
+			  $article_contact->save();
+ 
+		  } 
 	 	return redirect('articles');
 
 	 	//return response()->json(["arr"=>$request->input('membre')]);
@@ -121,14 +138,16 @@ class ArticleController extends Controller
 	 public function edit($id){
 
 	 	$article = Article::find($id);
-	 	$membres = User::all();
+		 $membres = User::all();
+		 $contacts = Contact::all();
 	 	$labo = Parametre::find('1');
 
 	 	$this->authorize('update', $article);
 
 	 	return view('article.edit')->with([
 	 		'article' => $article,
-	 		'membres'=>$membres,
+			 'membres'=>$membres,
+			 'contacts'=>$contacts,
 	 		'labo'=>$labo,
 	 	]);;
     }
@@ -190,7 +209,14 @@ class ArticleController extends Controller
             $article_user->save();
 
          } 
-
+		 $contacts =  $request->input('contact');
+		 foreach ($contacts as $key => $value) {
+			  $article_contact = new ArticleContact();
+			  $article_contact->article_id = $article->id;
+			  $article_contact->contact_id = $value;
+			  $article_contact->save();
+ 
+		  } 
 	 	
 
 	 	return redirect('articles');

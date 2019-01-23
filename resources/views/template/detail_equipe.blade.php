@@ -59,7 +59,7 @@
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="view">
                                         <div class="ed_inner_dashboard_info">
-                                            <h2>apropos de L'équioe</h2>
+                                            <h2>Apropos de L'équipe</h2>
                                             <p>{{$equipe->resume}}</p>
                                         </div>
                                         <div class="ed_inner_dashboard_info">

@@ -127,13 +127,16 @@
                   <hr>
 
                   <div class="col-md-3">
-                    <strong><i class="fa fa-group  margin-r-5"></i>Partenaires</strong>
+                    <strong><i class="fa fa-group  margin-r-5"></i>Membres externes</strong>
                   </div>
                   <div class="col-md-9">
-                    <p class="text-muted">
-                      {{$projet->partenaires}}
-                    </p>
-                  </div>
+                    @foreach($contacts as $contact)
+                    <ul>
+                        <li><a href="{{url('contacts/'.$contact->id.'/details')}}">{{ $contact->nom }} {{ $contact->prenom }}</a></li>
+                    </ul>
+                    @endforeach
+
+                  </div>  
 
                   <strong><i class="margin-r-5"></i></strong>
                 <hr>

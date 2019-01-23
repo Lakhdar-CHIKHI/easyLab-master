@@ -9,8 +9,8 @@
         <small>Nouvelle</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li><a href="{{url('theses')}}">Thèses</a></li>
+      <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+      <li><a href="{{url('stages')}}">Stages</a></li>
         <li class="active">Ajouter</li>
       </ol>
 
@@ -23,11 +23,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
-            <a href="{{url('actualites')}}">
-                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
-            </a>
-          </li>
+
          <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -68,12 +64,7 @@
           </a>
         </li>
         
-        <li >
-            <a href="{{url('materiels')}}">
-              <i class="glyphicon glyphicon-blackboard"></i> 
-              <span>Materiels</span>
-            </a>
-          </li>
+       
 
           @if(Auth::user()->role->nom == 'admin' )
 
@@ -93,12 +84,12 @@
             
           <div class="container col-xs-12">
 
-            <form class="well form-horizontal" action=" {{url('theses')}} " method="post"  id="contact_form" enctype="multipart/form-data">
+            <form class="well form-horizontal" action=" {{url('stages')}} " method="post"  id="contact_form" enctype="multipart/form-data">
               {{ csrf_field() }}
               <fieldset>
 
                 <!-- Form Name -->
-                <legend><center><h2><b>Nouvelle thèses</b></h2></center></legend><br>
+                <legend><center><h2><b>Nouveau stage</b></h2></center></legend><br>
 
                   <div class="form-group">
                         <label class="col-xs-3 control-label">Titre (*)</label>  
@@ -157,64 +148,33 @@
                           </div>
                         </div>
                   </div>  
-
-                   <div class="form-group ">
-                        <label class="col-xs-3 control-label">Encadreur (membre interne)</label>  
-                        <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
-                            <select name="encadreur_int" class="form-control select2">
-                              <option></option>
-                               @foreach($membres as $membre)
-                              <option value="{{$membre->name}} {{$membre->prenom}}">{{$membre->name}} {{$membre->prenom}}</option>
-                               @endforeach
-                            </select>
-                          </div>
-                        </div>
-                  </div> 
-
+                  
                   <div class="form-group ">
-                        <label class="col-xs-3 control-label">Encadreur externe</label>  
-                        <div class="col-xs-9 inputGroupContainer">
+                        <label class="col-xs-3 control-label">Lieu (*)</label>  
+                        <div class="col-xs-9 inputGroupContainer @if($errors->get('part_id')) has-error @endif">
                           <div style="width: 70%">
-                            <select name="encadreur_ext" class="form-control select2">
-                              <option></option>
-                               @foreach($contacts as $contact)
-                              <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
+                            <select name="part_id" class="form-control select2" >
+                              <option{{old('part_id')}}></option>
+                               @foreach($partenaires as $partenaire)
+                              <option value="{{$partenaire->id}}">{{$partenaire->nom}} </option>
                                @endforeach
                             </select>
-                          </div>
-                        </div>
-                  </div> 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">CoEncadreur (membre interne)</label>  
-                        <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
-                            <select name="coencadreur_int" class="form-control select2">
-                              <option></option>
-                               @foreach($membres as $membre)
-                              <option value="{{$membre->name}} {{$membre->prenom}}">{{$membre->name}} {{$membre->prenom}}</option>
-                               @endforeach
-                            </select>
-                          </div>
-                        </div>
-                  </div> 
+                            <span class="help-block">
+                                @if($errors->get('part_id'))
+                                  @foreach($errors->get('part_id') as $message)
+                                    <li> {{ $message }} </li>
+                                  @endforeach
+                                @endif
+                            </span>
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">CoEncadreur externe</label>  
-                        <div class="col-xs-9 inputGroupContainer">
-                          <div style="width: 70%">
-                            <select name="coencadreur_ext" class="form-control select2">
-                              <option></option>
-                               @foreach($contacts as $contact)
-                              <option value="{{$contact->id}} ">{{$contact->nom}} {{$contact->prenom}}</option>
-                               @endforeach
-                            </select>
                           </div>
                         </div>
-                  </div> 
+                  </div>  
+
                 
 
+                 
                    <div class="form-group ">
                         <label class="col-xs-3 control-label">Date d'inscription (*)</label>  
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('date_debut')) has-error @endif">
@@ -234,7 +194,7 @@
                   </div>
 
                   <div class="form-group ">
-                        <label class="col-xs-3 control-label">Date de soutenance</label>  
+                        <label class="col-xs-3 control-label">Date de fin</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input name="date_soutenance" type="text" class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datepicker" value="{{old('date_soutenance')}}">

@@ -99,8 +99,7 @@
                 <!-- Form Name -->
                 <legend><center><h2><b>Modifier article</b></h2></center></legend><br>
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Titre</label>  
+                 <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Titre</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="titre" class="form-control" type="text" value="{{ $article->titre }}">
@@ -108,8 +107,7 @@
                         </div>
                   </div>  
 
-                  <div class="form-group">
-                      <label class="col-md-3 control-label">Résumé</label>
+                <div class="form-group  col-md-8">                      <label class="col-md-3 control-label">Résumé</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">
                           <textarea name="resume" class="form-control" rows="3">{{ $article->resume }}</textarea>
@@ -117,8 +115,7 @@
                       </div>
                   </div>
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Type</label>  
+              <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Type</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <select name="type" class="form-control select">
@@ -135,8 +132,7 @@
                         </div>
                   </div>
 
-                  <div class="form-group">
-                    <label class="col-md-3 control-label">Membres</label>
+           <div class="form-group  col-md-8">                    <label class="col-md-3 control-label">Membres</label>
                     <div class="col-md-9 inputGroupContainer">
                       <div style="width: 70%">
                         <select name="membre[]" class="form-control select2" multiple="multiple" data-placeholder="Selectionnez les Membres Internes">
@@ -154,11 +150,31 @@
                       </div>
                     </div>
                   </div>
+             <div class="form-group  col-md-8">
+                    <label class="col-md-3 control-label">Membres externes</label>
+                    <div class="col-md-9 inputGroupContainer">
+                      <div style="width: 70%">
+                        <select name="contact[]" class="form-control select2" multiple="multiple" data-placeholder="Selectionnez les Membres Internes">
+                          <option>
+                             @foreach ($article->contacts as $contact) 
+                              <option value="{{$contact->id}}" selected>
+                                  {{ $contact->nom }} {{ $contact->prenom }}
+                              </option>
+                            @endforeach
+                          </option>
+                         @foreach($contacts as $contact)
+                              <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
+                          @endforeach
+                        </select> 
+                      </div> 
+                    </div>
+                  </div>
 
-                   
+                  <div class="col-md-1 ">
+                <a href="{{url('contacts/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> </a>
+              </div>  
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Ville</label>  
+            <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Ville</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="ville" class="form-control" value="{{ $article->lieu_ville }}" type="text" >
@@ -166,8 +182,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Pays</label>  
+             <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Pays</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="pays" class="form-control" value="{{ $article->lieu_pays }}" type="text">
@@ -176,8 +191,7 @@
                   </div> 
 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Nom de la conférence</label>  
+           <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Nom de la conférence</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="conference" class="form-control" type="text" value="{{ $article->conference }}">
@@ -185,8 +199,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Nom du journal</label>  
+           <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Nom du journal</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="journal" class="form-control"  value="{{ $article->journal }}"type="text">
@@ -194,8 +207,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">ISSN</label>  
+         <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">ISSN</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="issn" class="form-control" value="{{ $article->ISSN }}" type="numbers">
@@ -203,8 +215,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">ISBN</label>  
+          <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">ISBN</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="isbn" value="{{ $article->ISBN }}" class="form-control" type="numbers">
@@ -212,8 +223,7 @@
                         </div>
                   </div> 
 
-                   <div class="form-group ">
-                        <label class="col-xs-3 control-label">Mois</label>  
+            <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Mois</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input type="text" name="mois" value="{{ $article->mois }}" class="form-control pull-right">
@@ -221,8 +231,7 @@
                         </div>
                   </div>
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">Année</label>  
+           <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">Année</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input type="text" name="annee" value="{{ $article->annee }}" class="form-control pull-right">
@@ -230,8 +239,7 @@
                         </div>
                   </div>
 
-                  <div class="form-group ">
-                        <label class="col-xs-3 control-label">DOI</label>  
+          <div class="form-group  col-md-8">                        <label class="col-xs-3 control-label">DOI</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <input  name="doi"  value="{{ $article->doi }}" class="form-control" placeholder="URL" type="text">
@@ -239,8 +247,7 @@
                         </div>
                   </div> 
 
-                  <div class="form-group">
-                      <label class="col-md-3 control-label">Détails</label>
+           <div class="form-group  col-md-8">                      <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">
                           <input name="detail" type="file" class="form-control" id="exampleInputFile" style="height: auto;" value="{{asset('$article->detail')}}">

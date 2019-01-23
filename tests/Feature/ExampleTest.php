@@ -16,10 +16,12 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
+
     public function testcontenuPage()
     {
         $response = $this->get('/public');
 
         $response->assertSee('compte');
     }
+
 }

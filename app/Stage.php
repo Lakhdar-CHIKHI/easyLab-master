@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class These extends Model
+class Stage extends Model
 {
      use SoftDeletes;
 
@@ -13,6 +13,10 @@ class These extends Model
      public function user()
     {
         return $this->belongsTo('App\User');
+    }
+    public function partenaire()
+    {
+        return $this->belongsTo('App\Partenaire');
     }
     public function encext()
     {

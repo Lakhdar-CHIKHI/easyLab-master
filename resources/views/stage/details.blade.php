@@ -9,7 +9,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-      <li><a href="{{url('theses')}}">Thèses</a></li>
+      <li><a href="{{url('stages')}}">Stages</a></li>
       <li class="active">Détails</li>
     </ol>
 @endsection
@@ -20,11 +20,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
-            <a href="{{url('actualites')}}">
-                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
-            </a>
-          </li>
+
          <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -66,12 +62,7 @@
         </li>
         
        
-        <li >
-            <a href="{{url('materiels')}}">
-              <i class="glyphicon glyphicon-blackboard"></i> 
-              <span>Materiels</span>
-            </a>
-          </li>
+
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -97,7 +88,7 @@
                   </div>
                   <div class="col-md-9">
                     <p class="text-muted">
-                      {{ $these->titre}}
+                      {{ $stage->titre}}
                     </p>
                   </div>
                   <div class="col-md-3">
@@ -105,7 +96,7 @@
                   </div>
                   <div class="col-md-9">
                     <p class="text-muted">
-                      {{ $these->sujet}}
+                      {{ $stage->sujet}}
                     </p>
                   </div>
                   
@@ -113,61 +104,29 @@
                   <hr>
 
                   <div class="col-md-3">
-                    <strong><i class="fa fa-user margin-r-5"></i> Présenté par</strong>
+                    <strong><i class="fa fa-user margin-r-5"></i>Stagiere </strong>
                   </div>
                   <div class="col-md-9">
-                    <a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a>
+                    <a href="{{url('membres/'.$stage->user_id.'/details')}}">{{$stage->user->name}} {{$stage->user->prenom}}</a>
                   </div>
 
                   <strong><i class="margin-r-5"></i></strong>
                   <hr>
 
                   <div class="col-md-3">
-                    <strong><i class="fa fa-user margin-r-5"></i> Encadreur Interne</strong>
+                    <strong><i class="fa fa-user margin-r-5"></i> Lieu </strong>
                   </div>
                   <div class="col-md-9">
-                    {{ $these->encadreur_int}}
-                  
+                    <a href="{{url('partenaires/'.$stage->partenaire_id.'/details')}}">{{$stage->partenaire->nom}}</a>
                   </div>
-                  <strong><i class="margin-r-5"></i></strong>
-                  <hr>
-
-                  <div class="col-md-3">
-                    <strong><i class="fa fa-user margin-r-5"></i> Encadreur Externe</strong>
-                  </div>
-                  <div class="col-md-9">
-                  
-                    {{ $these->encext->nom}}   {{ $these->encext->prenom}}
-                  </div>
-                  <strong><i class="margin-r-5"></i></strong>
-                  <hr>
-
-                  <div class="col-md-3">
-                    <strong><i class="fa fa-user margin-r-5"></i> Coencadreur</strong>
-                  </div>
-                  <div class="col-md-9">
-                    {{ $these->coencadreur_int }}
-               
-                  </div>
-                  <strong><i class="margin-r-5"></i></strong>
-                  <hr>
-
-                  <div class="col-md-3">
-                    <strong><i class="fa fa-user margin-r-5"></i> Coencadreur Externe</strong>
-                  </div>
-                  <div class="col-md-9">
-                 
-                    {{ $these->cooencext->nom }}{{ $these->cooencext->prenom }}
-                  </div>
-
                   <strong><i class="margin-r-5"></i></strong>
                 <hr>
                 <div class="col-md-3">
-                  <strong><i class="fa fa-calendar margin-r-5"></i>Date d'inscription</strong>                
+                  <strong><i class="fa fa-calendar margin-r-5"></i>Date debut</strong>                
                  </div>
                   <div class="col-md-9">
                     <p class="text-muted">
-                      {{ $these->date_debut}}
+                      {{ $stage->date_debut}}
                     </p>
                   </div>
 
@@ -175,18 +134,18 @@
                   <hr>
 
                   <div class="col-md-3">
-                  <strong><i class="fa fa-calendar margin-r-5"></i>Date de soutenance</strong>                
+                  <strong><i class="fa fa-calendar margin-r-5"></i>Date de fin</strong>                
                  </div>
                   <div class="col-md-9">
                     <p class="text-muted">
-                      {{ $these->date_soutenance}}
+                      {{ $stage->date_fin}}
                     </p>
                   </div>
 
                    <strong><i class="margin-r-5"></i></strong>
                   <hr>
 
-                  @if($these->detail)
+                  @if($stage->detail)
                    <div class="col-md-3">
                     
                   <strong><i class="fa fa-calendar margin-r-5"></i>Détails</strong>                

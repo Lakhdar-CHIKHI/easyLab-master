@@ -134,16 +134,20 @@
                     @endforeach
                   </div>
                 </div>
-                @if($article->membres_ext)
+              
                 <div class="row">
                   <div class="col-md-3 " style="padding-top: 20px">
                     <strong><i class="fa fa-user margin-r-5"></i> Membres externes</strong>
                   </div>
-                  <div class="col-md-9" style="padding-top: 20px">
-                    {{$article->membres_ext}}
+                  <div class="col-md-9">
+                    @foreach($contacts as $contact)
+                    <ul>
+                        <li><a href="{{url('contacts/'.$membre->id.'/details')}}">{{ $contact->nom }} {{ $contact->prenom }}</a></li>
+                    </ul>
+                    @endforeach
                   </div>
                 </div>
-                @endif
+            
           
                   <strong><i class="margin-r-5"></i></strong>
                   <hr>

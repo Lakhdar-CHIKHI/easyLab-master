@@ -168,11 +168,16 @@
                         </div>
                   </div> 
 
-                   <div class="form-group ">
+                  <div class="form-group ">
                         <label class="col-xs-3 control-label">Encadreur externe</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input name="encadreur_ext" name="titre" class="form-control" placeholder="Nom" type="text" value="{{ $these->encadreur_ext}}">
+                            <select name="encadreur_ext" class="form-control select2">
+                              <option value="{{$these->encext->id}}" > {{ $these->encext->nom }} {{ $these->encext->prenom }}</option>
+                               @foreach($contacts as $contact)
+                              <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
+                               @endforeach
+                            </select>
                           </div>
                         </div>
                   </div> 
@@ -182,22 +187,29 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <select name="coencadreur_int" class="form-control select2">
-                              <option>{{$these->encadreur_ext}}</option>
-                              @foreach($membres as $membre)
+                              <option></option>
+                               @foreach($membres as $membre)
                               <option value="{{$membre->name}} {{$membre->prenom}}">{{$membre->name}} {{$membre->prenom}}</option>
                                @endforeach
                             </select>
                           </div>
                         </div>
                   </div> 
+
                   <div class="form-group ">
                         <label class="col-xs-3 control-label">CoEncadreur externe</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input name="coencadreur_ext" class="form-control" placeholder="Nom" type="text" value="{{ $these->coencadreur_ext }}">
+                            <select name="coencadreur_ext" class="form-control select2">
+                            <option value="{{$these->cooencext->id}}" > {{ $these->cooencext->nom }} {{ $these->cooencext->prenom }}</option>
+                              
+                               @foreach($contacts as $contact)
+                              <option value="{{$contact->id}} ">{{$contact->nom}} {{$contact->prenom}}</option>
+                               @endforeach
+                            </select>
                           </div>
                         </div>
-                  </div>
+                  </div> 
 
                    <div class="form-group ">
                         <label class="col-xs-3 control-label">Date d'inscription</label>  
