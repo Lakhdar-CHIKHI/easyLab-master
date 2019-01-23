@@ -23,7 +23,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
          <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -64,7 +68,12 @@
             <span>Projets</span>
           </a>
         </li>
-
+        <li >
+            <a href="{{url('materiels')}}">
+              <i class="glyphicon glyphicon-blackboard"></i> 
+              <span>Materiels</span>
+            </a>
+          </li>
         @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -235,8 +244,13 @@
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Lien</label>  
                         <div class="col-xs-9 inputGroupContainer">
+<<<<<<< HEAD
                           <div style="width: 100%">
                             <input  name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
+=======
+                          <div style="width: 70%">
+                            <input   name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
                           </div>
                         </div>
                   </div> 
@@ -251,6 +265,7 @@
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
+<<<<<<< HEAD
                         <div style="width: 100%">
                           <input name="detail" type="file">
                         </div>
@@ -259,6 +274,21 @@
 </div>
 
 
+=======
+                        <div style="width: 70%">
+                          <input name="detail" type="file" class="form-control" style="height: auto;">
+                        </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_projet_mod" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 
               </fieldset>
 
@@ -289,7 +319,7 @@
             <!-- Modal Body -->
             
     
-                <form class="well form-horizontal" method="POST"  id="contact_form" enctype="multipart/form-data">
+                <form class="well form-horizontal" method="POST"  id="contform" enctype="multipart/form-data">
               {{ csrf_field() }}
               <fieldset>
 
@@ -466,7 +496,7 @@
             <!-- Modal Body -->
             
     
-            <form class="well form-horizontal" action=" {{url('partenaires')}} " method="post"  id="contact_form " enctype="multipart/form-data">
+            <form class="well form-horizontal" id="partform" action=" {{url('partenaires')}} " method="post"  id="contact_form " enctype="multipart/form-data">
               {{ csrf_field() }}
               <fieldset>
 

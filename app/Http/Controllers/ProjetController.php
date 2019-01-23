@@ -13,6 +13,7 @@ use App\ProjetContact;
 use App\ProjetUser;
 use App\Parametre;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ProjetController extends Controller
 {
@@ -75,6 +76,14 @@ class ProjetController extends Controller
             $file->move(public_path('/uploads/projet'),$file_name);
             $projet->detail = '/uploads/projet/'.$file_name;
         }
+       
+        if($request->hasFile('img_projet')){
+
+            $file = $request->file('img_projet');
+            $file_name_pr = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/projet/images'),$file_name_pr);
+            $projet->image = '/uploads/projet/images/'.$file_name_pr;
+        }
 
 	 	$projet->intitule = $request->input('intitule');
 	 	$projet->resume = $request->input('resume');
@@ -136,14 +145,33 @@ class ProjetController extends Controller
     	$projet = Projet::find($id);
         $labo =  Parametre::find('1');
 
+        
     	if($request->hasFile('detail')){
-
+            if (file_exists($projet->detail)) 
+               {
+                 unlink($projet->detail);
+               }
+            //unlink($projet->detail);
+            //Storage::delete($projet->detail);
             $file = $request->file('detail');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/projet'),$file_name);
 	 	     $projet->detail = '/uploads/projet/'.$file_name;
 
         }
+        
+        if($request->hasFile('img_projet_mod')){
+            if (file_exists($projet->image)) 
+               {
+                 unlink($projet->image);
+                  
+              }
+            $file = $request->file('img_projet_mod');
+            $file_name = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/projet/images'),$file_name);
+            $projet->image = 'uploads/projet/images/'.$file_name;
+        }
+        
 
         $projet->intitule = $request->input('intitule');
         $projet->resume = $request->input('resume');
@@ -184,12 +212,20 @@ class ProjetController extends Controller
     public function destroy($id){
 
     	$projet = Projet::find($id);
+<<<<<<< HEAD
         $contacts = ProjetContact::where('projet_id', $id)->get();
         foreach ($contacts as $contact ) {
         
             $contact->delete();
                          
                          } 
+=======
+        if (file_exists($projet->image)) 
+        {
+          unlink($projet->image);
+           
+       }
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
         $this->authorize('delete', $projet);
 
         $projet->delete();

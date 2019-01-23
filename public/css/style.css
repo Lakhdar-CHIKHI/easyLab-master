@@ -589,7 +589,7 @@ textarea:focus {
 .edoco_menu ul li ul.sub-menu li {
     display: block;
     position: relative;
-    width: 160px;
+    width: 200px;
 }
 
 .edoco_menu ul li ul.sub-menu li a {
@@ -981,7 +981,7 @@ textarea:focus {
 
 .ed_item_img {
     overflow: hidden;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -1216,7 +1216,7 @@ a.ed_getinvolved:hover i {
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-    background-image: url(http://placehold.it/1732X1155);
+    background-image: url('../images/content/labo.jpg');
 }
 
 .ed_img_overlay {
@@ -1276,7 +1276,7 @@ a.ed_getinvolved:hover i {
 .ed_video_section_discription h4 {
     font-size: 24px;
     color: #ffffff;
-    padding-top: 40px;
+    padding-top: 0;
 }
 
 .ed_video_section_discription p {
@@ -1468,7 +1468,7 @@ a.ed_getinvolved:hover i {
     float: left;
     width: 100%;
     color: #272727;
-    padding: 5px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 .ed_stardiv {
@@ -2072,13 +2072,16 @@ a.ed_getinvolved:hover i {
 
 .ed_mostrecomeded_course {
     float: left;
-    width: 100%;
+    /*width: 100%;*/
+    width: 96%;
     background-color: #fff;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+    /* ajout */
+    margin: 5px;
 }
 
 .ed_mostrecomeded_course:hover {
@@ -2093,7 +2096,7 @@ a.ed_getinvolved:hover i {
 }
 
 .ed_mostrecomeded_course .ed_most_recomended_data {
-    padding: 10px 15px 30px;
+    padding: 0 15px 15px 15px;
 }
 
 .ed_latest_newsslider {
@@ -4176,8 +4179,13 @@ a.ed_getinvolved:hover i {
     font-size: 13px;
 }
 
-.ed_courses .ed_mostrecomeded_course {
+
+/*.ed_courses*/
+
+.ed_mostrecomeded_course {
     margin-bottom: 30px;
+    box-shadow: 0px 0 10px;
+    border-radius: 5px;
 }
 
 .ed_courses .ed_blog_bottom_pagination {

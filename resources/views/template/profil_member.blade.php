@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-4 col-sm-6">
                     <div class="page_title">
-                        <h2>Educo Student</h2>
+                        <h2>{{$membre->name}} {{$membre->prenom}}</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-8 col-sm-6">
@@ -15,6 +15,9 @@
                         <li><a href="index.html">accueil</a></li>
                         <li><i class="fa fa-chevron-left"></i></li>
                         <li><a href="dashboard.html">Profil member</a></li>
+                        <li><i class="fa fa-chevron-left"></i></li>
+                        <li><a href="dashboard.html">{{$membre->name}} {{$membre->prenom}}</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -59,8 +62,8 @@
                                         <p><strong>N° De Télépone : </strong>{{$membre->num_tel}}</p>
                                         @endif
                                         <div class="btn-group">
-                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('/in.png')}}"></a>
-                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('/rg.png')}}"></a>
+                                                <a href="{{$membre->lien_linkedin}}" class="btn btn-social-icon btn-linkedin" title="Linkedin"><img src="{{asset('images/icons/in.png')}}"></a>
+                                                <a href="{{$membre->lien_rg}}" class="btn btn-social-icon" title="Researchgate"><img src="{{asset('images/icons/rg.png')}}"></a>
                                             </div>
                                     </div>
                                 
@@ -77,93 +80,106 @@
                                         <!-- Tab panes -->
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane active" id="my" style="">
-                                                <div class="ed_inner_dashboard_info">
-                                                    
-                                                    <div class="row">
-                                                            <div class="ed_mostrecomeded_course_slider">
+                                                    <div class="ed_course_single_info">
                                                                 @if (count($membre->projets))
+                                                                
+                                                                <h2> &nbsp;Total Projets : <span>{{count($membre->projets)}} projets</span></h2>
+            
                                                                 @foreach ($membre->projets as $projet)
-                                                        
-                                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ed_bottompadder20">
-                                                                    <div class="ed_item_img">
-                                                                        <img src="http://placehold.it/248X156" alt="item1" class="img-responsive">
-                                                                    </div>
-                                                                    <div class="ed_item_description ed_most_recomended_data">
-                                                                        <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{$projet->intitule}}</a></strong></h4>
-                                                                        <div class="row">
-                                                                            <div class="ed_rating">
-                                                                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                    
-                                                                                            <div class="course_detail">
-                                                                                                <div class="course_faculty">
-                                                                                                        <strong> TYPE  :  <a href="instructor_dashboard.html"> {{$projet->type}} </a></strong>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            
-                                                                                        
-                                                                                    </div>
-                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                    
-                                                                                        <div class="ed_views">
-                                                                                            <i class="fa fa-users"></i>
-                                                                                            <span>{{count($projet->users)}} Members</span>
-                                                                                        </div>
-                                                                                    
-                                                                                </div>
+                                                            <div class=" pub" ><a href="{{url('template/'.$projet->id.'/detail_article')}}">
+                                                                <div class="row">
+                                                                        <div class="col-md-3">
+                                                                                @if ($projet->image !='')
+                                                                                <img src="{{asset($projet->image)}} " alt="item1" class="img-thumbnail">
+                                                                             @else
+                                                                                <img src="{{asset('images/content/'.$projet->type.'.jpg')}}" class="img-thumbnail" alt="" srcset="">
+                                                                             @endif
+                                                                        </div>    
+                                                                        <div>
                                                                                 
-                                                                            </div>
-                                                                        </div>
-                                                                        <div style="height: 65px;overflow: hidden;"><p>{{$projet->resume}}</p></div>
-                                                                        <a href="course_single.html" class="btn ed_btn ed_orange">Read more &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                                                                                <strong>INTITULE :</strong><span>{{$projet->intitule}}
+                                                                                </span><br>
+                                                                                <strong>TYPE : {{$projet->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                                                                <strong>RESUME :</strong><span>{{$projet->resume}}</span></div> 
+                                                                </div>
+                                                     
+                                                                 </a>
+                                                                 </div>
+                                                                @endforeach
+                                                                @else
+                                                                
+                                                                    <div align="center">
+                                                                            <h1>Aucun résultat trouvé</h1>
                                                                     </div>
+                                                                
+                                                                    @endif
                                                                 </div>
                                                                 
+                                                            </div>
+                                                            <div role="tabpanel" class="tab-pane" id="result" style="">
+                                                                    <div class="ed_course_single_info">
+                                                                    @if (count($membre->articles))
+                                                                    
+                                                                    <h2> &nbsp;Total Articles : <span>{{count($membre->articles)}} Articles</span></h2>
+                
+                                                                    @foreach ($membre->articles as $article)
+                                                                <div class=" pub" ><a href="{{url('template/'.$article->id.'/detail_article')}}">
+                                                                    <div class="row">
+                                                                            <div class="col-md-3"><img src="{{asset('images/content/'.$article->type.'.jpg')}}" class="img-thumbnail" srcset=""></div>    
+                                                                            <div> <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->mois}} {{$article->annee}}</strong><br>
+                                                                                    <strong>TITRE :</strong><span>{{$article->titre}}</span><br>
+                                                                                    <strong>RESUME :</strong><span>{{$article->resume}}</span>
+                                                                                </div> 
+                                                                    </div>
+                                                         
+                                                                     </a>
+                                                                     </div>
+                                                                    @endforeach
+                                                                    @else
+                                                                    <div align="center">
+                                                                            <h1>Aucun résultat trouvé</h1>
+                                                                    </div>
                                                                 
+                                                                    @endif
+                                                                </div> </div>
+
+
+                                                            <div role="tabpanel" class="tab-pane" id="status" style="">
+                                                                    <div class="ed_inner_dashboard_info">
+                                                                            
+                                                                    @if ($membre->these)
+                                                                    <h5><strong>Encadreur :</strong> {{$membre->these->encadreur_int}}{{$membre->these->encadreur_ext}}<br>
+                                                                        <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}{{$membre->these->coencadreur_ext}} 
+                                                                    </h5>
+                                                                    <h3><strong>Titre : </strong>{{$membre->these->titre}}</h3>
+                                                                    <h3><strong>Resume : </strong></h3>
+                                                                    <p>{{$membre->these->sujet}}</p>
+                                                                    @if ($membre->these->detail)
+                                                                    <h3><strong>Piece Joint : </strong><a href='{{asset($membre->these->detail)}}'>&nbsp;&nbsp;<i class="glyphicon glyphicon-floppy-save"></i> Télécharger Fichier</a></h3>
+                                                                    @endif
                                                                 
-                                                            
-                                                        @endforeach
-                                                                @else
-                                                                    <h3>vide</h3>
-                                                                @endif
-                                                       
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="result" style="">
-                                                <div class="ed_dashboard_inner_tab">
-                                                    @if (count($membre->articles))
-                                                    @foreach ($membre->articles as $article)
-                                                    <div class="ed_add_students pub" ><a href="">
-                                                         <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->annee}}</strong><br>
-                                                         <span>{{$article->titre}}
-                                                         </span>
-                                         
-                                                     </a>
-                                                     </div>
-                                                    @endforeach
-                                                    @else
-                                                        <h3>vide</h3>
-                                                    @endif
-                                                       
+                                                                    @else
+                                                                    <div align="center">
+                                                                            <h1>Aucun résultat trouvé</h1>
+                                                                    </div>
+                                                                    @endif
+                                                                            
+                                                                    
+                                                                        
+                                                                </div>
+                                                            </div>
                                                     
                                                 </div>
                                             </div>
-                                            <div role="tabpanel" class="tab-pane" id="status" style="">
-                                                <div class="ed_dashboard_inner_tab">
-                                                    @if ($membre->these)
-                                                    <h5><strong>Encadreur :</strong> {{$membre->these->encadreur_int}}{{$membre->these->encadreur_ext}}<br>
-                                                        <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}{{$membre->these->coencadreur_ext}} 
-                                                    </h5>
-                                                    <h3><strong>Titre : </strong>{{$membre->these->titre}}</h3>
-                                                    <p>{{$membre->these->sujet}}</p>
-                                                    @else
-                                                        <h3>Vide</h3>
-                                                    @endif
+                                            
                                                     
-                                                        
+
+
+
+
                                                 </div>
                                             </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -176,10 +192,7 @@
                             
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                
     <!--single student detail end-->
   
 @endsection

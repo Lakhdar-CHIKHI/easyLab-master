@@ -29,6 +29,7 @@ class PartenaireController extends Controller
     $nbr = DB::table('contacts')
              ->select( DB::raw('count(*) as total,partenaire_id'))
              ->groupBy('partenaire_id')
+             ->whereNull('deleted_at')
              ->get();
  
         return view('partenaire.index')->with([

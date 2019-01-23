@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
   <meta name="csrf-token" content="{{ csrf_token() }}"/>
+=======
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
   <link rel="icon" type="image/png" href="{{asset('easy.png')}}"/>
   <title>
     @yield('title')
@@ -44,6 +48,8 @@
   <link rel="stylesheet" href="{{asset('labo/plugins/timepicker/bootstrap-timepicker.min.css')}}">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{asset('labo/bower_components/select2/dist/css/select2.min.css')}}">
+
+  <link rel="stylesheet" href="{{asset('css/plus_css.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -201,6 +207,7 @@
 <script src="{{ asset('labo/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset('labo/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -254,7 +261,17 @@
 <script src="{{ asset('labo/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- iCheck 1.0.1 -->
 <script src="{{ asset('labo/plugins/iCheck/icheck.min.js')}}"></script>
+<<<<<<< HEAD
 <script src="{{ asset('js/selctmem.js')}}"></script>
+=======
+<!-- charts -->
+<script src="{{ asset('js/canvasjs.min.js')}}"></script>
+<script src="{{ asset('js/charts.js')}}"></script>
+<script src="{{ asset('js/Chart.min.js')}}"></script>
+
+<script src="{{ asset('js/his.js')}}"></script>
+<script src="{{ asset('js/his2.js')}}"></script>
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 
 
 <script>
@@ -422,6 +439,34 @@
 
   
 </script>
+<script type="text/javascript" src="{{asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>
+  
+ $('.btn_tiny').on('click',function(){
+    var test =$(this).data('tiny');
+    var test2='#mytextarea'+test;
+    tinymce.init({
+  selector: test2,
+  theme: 'modern',
+  plugins: 'print preview fullpage searchreplace paste directionality code visualblocks visualchars link codesample table charmap hr nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount contextmenu colorpicker textpattern help',
+  toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tinymce.com/css/codepen.min.css'
+  ]
+ });
+ });
 
+  tinymce.init({
+  selector: '#mytextarea',
+  theme: 'modern',
+  plugins: 'print preview fullpage searchreplace paste directionality code visualblocks visualchars link codesample table charmap hr nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount contextmenu colorpicker textpattern help',
+  toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tinymce.com/css/codepen.min.css'
+  ]
+ });
+  </script>
 </body>
 </html>

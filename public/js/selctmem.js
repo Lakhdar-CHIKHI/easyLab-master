@@ -35,6 +35,7 @@ $('#date_debut').on('change',function(){
           
             });
         
+            
             }
         });
  });
@@ -89,7 +90,9 @@ $('#submit_cont').on('click',function(){
            contact[i]=$(this).val();
           });
    
-        
+            var contact2= $('#contact2 :selected').val();
+          var contact1= $('#contact1 :selected').val();
+      
       $.ajax({
         /* the route pointing to the post function */
         url: 'storepop',
@@ -141,7 +144,65 @@ if(t==0){
        
       });
 
+      $('#contact1').empty();
+               
+      $('#contact1').append($("<option/>", {
+       value: '',
+       text: ''
+       
+   }));
+      $.each(data, function () {
+       t=0;  
+       d=this.id;
+       if(d==contact1)
+       {
+     $("#contact1").append('<option selected value=' + this.id+ '>' + this.nom+' '+this.prenom + '</option>');
+  
+       }else
+       {
+  $('#contact1').append($("<option/>", {
+
+         value: this.id,
+         text: this.nom+this.prenom
+         
+     }));    }
+      
+     
+
+    
+   });
+
+   $('#contact2').empty();
+               
+   $('#contact2').append($("<option/>", {
+    value: '',
+    text: ''
+    
+}));
+   $.each(data, function () {
+    t=0;  
+    d=this.id;
+    if(d==contact2)
+    {
+  $("#contact2").append('<option selected value=' + this.id+ '>' + this.nom+' '+this.prenom + '</option>');
+
+    }else
+    {
+$('#contact2').append($("<option/>", {
+
+      value: this.id,
+      text: this.nom+this.prenom
+      
+  }));    }
    
+  
+
+ 
+});
+
+
+      $(':input','#contform') .not(':button, :submit, :reset, :hidden') .val('')
+      .removeAttr('checked') .removeAttr('selected');
       $("#modalForm .close").click();
         
         }
@@ -234,6 +295,8 @@ if(t==0){
                       text: this.nom
                       
                   }));})
+                  $(':input','#contform') .not(':button, :submit, :reset, :hidden') .val('')
+                  .removeAttr('checked') .removeAttr('selected');
                  $("#modalFormpart .close").click();
                   }
               });

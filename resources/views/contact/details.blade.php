@@ -717,7 +717,7 @@
             <!-- Modal Body -->
             
     
-            <form class="well form-horizontal" action=" {{url('partenaires')}} " method="post"  id="contact_form " enctype="multipart/form-data">
+            <form class="well form-horizontal" id="partform" action=" {{url('partenaires')}} " method="post"  id="contact_form " enctype="multipart/form-data">
               {{ csrf_field() }}
               <fieldset>
 

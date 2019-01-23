@@ -67,12 +67,26 @@ class EquipeController extends Controller
     {
         $labo = Parametre::find('1');
         $equipe = new equipe();
+        if($request->hasFile('img_equipe')){
 
+            $file = $request->file('img_equipe');
+            $file_name = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/equipes'),$file_name);
+            $equipe->image = '/uploads/equipes/'.$file_name;
+        }
         $equipe->intitule = $request->input('intitule');
         $equipe->resume = $request->input('resume');
         $equipe->achronymes = $request->input('achronymes');
         $equipe->axes_recherche = $request->input('axes_recherche');
         $equipe->chef_id = $request->input('chef_id');
+
+        if($request->hasFile('logo')){
+
+            $file = $request->file('logo');
+            $file_name_logo = time().'logo.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/equipes'),$file_name_logo);
+            $equipe->logo = '/uploads/equipes/'.$file_name_logo;
+        }
 
         $equipe->save();
 
@@ -87,6 +101,28 @@ class EquipeController extends Controller
 
         if( Auth::user()->role->nom == 'admin')
             {
+                if($request->hasFile('img_equipe_mod')){
+                    if (file_exists($equipe->image)) 
+                       {
+                         unlink($equipe->image);
+                          
+                      }
+                    $file = $request->file('img_equipe_mod');
+                    $file_name = time().'.'.$file->getClientOriginalExtension();
+                    $file->move(public_path('/uploads/equipes'),$file_name);
+                    $equipe->image = 'uploads/equipes/'.$file_name;
+                }
+                if($request->hasFile('logo_mod')){
+                    if (file_exists($equipe->logo)) 
+                       {
+                         unlink($equipe->logo);
+                          
+                      }
+                    $file = $request->file('logo_mod');
+                    $file_name_logo = time().'logo.'.$file->getClientOriginalExtension();
+                    $file->move(public_path('/uploads/equipes'),$file_name_logo);
+                    $equipe->logo = 'uploads/equipes/'.$file_name_logo;
+                }
 
             $equipe->intitule = $request->input('intitule');
             $equipe->resume = $request->input('resume');
@@ -108,7 +144,18 @@ class EquipeController extends Controller
     {
         if( Auth::user()->role->nom == 'admin')
             {
+
         $equipe = Equipe::find($id);
+        if (file_exists($equipe->logo)) 
+                       {
+                         unlink($equipe->logo);
+                          
+                      }
+                      if (file_exists($equipe->image)) 
+                       {
+                         unlink($equipe->image);
+                          
+                      }
         $equipe->delete();
         return redirect('equipes');
         }
