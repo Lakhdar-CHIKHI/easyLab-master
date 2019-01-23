@@ -37,8 +37,10 @@ class ArticleController extends Controller
     	$labo = Parametre::find('1');
 	 	$article = Article::find($id);
 	 	$membres = Article::find($id)->users()->orderBy('name')->get();
+
 		 $contacts = Article::find($id)->contacts()->orderBy('nom')->get();
 	 	return view('article.details')->with([
+
 	 		'article' => $article,
 			 'membres'=>$membres,
 			 'contacts'=>$contacts,
@@ -85,6 +87,14 @@ class ArticleController extends Controller
 
         }
 
+		if($request->hasFile('img_article')){
+
+            $file = $request->file('img_article');
+            $file_name_ar = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/article/images'),$file_name_ar);
+            $article->image = '/uploads/article/images/'.$file_name_ar;
+		}
+		
 	 	$article->type = $request->input('type');
 	 	$article->titre = $request->input('titre');
 	 	$article->resume = $request->input('resume');
@@ -162,13 +172,28 @@ class ArticleController extends Controller
 	 	$article->doi = $request->input('doi');
 
 	 	if($request->hasFile('detail')){
-
+			if (file_exists($article->detail)) 
+			{
+			  unlink($article->detail);
+			   
+		   }
             $file = $request->file('detail');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/article'),$file_name);
 
-        $article->detail = '/uploads/article/'.$file_name;
+        	$article->detail = '/uploads/article/'.$file_name;
 
+		}
+		if($request->hasFile('img_article_mod')){
+            if (file_exists($article->image)) 
+               {
+                 unlink($article->image);
+                  
+              }
+            $file = $request->file('img_article_mod');
+            $file_name = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/article/images'),$file_name);
+            $article->image = 'uploads/article/images/'.$file_name;
         }
 	 	
 	 	$article->save();
@@ -201,7 +226,11 @@ class ArticleController extends Controller
     public function destroy($id){
 
     	$article = Article::find($id);
-
+		if (file_exists($article->image)) 
+		{
+		  unlink($article->image);
+		   
+	   }
 	 	$this->authorize('delete', $article);
 
         $article->delete();

@@ -23,7 +23,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
          <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -64,7 +68,12 @@
             <span>Projets</span>
           </a>
         </li>
-
+        <li >
+            <a href="{{url('materiels')}}">
+              <i class="glyphicon glyphicon-blackboard"></i> 
+              <span>Materiels</span>
+            </a>
+          </li>
         @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -194,7 +203,7 @@
                         <label class="col-xs-3 control-label">Lien</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input  name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
+                            <input   name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
                           </div>
                         </div>
                   </div> 
@@ -205,10 +214,18 @@
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">
-                          <input name="detail" type="file">
+                          <input name="detail" type="file" class="form-control" style="height: auto;">
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_projet_mod" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
 
               </fieldset>
 

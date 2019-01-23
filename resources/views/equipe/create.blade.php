@@ -23,7 +23,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
          <li class="active">
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -65,7 +69,12 @@
             <span>Projets</span>
           </a>
         </li>
-        
+        <li >
+            <a href="{{url('materiels')}}">
+              <i class="glyphicon glyphicon-blackboard"></i> 
+              <span>Materiels</span>
+            </a>
+          </li>
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -84,7 +93,7 @@
             
           <div class="container col-xs-12">
 
-            <form class="well form-horizontal" action=" {{url('equipes')}} " method="post"  id="contact_form">
+            <form class="well form-horizontal" action=" {{url('equipes')}} " method="post"  id="contact_form" enctype="multipart/form-data">
               {{ csrf_field() }}
               <fieldset>
 
@@ -166,6 +175,22 @@
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo d'équipe</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_equipe" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Logo</label>  
+                        <div class="col-md-9 inputGroupContainer">
+                          <div style="width: 70%">
+                              <input name="logo" class="form-control" type="file" accept="image/*" style="height: auto;">
+                          </div>
+                       </div>
+                      </div>
                   
 
               </fieldset>

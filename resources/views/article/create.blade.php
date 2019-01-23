@@ -23,7 +23,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
         <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -63,7 +67,12 @@
             <span>Projets</span>
           </a>
         </li>
-        
+        <li >
+            <a href="{{url('materiels')}}">
+              <i class="glyphicon glyphicon-blackboard"></i> 
+              <span>Materiels</span>
+            </a>
+          </li>
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -302,10 +311,18 @@
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 70%">
-                          <input name="detail" type="file" id="exampleInputFile" value="{{old('detail')}}">
+                          <input name="detail" type="file" id="exampleInputFile" class="form-control" value="{{old('detail')}}" style="height: auto;">
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label">Photo</label>  
+                      <div class="col-md-9 inputGroupContainer">
+                        <div style="width: 70%">
+                            <input name="img_article" class="form-control" type="file" accept="image/*" style="height: auto;">
+                        </div>
+                     </div>
+                    </div>
                   
 
               </fieldset>
