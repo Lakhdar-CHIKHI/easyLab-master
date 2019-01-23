@@ -37,12 +37,12 @@
                             <h2>{{$actualite->titre}}</h2>
                             <ul>
                                 
-                                <li><a href="#"><i class="fa fa-clock-o"></i> {{$actualite->date}}</a></li>
+                                <li ><a href="#" style="font-size:15px;"><i class="fa fa-clock-o" style="font-size:20px;"></i> {{$actualite->date}}</a></li>
                                 
                             </ul>
-                            <p>{{$actualite->resume}}</p>
+                            
                             <blockquote>
-                                {{$actualite->resume}}
+                                {!!$actualite->resume!!}
                             </blockquote>
                         </div>
                         

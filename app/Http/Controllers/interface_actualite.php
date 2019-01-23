@@ -99,7 +99,7 @@ class interface_actualite extends Controller
 	 	//$this->authorize('delete', $actualite);
 
         $actualite->delete();
-        return redirect('actualites');
+        return redirect('actualites')->with('success','Message Envoyer avec success');
 
     }
 

@@ -19,7 +19,7 @@ class CreateActualitesTable extends Migration
             $table->string('titre',150)->nullable();
             $table->string('resume',2000)->nullable();
             $table->string('photo')->nullable();
-            $table->datetime('date')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
             $table-> foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             

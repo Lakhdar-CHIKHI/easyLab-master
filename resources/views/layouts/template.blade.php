@@ -16,7 +16,7 @@
     
     <!-- end theme style -->
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="{{asset('images/header/logo2.png')}}">
+    <link rel="shortcut icon" type="image/png" href="{{asset($labo->logo)}}">
 </head>
 <body>
         <div id="educo_wrapper">
@@ -159,7 +159,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2">
                             <div class="educo_logo">
-                                <a href="index.html"><img src="{{asset('images/header/logo2.png')}}" alt="logo" style="margin-top: -3px;"></a>
+                                <a href="index.html"><img src="{{asset($labo->logo)}}" alt="logo" style="margin-top: -3px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
@@ -202,19 +202,18 @@
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="widget text-widget">
                                 <p>
-                                    <a href="index.html"><img src="{{asset('images/header/logo2.png')}}" alt="Footer Logo"></a>
+                                    <a href="index.html"><img src="{{asset($labo->logo)}}" alt="Footer Logo"></a>
                                 </p>
-                                <p>La recherche scientifique constitue un enjeu déterminant au 21éme siècle eu égard aux défis technologiques et à la mondialisation qui sera le champ de confrontation entre les nations industrialisées et modernes, confrontation
-                                    qui risque de reléguer au second plan les sociétés qui ne se donnent pas les moyens de se développer. </p>
+                                {!!$labo->propos!!}
                                 
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="widget text-widget">
                                 <h4 class="widget-title">trouve nous</h4>
-                                <p><i class="fa fa-safari"></i>22, Rue Abi Ayed Abdelkrim Fg Pasteur B.P 119 13000, Tlemcen <br> Algérie </p>
-                                <p><i class="fa fa-envelope-o"></i><a href="#">info@edutioncollege.gov.co.uk</a> <a href="#">public@edutioncollege.gov.co.uk</a></p>
-                                <p><i class="fa fa-phone"></i> Tél : 043.41.11.89 <br>Fax : 043.41.11.91 <br>   Télex : 1871-18034</p>
+                                <p><i class="fa fa-safari"></i>{{$labo->lieu}} </p>
+                                <p><i class="fa fa-envelope-o"></i><a href="#">{{$labo->mail}}</a></p>
+                                <p><i class="fa fa-phone"></i> Tél : {{$labo->tel}} <br>Fax : {{$labo->fax}} <br>   Télex : 1871-18034</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -241,7 +240,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="ed_copy_right">
-                                <p>© Copyright 2016, All Rights Reserved, <a href="#">Laboratoire de recherche Tlemcen ( LRIT )</a></p>
+                                <p>© Copyright 2016, All Rights Reserved, <a href="#">{{$labo->nom}}</a></p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

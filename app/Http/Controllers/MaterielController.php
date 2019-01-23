@@ -114,7 +114,7 @@ class MaterielController extends Controller
         for ($i = 1; $i <= $request->input('nouvQua') ; $i++) {
             DB::insert("INSERT INTO `materiels` (`numero`, `nom_mat`) VALUES ('".$request->input('nouvCat').$i."', '".$request->input('nouvCat')."')");
         }*/
-        return redirect('materiels/create')->with('success','Message Envoyer avec success');;
+        return redirect('materiels/create')->with('success','Message Envoyer avec success');
     }
 
     public function index()
