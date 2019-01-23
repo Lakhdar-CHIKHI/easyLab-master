@@ -19,7 +19,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
         <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -65,7 +69,6 @@
             <span>Materiels</span>
           </a>
         </li>
-        
           @if(Auth::user()->role->nom == 'admin' )
 
           <li class="active">
@@ -90,6 +93,12 @@
 
                 <!-- Form Name -->
                 <legend><center><h2><b>Informations du Laboratoire</b></h2></center></legend><br>
+                @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                            
+                        @endif
               <div class="form-group ">
                         <label class="col-md-3 control-label">Nom du laboratoire *</label>  
                         <div class="col-lg-7 inputGroupContainer @if($errors->get('nom')) has-error @endif">
@@ -125,7 +134,7 @@
                       <label class="col-md-3 control-label">Lieu *</label>  
                       <div class="col-md-7 inputGroupContainer @if($errors->get('lieu')) has-error @endif">
                         <div class="input-group col-md-12">
-                          <input  name="lieu" class="form-control" placeholder="Lieu" type="text"style="height:auto;" value="{{old('lieu')}}">
+                          <input  name="lieu" class="form-control" placeholder="Lieu" type="text" style="height:auto;" value="{{old('lieu')}}">
                         </div>
                         <span class="help-block">
                           @if($errors->get('lieu'))
@@ -140,7 +149,7 @@
                   <label class="col-md-3 control-label">Mail *</label>  
                   <div class="col-md-7 inputGroupContainer @if($errors->get('mail')) has-error @endif">
                     <div class="input-group col-md-12">
-                      <input  name="mail" class="form-control" placeholder="Email" type="text"style="height:auto;" value="{{old('mail')}}">
+                      <input  name="mail" class="form-control" placeholder="Email" type="text" style="height:auto;" value="{{old('mail')}}">
                     </div>
                     <span class="help-block">
                       @if($errors->get('mail'))

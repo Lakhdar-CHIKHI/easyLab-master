@@ -57,8 +57,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="det_act">
+                                                        {!!$actualite->resume!!}
+                                                    </div>
                                                     
-                                                    <p style="height: 100px;overflow: hidden;">{!!$actualite->resume!!}</p>
                                                     <a href="{{ url('template/'.$actualite->id.'/detail_actualite')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                 </div>
                                             </div>

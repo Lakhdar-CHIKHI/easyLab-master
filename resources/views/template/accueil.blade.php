@@ -121,7 +121,7 @@
                                         box-shadow: 0 0 80px;">
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="ed_counter">
-                                                            <h2 class="timer"  data-from="0" data-to="{{count($membres)}}" data-speed="3000"></h2>
+                                                            <h2 class="timer"  data-from="0" data-to="{{count($equipes)}}" data-speed="3000"></h2>
                                                             <h4><strong >EQUIPES DE LABORATOIRE</strong></h4>
                                                         </div>
                                                     </div>
@@ -216,21 +216,17 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="ed_video_section">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <div class="ed_video">
-                                    <img src="{{asset('images/content/pro_lab.jpg')}}" style="cursor:pointer" alt="1">
-                                    <div class="ed_img_overlay">
-                                        <a href="#"><i class="fa fa-chevron-right"></i></a>
-                                    </div>
-                                </div>
-                                <iframe id="educo_video" class="embed-responsive-item" src="https://www.youtube.com/embed/8mb-0qbq984" allowfullscreen=""></iframe>
+                                
+                                <video class="video-fluid z-depth-1" autoplay loop controls muted>
+                                    <source src="{{asset($labo->video)}}" type="video" />
+                                  </video>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="ed_video_section_discription">
-                            <h4>Laboratoire De Recherche Informatique Tlemcen ( LRIT )</h4>
-                            <p>La recherche scientifique constitue un enjeu déterminant au 21éme siècle eu égard aux défis technologiques et à la mondialisation qui sera le champ de confrontation entre les nations industrialisées et modernes, confrontation
-                                qui risque de reléguer au second plan les sociétés qui ne se donnent pas les moyens de se développer.</p>
+                            <h4>{{$labo->nom}}</h4>
+                            {!!$labo->propos!!}
                             <span><a href="{{url('template/apropos')}}" class="btn ed_btn ed_orange">Voir Plus</a></span>
                         </div>
                     </div>

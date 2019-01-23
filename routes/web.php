@@ -68,7 +68,7 @@ Route::get('charts/graph3', 'ChartsController@graph3');
 
 //======================================= FIN ==================================================
 
-Route::get('dashboard', 'dashController@index');
+Route::get('dashboard', 'HomeController@index')->name('home');
 Route::get('parametre', 'ParametreController@create');
 Route::post('parametre', 'ParametreController@store');
 

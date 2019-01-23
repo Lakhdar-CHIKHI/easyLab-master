@@ -53,13 +53,13 @@ class ParametreController extends Controller
         }
         $labo->nom = $request->input('nom');
         $labo->propos = $request->input('propos');
-        $labo->nom = $request->input('lieu');
-        $labo->propos = $request->input('mail');
-        $labo->nom = $request->input('tel');
-        $labo->propos = $request->input('fax');
+        $labo->lieu = $request->input('lieu');
+        $labo->mail = $request->input('mail');
+        $labo->tel = $request->input('tel');
+        $labo->fax = $request->input('fax');
         $labo->save();
 
-        return redirect('parametre');
+        return redirect('parametre')->with('success','Message Envoyer avec success');
 
     }
 }

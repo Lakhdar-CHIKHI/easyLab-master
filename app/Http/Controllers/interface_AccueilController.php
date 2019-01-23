@@ -30,6 +30,7 @@ class interface_AccueilController extends Controller
         $projets = Projet::all();
         //$projets = Projet::orderBy('id','asc')->paginate(1);
         $labo =  Parametre::find('1');
+        $equipes = Equipe::all();
         $membres = User::all();
         
         // $membres = Projet::find($id)->users()->orderBy('name')->get();
@@ -37,6 +38,7 @@ class interface_AccueilController extends Controller
         return view('template.accueil' )->with(['projets' => $projets ,
                                                 'labo'=>$labo,
                                                 'membres'=>$membres,
+                                                'equipes'=>$equipes,
                                                 ]);
     	
     }

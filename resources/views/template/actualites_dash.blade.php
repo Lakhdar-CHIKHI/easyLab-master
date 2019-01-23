@@ -55,7 +55,7 @@
           </a>
         </li>
       
-         <li class="active">
+         <li>
           <a href="{{url('articles')}}">
             <i class="fa fa-newspaper-o"></i> 
             <span>Articles</span></a>
@@ -67,7 +67,12 @@
             <span>Projets</span>
           </a>
         </li>
-        
+        <li >
+            <a href="{{url('materiels')}}">
+              <i class="glyphicon glyphicon-blackboard"></i> 
+              <span>Materiels</span>
+            </a>
+          </li>
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -132,18 +137,21 @@
                                     
                                     <div class="input-group col-md-12">
                                       <div class="row">
-                                          <div class="col-md-4">
+                                          <div class="col-md-12">
                                             <img src="{{$actualite->photo}}"  class="col-md-12 img-fluid img-bordered img-rounded">
                                           </div>
-                                          <div class="col-md-8">
-                                            <table class="table table-striped table-hover">
-                                              <tr><td><strong>TITRE :</strong></td><td>{{$actualite->titre}}</td></tr>
-                                              <tr><td><strong>DATE PUBLICATION :</strong></td><td>{{$actualite->date}}</td></tr>
-                                              <tr><td><strong>RESUME :</strong></td><td>{!! $actualite->resume !!}</td></tr>
-                                            </table>
-                                            
-                                            
-                                          </div>
+                                          
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-12">
+                                              <table class="table table-striped table-bordered table_act">
+                                                <tr><td class="col-md-2"><strong>TITRE :</strong></td><td>{{$actualite->titre}}</td></tr>
+                                                <tr><td><strong>DATE PUBLICATION :</strong></td><td>{{$actualite->date}}</td></tr>
+                                                <tr><td colspan="2"><strong>RESUME :</strong>{!! $actualite->resume !!}</td></tr>
+                                              </table>
+                                              
+                                              
+                                            </div>
                                       </div>
                                     </div>
                                     
@@ -164,8 +172,8 @@
                         <!--<a href="{{ url('actualite/'.$actualite->id.'/edit')}}" class="btn btn-default">
                           <i class="fa fa-edit"></i>
                         </a>-->
-                        <a href="#modifier{{ $actualite->id }}Modal" role="button" class="btn btn-default" data-toggle="modal"><i class="fa fa-edit"></i></a>
-                        <div class="modal fade bd-example-modal-lg" id="modifier{{ $actualite->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="modifier{{ $actualite->id }}ModalLabel" aria-hidden="true">
+                        <a href="#modifier{{ $actualite->id }}Modal" role="button" class="btn btn-default btn_tiny" data-tiny="{{ $actualite->id }}" data-toggle="modal"><i class="fa fa-edit"></i></a>
+                        <div class="modal fade bd-example-modal-lg "  id="modifier{{ $actualite->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="modifier{{ $actualite->id }}ModalLabel" aria-hidden="true">
                   
                           <div class="modal-dialog modal-lg">
                               <div class="modal-content form_rad" >
@@ -200,7 +208,7 @@
                                           <div class="col-md-12 inputGroupContainer ">
                                               <label class="control-label">resume :</label><br>
                                             <div class="input-group col-md-12">
-                                          <textarea  name="resume" placeholder="resume" class="form-control" style="height: auto;" id="mytextarea" rows="10"  value="{{old('resume')}}"></textarea>
+                                          <textarea  name="resume" placeholder="resume" class="form-control" style="height: auto;" id="mytextarea{{ $actualite->id }}" rows="10">{!!$actualite->resume!!}</textarea>
                                             </div>
                                               
                                           </div>

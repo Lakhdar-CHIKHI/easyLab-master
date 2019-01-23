@@ -433,6 +433,22 @@
 </script>
 <script type="text/javascript" src="{{asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script>
+  
+ $('.btn_tiny').on('click',function(){
+    var test =$(this).data('tiny');
+    var test2='#mytextarea'+test;
+    tinymce.init({
+  selector: test2,
+  theme: 'modern',
+  plugins: 'print preview fullpage searchreplace paste directionality code visualblocks visualchars link codesample table charmap hr nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount contextmenu colorpicker textpattern help',
+  toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tinymce.com/css/codepen.min.css'
+  ]
+ });
+ });
+
   tinymce.init({
   selector: '#mytextarea',
   theme: 'modern',

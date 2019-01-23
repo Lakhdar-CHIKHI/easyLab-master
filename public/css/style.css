@@ -1276,7 +1276,7 @@ a.ed_getinvolved:hover i {
 .ed_video_section_discription h4 {
     font-size: 24px;
     color: #ffffff;
-    padding-top: 40px;
+    padding-top: 0;
 }
 
 .ed_video_section_discription p {

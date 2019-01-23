@@ -17,7 +17,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li >
+        <li>
           <a href="{{url('actualites')}}">
               <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
           </a>

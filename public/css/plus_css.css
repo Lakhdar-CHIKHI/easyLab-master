@@ -27,3 +27,7 @@
 .date_rendu {
     padding: 0 5% 0 5%;
 }
+
+.table_act td>strong {
+    color: #167ac6;
+}
