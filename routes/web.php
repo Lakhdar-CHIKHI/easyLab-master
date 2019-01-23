@@ -91,7 +91,6 @@ Route::get('contacts','ContactController@index');
 Route::get('contacts/create','ContactController@create');
 Route::post('contacts','ContactController@store');
 Route::get('contacts/{id}/details','ContactController@details');
-Route::get('trombinoscopecontacts','ContactController@trombi');
 Route::get('contacts/{id}/edit','ContactController@edit');
 Route::put('contacts/{id}','ContactController@update');
 Route::delete('contacts/{id}','ContactController@destroy');
@@ -108,6 +107,10 @@ Route::get('stages/{id}/edit','StageController@edit');
 Route::put('stages/{id}','StageController@update');
 Route::delete('stages/{id}','StageController@destroy');
 /* dans create */
+
+Route::post('contacts/storepop','ContactController@storepop');
+
+
 
 Route::get('projets/createpop','ContactController@createpop');
 Route::post('projets/storepop','ContactController@storepop');

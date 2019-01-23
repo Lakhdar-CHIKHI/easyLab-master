@@ -11,7 +11,7 @@
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
         <li><a href="{{url('partenaires')}}">Partenaires</a></li>
-        <li class="active">Ajouter</li>
+        <li class="active">Nouveau</li>
       </ol>
 
 @endsection

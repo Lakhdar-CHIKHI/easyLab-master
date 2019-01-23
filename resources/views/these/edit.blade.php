@@ -164,8 +164,9 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <select name="encadreur_ext" class="form-control select2">
-                              <option value="{{$these->encext->id}}" > {{ $these->encext->nom }} {{ $these->encext->prenom }}</option>
-                               @foreach($contacts as $contact)
+                              
+                               @if($these->encext )        <option value="{{$these->encext->id}}" > {{ $these->encext->nom }} {{ $these->encext->prenom }}</option> @endif
+                             <option ></option>   @foreach($contacts as $contact)
                               <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
                                @endforeach
                             </select>
@@ -178,7 +179,7 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <select name="coencadreur_int" class="form-control select2">
-                              <option></option>
+                              <option>    {{ $these->coencadreur_int }}</option>
                                @foreach($membres as $membre)
                               <option value="{{$membre->name}} {{$membre->prenom}}">{{$membre->name}} {{$membre->prenom}}</option>
                                @endforeach
@@ -192,8 +193,9 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
                             <select name="coencadreur_ext" class="form-control select2">
-                            <option value="{{$these->cooencext->id}}" > {{ $these->cooencext->nom }} {{ $these->cooencext->prenom }}</option>
-                              
+                           
+                               @if ($these->cooencext )   <option value="{{$these->cooencext->id}}" > {{ $these->cooencext->nom }} {{ $these->cooencext->prenom }}</option> @endif
+                               <option></option>  
                                @foreach($contacts as $contact)
                               <option value="{{$contact->id}} ">{{$contact->nom}} {{$contact->prenom}}</option>
                                @endforeach

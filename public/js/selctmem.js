@@ -46,7 +46,7 @@ $('#date_debut').on('change',function(){
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     //  var id_user = $('.qte_act option:selected').val();
      
-   
+      
       //console.log(CSRF_TOKEN);
      
       $.getJSON('createpop' , function(data) {
@@ -141,8 +141,8 @@ if(t==0){
        
       });
 
-         
-        
+   
+      $("#modalForm .close").click();
         
         }
     });
@@ -234,7 +234,7 @@ if(t==0){
                       text: this.nom
                       
                   }));})
-                  
+                 $("#modalFormpart .close").click();
                   }
               });
                       

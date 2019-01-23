@@ -128,7 +128,7 @@
                   </div>
                   <div class="col-md-9">
                   
-                    {{ $these->encext->nom}}   {{ $these->encext->prenom}}
+                  @if($these->encext )  <a href="{{url('contacts/'.$these->encext->id.'/details')}}">    {{ $these->encext->nom}}   {{ $these->encext->prenom}} </a> @endif
                   </div>
                   <strong><i class="margin-r-5"></i></strong>
                   <hr>
@@ -148,7 +148,7 @@
                   </div>
                   <div class="col-md-9">
                  
-                    {{ $these->cooencext->nom }}{{ $these->cooencext->prenom }}
+                  @if($these->cooencext ) <a href="{{url('contacts/'.$these->cooencext->id.'/details')}}">   {{ $these->cooencext->nom}}   {{ $these->cooencext->prenom}} </a>  @endif
                   </div>
 
                   <strong><i class="margin-r-5"></i></strong>

@@ -10,7 +10,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Contacts</li>
+        <li><a href="{{url('contacts')}}">Contacts</a></li>
+        <li class="active">Modifier</li>
       </ol>
 
 @endsection
@@ -282,7 +283,7 @@
                 <div class="box-body" style="padding-top: 30px;">
 
                   <div class="pull-right">
-                <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
+                <a href="{{url('theses/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel these</i></a>
               </div>
                    
               <table id="example1" class="table table-bordered table-striped">
@@ -359,7 +360,7 @@
                 <div class="box-body" style="padding-top: 30px;">
 
                   <div class="pull-right">
-                <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
+                <a href="{{url('theses/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel these</i></a>
               </div>
                    
               <table id="example1" class="table table-bordered table-striped">
@@ -431,7 +432,7 @@
                 <div class="box-body" style="padding-top: 30px;">
 
                   <div class="pull-right">
-                <a href="{{url('articles/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel article</i></a>
+                <a href="{{url('projets/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouveau projet</i></a>
               </div>
                    
               <table id="example1" class="table table-bordered table-striped">
@@ -739,7 +740,7 @@
                       <label class="col-md-3 control-label">Pays (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
                         <div style="width: 100%">
-                          <textarea name="pays" id="paysP" class="form-control" rows="3" placeholder="Entrez ...">{{old('pays')}}</textarea>
+                          <input name="pays" id="paysP" class="form-control" type="text" placeholder="Entrez ...">{{old('pays')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('pays'))
@@ -759,7 +760,7 @@
                       <label class="col-md-3 control-label">Ville (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
                         <div style="width: 100%">
-                          <textarea name="ville" id="villeP" class="form-control" rows="3" placeholder="Entrez ...">{{old('ville')}}</textarea>
+                          <input name="ville" id="villeP" class="form-control" type="text" placeholder="Entrez ...">{{old('ville')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('ville'))
@@ -803,6 +804,7 @@
         </div>
     </div>
 </div>
+
 
 
 

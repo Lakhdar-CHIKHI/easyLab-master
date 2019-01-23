@@ -244,7 +244,7 @@
       </div>
 
 
-   
+    
 <!-- Modal -->
 <div class="modal fade" id="modalFormpart" role="dialog">
     <div class="modal-dialog">
@@ -306,7 +306,7 @@
                       <label class="col-md-3 control-label">Pays (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
                         <div style="width: 100%">
-                          <textarea name="pays" id="paysP" class="form-control" rows="3" placeholder="Entrez ...">{{old('pays')}}</textarea>
+                          <input name="pays" id="paysP" class="form-control" type="text" placeholder="Entrez ...">{{old('pays')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('pays'))
@@ -326,7 +326,7 @@
                       <label class="col-md-3 control-label">Ville (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
                         <div style="width: 100%">
-                          <textarea name="ville" id="villeP" class="form-control" rows="3" placeholder="Entrez ...">{{old('ville')}}</textarea>
+                          <input name="ville" id="villeP" class="form-control" type="text" placeholder="Entrez ...">{{old('ville')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('ville'))
@@ -341,11 +341,6 @@
                   </div>
 
                   </div>
-
-
-
-
-
 
 
 <div class=" col-md-12 ">   <div class="form-group col-md-10 "> 
@@ -375,6 +370,7 @@
         </div>
     </div>
 </div>
+
 
 
 

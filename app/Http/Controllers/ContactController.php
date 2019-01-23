@@ -10,6 +10,8 @@ use App\Http\Requests\contactEditRequest;
 use App\Parametre;
 use App\User;
 use App\Contact;
+use App\ArticleContact;
+use App\ProjetContact;
 use App\Partenaire;
 use App\Role;
 use Auth;
@@ -53,7 +55,7 @@ class ContactController extends Controller
             'roles' => $roles,
             'labo'=>$labo,
             
-        ]);;
+        ]);
     } 
 
     public function create()
@@ -157,7 +159,7 @@ class ContactController extends Controller
 
         if( Auth::user()->role->nom == 'admin')
             {
-        
+               
         $contact->delete();
         return redirect('contacts');
             }

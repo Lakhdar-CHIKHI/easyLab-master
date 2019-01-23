@@ -102,10 +102,9 @@
       <div class="nav-tabs-custom">
        <ul class="nav nav-tabs">
               <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
-              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$partenaire->create_id->id)
-            
+             
               <li><a href="#modifier" data-toggle="tab">Modifier</a></li>
-              @endif
+          
             </ul>
 
       <div class="tab-content">
@@ -271,7 +270,7 @@
 
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Membres de l'équipe</h3>
+                  <h3 class="box-title">Contacts du partenaire</h3>
 
                 </div>
                 <!-- /.box-header -->

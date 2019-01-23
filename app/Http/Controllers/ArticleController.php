@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Article;
 use App\User;
@@ -183,7 +183,8 @@ class ArticleController extends Controller
             $article_user->user_id = $value;
             $article_user->save();
 
-         } 
+		 } 
+		 DB::table('article_contact')->where('article_id', '=', $article->id)->delete();
 		 $contacts =  $request->input('contact');
 		 foreach ($contacts as $key => $value) {
 			  $article_contact = new ArticleContact();
@@ -201,7 +202,12 @@ class ArticleController extends Controller
     public function destroy($id){
 
     	$article = Article::find($id);
-
+		$contacts = ArticleContact::where('article_id', $id)->get();
+        foreach ($contacts as $contact ) {
+        
+            $contact->delete();
+                         
+                         } 
 	 	$this->authorize('delete', $article);
 
         $article->delete();

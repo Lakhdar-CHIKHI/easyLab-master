@@ -26,9 +26,11 @@ class contactEditRequest extends FormRequest
         
         return [
             'nom' => 'required',
-            
-            
-
+            'prenom' => 'required',
+            'adresse_mail' => 'required',
+           
+            'fonction' => 'required',
+            'partenaire' => 'required'
 
         ];
 

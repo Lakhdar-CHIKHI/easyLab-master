@@ -147,7 +147,143 @@
                                   </div>
                                   <div class="modal-body text-center">
                                       Voulez-vous vraiment effectuer la suppression ? 
+                                       cela entrenera la suppression des contacts et des stages concernes par ce partenaire 
                                   </div>
+                                 
+                                     
+                                
+             <div class="modal-body text-center">                     
+                                  <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+          
+              <li><a href="#timeline" class="active" data-toggle="tab">Contacts</a></li>
+              <li><a href="#timeline1" data-toggle="tab">Stages</a></li>
+           
+            </ul>
+
+            <div class="tab-content">
+
+            <div class="tab-pane active" id="timeline">
+               
+          
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr><th>Nom</th>
+                  <th>Prenom</th>
+                   <th>Actions</th>
+                 
+                </tr>
+                </thead>
+                <tbody> 
+                  <!-- modifier -->    
+                  @foreach ($partenaire->contacts as $contact) 
+                  <tr>
+                  <td>{{$contact->nom}}</td>
+                    <td>{{$contact->prenom}}</td>
+                    <td>   <div class="btn-group">
+                        <form action="{{ url('contacts/'.$contact->id)}}" method="post">
+                          
+                          {{csrf_field()}}
+                          {{method_field('DELETE')}}
+
+                        <a href="{{ url('contacts/'.$contact->id.'/details')}}" class="btn btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        @if(Auth::user()->role->nom == 'admin' )
+                        <a href="{{ url('contacts/'.$contact->id.'/edit')}}" class="btn btn-default">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        @endif
+                        @if( Auth::user()->role->nom != 'membre' )
+                        <button type="submit" class="btn btn-danger ">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                        @endif
+                        </form>
+                      </div>
+                      
+                    </td>
+                  </tr>
+                  @endforeach        </tbody>
+                <tfoot>
+                <tr>
+                <th>Nom</th>
+                  <th>Prenom</th>
+           
+                  <th>Actions</th>
+               
+                </tr>
+                </tfoot>
+              </table>
+            </div>  
+            
+
+            <div class="tab-pane" id="timeline1">
+               
+          
+               <table id="example1" class="table table-bordered table-striped">
+                 <thead>
+                 <tr><th>Titre</th>
+                   <th>Sujet</th>
+                   <th>Stagiere</th>
+                    <th>Actions</th>
+                  
+                 </tr>
+                 </thead>
+                 <tbody> 
+                   <!-- modifier -->    
+                   @foreach ($partenaire->stages as $stage) 
+                   <tr>
+                   <td>{{$stage->titre}}</td>
+                   <td>{{$stage->sujet}}</td>
+                     <td>{{$stage->user->name}} {{$stage->user->prenom}}</td>
+                     <td>   <div class="btn-group">
+                         <form action="{{ url('stages/'.$stage->id)}}" method="post">
+                           
+                           {{csrf_field()}}
+                           {{method_field('DELETE')}}
+ 
+                         <a href="{{ url('stages/'.$stage->id.'/details')}}" class="btn btn-info">
+                             <i class="fa fa-eye"></i>
+                         </a>
+                         @if(Auth::user()->role->nom == 'admin' )
+                         <a href="{{ url('stages/'.$stage->id.'/edit')}}" class="btn btn-default">
+                           <i class="fa fa-edit"></i>
+                         </a>
+                         @endif
+                         @if( Auth::user()->role->nom != 'membre' )
+                         <button type="submit" class="btn btn-danger ">
+                             <i class="fa fa-trash-o"></i>
+                         </button>
+                         @endif
+                         </form>
+                       </div>
+                       
+                     </td>
+                   </tr>
+                   @endforeach        </tbody>
+                 <tfoot>
+                 <tr>
+                 <th>Nom</th>
+                   <th>Prenom</th>
+            
+                   <th>Actions</th>
+                
+                 </tr>
+                 </tfoot>
+               </table>
+             </div>  
+            
+            
+
+
+
+
+
+
+
+ </div>
+            </div> </div>
                                   <div class="modal-footer">
                                       <form class="form-inline" action="{{ url('partenaires/'.$partenaire->id)}}"  method="POST">
                                           @method('DELETE')

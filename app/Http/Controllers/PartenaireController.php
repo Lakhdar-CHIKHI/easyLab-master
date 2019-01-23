@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\partenaireRequest;
 use App\Parametre;
 use App\Partenaire;
+use App\Stage;
 use App\Contact;
 use Auth;
 
@@ -144,7 +145,23 @@ class PartenaireController extends Controller
     {
         if( Auth::user()->role->nom == 'admin' )
             {
+                
+                
+
         $partenaire = Partenaire::find($id);
+        $contacts = Contact::where('partenaire_id', $id)->get();
+foreach ($contacts as $contact ) {
+
+    $contact->delete();
+                 
+                 } 
+                 $stages = Stage::where('partenaire_id', $id)->get();
+foreach ($stages as $stage ) {
+
+    $stage->delete();
+                 
+                 } 
+
         $partenaire->delete();
         return redirect('partenaires');
         }
