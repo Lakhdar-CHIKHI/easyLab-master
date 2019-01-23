@@ -120,8 +120,10 @@ Route::post('materiells', 'MaterielController@store2');
 Route::post('materiels/affectations/membre', 'MaterielController@affecter_mat_membre');
 Route::post('materiels/affectations/equipe', 'MaterielController@affecter_mat_equipe');
 Route::get('materiels/supprimer/{id}','MaterielController@supprimerMateriel');
+Route::get('materiels/supprimer_nonaffect/{id}','MaterielController@supprimerMateriel_nonaffect');
 Route::post('materiels/historique','MaterielController@voirhistorique');
 Route::post('materiels/modifier','MaterielController@modifierA');
+Route::post('materiels/modifier_nonAffect','MaterielController@modifierA_nonAffect');
 
 //Route::post('materiels/quantite','MaterielController@quantite');
 /*
