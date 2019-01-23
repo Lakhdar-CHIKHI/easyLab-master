@@ -1,3 +1,29 @@
 .form_rad {
     border-radius: 20px;
 }
+
+.cat,
+.mat,
+.membre,
+.equipe,
+.date_affecter {
+    display: none;
+}
+
+.select2-selection--single {
+    padding-top: 2px !important;
+}
+
+.table_modifier input,
+.table_modifier select {
+    border-radius: 4px;
+}
+
+.table_modifier td {
+    text-align: left;
+    vertical-align: middle !important;
+}
+
+.date_rendu {
+    padding: 0 5% 0 5%;
+}

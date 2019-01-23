@@ -73,8 +73,10 @@ Route::get('parametre', 'ParametreController@create');
 Route::post('parametre', 'ParametreController@store');
 
 Route::get('materiels', 'MaterielController@index');
-Route::get('materiels/user_mat/{id}/{mat}', 'MaterielController@rendreUser');
-Route::get('materiels/equipe_mat/{id}/{mat}', 'MaterielController@rendreEquipe');
+//Route::get('materiels/user_mat/{id}/{mat}', 'MaterielController@rendreUser');
+//Route::get('materiels/equipe_mat/{id}/{mat}', 'MaterielController@rendreEquipe');
+Route::post('materiels/rendu_equipe', 'MaterielController@rendreEquipe');
+Route::post('materiels/rendu_user', 'MaterielController@rendreUser');
 Route::get('materiels/create', 'MaterielController@create');
 Route::post('materiels', 'MaterielController@store');
 Route::post('materiells', 'MaterielController@store2');

@@ -19,8 +19,8 @@ class MigrateTableEquipeMat extends Migration
             $table->string('id_materiel',30);
             $table->date('date_debut')->nullable();
             $table->date('date_fin')->nullable();
-            $table-> foreign('id_equipe')->references('id')->on('equipes')->onDelete('cascade');
-            $table-> foreign('id_materiel')->references('numero')->on('materiels')->onDelete('cascade');
+            $table-> foreign('id_equipe')->references('id')->on('equipes')->onDelete('cascade')->onUpdate('cascade');
+            $table-> foreign('id_materiel')->references('numero')->on('materiels')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

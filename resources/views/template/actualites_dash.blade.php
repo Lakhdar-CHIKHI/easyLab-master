@@ -129,69 +129,7 @@
                                   </div>
                                   
                                     <div class=" modal-body">
-                                    <!--
-                                      <img src="{{$actualite->photo}}" class="img-fluid img-responsive rounded-circle" alt="Responsive image" style="border-radius: 2rem;box-shadow: 0 0 20px;height: 400px;width: 100%;">
-                                        <br>
-                                        <div class="col-md-12" style="padding-bottom: 15px;">
-                                          <ul class="timeline" style="padding-top: 30px;">
-                                            
-                                            
-                                            
-                                            <li>
-                                              <i class="fa  fa-tag bg-red"></i>
-                                
-                                              <div class="timeline-item">
-                                
-                                                <h3 class="timeline-header"><a >Titre</a></h3>
-                                
-                                                <div class="timeline-body">
-                                                  {{$actualite->titre}} 
-                                                </div>
-                                              </div>
-                                            </li>
-                                            
-                                            <li>
-                                              <i class="fa fa-user bg-aqua"></i>
-                                
-                                              <div class="timeline-item">
-                                               
-                                
-                                                <h3 class="timeline-header no-border"><a>Créateur </a></h3>
-                                                <div class="timeline-body">
-                                                 <a href="{{url('membres/'.$actualite->user_id.'/details')}}"> {{$actualite->createur->name}} {{$actualite->createur->prenom}}
-                                                  </a>
-                                                </div>
-                                              </div>
-                                            </li>
-                                           
-                                            <li>
-                                              <i class="fa fa-comment bg-yellow"></i>
-                                
-                                              <div class="timeline-item">
-                                              <h3 class="timeline-header"><a >Résumé</a></h3>
-                                
-                                                <div class="timeline-body">
-                                                  {!!$actualite->resume!!}
-                                                </div>
-                                              </div>
-                                            </li>
-                                
-                                            
-                                           
-                                            <li>
-                                              <i class="fa fa-clock-o bg-gray"></i>
-                                              <div class="timeline-item">
-                                                <h3 class="timeline-header"><a >Date_actualité</a></h3>
-                                  
-                                                  <div class="timeline-body">
-                                                    {{$actualite->date}}
-                                                  </div>
-                                                </div>
-                                            </li>
-                                          </ul>
-                                        
-                                          
-                                    </div>-->
+                                    
                                     <div class="input-group col-md-12">
                                       <div class="row">
                                           <div class="col-md-4">
@@ -203,10 +141,7 @@
                                               <tr><td><strong>DATE PUBLICATION :</strong></td><td>{{$actualite->date}}</td></tr>
                                               <tr><td><strong>RESUME :</strong></td><td>{!! $actualite->resume !!}</td></tr>
                                             </table>
-                                            <!--<label >TITRE :</label><strong>{{$actualite->titre}}</strong><br>
-                                            <label >DATE PUBLICATION :</label><strong>{{$actualite->date}}</strong><br>
-                                            <label >RESUME :</label><strong>{!! $actualite->resume !!}</strong>
-                                          -->
+                                            
                                             
                                           </div>
                                       </div>

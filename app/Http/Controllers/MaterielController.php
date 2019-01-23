@@ -9,12 +9,21 @@ use App\Categorie;
 use App\Parametre;
 use App\Equipe;
 use Illuminate\Http\Request;
+use App\Http\Requests\materielRequest;
+use App\Http\Requests\categoriesRequest;
 use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
     public function modifierA(Request $request){
-        DB::update("UPDATE materiels SET numero='".$request->input('inpLib')."' WHERE numero='".$request->input('num')."' ");
+        if ($request->input('type_changement')=="materiel") {
+            $libelle = str_replace(' ', '_', $request->input('inpLib'));
+            DB::update("UPDATE materiels SET numero='".$libelle."' WHERE numero='".$request->input('num')."' ");
+        } else {
+            DB::update("UPDATE categories SET nom_mat='".$request->input('inpcat')."' WHERE nom_mat='".$request->input('nom_mat')."' ");
+        }
+        
+
         return redirect('materiels');
     }
 
@@ -61,18 +70,20 @@ class MaterielController extends Controller
         return redirect('materiels');
     }
     public function affecter_mat_membre(Request $request){
-        DB::insert("INSERT INTO `user_mat` (`id`, `id_user`, `id_mat`, `date_debut`, `date_fin`) VALUES (NULL, '".$request->input('idUser')."', '".$request->input('numeroMat')."', CURDATE(), NULL)");
+        DB::insert("INSERT INTO `user_mat` (`id`, `id_user`, `id_mat`, `date_debut`, `date_fin`) VALUES (NULL, '".$request->input('idUser')."', '".$request->input('numeroMat')."', '".$request->input('date_affectation')."', NULL)");
       //  return redirect('materiels');
     }
 
     public function affecter_mat_equipe(Request $request){
-        DB::insert("INSERT INTO `equipe_mat` (`id`, `id_equipe`, `id_materiel`, `date_debut`, `date_fin`) VALUES (NULL, '".$request->input('idUser')."', '".$request->input('numeroMat')."', CURDATE(), NULL)");
+        DB::insert("INSERT INTO `equipe_mat` (`id`, `id_equipe`, `id_materiel`, `date_debut`, `date_fin`) VALUES (NULL, '".$request->input('idUser')."', '".$request->input('numeroMat')."', '".$request->input('date_affectation')."', NULL)");
       //  return redirect('materiels');
     }
 
-    public function store(Request $request)
-    {   DB::insert("INSERT INTO `materiels` (`numero`, `nom_mat`) VALUES ('".$request->input('libelle')."', '".$request->input('cat_nom')."')");
-        return redirect('materiels');
+    public function store(materielRequest $request)
+    {  
+        $libelle = str_replace(' ', '_', $request->input('libelle'));
+        DB::insert("INSERT INTO `materiels` (`numero`, `nom_mat`) VALUES ('".$libelle."', '".$request->input('cat_nom')."')");
+        return redirect('materiels')->with('success','Message Envoyer avec success');;
         /*
         $result =DB::select("SELECT quantite_mat FROM `categories` WHERE nom_mat='".$request->input('cat_nom')."'" );
         $affichage = "";
@@ -96,14 +107,14 @@ class MaterielController extends Controller
 
       //return redirect('materiels');
     }
-    public function store2(Request $request)
+    public function store2(categoriesRequest $request)
     {
         DB::insert("INSERT INTO categories (nom_mat,quantite_mat,affectable) VALUES ('".$request->input('nouvCat')."','".$request->input('nouvQua')."','".$request->input('gender')."')");
       /* 
         for ($i = 1; $i <= $request->input('nouvQua') ; $i++) {
             DB::insert("INSERT INTO `materiels` (`numero`, `nom_mat`) VALUES ('".$request->input('nouvCat').$i."', '".$request->input('nouvCat')."')");
         }*/
-        return redirect('materiels/create');
+        return redirect('materiels/create')->with('success','Message Envoyer avec success');;
     }
 
     public function index()
@@ -123,20 +134,25 @@ class MaterielController extends Controller
         ]);
     }
 
-    public function rendreEquipe($id,$mat)
+    public function rendreEquipe(Request $request)
     {
-        // $var =
+         $id =$request->input('id_affecter_equipe');
+         $mat =$request->input('num_materiel_equipe');
+         $date =$request->input('date_affecter_equipe');
         
-        DB::update("update equipe_mat set date_fin = CURDATE() where id_equipe = '".$id."' and id_materiel ='".$mat."' ");
+        DB::update("update equipe_mat set date_fin = '".$date."' where id_equipe = '".$id."' and id_materiel ='".$mat."' ");
         return redirect('materiels');
         // $var->save();
     }
 
-    public function rendreUser($id,$mat)
+    public function rendreUser(Request $request)
     {
         // alert('hedmkezmd');
         // $var =
-        DB::update("update user_mat set date_fin = CURDATE() where id_user = '".$id."' and id_mat= '".$mat."'  ");
+        $id =$request->input('id_affecter_user');
+         $mat =$request->input('num_materiel_user');
+         $date =$request->input('date_affecter_user');
+        DB::update("update user_mat set date_fin = '".$date."' where id_user = '".$id."' and id_mat= '".$mat."'  ");
 
         return redirect('materiels');
     }

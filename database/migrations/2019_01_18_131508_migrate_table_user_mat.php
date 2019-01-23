@@ -19,8 +19,8 @@ class MigrateTableUserMat extends Migration
             $table->string('id_mat',30);
             $table->date('date_debut')->nullable();
             $table->date('date_fin')->nullable();
-            $table-> foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table-> foreign('id_mat')->references('numero')->on('materiels')->onDelete('cascade');
+            $table-> foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table-> foreign('id_mat')->references('numero')->on('materiels')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

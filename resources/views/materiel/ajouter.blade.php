@@ -100,7 +100,7 @@
 
             <!-- Form Name -->
             <legend><center><h2><b>Nouveau Materiel</b></h2></center></legend><br>
-
+          
                   <script type="text/javascript">
     function afficherQuantite(){
       //$valeur= document.getElementById('nommat').value;
@@ -113,9 +113,9 @@
 </script>
                 <div class="form-group ">
                     <label class="col-xs-3 control-label">Catégorie matériel (*)</label>  
-                    <div class="col-xs-9 inputGroupContainer @if($errors->get('chef_id')) has-error @endif">
+                    <div class="col-xs-9 inputGroupContainer @if($errors->get('cat_nom')) has-error @endif">
                       <div style="width: 70%">
-                        <select id="selectCat" name="cat_nom"  class="form-control select2 qte_act22" onchange="afficherQuantite()" >
+                        <select id="selectCat" name="cat_nom"  class="form-control select2 qte_act22"  ><!--onchange="afficherQuantite()"-->
                            @foreach($categories as $categorie)
                           @if($categorie->affectable=='oui')
                           <option></option>
@@ -125,8 +125,8 @@
                           @endforeach
                         </select>
                         <span class="help-block">
-                            @if($errors->get('chef_id'))
-                              @foreach($errors->get('chef_id') as $message)
+                            @if($errors->get('cat_nom'))
+                              @foreach($errors->get('cat_nom') as $message)
                                 <li> {{ $message }} </li>
                               @endforeach
                             @endif
@@ -135,19 +135,19 @@
                     </div>
               </div>  
 
-              <div class="form-group">
+              <!--<div class="form-group">
                     <label class="col-xs-3 control-label">Quantite actuel (*)</label>  
-                    <div class="col-xs-9 inputGroupContainer @if($errors->get('intitule')) has-error @endif">
+                    <div class="col-xs-9 inputGroupContainer @if($errors->get('qte')) has-error @endif">
                       <div style="width: 70%">
-                        <input id="qt" name="intitule" class="form-control hups" placeholder="Quantité actuel" type="text" value="{{old('titre')}}" disabled>
+                        <input id="qt" name="qte" class="form-control hups" placeholder="Quantité actuel" type="text" value="{{old('titre')}}" disabled>
                          <div class="hups2">
                          <table>
                          
                          </table>
                          </div>
                           <span class="help-block">
-                            @if($errors->get('intitule'))
-                              @foreach($errors->get('intitule') as $message)
+                            @if($errors->get('qte'))
+                              @foreach($errors->get('qte') as $message)
                                 <li > {{ $message }} </li>
                               @endforeach
                             @endif
@@ -155,14 +155,21 @@
                           
                       </div>
                     </div>
-              </div>  
+              </div>  -->
 
               <div class="form-group">
                   <label class="col-md-3 control-label">Libellé</label>
-                  <div class="col-md-9 inputGroupContainer" >
+                  <div class="col-md-9 inputGroupContainer @if($errors->get('qte')) has-error @endif" >
                     <div style="width: 70%">
                     <input name="libelle" type="text" class="form-control" placeholder="Réfférencement à la categorie" >
-                    </div>
+                    <span class="help-block">
+                        @if($errors->get('qte'))
+                          @foreach($errors->get('qte') as $message)
+                            <li > {{ $message }} </li>
+                          @endforeach
+                        @endif
+                    </span>
+                  </div>
                   </div>
               </div>
               <div class="row" style="padding-top: 30px; margin-left: 35%;">
@@ -179,32 +186,58 @@
               {{ csrf_field() }}
           <fieldset>
           <legend><center><h2><b>Nouvelle catégorie</b></h2></center></legend><br>
+          @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                            
+                        @endif
              <div class="form-group">
                   <label class="col-md-3 control-label">Nouvelle categorie(*)</label>
-                  <div class="col-md-9 inputGroupContainer" >
+                  <div class="col-md-9 inputGroupContainer @if($errors->get('nouvCat')) has-error @endif" >
                     <div style="width: 70%">
                       <input name="nouvCat" type="text" class="form-control" placeholder="intitule" type="text">
+                      <span class="help-block">
+                          @if($errors->get('nouvCat'))
+                            @foreach($errors->get('nouvCat') as $message)
+                              <li> {{ $message }} </li>
+                            @endforeach
+                          @endif
+                      </span>
                     </div>
                   </div>
               </div>
               <div class="form-group">
                   <label class="col-md-3 control-label">Quantité(*)</label>
-                  <div class="col-md-9 inputGroupContainer" >
+                  <div class="col-md-9 inputGroupContainer @if($errors->get('nouvQua')) has-error @endif" >
                     <div style="width: 70%">
                       <input name="nouvQua" type="number" min="1" class="form-control" placeholder="Quantité >= 1" >
-                     
+                      <span class="help-block">
+                          @if($errors->get('nouvQua'))
+                            @foreach($errors->get('nouvQua') as $message)
+                              <li> {{ $message }} </li>
+                            @endforeach
+                          @endif
+                      </span>
                     </div>
                   </div>
               </div>
               <div class="form-group">
                   <label class="col-md-3 control-label">affectable</label>
-                  <div class="col-md-9 inputGroupContainer" >
+                  <div class="col-md-9 inputGroupContainer @if($errors->get('gender')) has-error @endif" >
                     <div style="width: 70%">
                       <label >oui</label>
                       <input type="radio" name="gender" value="oui">
                       <br>
                       <label >non</label>
                       <input type="radio" name="gender" value="non">
+                      <span class="help-block">
+                          @if($errors->get('gender'))
+                            @foreach($errors->get('gender') as $message)
+                              <li> {{ $message }} </li>
+                            @endforeach
+                          @endif
+                      </span>
                     </div>
                  </div>
               </div>
