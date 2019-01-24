@@ -21,7 +21,7 @@ class MigrateTablePartenaires extends Migration
             $table->string('ville',40)->nullable();
             $table->string('logo',40)->nullable();
             $table->timestamps();
-            $table->datetime('deleted_at')->nullable();
+          
         });
     }
 

@@ -433,29 +433,10 @@
 
 
 
-
-<div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
-                      <label class="col-md-3 control-label">Détails</label>
-                      <div class="col-md-9 inputGroupContainer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <div style="width: 100%">
-                          <input name="detail" type="file" id="exampleInputFile" value="{{old('detail')}}">
-=======
-                        <div style="width: 70%">
-                          <input name="detail" type="file" id="exampleInputFile" class="form-control" value="{{old('detail')}}" style="height: auto;">
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
-=======
-                        <div style="width: 70%">
-                          <input name="detail" type="file" id="exampleInputFile" class="form-control" value="{{old('detail')}}" style="height: auto;">
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
-                        </div>
-                      </div>
-                  </div>
-                  <div class="form-group">
+  <div class=" col-md-12 ">                 <div class="form-group col-md-10">
                       <label class="col-md-3 control-label">Photo</label>  
                       <div class="col-md-9 inputGroupContainer">
-                        <div style="width: 70%">
+                        <div style="width: 100%">
                             <input name="img_article" class="form-control" type="file" accept="image/*" style="height: auto;">
                         </div>
                      </div>

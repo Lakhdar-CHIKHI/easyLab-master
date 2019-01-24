@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title','LRI | Liste des thèses')
+@section('title','LRI | Liste des stages')
 
 @section('header_page')
 
       <h1>
-      Stages
+      Stages<small>Liste</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>

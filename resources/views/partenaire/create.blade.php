@@ -158,7 +158,7 @@
                       <label class="col-md-3 control-label">Pays (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
                         <div style="width: 70%">
-                          <textarea name="pays" class="form-control" rows="3" placeholder="Entrez ...">{{old('pays')}}</textarea>
+                          <input name="pays" class="form-control" type="text" placeholder="Entrez ...">{{old('pays')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('pays'))
@@ -181,7 +181,7 @@
                       <label class="col-md-3 control-label">Ville (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
                         <div style="width: 70%">
-                          <textarea name="ville" class="form-control" rows="3" placeholder="Entrez ...">{{old('ville')}}</textarea>
+                          <input name="ville" class="form-control" type="text" placeholder="Entrez ...">{{old('ville')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('ville'))
@@ -201,17 +201,16 @@
 
                   
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
-                              <label class="col-md-4 control-label">Photo</label>  
-                              <div class="col-md-8 inputGroupContainer">
+                              <label class="col-md-3 control-label">Photo</label>  
+                              <div class="col-md-9 inputGroupContainer">
                               <input name="img" type="file" >
                              </div>
                             </div>
                           </div>
-                          </div>
-
+                         
            
                   
-    </div>
+   
 
 
 
