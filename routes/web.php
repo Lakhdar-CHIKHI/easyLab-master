@@ -137,7 +137,6 @@ Route::get('theses/{id}/createpop','ContactController@createpop');
 Route::post('theses/{id}/storepop','ContactController@storepop');
 Route::post('theses/{id}/storepopP','PartenaireController@storepopP');
 
-<<<<<<< HEAD
 
 Route::post('stages/{id}/date','StageController@selectmembre');
 Route::post('contacts/{id}/storepopP','PartenaireController@storepopP');
@@ -185,10 +184,8 @@ Route::get('charts/graph3', 'ChartsController@graph3');
 
 //======================================= FIN ==================================================
 
-=======
 //======================================= FIN ==================================================
 
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 Route::get('dashboard', 'HomeController@index')->name('home');
 Route::get('parametre', 'ParametreController@create');
 Route::post('parametre', 'ParametreController@store');

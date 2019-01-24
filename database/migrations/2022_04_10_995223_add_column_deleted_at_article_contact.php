@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnDeletedAtArticles extends Migration
+class AddColumnDeletedAtArticleContact extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,20 @@ class AddColumnDeletedAtArticles extends Migration
      */
     public function up()
     {
-        Schema::table('articles', function (Blueprint $table) {
-            $table->datetime('deleted_at')->nullable();
-        });
-    }
+        
+    Schema::table('article_contact', function (Blueprint $table) {
+        $table->datetime('deleted_at')->nullable();
+    });
+   
+    
 
+
+
+
+
+
+    
+}
     /**
      * Reverse the migrations.
      *

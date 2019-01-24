@@ -4,7 +4,7 @@
 
 @section('header_page')
 	<h1>
-        Equipes
+        Partenaire<small>Liste</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a></li>

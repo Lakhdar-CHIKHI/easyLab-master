@@ -20,6 +20,7 @@ class MigrateTableContactProjet extends Migration
             $table->timestamps();
             $table-> foreign('projet_id')->references('id')->on('projets')->onDelete('cascade');
             $table-> foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+           
         });
     }
 

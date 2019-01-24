@@ -212,26 +212,20 @@ class ProjetController extends Controller
     public function destroy($id){
 
     	$projet = Projet::find($id);
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         $contacts = ProjetContact::where('projet_id', $id)->get();
         foreach ($contacts as $contact ) {
         
             $contact->delete();
                          
                          } 
-=======
-=======
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+
         if (file_exists($projet->image)) 
         {
           unlink($projet->image);
            
        }
-<<<<<<< HEAD
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
-=======
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+
         $this->authorize('delete', $projet);
 
         $projet->delete();

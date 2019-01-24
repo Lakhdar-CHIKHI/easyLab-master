@@ -206,7 +206,7 @@
                           <div class="col-md-9 inputGroupContainer @if($errors->get('adresse_mail')) has-error @endif">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input name="adresse_mail" type="adresse_mail" class="form-control" placeholder="Email" value="{{old('adresse_mail')}}" >
+                                <input name="adresse_mail" type="email" class="form-control" placeholder="Email" value="{{old('adresse_mail')}}" >
                             </div>
                             <span class="help-block">
                                 @if($errors->get('adresse_mail'))

@@ -22,9 +22,9 @@ class CreateThesesTable extends Migration
             $table->string('date_debut',40)->nullable();
             $table->string('date_soutenance',40)->nullable();
             $table->string('detail')->nullable();
-            $table->integer('encadreur_ext')->unsigned();
+            $table->integer('encadreur_ext')->unsigned()->nullable();
             $table->string('coencadreur_int',150)->nullable();
-            $table->integer('coencadreur_ext')->unsigned();
+            $table->integer('coencadreur_ext')->unsigned()->nullable();
             $table->string('membre',150)->nullable();
             $table->timestamps();
             $table->datetime('deleted_at')->nullable();

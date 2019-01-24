@@ -288,14 +288,8 @@ $('#contact2').append($("<option/>", {
                 
                 
 
-                   $.each(data, function () {
-                   
-                    $('#partenaireC').append($("<option/>", {
-                      value: this.id,
-                      text: this.nom
-                      
-                  }));})
-                  $(':input','#contform') .not(':button, :submit, :reset, :hidden') .val('')
+                
+                  $(':input','#partform') .not(':button, :submit, :reset, :hidden') .val('')
                   .removeAttr('checked') .removeAttr('selected');
                  $("#modalFormpart .close").click();
                   }
