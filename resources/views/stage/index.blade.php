@@ -9,7 +9,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active"><a href="{{url('stages')}}">Stages</a></li>
+        <li class="active">Stages</li>
       </ol>
 
 @endsection
@@ -40,7 +40,7 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-         <li class="active">
+         <li >
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
             <span>Thèses</span>
@@ -60,7 +60,12 @@
             <span>Projets</span>
           </a>
         </li>
-        
+        <li class="active">
+          <a href="{{url('stages')}}">
+            <i class="fa fa-file-pdf-o"></i> 
+            <span>Stages</span>
+          </a>
+        </li>
        
 
           @if(Auth::user()->role->nom == 'admin' )
@@ -90,11 +95,11 @@
             
             <!-- /.box-header -->
             <div class="box-body">
-              @if(Auth::user()->role->nom == 'admin' )
+        
               <div class=" pull-right">
               <a href="{{url('stages/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"></i> Nouveau stage</a>
             </div>
-            @endif
+           
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>

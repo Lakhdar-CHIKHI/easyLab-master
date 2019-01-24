@@ -12,6 +12,11 @@ class Partenaire extends Model
 
    
 
+
+    public function stages()
+    {
+    	return $this->hasMany('App\Stage');
+    }
     public function contacts()
     {
     	return $this->hasMany('App\Contact');

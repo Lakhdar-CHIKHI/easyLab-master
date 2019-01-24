@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Projet extends Model
 {
-	 use SoftDeletes;
+     use SoftDeletes;
+     
+
+     
 
      protected $dates = ['deleted_at'];
 

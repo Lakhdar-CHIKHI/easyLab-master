@@ -134,7 +134,8 @@
                     @endforeach
                   </div>
                 </div>
-              
+                <strong><i class="margin-r-5"></i></strong>
+                  <hr>
                 <div class="row">
                   <div class="col-md-3 " style="padding-top: 20px">
                     <strong><i class="fa fa-user margin-r-5"></i> Membres externes</strong>

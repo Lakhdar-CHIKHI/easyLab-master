@@ -8,12 +8,19 @@ class Stage extends Model
 {
      use SoftDeletes;
 
+
+
+     
+
      protected $dates = ['deleted_at'];
 
      public function user()
     {
         return $this->belongsTo('App\User');
     }
+
+  
+    
     public function partenaire()
     {
         return $this->belongsTo('App\Partenaire');

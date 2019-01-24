@@ -32,13 +32,17 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\These');
     }
+    public function stage()
+    {
+        return $this->hasOne('App\Stage');
+    }
 
     public function equipe()
     {
         return $this->belongsTo('App\Equipe');
     }
 
-
+   
     public function projet()
     {
         return $this->hasOne('App\Projet');

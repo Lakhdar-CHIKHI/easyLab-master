@@ -1,10 +1,15 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class ProjetContact extends Model
-{
-    protected $table = "contact_contact";
+{  use SoftDeletes;
+    protected $table = "contact_projet";
+
+    public function participe()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

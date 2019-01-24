@@ -54,7 +54,6 @@ Route::get('contacts','ContactController@index');
 Route::get('contacts/create','ContactController@create');
 Route::post('contacts','ContactController@store');
 Route::get('contacts/{id}/details','ContactController@details');
-Route::get('trombinoscopecontacts','ContactController@trombi');
 Route::get('contacts/{id}/edit','ContactController@edit');
 Route::put('contacts/{id}','ContactController@update');
 Route::delete('contacts/{id}','ContactController@destroy');
@@ -64,11 +63,92 @@ Route::delete('contacts/{id}','ContactController@destroy');
 
 Route::get('stages','StageController@index');
 Route::get('stages/create','StageController@create');
+Route::post('stages/date','StageController@selectmembre');
 Route::post('stages','StageController@store');
 Route::get('stages/{id}/details','StageController@details');
 Route::get('stages/{id}/edit','StageController@edit');
 Route::put('stages/{id}','StageController@update');
 Route::delete('stages/{id}','StageController@destroy');
+/* dans create */
+
+Route::post('contacts/storepop','ContactController@storepop');
+
+Route::post('send', 'interface_mailController@send');
+//===================================== Routes des actualité ===================================
+Route::get('/template/actualites','interface_actualite@index2');
+Route::get('actualite/create','interface_actualite@create');
+Route::get('actualites','interface_actualite@index');
+Route::post('actualites','interface_actualite@store');
+Route::delete('actualite/{id}','interface_actualite@destroy');
+Route::put('actualite/{id}','interface_actualite@update');
+Route::get('template/{id}/detail_actualite', 'interface_actualite@details');
+//===================================== Routes des equipe ===================================
+Route::get('/template/liste_equipes','interface_EquipeController@index');
+Route::get('template/{id}/detail_equipe', 'interface_EquipeController@detail_equipe');
+//===================================== Routes des Projet ===================================
+Route::get('/template/projets','interface_ProjetController@index');
+Route::get('/template/projets/search_projet','interface_ProjetController@search_projet');
+Route::get('/template/projets/{acr_groupe}','interface_ProjetController@search_projet_filter_groupe');
+Route::get('/template/projets/type/{type}','interface_ProjetController@search_projet_filter_type');
+Route::get('template/{id}/detail_projet', 'interface_ProjetController@detail_projet');
+//===================================== Routes des Article ===================================
+Route::get('/template/articles','interface_ArticleController@index');
+Route::get('/template/articles/search_article','interface_ArticleController@search_article');
+Route::get('/template/articles/{acr_groupe}','interface_ArticleController@search_article_filter_groupe');
+Route::get('/template/articles/type/{type}','interface_ArticleController@search_article_filter_type');
+Route::get('template/{id}/detail_article', 'interface_ArticleController@details');
+//===================================== Routes des Chart ===================================
+Route::get('charts', 'ChartsController@index');
+Route::get('charts/graph2', 'ChartsController@graph2');
+Route::get('charts/graph3', 'ChartsController@graph3');
+
+
+Route::get('projets/createpop','ContactController@createpop');
+Route::post('projets/storepop','ContactController@storepop');
+Route::post('projets/storepopP','PartenaireController@storepopP');
+
+Route::get('articles/createpop','ContactController@createpop');
+Route::post('articles/storepop','ContactController@storepop');
+Route::post('articles/storepopP','PartenaireController@storepopP');
+
+Route::get('stages/createpop','ContactController@createpop');
+Route::post('stages/storepop','ContactController@storepop');
+Route::post('stages/storepopP','PartenaireController@storepopP');
+
+Route::get('theses/createpop','ContactController@createpop');
+Route::post('theses/storepop','ContactController@storepop');
+Route::post('theses/storepopP','PartenaireController@storepopP');
+
+Route::post('contacts/storepopP','PartenaireController@storepopP');
+/*    dans edit  */
+Route::get('projets/{id}/createpop','ContactController@createpop');
+Route::post('projets/{id}/storepop','ContactController@storepop');
+Route::post('projets/{id}/storepopP','PartenaireController@storepopP');
+
+Route::get('articles/{id}/createpop','ContactController@createpop');
+Route::post('articles/{id}/storepop','ContactController@storepop');
+Route::post('articles/{id}/storepopP','PartenaireController@storepopP');
+
+Route::get('stages/{id}/createpop','ContactController@createpop');
+Route::post('stages/{id}/storepop','ContactController@storepop');
+Route::post('stages/{id}/storepopP','PartenaireController@storepopP');
+
+Route::get('theses/{id}/createpop','ContactController@createpop');
+Route::post('theses/{id}/storepop','ContactController@storepop');
+Route::post('theses/{id}/storepopP','PartenaireController@storepopP');
+
+<<<<<<< HEAD
+
+Route::post('stages/{id}/date','StageController@selectmembre');
+Route::post('contacts/{id}/storepopP','PartenaireController@storepopP');
+
+
+
+
+
+
+
+
 
 
 Route::post('send', 'interface_mailController@send');
@@ -105,6 +185,10 @@ Route::get('charts/graph3', 'ChartsController@graph3');
 
 //======================================= FIN ==================================================
 
+=======
+//======================================= FIN ==================================================
+
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 Route::get('dashboard', 'HomeController@index')->name('home');
 Route::get('parametre', 'ParametreController@create');
 Route::post('parametre', 'ParametreController@store');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\partenaireRequest;
 use App\Parametre;
 use App\Partenaire;
+use App\Stage;
 use App\Contact;
 use Auth;
 
@@ -28,6 +29,7 @@ class PartenaireController extends Controller
     $nbr = DB::table('contacts')
              ->select( DB::raw('count(*) as total,partenaire_id'))
              ->groupBy('partenaire_id')
+             ->whereNull('deleted_at')
              ->get();
  
         return view('partenaire.index')->with([
@@ -40,14 +42,10 @@ class PartenaireController extends Controller
     public function create()
     {
         $labo = Parametre::find('1');
-        if( Auth::user()->role->nom == 'admin')
-            {
+        
             	$contacts = Contact::all(); 
                 return view('partenaire.create', ['contacts' => $contacts] ,['labo'=>$labo]);
-            }
-            else{
-                return view('errors.403' ,['labo'=>$labo]);
-            }
+           
     }
 
     public function details($id)
@@ -77,7 +75,6 @@ class PartenaireController extends Controller
         else{
             $file_name="nologo.png";
         }
-        $partenaire->create_id =  Auth::user()->id;
         $partenaire->nom = $request->input('nom');
         $partenaire->type = $request->input('type');
         $partenaire->pays = $request->input('pays');
@@ -91,7 +88,35 @@ class PartenaireController extends Controller
         return redirect('partenaires');
 
     }
+    public function storepopP(partenaireRequest $request)
+    {
+        $labo = Parametre::find('1');
+        $partenaire = new partenaire();
 
+        if($request->hasFile('img')){
+            $file = $request->file('img');
+            $file_name = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/photo'),$file_name);
+
+        }
+        else{
+            $file_name="nologo.png";
+        }
+      
+        $partenaire->nom = $request->input('nom');
+        $partenaire->type = $request->input('type');
+        $partenaire->pays = $request->input('pays');
+        $partenaire->ville = $request->input('ville');
+       
+
+        
+        $partenaire->logo = 'uploads/photo/'.$file_name;
+        $partenaire->save();
+
+        $partenaires = Partenaire::all();
+        return $partenaires;
+
+    }
     public function update(partenaireRequest $request,$id)
     {
         $labo = Parametre::find('1');
@@ -102,8 +127,7 @@ class PartenaireController extends Controller
             $file->move(public_path('/uploads/photo'),$file_name);
 
                         }
-        if( Auth::user()->role->nom == 'admin' || Auth::user()->id ==$partenaire->create_id)
-            {
+       
 
                 $partenaire->nom = $request->input('nom');
                 $partenaire->type = $request->input('type');
@@ -114,18 +138,31 @@ class PartenaireController extends Controller
             $partenaire->save();
 
             return redirect('partenaires/'.$id.'/details');
-            }   
-        else{
-                return view('errors.403',['labo'=>$labo]);
-            }
+           
 
     }
 
     public function destroy($id)
     {
-        if( Auth::user()->role->nom == 'admin' | Auth::user()->id ==$partenaire->create_id)
+        if( Auth::user()->role->nom == 'admin' )
             {
+                
+                
+
         $partenaire = Partenaire::find($id);
+        $contacts = Contact::where('partenaire_id', $id)->get();
+foreach ($contacts as $contact ) {
+
+    $contact->delete();
+                 
+                 } 
+                 $stages = Stage::where('partenaire_id', $id)->get();
+foreach ($stages as $stage ) {
+
+    $stage->delete();
+                 
+                 } 
+
         $partenaire->delete();
         return redirect('partenaires');
         }

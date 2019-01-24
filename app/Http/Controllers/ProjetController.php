@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\projetRequest;
 use App\Projet;
 use App\User;
 use App\Contact;
 use Auth;
+use App\Partenaire;
 use App\ProjetContact;
 use App\ProjetUser;
 use App\Parametre;
@@ -50,8 +51,7 @@ class ProjetController extends Controller
 	 public function create()
      {
         $labo =  Parametre::find('1');
-        if( Auth::user()->role->nom == 'admin')
-            {
+        
              $contacts = Contact::all();
     	 	 $membres = User::all();
              $projet = Projet::all();
@@ -61,12 +61,8 @@ class ProjetController extends Controller
                 'membres'=>$membres,
                 'contacts'=>$contacts,
                 'labo'=>$labo,
-            ]);; }
-             else{
-                return view('errors.403',['labo'=>$labo]);
-            }
+            ]);;
     }
-
 
 	 public function store(projetRequest $request){
 
@@ -110,11 +106,13 @@ class ProjetController extends Controller
          } 
          $contacts =  $request->input('contact');
          foreach ($contacts as $key => $value) {
-             $projet_contact = new ProjetContact();
+            
+          
+            $projet_contact = new ProjetContact();
              $projet_contact->projet_id = $projet->id;
              $projet_contact->contact_id = $value;
              $projet_contact->save();
- 
+
           } 
 
 	 	return redirect('projets');
@@ -195,7 +193,11 @@ class ProjetController extends Controller
 
          } 
          $contacts =  $request->input('contact');
+         DB::table('contact_projet')->where('projet_id', '=', $projet->id)->delete();
          foreach ($contacts as $key => $value) {
+
+
+            
              $projet_contact = new ProjetContact();
              $projet_contact->projet_id = $projet->id;
              $projet_contact->contact_id = $value;
@@ -210,11 +212,26 @@ class ProjetController extends Controller
     public function destroy($id){
 
     	$projet = Projet::find($id);
+<<<<<<< HEAD
+<<<<<<< HEAD
+        $contacts = ProjetContact::where('projet_id', $id)->get();
+        foreach ($contacts as $contact ) {
+        
+            $contact->delete();
+                         
+                         } 
+=======
+=======
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
         if (file_exists($projet->image)) 
         {
           unlink($projet->image);
            
        }
+<<<<<<< HEAD
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+=======
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
         $this->authorize('delete', $projet);
 
         $projet->delete();

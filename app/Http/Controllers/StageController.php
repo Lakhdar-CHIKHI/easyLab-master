@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Stage;
 use App\Parametre;
@@ -41,7 +41,21 @@ class StageController extends Controller
     {
         if( Auth::user()->role->nom == 'admin')
             {
-                $membres = User::all();
+                $membres = DB::table('users')
+                ->wherenotExists(function ($query) {
+                     $query->select(DB::raw('user_id'))
+                     ->from('stages')
+                     ->whereNull('date_fin')
+                     ->whereNull('deleted_at')
+                     ->whereRaw('stages.user_id = users.id');
+                    
+                 })
+                 ->get(); 
+               
+               
+               
+               
+               
                 $partenaires = Partenaire::all();
                 $stages = Stage::all();
                 $labo = Parametre::find('1');
@@ -88,15 +102,41 @@ class StageController extends Controller
         return redirect('stages');
 
     }
-    
+
+
+
+    public function selectmembre(Request $request)
+    {
+     
+        $membres = DB::select("SELECT * FROM users WHERE not EXISTS 
+        (select user_id from stages where stages.user_id = users.id and deleted_at IS NULL and
+         (date_fin IS NULL or date_fin >='".$request->input('date_deb')."' ) )");
+         return $membres;
+
+
+    }
     public function edit($id)
     {
         $labo = Parametre::find('1');
         //if(Auth::id() == $membre->id || Auth::user()->role->nom == 'admin')
             {
-        $stage = stage::find($id);
-        $membres = User::all();
+        $stage = Stage::find($id);
+      
         
+        $membres = DB::table('users')
+        ->wherenotExists(function ($query) {
+             $query->select(DB::raw('user_id'))
+             ->from('stages')
+             ->whereNull('date_fin')
+             ->whereNull('deleted_at')
+             ->whereRaw('stages.user_id = users.id');
+            
+         })
+         ->get(); 
+       
+       
+       
+       
                 
         $partenaires = Partenaire::all();
        

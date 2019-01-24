@@ -3,7 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <meta name="csrf-token" content="{{ csrf_token() }}"/>
+=======
   <meta name="csrf-token" content="{{ csrf_token() }}" />
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+=======
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
   <link rel="icon" type="image/png" href="{{asset('easy.png')}}"/>
   <title>
     @yield('title')
@@ -257,6 +265,12 @@
 <script src="{{ asset('labo/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- iCheck 1.0.1 -->
 <script src="{{ asset('labo/plugins/iCheck/icheck.min.js')}}"></script>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<script src="{{ asset('js/selctmem.js')}}"></script>
+=======
+=======
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 <!-- charts -->
 <script src="{{ asset('js/canvasjs.min.js')}}"></script>
 <script src="{{ asset('js/charts.js')}}"></script>
@@ -264,6 +278,10 @@
 
 <script src="{{ asset('js/his.js')}}"></script>
 <script src="{{ asset('js/his2.js')}}"></script>
+<<<<<<< HEAD
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+=======
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 
 
 <script>

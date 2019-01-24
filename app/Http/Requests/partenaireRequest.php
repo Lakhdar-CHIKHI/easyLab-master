@@ -28,6 +28,8 @@ class partenaireRequest extends FormRequest
             'type' => 'required|min:3',
             'pays' => 'required',
             'ville' => 'required'
+
+            
         ];
     }
 }

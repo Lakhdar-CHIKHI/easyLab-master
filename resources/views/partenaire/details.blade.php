@@ -102,10 +102,9 @@
       <div class="nav-tabs-custom">
        <ul class="nav nav-tabs">
               <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
-              @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$partenaire->create_id->id)
-            
+             
               <li><a href="#modifier" data-toggle="tab">Modifier</a></li>
-              @endif
+          
             </ul>
 
       <div class="tab-content">
@@ -175,7 +174,7 @@
           </ul>
         </div>
       </div>
-      @if(Auth::user()->role->nom == 'admin'|| Auth::user()->id ==$partenaire->create_id->id)
+   
             
       <div class="tab-pane" id="modifier">
           <form class="well form-horizontal" action="{{url('partenaires/'. $partenaire->id) }} " method="post"  id="contact_form">
@@ -183,7 +182,8 @@
               {{ csrf_field() }}
               <fieldset>
 
-                      <div class="form-group ">
+                          
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                         <label class="col-md-3 control-label">Nom</label>  
                         <div class="col-md-9 inputGroupContainer">
                           <div class="input-group" style="width: 70%">
@@ -195,7 +195,13 @@
 
                     
 
-                     <div class="form-group ">
+                        </div>
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                         <label class="col-md-3 control-label">Type</label>  
                         <div class="col-md-9 inputGroupContainer">
                           <div class="input-group" style="width: 70%">
@@ -204,7 +210,13 @@
                         </div>
                       </div>
 
-                      <div class="form-group ">
+                        </div>
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                         <label class="col-md-3 control-label">Pays</label>  
                         <div class="col-md-9 inputGroupContainer">
                           <div class="input-group" style="width: 70%">
@@ -213,7 +225,13 @@
                         </div>
                       </div>
                       
-                      <div class="form-group ">
+                 </div>
+
+
+
+
+                  
+<div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
                         <label class="col-md-3 control-label">Ville</label>  
                         <div class="col-md-9 inputGroupContainer">
                           <div class="input-group" style="width: 70%">
@@ -222,6 +240,10 @@
                         </div>
                       </div>
  
+    </div>
+
+
+
 
               </fieldset>
 
@@ -230,7 +252,7 @@
                <button type="submit" class=" btn btn-lg btn-primary"><i class="fa fa-check"></i> Modifier</button> 
               </div>
             </form>
-      </div> @endif
+      </div> 
       </div>
       </div>
     </div>
@@ -248,22 +270,37 @@
 
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Membres de l'équipe</h3>
+                  <h3 class="box-title">Contacts du partenaire</h3>
 
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <ul class="list clearfix">
-                    @foreach($contacts as $contact)
-                    <li>
+                <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th> Contact </th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($contacts as $contact)
+           <tr>   <td>        
                      
                       <a class="users-list-name" href="{{url('contacts/'.$contact->id.'/details')}}">{{$contact->nom}} {{$contact->prenom}}</a>
                       <span class="users-list-date">{{$contact->fonction}}</span>
-                    </li>
+                    </td> </tr> 
                     @endforeach
-                  </ul>
-                  <!-- /.users-list -->
-                </div>
+                   
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th></th>
+                 
+                </tr>
+                </tfoot>
+              </table>
+                  
+             
                 <!-- /.box-body -->
               </div>
               <!--/.box -->

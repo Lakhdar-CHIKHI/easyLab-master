@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
- @section('title','LRI | Détails thèse')
+ @section('title','LRI | Détails  Stage')
 
 @section('header_page')
     <h1>
-      Thèse
+    Stages
       <small>Détails</small>
     </h1>
     <ol class="breadcrumb">
@@ -117,7 +117,9 @@
                     <strong><i class="fa fa-user margin-r-5"></i> Lieu </strong>
                   </div>
                   <div class="col-md-9">
-                    <a href="{{url('partenaires/'.$stage->partenaire_id.'/details')}}">{{$stage->partenaire->nom}}</a>
+                   <a href="{{url('contacts/'.$these->cooencext->id.'/details')}}">   {{ $these->cooencext->nom}}   {{ $these->cooencext->prenom}} </a>  @endif
+                  
+           @if($these->cooencext )         <a href="{{url('partenaires/'.$stage->partenaire_id.'/details')}}">{{$stage->partenaire->nom}}</a>                 
                   </div>
                   <strong><i class="margin-r-5"></i></strong>
                 <hr>
