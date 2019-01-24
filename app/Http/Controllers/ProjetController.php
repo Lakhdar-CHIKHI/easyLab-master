@@ -213,6 +213,7 @@ class ProjetController extends Controller
 
     	$projet = Projet::find($id);
 <<<<<<< HEAD
+<<<<<<< HEAD
         $contacts = ProjetContact::where('projet_id', $id)->get();
         foreach ($contacts as $contact ) {
         
@@ -220,11 +221,16 @@ class ProjetController extends Controller
                          
                          } 
 =======
+=======
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
         if (file_exists($projet->image)) 
         {
           unlink($projet->image);
            
        }
+<<<<<<< HEAD
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+=======
 >>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
         $this->authorize('delete', $projet);
 

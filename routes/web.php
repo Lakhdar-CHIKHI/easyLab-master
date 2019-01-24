@@ -73,6 +73,34 @@ Route::delete('stages/{id}','StageController@destroy');
 
 Route::post('contacts/storepop','ContactController@storepop');
 
+Route::post('send', 'interface_mailController@send');
+//===================================== Routes des actualité ===================================
+Route::get('/template/actualites','interface_actualite@index2');
+Route::get('actualite/create','interface_actualite@create');
+Route::get('actualites','interface_actualite@index');
+Route::post('actualites','interface_actualite@store');
+Route::delete('actualite/{id}','interface_actualite@destroy');
+Route::put('actualite/{id}','interface_actualite@update');
+Route::get('template/{id}/detail_actualite', 'interface_actualite@details');
+//===================================== Routes des equipe ===================================
+Route::get('/template/liste_equipes','interface_EquipeController@index');
+Route::get('template/{id}/detail_equipe', 'interface_EquipeController@detail_equipe');
+//===================================== Routes des Projet ===================================
+Route::get('/template/projets','interface_ProjetController@index');
+Route::get('/template/projets/search_projet','interface_ProjetController@search_projet');
+Route::get('/template/projets/{acr_groupe}','interface_ProjetController@search_projet_filter_groupe');
+Route::get('/template/projets/type/{type}','interface_ProjetController@search_projet_filter_type');
+Route::get('template/{id}/detail_projet', 'interface_ProjetController@detail_projet');
+//===================================== Routes des Article ===================================
+Route::get('/template/articles','interface_ArticleController@index');
+Route::get('/template/articles/search_article','interface_ArticleController@search_article');
+Route::get('/template/articles/{acr_groupe}','interface_ArticleController@search_article_filter_groupe');
+Route::get('/template/articles/type/{type}','interface_ArticleController@search_article_filter_type');
+Route::get('template/{id}/detail_article', 'interface_ArticleController@details');
+//===================================== Routes des Chart ===================================
+Route::get('charts', 'ChartsController@index');
+Route::get('charts/graph2', 'ChartsController@graph2');
+Route::get('charts/graph3', 'ChartsController@graph3');
 
 
 Route::get('projets/createpop','ContactController@createpop');
@@ -109,6 +137,7 @@ Route::get('theses/{id}/createpop','ContactController@createpop');
 Route::post('theses/{id}/storepop','ContactController@storepop');
 Route::post('theses/{id}/storepopP','PartenaireController@storepopP');
 
+<<<<<<< HEAD
 
 Route::post('stages/{id}/date','StageController@selectmembre');
 Route::post('contacts/{id}/storepopP','PartenaireController@storepopP');
@@ -156,6 +185,10 @@ Route::get('charts/graph3', 'ChartsController@graph3');
 
 //======================================= FIN ==================================================
 
+=======
+//======================================= FIN ==================================================
+
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 Route::get('dashboard', 'HomeController@index')->name('home');
 Route::get('parametre', 'ParametreController@create');
 Route::post('parametre', 'ParametreController@store');

@@ -370,8 +370,13 @@
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">                     <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <div style="width: 100%">
                           <input name="detail" type="file" id="exampleInputFile" value="{{asset('$article->detail')}}">
+=======
+                        <div style="width: 70%">
+                          <input name="detail" type="file" class="form-control" id="exampleInputFile" style="height: auto;" value="{{asset('$article->detail')}}">
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 =======
                         <div style="width: 70%">
                           <input name="detail" type="file" class="form-control" id="exampleInputFile" style="height: auto;" value="{{asset('$article->detail')}}">

@@ -438,8 +438,13 @@
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <div style="width: 100%">
                           <input name="detail" type="file" id="exampleInputFile" value="{{old('detail')}}">
+=======
+                        <div style="width: 70%">
+                          <input name="detail" type="file" id="exampleInputFile" class="form-control" value="{{old('detail')}}" style="height: auto;">
+>>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
 =======
                         <div style="width: 70%">
                           <input name="detail" type="file" id="exampleInputFile" class="form-control" value="{{old('detail')}}" style="height: auto;">
