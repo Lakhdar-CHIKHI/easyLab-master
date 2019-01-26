@@ -150,6 +150,9 @@
                                                                     @if ($membre->these)
                                                                     <h5><strong>Encadreur :</strong> {{$membre->these->encadreur_int}}{{$membre->these->encadreur_ext}}<br>
                                                                         <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}{{$membre->these->coencadreur_ext}} 
+                                             @if($these->encext )   <br>  <strong>Encadreur Externe:</strong>{{$membre->these->encext->nom}} {{$membre->these->encext->prenom}}   @endif
+                                           @if($these->cooencext )  <br>  <strong>Coencadreur Externe:</strong>{{$membre->these->cooencext->nom}} {{$membre->these->cooencext->prenom}} @endif
+                                                                     
                                                                     </h5>
                                                                     <h3><strong>Titre : </strong>{{$membre->these->titre}}</h3>
                                                                     <h3><strong>Resume : </strong></h3>
