@@ -42,7 +42,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -65,25 +82,6 @@
         </li>
         
         
-        <li >
-          <a href="{{url('partenaires')}}">
-            <i class="fa fa-group"></i> 
-            <span>Partenaires</span>
-          </a>
-        </li>
-
-         <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Contacts</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
-            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
-          </ul>
-        </li>
         
           @if(Auth::user()->role->nom == 'admin' )
 
@@ -577,9 +575,14 @@
                             <div class="col-md-9 selectContainer @if($errors->get('partenaire')) has-error @endif">
                               <div class="input-group"  style="width: 100%">
                                   <select name="partenaire_id" id="partenaireC" class="form-control selectpicker">
-                                    <option value="{{$contact->partenaire_id}}">{{$contact->partenaire->nom}}</option>
+                                  <!--  <option value="{{$contact->partenaire_id}}">{{$contact->partenaire->nom}}</option>-->
                                     @foreach($partenaires as $partenaire)
+                                    @if ($partenaire->id==$contact->partenaire_id)
+                                    <option value="{{$partenaire->id}}" selected>{{$partenaire->nom}}</option>
+                                    @else
                                     <option value="{{$partenaire->id}}">{{$partenaire->nom}}</option>
+                                    @endif
+                                    
                                     @endforeach
                                     
                                   </select>

@@ -40,6 +40,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li class="active">
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -212,7 +230,7 @@
                         <label class="col-xs-3 control-label">Date fin</label>  
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 70%">
-                            <input name="date_soutenance"type="date" class="form-control pull-right"   value="{{old('date_soutenance')}}"value="{{ $stage->date_fin}}">
+                            <input name="date_soutenance" type="date" class="form-control pull-right"   value="{{$stage->date_fin}}">
                           </div>
                         </div>
                   </div>

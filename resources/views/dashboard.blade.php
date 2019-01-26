@@ -41,7 +41,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
           <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -204,6 +221,25 @@
     </div>
             <!-- /.box-body -->
   </div>
+  <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Nombre des projets pour un équipe chaque année</h3>
+  
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      
+      <div class="box-body reg" >
+        <!--<div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+        
+        <canvas id="bar-chart-projet" class="reg"></canvas>
+  
+      </div>
+              <!-- /.box-body -->
+    </div>
   <div class="box box-success">
     <div class="box-header with-border">
       <h3 class="box-title">Nombre d'articles publies chaque année</h3>

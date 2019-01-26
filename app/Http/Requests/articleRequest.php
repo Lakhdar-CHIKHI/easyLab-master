@@ -30,8 +30,8 @@ class articleRequest extends FormRequest
             'ville' => 'required',
             'pays' => 'required',   
             'mois' => 'required',  
-            'annee' => 'required' 
-
+            'annee' => 'required', 
+            'membre'=>'required'
              ];
     }
 }

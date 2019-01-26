@@ -70,7 +70,7 @@
                                     <div role="tabpanel" class="tab-pane active" id="description">
                                         <div class="ed_course_tabconetent">
                                             <h2>apropos du projet</h2>
-                                            <p>{{$projet->resume}}</p>
+                                            <p>{!!$projet->resume!!}</p>
                                             
                                         </div>
                                     </div>

@@ -32,20 +32,33 @@ class ParametreController extends Controller
         $labo =  Parametre::find('1');
 
         if($request->hasFile('logo')){
+            if (file_exists($labo->logo)) 
+               {
+                 unlink($labo->logo);
+                  
+              }
             $file = $request->file('logo');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/lrit'),$file_name);
             $labo->logo = '/uploads/lrit/'.$file_name;
         }
         if($request->hasFile('img_lab')){
-
+            if (file_exists($labo->img_lab)) 
+            {
+              unlink($labo->img_lab);
+               
+           }
             $file = $request->file('img_lab');
             $file_name_img = time().'img_lab.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/lrit'),$file_name_img);
             $labo->image = '/uploads/lrit/'.$file_name_img;
         }
         if($request->hasFile('video_lab')){
-
+            if (file_exists($labo->video_lab)) 
+            {
+              unlink($labo->video_lab);
+               
+           }
             $file = $request->file('video_lab');
             $file_name_video = time().'video_lab.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/lrit'),$file_name_video);

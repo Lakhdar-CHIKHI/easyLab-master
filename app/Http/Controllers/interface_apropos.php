@@ -19,7 +19,7 @@ class interface_apropos extends Controller
         $projets = Projet::all();
         $membres = User::all();
         //$projets = Projet::orderBy('id','asc')->paginate(1);
-        //$labo =  Parametre::find('1');
+        $labo =  Parametre::find('1');
        // $membres = DB::table('users')->distinct('id')->orderBy('name')->get(); 
 
         $equipes = Equipe::all();
@@ -30,7 +30,7 @@ class interface_apropos extends Controller
             'membres' => $membres,
             'equipes' => $equipes,
             'projets' => $projets,
-            
+            'labo'=>$labo,
         ]);;
     	
     }

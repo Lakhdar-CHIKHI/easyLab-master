@@ -82,7 +82,7 @@ class ProjetController extends Controller
             $file = $request->file('img_projet');
             $file_name_pr = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/projet/images'),$file_name_pr);
-            $projet->image = '/uploads/projet/images/'.$file_name_pr;
+            $projet->image_projet = '/uploads/projet/images/'.$file_name_pr;
         }
 
 	 	$projet->intitule = $request->input('intitule');
@@ -97,23 +97,28 @@ class ProjetController extends Controller
 	 	$projet->save();
 
         $members =  $request->input('membre');
-        foreach ($members as $key => $value) {
-            $projet_user = new ProjetUser();
-            $projet_user->projet_id = $projet->id;
-            $projet_user->user_id = $value;
-            $projet_user->save();
-
-         } 
+        if ($members) {
+            foreach ($members as  $value) {
+                $projet_user = new ProjetUser();
+                $projet_user->projet_id = $projet->id;
+                $projet_user->user_id = $value;
+                $projet_user->save();
+    
+             } 
+        }
+        
          $contacts =  $request->input('contact');
-         foreach ($contacts as $key => $value) {
+         if ($contacts) {
+            foreach ($contacts as $key => $value) {
             
-          
-            $projet_contact = new ProjetContact();
-             $projet_contact->projet_id = $projet->id;
-             $projet_contact->contact_id = $value;
-             $projet_contact->save();
-
-          } 
+                $projet_contact = new ProjetContact();
+                 $projet_contact->projet_id = $projet->id;
+                 $projet_contact->contact_id = $value;
+                 $projet_contact->save();
+    
+              } 
+        }
+         
 
 	 	return redirect('projets');
 
@@ -169,7 +174,7 @@ class ProjetController extends Controller
             $file = $request->file('img_projet_mod');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/projet/images'),$file_name);
-            $projet->image = 'uploads/projet/images/'.$file_name;
+            $projet->image_projet = 'uploads/projet/images/'.$file_name;
         }
         
 
@@ -184,26 +189,27 @@ class ProjetController extends Controller
         $members =  $request->input('membre');
         $projet_user = ProjetUser::where('projet_id',$id);
         $projet_user->delete();
-
+        if ($members) {
+            
         foreach ($members as $key => $value) {
             $projet_user = new ProjetUser();
             $projet_user->projet_id = $projet->id;
             $projet_user->user_id = $value;
             $projet_user->save();
 
-         } 
+         } }
          $contacts =  $request->input('contact');
          DB::table('contact_projet')->where('projet_id', '=', $projet->id)->delete();
+         if ($contacts) {
+         
+         
          foreach ($contacts as $key => $value) {
-
-
-            
              $projet_contact = new ProjetContact();
              $projet_contact->projet_id = $projet->id;
              $projet_contact->contact_id = $value;
              $projet_contact->save();
  
-          } 
+          } }
 
 	 	return redirect('projets');
 

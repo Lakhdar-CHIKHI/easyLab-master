@@ -163,8 +163,8 @@
                                 
                                     <div class="item ed_mostrecomeded_course projet_style">
                                         <div class="ed_item_img img_pr">
-                                            @if ($projet->image !='')
-                                            <img src="{{asset($projet->image)}} " alt="item1" class="img-responsive">
+                                            @if ($projet->image_projet !='')
+                                            <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-responsive" style="height: 143px;">
                                             @else
                                             <img src="{{asset('images/content/'.$projet->type.'.jpg')}} " alt="item1" class="img-responsive">
                                             @endif                                        </div>
@@ -172,9 +172,9 @@
                                             <h4 class="fixed_taille"><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
                                             <div class="row">
                                                 <div class="ed_rating">
-                                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                                    <div class="col-lg-12 col-md-7 col-sm-7 col-xs-7">
                                                         
-                                                            <div class="course_detail">
+                                                            <div class="course_detail" style="height:20px;">
                                                                 <div class="course_faculty fixed_taille">
                                                                         <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $projet->type }} </a></strong>
                                                                 </div>
@@ -182,15 +182,15 @@
                                                             
                                                         
                                                     </div>
-                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                    <!--<div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
                                                         <div class="ed_views">
                                                             <i class="fa fa-users"></i>
                                                             <span> {{count($projet->users)}} Members</span>
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </div>
-                                            <div ><p class="fixed_taille_p">{{$projet->resume}}</p></div>
+                                            <div ><div class="fixed_taille_p">{!!$projet->resume!!}</div></div>
                                             
                                             <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                         </div>

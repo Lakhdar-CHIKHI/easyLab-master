@@ -19,7 +19,7 @@ class CreateEquipesTable extends Migration
             $table->string('resume',1000)->nullable();
             $table->string('achronymes')->nullable();
             $table->string('axes_recherche',1000)->nullable();
-            $table->string('image')->nullable();
+            
             $table->string('logo')->nullable();
             $table->timestamps();
         });

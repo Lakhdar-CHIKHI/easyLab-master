@@ -42,7 +42,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -65,25 +82,7 @@
         </li>
         
         
-        <li >
-          <a href="{{url('partenaires')}}">
-            <i class="fa fa-group"></i> 
-            <span>Partenaires</span>
-          </a>
-        </li>
-
-         <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Contacts</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
-            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
-          </ul>
-        </li>
+        
         
           @if(Auth::user()->role->nom == 'admin' )
 
@@ -122,13 +121,13 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">A propos</a></li>
              
-              <li><a href="#activity1" data-toggle="tab">Modifier</a></li> 
-              <li><a href="#timeline" data-toggle="tab">Articles</a></li>
-              <li><a href="#timeline4" data-toggle="tab">Projets</a></li>
-              <li><a href="#timeline2" data-toggle="tab">Theses Encadre</a></li>
-              <li><a href="#timeline3" data-toggle="tab">Theses CooEncadre</a></li>
+              <li ><a href="#activity1" data-toggle="tab" >Modifier</a></li> 
+              <li ><a href="#timeline" data-toggle="tab">Articles</a></li>
+              <li ><a href="#timeline4" data-toggle="tab">Projets</a></li>
+              <li ><a href="#timeline2" data-toggle="tab">Theses Encadre</a></li>
+              <li ><a href="#timeline3" data-toggle="tab">Theses CooEncadre</a></li>
             </ul>
-
+          
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                 <div class="box-body">
@@ -225,10 +224,7 @@
                     <td>
                      
                       <div class="btn-group">
-                        <form action="{{ url('articles/'.$article->id)}}" method="post">
-                          
-                          {{csrf_field()}}
-                          {{method_field('DELETE')}}
+                        
 
                         <a href="{{ url('articles/'.$article->id.'/details')}}" class="btn btn-info">
                             <i class="fa fa-eye"></i>
@@ -238,12 +234,39 @@
                           <i class="fa fa-edit"></i>
                         </a>
                         @endif
+                        <form action="{{ url('articles/'.$article->id)}}" method="post">
+                          
+                          {{csrf_field()}}
+                          {{method_field('DELETE')}}
                         @if( Auth::user()->role->nom != 'membre' || Auth::user()->id == $article->deposer)
-                        <button type="submit" class="btn btn-danger ">
+                        <!--<button type="submit" class="btn btn-danger ">
                             <i class="fa fa-trash-o"></i>
-                        </button>
-                        @endif
+                        </button>-->
+                        <a href="#supprimer{{ $article->id }}Modal_article" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                      <div class="modal fade" id="supprimer{{ $article->id }}Modal_article" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $article->id }}ModalLabel_article" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                    <!--   <h5 class="modal-title" id="supprimer{{ $contact->id }}ModalLabel">Supprimer</h5> -->
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      Voulez-vous vraiment effectuer la suppression ? 
+                                  </div>
+                                  <div class="modal-footer">
+                                      
+                                      <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
+                                          <button type="submit" class="btn btn-danger">Oui</button>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      @endif
                         </form>
+                        
                       </div>
                       
                     </td>
@@ -255,7 +278,7 @@
                   <th>Type</th>
                   
                   <th>Année</th>
-                  
+                  <th>Opération</th>
                 </tr>
                 </tfoot>
               </table>
@@ -274,7 +297,7 @@
                 <a href="{{url('theses/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel these</i></a>
               </div>
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr><th>Titre</th>
                   <th>Sujet</th>
@@ -296,10 +319,7 @@
                     <td>
                      
                       <div class="btn-group">
-                        <form action="{{ url('theses/'.$these->id)}}" method="post">
-                          
-                          {{csrf_field()}}
-                          {{method_field('DELETE')}}
+                        
 
                         <a href="{{ url('theses/'.$these->id.'/details')}}" class="btn btn-info">
                             <i class="fa fa-eye"></i>
@@ -309,10 +329,36 @@
                           <i class="fa fa-edit"></i>
                         </a>
                         @endif
+                        <form action="{{ url('theses/'.$these->id)}}" method="post">
+                          
+                          {{csrf_field()}}
+                          {{method_field('DELETE')}}
                         @if( Auth::user()->role->nom != 'membre' || Auth::user()->id == $these->deposer)
-                        <button type="submit" class="btn btn-danger ">
+                        <!--<button type="submit" class="btn btn-danger ">
                             <i class="fa fa-trash-o"></i>
-                        </button>
+                        </button>-->
+                        <a href="#supprimer{{ $these->id }}Modal_these2" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                      <div class="modal fade" id="supprimer{{ $these->id }}Modal_these2" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $these->id }}ModalLabel_these2" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                    <!--   <h5 class="modal-title" id="supprimer{{ $contact->id }}ModalLabel">Supprimer</h5> -->
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      Voulez-vous vraiment effectuer la suppression ? 
+                                  </div>
+                                  <div class="modal-footer">
+                                      
+                                      <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
+                                          <button type="submit" class="btn btn-danger">Oui</button>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                         @endif
                         </form>
                       </div>
@@ -351,7 +397,7 @@
                 <a href="{{url('theses/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel these</i></a>
               </div>
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example3" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                 <th>Titre</th>
@@ -374,10 +420,7 @@
                     <td>
                      
                       <div class="btn-group">
-                        <form action="{{ url('theses/'.$these->id)}}" method="post">
-                          
-                          {{csrf_field()}}
-                          {{method_field('DELETE')}}
+                        
 
                         <a href="{{ url('theses/'.$these->id.'/details')}}" class="btn btn-info">
                             <i class="fa fa-eye"></i>
@@ -387,10 +430,36 @@
                           <i class="fa fa-edit"></i>
                         </a>
                         @endif
+                        <form action="{{ url('theses/'.$these->id)}}" method="post">
+                          
+                          {{csrf_field()}}
+                          {{method_field('DELETE')}}
                         @if( Auth::user()->role->nom != 'membre' || Auth::user()->id == $these->deposer)
-                        <button type="submit" class="btn btn-danger ">
-                            <i class="fa fa-trash-o"></i>
-                        </button>
+                        <!--<button type="submit" class="btn btn-danger ">
+                            <i class="fa fa-trash-o"></i>-->
+                            <a href="#supprimer{{ $these->id}}Modal_these" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                      <div class="modal fade" id="supprimer{{ $these->id }}Modal_these" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $these->id }}ModalLabel_these" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                    <!--   <h5 class="modal-title" id="supprimer{{ $contact->id }}ModalLabel">Supprimer</h5> -->
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      Voulez-vous vraiment effectuer la suppression ? 
+                                  </div>
+                                  <div class="modal-footer">
+                                      
+                                      <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
+                                          <button type="submit" class="btn btn-danger">Oui</button>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                        
                         @endif
                         </form>
                       </div>
@@ -421,7 +490,7 @@
                 <a href="{{url('projets/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouveau projet</i></a>
               </div>
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example4" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Intitulé</th>
@@ -441,10 +510,7 @@
                     <td>
 
 
-                      <form action="{{ url('projets/'.$projet->id)}}" method="post"> 
-
-                        {{csrf_field()}}
-                        {{method_field('DELETE')}}
+                      
                       <a href="{{ url('projets/'.$projet->id.'/details')}} " class="btn btn-info">
                         <i class="fa fa-eye"></i>
                       </a>
@@ -453,12 +519,16 @@
                         <i class="fa fa-edit"></i>
                       </a>
                       @endif
+                      <form action="{{ url('projets/'.$projet->id)}}" method="post"> 
+
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
                       @if(Auth::user()->role->nom != 'membre' )
                       <!-- <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash-o"></i>
                       </button> -->
-                       <a href="#supprimer{{ $projet->id }}Modal" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-                      <div class="modal fade" id="supprimer{{ $projet->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $projet->id }}ModalLabel" aria-hidden="true">
+                       <a href="#supprimer{{ $projet->id }}Modal_projet" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                      <div class="modal fade" id="supprimer{{ $projet->id }}Modal_projet" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $projet->id }}ModalLabel_projet" aria-hidden="true">
                           <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header">
@@ -485,7 +555,7 @@
 
                       @endif
                       </form>
-                    </div>
+                    <!--</div>-->
                     </td>
                   </tr>
                   @endforeach
@@ -583,10 +653,13 @@
                             <div class="col-md-9 selectContainer @if($errors->get('partenaire')) has-error @endif">
                               <div class="input-group"  style="width: 100%">
                                   <select name="partenaire_id" id="partenaireC" class="form-control selectpicker">
-                                    <option value="{{$contact->partenaire_id}}">{{$contact->partenaire->nom}}</option>
-                                    @foreach($partenaires as $partenaire)
+                                     @foreach($partenaires as $partenaire)
+                                    @if ($partenaire->id==$contact->partenaire_id)
+                                    <option value="{{$partenaire->id}}" selected>{{$partenaire->nom}}</option>
+                                    @else
                                     <option value="{{$partenaire->id}}">{{$partenaire->nom}}</option>
-                                    @endforeach
+                                    @endif
+                                      @endforeach
                                     
                                   </select>
                                   <span class="help-block">
@@ -684,20 +757,20 @@
               <div style="padding-top: 30px; margin-left: 35%;">
               <a href="{{url('contacts')}}" class=" btn btn-lg btn-default"><i class="fa  fa-mail-reply"></i> &nbsp;Annuler</a>
                <button type="submit" class=" btn btn-lg btn-primary"><i class="fa fa-check"></i> Valider</button> 
-              </form>      </div></div>
+              </form>      </div>
           
           </div>
           
 
-              <!-- /.tab-pane -->
+              
             </div>
           
 
-            <!-- /.tab-content -->
+            
           </div>
-          <!-- /.nav-tabs-custom -->
+         
         </div>
-      </div>
+      
 
 
     
@@ -762,7 +835,7 @@
                       <label class="col-md-3 control-label">Pays (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('pays')) has-error @endif" >
                         <div style="width: 100%">
-                          <input name="pays" id="paysP" class="form-control" type="text" placeholder="Entrez ...">{{old('pays')}}</textarea>
+                          <input name="pays" id="paysP" class="form-control" type="text" placeholder="Entrez ..." value="{{old('pays')}}">
 
                             <span class="help-block">
                                 @if($errors->get('pays'))
@@ -772,7 +845,7 @@
                                 @endif
                             </span>
 
-                        </div>
+                      </div>
                       </div>
                   </div>
                   </div>
@@ -782,7 +855,7 @@
                       <label class="col-md-3 control-label">Ville (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('ville')) has-error @endif" >
                         <div style="width: 100%">
-                          <input name="ville" id="villeP" class="form-control" type="text" placeholder="Entrez ...">{{old('ville')}}</textarea>
+                          <input name="ville" id="villeP" class="form-control" type="text" placeholder="Entrez ..." value="{{old('ville')}}">
 
                             <span class="help-block">
                                 @if($errors->get('ville'))
@@ -825,10 +898,5 @@
         
         </div>
     </div>
-</div>
-
-
-
-
 
 @endsection

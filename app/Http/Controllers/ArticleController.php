@@ -112,22 +112,28 @@ class ArticleController extends Controller
 	 	
 	 	$article->save();
 
-        $members =  $request->input('membre');
-        foreach ($members as $key => $value) {
-	 		$article_user = new ArticleUser();
-		 	$article_user->article_id = $article->id;
-		 	$article_user->user_id = $value;
-	 	    $article_user->save();
-
-         } 
+		$members =  $request->input('membre');
+		if ($members) {
+			foreach ($members as $key => $value) {
+				$article_user = new ArticleUser();
+				$article_user->article_id = $article->id;
+				$article_user->user_id = $value;
+				$article_user->save();
+   
+			} 
+		}
+        
 		 $contacts =  $request->input('contact');
-		 foreach ($contacts as $key => $value) {
-			  $article_contact = new ArticleContact();
-			  $article_contact->article_id = $article->id;
-			  $article_contact->contact_id = $value;
-			  $article_contact->save();
- 
-		  } 
+		 if ($contacts) {
+			foreach ($contacts as $key => $value) {
+				$article_contact = new ArticleContact();
+				$article_contact->article_id = $article->id;
+				$article_contact->contact_id = $value;
+				$article_contact->save();
+   
+			} 
+		 }
+		 
 	 	return redirect('articles');
 
 	 	//return response()->json(["arr"=>$request->input('membre')]);
@@ -198,24 +204,33 @@ class ArticleController extends Controller
 	 	
 	 	$article->save();
 
-	 	$members =  $request->input('membre');
-        $article_user = ArticleUser::where('article_id',$id);
-        $article_user->delete();
+		 $members =  $request->input('membre');
+		 $article_user = ArticleUser::where('article_id',$id);
+			$article_user->delete();
+		 if ($members) {
+			
+			
+			foreach ($members as $key => $value) {
+				$article_user = new ArticleUser();
+				$article_user->article_id = $article->id;
+				$article_user->user_id = $value;
+				$article_user->save();
+	
+			 } 
+		 }
         
-        foreach ($members as $key => $value) {
-            $article_user = new ArticleUser();
-            $article_user->article_id = $article->id;
-            $article_user->user_id = $value;
-            $article_user->save();
-
-		 } 
-		 DB::table('article_contact')->where('article_id', '=', $article->id)->delete();
 		 $contacts =  $request->input('contact');
+		 DB::table('article_contact')->where('article_id', '=', $article->id)->delete();
+		 if ($contacts) {
+			
+		 
 		 foreach ($contacts as $key => $value) {
 			  $article_contact = new ArticleContact();
 			  $article_contact->article_id = $article->id;
 			  $article_contact->contact_id = $value;
 			  $article_contact->save();
+		 }
+		 
  
 		  } 
 	 	

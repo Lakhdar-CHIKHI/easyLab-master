@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Parametre;
 use App\Article;
+use App\Projet;
 use App\These;
 use App\User;
 use App\Equipe;
@@ -33,6 +34,27 @@ class ChartsController extends Controller
             $equipes['date']=$dates;
             return $equipes;
     }
+    function graph_projets(){
+        $equipes2=Equipe::all();
+        $dates=Projet::select(DB::raw('YEAR(created_at) annee'))->orderBy('annee','asc')->distinct()->get();
+        //$date=date('Y');
+        foreach ($equipes2 as $equipe) {
+            foreach ($dates as $date ) {
+                $equipes[$equipe->intitule][$date->annee]=DB::table('equipes')->select('equipes.intitule','projets.intitule','projets.created_at')
+            ->distinct()
+            ->where(DB::raw("YEAR(projets.created_at)"),'=',$date->annee)
+            ->where('equipes.intitule','=',$equipe->intitule)
+            ->join('users','equipes.id','=','users.equipe_id')
+            ->join('projet_user','projet_user.user_id','=','users.id')
+            ->join('projets','projet_user.projet_id','=','projets.id')->get()->count();
+
+            }
+            
+        }
+
+$equipes['date']=$dates;
+return $equipes;
+}
     function graph2(Request $request){
         $articles=Article::select('type')->distinct()->get();
         $dates=Article::select('annee')->orderBy('annee','asc')->distinct()->get();
@@ -70,8 +92,11 @@ class ChartsController extends Controller
                         } else{
                             $result[$dates-$i]=0;
                         }
+                        /*if ((date('Y',strtotime($these->date_soutenance))==$dates-$i)) {
+                            $result2[$dates-$i]=++$j;
+                        }*/
                     }else{
-                        if ((date('Y',strtotime($these->date_debut))==$dates-$i)) {
+                        if ((date('Y',strtotime($these->date_debut))<=$dates-$i)) {
                             $result[$dates-$i]=++$j;
                         }else{
                             $result[$dates-$i]=0;

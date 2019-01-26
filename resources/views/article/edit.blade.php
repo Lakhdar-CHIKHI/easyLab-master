@@ -45,7 +45,24 @@
             <li class="active"><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -119,7 +136,7 @@
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">                     <label class="col-md-3 control-label">Résumé</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 100%">
-                          <textarea name="resume" class="form-control" rows="3">{{ $article->resume }}</textarea>
+                          <textarea name="resume" id="mytextarea" class="form-control" rows="3">{{ $article->resume }}</textarea>
                         </div>
                       </div>
                   </div>
@@ -371,21 +388,16 @@
                       <div class="col-md-9 inputGroupContainer">
 
                         <div style="width: 100%">
-                          <input name="detail" type="file" id="exampleInputFile" value="{{asset('$article->detail')}}">
-
-                        <div style="width: 70%">
+                          
                           <input name="detail" type="file" class="form-control" id="exampleInputFile" style="height: auto;" value="{{asset('$article->detail')}}">
 
-                        <div style="width: 70%">
-                          <input name="detail" type="file" class="form-control" id="exampleInputFile" style="height: auto;" value="{{asset('$article->detail')}}">
-
-                        </div>
+                       
                       </div>
                   </div>
                   <div class="form-group">
                       <label class="col-md-3 control-label">Photo</label>  
                       <div class="col-md-9 inputGroupContainer">
-                        <div style="width: 70%">
+                        <div style="width: 100%">
                             <input name="img_article_mod" class="form-control" type="file" accept="image/*" style="height: auto;">
                         </div>
                      </div>

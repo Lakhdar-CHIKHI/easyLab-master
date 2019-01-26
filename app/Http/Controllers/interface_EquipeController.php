@@ -42,7 +42,7 @@ class interface_EquipeController extends Controller
                     ->join('articles','articles.id','=','article_user.article_id')
                     ->get();
 
-         $projets=DB::table('users')->select('projets.id','projets.intitule','projets.image','projets.resume','projets.type')
+         $projets=DB::table('users')->select('projets.id','projets.intitule','projets.resume','projets.type')
                     ->distinct()
                     ->where('users.equipe_id','=',$equipe->id)
                     ->join('projet_user','users.id','=','projet_user.user_id')

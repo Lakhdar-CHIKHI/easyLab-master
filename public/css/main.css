@@ -67,8 +67,10 @@ strong {
 }
 
 .fixed_taille_p {
-    height: 80px;
+    height: 78px;
     overflow: hidden;
+    margin: 2% 0 5% 0;
+    padding: 0px;
 }
 
 .membre_style {

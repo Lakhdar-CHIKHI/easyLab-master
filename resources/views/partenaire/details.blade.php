@@ -42,7 +42,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
         <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -96,9 +113,19 @@
 @endsection
 
 @section('content')
+<div class="row">
+  <div class="box-body box-profile">
+    <img class="profile-user-img img-responsive img-circle" src=" {{asset($partenaire->logo)}}" alt="User profile picture">
+
+    <h3 class="profile-username text-center">{{$partenaire->nom}} </h3>
+
+   
+   
+  </div>
+</div>
 	<div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-12">
       <div class="nav-tabs-custom">
        <ul class="nav nav-tabs">
               <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
@@ -177,7 +204,7 @@
    
             
       <div class="tab-pane" id="modifier">
-          <form class="well form-horizontal" action="{{url('partenaires/'. $partenaire->id) }} " method="post"  id="contact_form">
+          <form class="well form-horizontal" action="{{url('partenaires/'. $partenaire->id) }} " method="post"  id="contact_form" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
               {{ csrf_field() }}
               <fieldset>
@@ -241,7 +268,13 @@
                       </div>
  
     </div>
-
+    <div class=" col-md-12 ">   <div class="form-group col-md-10 ">  
+      <label class="col-md-3 control-label">Photo</label>  
+      <div class="col-md-7 inputGroupContainer">
+      <input name="img" type="file" class="form-control" style="height:auto;">
+     </div>
+    </div>
+  </div>
 
 
 
@@ -256,58 +289,56 @@
       </div>
       </div>
     </div>
-
-            <div class="col-md-4">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src=" {{asset($partenaire->logo)}}" alt="User profile picture">
-
-              <h3 class="profile-username text-center">{{$partenaire->nom}} </h3>
-
-             
-             
-            </div>
-              <!-- USERS LIST -->
-
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Contacts du partenaire</h3>
-
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th> Contact </th>
-                  
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($contacts as $contact)
-           <tr>   <td>        
-                     
-                      <a class="users-list-name" href="{{url('contacts/'.$contact->id.'/details')}}">{{$contact->nom}} {{$contact->prenom}}</a>
-                      <span class="users-list-date">{{$contact->fonction}}</span>
-                    </td> </tr> 
-                    @endforeach
-                   
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th></th>
-                 
-                </tr>
-                </tfoot>
-              </table>
-                  
-             
-                <!-- /.box-body -->
-              </div>
-              <!--/.box -->
-            </div>
-
-            <!-- timeLine start -->
     
-
-    </div>
+	</div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-12">
+      
+                <!-- USERS LIST -->
+        
+                <div class="box box-primary"  style="padding: 30px">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Contacts du partenaire</h3>
+        
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th> Contact </th>
+                    
+                  </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($contacts as $contact)
+             <tr>   <td>        
+                       
+                        <a class="users-list-name" href="{{url('contacts/'.$contact->id.'/details')}}">{{$contact->nom}} {{$contact->prenom}}</a>
+                        <span class="users-list-date">{{$contact->fonction}}</span>
+                      </td> </tr> 
+                      @endforeach
+                     
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th></th>
+                   
+                  </tr>
+                  </tfoot>
+                </table>
+                    
+               
+                  <!-- /.box-body -->
+                </div>
+                <!--/.box -->
+              </div>
+        
+              <!-- timeLine start -->
+        
+        
+        </div>
+              </div>
+            </div>
 @endsection

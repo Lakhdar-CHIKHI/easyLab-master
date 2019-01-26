@@ -122,10 +122,15 @@ class PartenaireController extends Controller
         $labo = Parametre::find('1');
         $partenaire = Partenaire::find($id);
         if($request->hasFile('img')){
+            if (file_exists($partenaire->logo)) 
+            {
+              unlink($partenaire->logo);
+               
+           }
             $file = $request->file('img');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/photo'),$file_name);
-
+            $partenaire->logo = 'uploads/photo/'.$file_name;
                         }
        
 

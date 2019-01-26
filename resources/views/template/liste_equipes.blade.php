@@ -31,7 +31,12 @@
                         <div class="ed_team_member ed_mostrecomeded_course  equipe_style" >
                                 <a href="{{ url('template/'.$equipe->id.'/detail_equipe')}}">  
                             <div class="ed_team_member_img accueil_profil" >
-                                         <img src="{{asset($equipe->logo)}}" alt="item1" class="img-responsive " style="width:100%;">
+                                        @if ($equipe->logo)
+                                        <img src="{{asset($equipe->logo)}}" alt="item1" class="img-responsive " style="width:100%;">
+                                        @else
+                                        <img src="{{asset('images/content/nologo.png')}}" alt="item1" class="img-responsive " style="width:100%;">
+
+                                        @endif
                                  </div></a>
                             <div class="ed_team_member_description" style="border-radius: 15px;">
                                 <a href="{{ url('template/'.$equipe->id.'/detail_equipe')}}"><h4><strong>{{$equipe->achronymes}}</strong></h4></a>

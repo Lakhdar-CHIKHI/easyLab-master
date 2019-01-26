@@ -40,6 +40,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li >
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -60,12 +78,7 @@
             <span>Projets</span>
           </a>
         </li>
-        <li class="active">
-          <a href="{{url('stages')}}">
-            <i class="fa fa-file-pdf-o"></i> 
-            <span>Stages</span>
-          </a>
-        </li>
+        
        
 
           @if(Auth::user()->role->nom == 'admin' )
@@ -130,11 +143,11 @@
                       <a href="{{ url('stages/'.$stage->id.'/details')}}" class="btn btn-info">
                         <i class="fa fa-eye"></i>
                       </a>
-                      @if(Auth::id() == $stage->user->id || Auth::user()->role->nom == 'admin' )
+                    
                       <a href="{{ url('stages/'.$stage->id.'/edit')}}" class="btn btn-default">
                         <i class="fa fa-edit"></i>
                       </a>
-                      @endif
+                      
                        @if(Auth::id() == $stage->user->id || Auth::user()->role->nom == 'admin' )
                       <!-- <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash-o"></i>

@@ -31,8 +31,8 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="ed_mostrecomeded_course">
                                     <div class="ed_item_img">
-                                        @if ($projet->image !='')
-                                        <img src="{{asset($projet->image)}} " alt="item1" class="img-responsive">
+                                        @if ($projet->image_projet !='')
+                                        <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-responsive">
                                         @else
                                         <img src="{{asset('images/content/'.$projet->type.'.jpg')}} " alt="item1" class="img-responsive">
                                         @endif
@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
                                     
-                                    <p style="height: 100px;overflow: hidden;">{{$projet->resume}}</p>
+                                    <div style="height: 110px;overflow: hidden;margin: 2%;">{!!$projet->resume!!}</div>
                                     <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>

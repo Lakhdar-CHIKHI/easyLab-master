@@ -44,6 +44,24 @@
           </ul>
         </li>
         <li>
+            <li class="active">
+                <a href="{{url('partenaires')}}">
+                  <i class="fa fa-group"></i> 
+                  <span>Partenaires</span>
+                </a>
+              </li>
+              <li >
+                  <a href="{{url('contacts')}}">
+                    <i class="fa fa-list"></i> 
+                    <span>Contacts</span>
+                  </a>
+                </li>
+                <li>
+                    <a href="{{url('stages')}}">
+                      <i class="fa fa-file-pdf-o"></i> 
+                      <span>Stages</span>
+                    </a>
+                  </li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
             <span>Thèses</span>
@@ -103,7 +121,7 @@
                         <label class="col-md-3 control-label">Nom du laboratoire *</label>  
                         <div class="col-lg-7 inputGroupContainer @if($errors->get('nom')) has-error @endif">
                           <div class="input-group col-md-12" >
-                            <input  name="nom" class="form-control " placeholder="Le nom" type="text" value="{{old('nom')}}">
+                            <input  name="nom" class="form-control " placeholder="Le nom" type="text" value="{{$labo->nom}}">
                           </div>
                           <span class="help-block">
                             @if($errors->get('nom'))
@@ -119,7 +137,7 @@
                       <div class="col-md-7 inputGroupContainer @if($errors->get('propos')) has-error @endif">
                         <div class="input-group col-md-12">
                           
-                          <textarea  name="propos" placeholder="propos" class="form-control"  id="mytextarea" rows="10"  value="{{old('propos')}}"></textarea>
+                          <textarea  name="propos" placeholder="propos" class="form-control"  id="mytextarea" rows="10"  >{{$labo->propos}}</textarea>
                         </div>
                           <span class="help-block">
                               @if($errors->get('propos'))
@@ -134,7 +152,7 @@
                       <label class="col-md-3 control-label">Lieu *</label>  
                       <div class="col-md-7 inputGroupContainer @if($errors->get('lieu')) has-error @endif">
                         <div class="input-group col-md-12">
-                          <input  name="lieu" class="form-control" placeholder="Lieu" type="text" style="height:auto;" value="{{old('lieu')}}">
+                          <input  name="lieu" class="form-control" placeholder="Lieu" type="text" style="height:auto;" value="{{$labo->lieu}}">
                         </div>
                         <span class="help-block">
                           @if($errors->get('lieu'))
@@ -149,7 +167,7 @@
                   <label class="col-md-3 control-label">Mail *</label>  
                   <div class="col-md-7 inputGroupContainer @if($errors->get('mail')) has-error @endif">
                     <div class="input-group col-md-12">
-                      <input  name="mail" class="form-control" placeholder="Email" type="text" style="height:auto;" value="{{old('mail')}}">
+                      <input  name="mail" class="form-control" placeholder="Email" type="text" style="height:auto;" value="{{$labo->mail}}">
                     </div>
                     <span class="help-block">
                       @if($errors->get('mail'))
@@ -164,7 +182,7 @@
               <label class="col-md-3 control-label">Téléphone *</label>  
               <div class="col-md-7 inputGroupContainer @if($errors->get('tel')) has-error @endif">
                 <div class="input-group col-md-12">
-                  <input  name="tel" class="form-control" placeholder="Tél" type="text"style="height:auto;" value="{{old('tel')}}">
+                  <input  name="tel" class="form-control" placeholder="Tél" type="text"style="height:auto;" value="{{$labo->tel}}">
                 </div>
                 <span class="help-block">
                   @if($errors->get('tel'))
@@ -179,7 +197,7 @@
           <label class="col-md-3 control-label">Fax *</label>  
           <div class="col-md-7 inputGroupContainer @if($errors->get('fax')) has-error @endif">
             <div class="input-group col-md-12">
-              <input  name="fax" class="form-control" placeholder="Fax" type="text" style="height:auto;" value="{{old('fax')}}">
+              <input  name="fax" class="form-control" placeholder="Fax" type="text" style="height:auto;" value="{{$labo->fax}}">
             </div>
             <span class="help-block">
               @if($errors->get('fax'))

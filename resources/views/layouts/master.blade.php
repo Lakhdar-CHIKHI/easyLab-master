@@ -5,9 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="csrf-token" content="{{ csrf_token() }}"/>
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+  
 
   <link rel="icon" type="image/png" href="{{asset('easy.png')}}"/>
   <title>
@@ -51,7 +49,7 @@
   <link rel="stylesheet" href="{{asset('labo/bower_components/select2/dist/css/select2.min.css')}}">
 
   <link rel="stylesheet" href="{{asset('css/plus_css.css')}}">
-
+  <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -272,7 +270,7 @@
 
 <script src="{{ asset('js/his.js')}}"></script>
 <script src="{{ asset('js/his2.js')}}"></script>
-
+<script src="{{ asset('js/sweetalert.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -343,16 +341,13 @@
 </script>
 <script>
   $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
+    $('#example1').DataTable();
+    $('#example11').DataTable();
+    $('#example2').DataTable();
+    $('#example3').DataTable();
+    $('#example4').DataTable();
+    
+  });
 </script>
 <script>
 
