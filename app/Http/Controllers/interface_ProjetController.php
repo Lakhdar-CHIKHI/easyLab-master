@@ -59,9 +59,10 @@ class interface_ProjetController extends Controller
         $labo =  Parametre::find('1');
         
             if ($acr_groupe!='tous') {
-                $projets=DB::table('users')->select('projets.id','projets.intitule','projets.image','projets.resume','projets.type')
+                $projets=DB::table('users')->select('projets.id','projets.intitule','projets.image_projet','projets.resume','projets.type')
                     ->distinct()
                     ->where('users.equipe_id','=',$acr_groupe)
+                    ->where('deleted_at','=',null)
                     ->join('projet_user','users.id','=','projet_user.user_id')
                     ->join('projets','projets.id','=','projet_user.projet_id')
                 ->paginate();

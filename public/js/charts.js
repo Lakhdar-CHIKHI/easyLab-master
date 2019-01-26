@@ -3,9 +3,71 @@ $(document).ready(function() {
     getMessage();
     getMessage2();
     getMessage3();
+    getMessage4();
 
     function getMessage() {
         $.getJSON('charts', function(data) {
+            // console.log(data);
+            var dataPoints2 = [];
+            var datasets = [];
+            var date = [];
+            var color = ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"];
+            var i = 0;
+            /*$.each(data, function(key, value) {
+                color.push(dataset);
+            });*/
+            $.each(data, function(key, value) {
+                if (key != 'date') {
+                    dataPoints2.push(key);
+                    var tmp = key;
+                    var dataPoints = [];
+                    $.each(value, function(key, value2) {
+                        dataPoints.push(value2);
+                    });
+                    var dataset = {
+                        label: tmp,
+                        backgroundColor: color[i++],
+
+                        data: dataPoints
+                    }
+                    datasets.push(dataset);
+                } else {
+                    $.each(value, function(key, value3) {
+                        date.push(value3['annee']);
+                    });
+
+                }
+
+            });
+
+            //console.log(color);
+            //console.log(dataPoints);
+            new Chart(document.getElementById("bar-chart-grouped"), {
+
+
+                type: 'bar',
+                data: {
+                    labels: date,
+                    datasets: datasets
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Nombre des articles pour un équipe chaque année'
+                    },
+                    animationEnabled: true,
+                    exportEnabled: true,
+                }
+            });
+
+
+        });
+
+
+    }
+
+    function getMessage4() {
+        $.getJSON('charts/projets', function(data) {
             console.log(data);
             var dataPoints2 = [];
             var datasets = [];
@@ -41,7 +103,7 @@ $(document).ready(function() {
 
             console.log(color);
             //console.log(dataPoints);
-            new Chart(document.getElementById("bar-chart-grouped"), {
+            new Chart(document.getElementById("bar-chart-projet"), {
 
 
                 type: 'bar',
@@ -52,7 +114,7 @@ $(document).ready(function() {
                 options: {
                     title: {
                         display: true,
-                        text: 'Nombre des articles pour un équipe chaque année'
+                        text: 'Nombre des Projets pour un équipe chaque année'
                     },
                     animationEnabled: true,
                     exportEnabled: true,

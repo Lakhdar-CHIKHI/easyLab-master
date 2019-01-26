@@ -15,6 +15,18 @@ use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
+    public function modifierA_nonAffect(Request $request){
+        
+            DB::update("UPDATE categories SET nom_mat='".$request->input('inpCat')."' WHERE nom_mat='".$request->input('id')."' ");
+        
+        return redirect('materiels');
+    }
+
+    public function supprimerMateriel_nonaffect($id){
+        DB::delete("DELETE FROM `categories` WHERE `categories`.`nom_mat` = '".$id."' ");
+        return redirect('materiels');
+    }
+
     public function modifierA(Request $request){
         if ($request->input('type_changement')=="materiel") {
             $libelle = str_replace(' ', '_', $request->input('inpLib'));
@@ -123,9 +135,11 @@ class MaterielController extends Controller
         $labo = Parametre::find('1');
         $membres = User::all();
         $equipes = Equipe::all();
+        $categories = Categorie::all();
         $histo_users =DB::select('SELECT * FROM user_mat'); 
       //  return view('materiel.index', ['materiels' => $materiels], ['labo' => $labo]);
         return view('materiel.index')->with([
+            'categories' => $categories,
             'materiels' => $materiels,
             'membres' => $membres,
             'labo' => $labo,

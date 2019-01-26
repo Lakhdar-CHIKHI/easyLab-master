@@ -30,17 +30,21 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="ed_sidebar_wrapper">
                         <div class="ed_profile_img">
-                            <img src="{{asset($equipe->logo)}}" alt="item1" class="img-responsive" style="width:100%;">
+                            @if ($equipe->logo)
+                            <img src="{{asset($equipe->logo)}}" alt="item1" class="img-responsive " style="width:100%;">
+                            @else
+                            <img src="{{asset('images/content/nologo.png')}}" alt="item1" class="img-responsive " style="width:100%;">
+
+                            @endif
                         </div>
                         <h3>{{$equipe->intitule}}</h3>
                         
-                         <div class="ed_tabs_left">
+                         <div class="ed_tabs_left" role="tablist">
                             <ul class="nav nav-tabs">
-                              <li class="active"><a href="#a" data-toggle="tab">Apropos</a></li>
-                              <li><a href="#b" data-toggle="tab">Membres <span>{{count($membres)}}</span></a></li>
-                              <li><a href="#d" data-toggle="tab">Projets<span>{{count($projets)}}</span></a></li>
-                              <li><a href="#c" data-toggle="tab">Articles<span>{{count($articles)}}</span></a></li>
-                         
+                              <li role="presentation" class="active"><a href="#a" aria-controls="a" role="tab" data-toggle="tab">Apropos</a></li>
+                              <li role="presentation"><a href="#b" aria-controls="b" role="tab" data-toggle="tab">Membres <span>{{count($membres)}}</span></a></li>
+                              <li role="presentation"><a href="#d" aria-controls="d" role="tab" data-toggle="tab">Projets<span>{{count($projets)}}</span></a></li>
+                              <li role="presentation"><a href="#c" aria-controls="c" role="tab" data-toggle="tab">Articles<span>{{count($articles)}}</span></a></li>
                               </div>
                     </div>
                 </div>
@@ -111,6 +115,54 @@
                                 </div><!--tab End-->
                             </div>
                         </div>
+                        <div class="tab-pane" id="c">
+                            <div class="ed_dashboard_inner_tab">
+                                <div role="tabpanel">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#cc" aria-controls="cc" role="tab" data-toggle="tab">Articles</a></li>
+                                    </ul>
+                        
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="cc">
+                                                @if (count($articles))
+                                        <div class="ed_inner_dashboard_info ed_course_single_info">
+                                            <h2> &nbsp;Total Articles : <span>{{count($articles)}} Articles</span></h2>
+                                        </div>
+                                        <div class="ed_inner_dashboard_info">
+                                            @foreach ($articles as $article)
+                                                <div class=" pub" ><a href="{{url('template/'.$article->id.'/detail_article')}}">
+                                                    <div class="row">
+                                                            <div class="col-md-3"><img src="{{asset('images/content/'.$article->type.'.jpg')}}" class="img-thumbnail" srcset=""></div>    
+                                                            <div>
+                                                                    <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->mois}} {{$article->annee}}</strong><br>
+                                                                    <strong>TITRE :</strong><span>{{$article->titre}}                           
+                                                                    </span><br>
+                                                                    <strong>RESUME :</strong><span>{!!$article->resume!!}                           
+                                                                        </span>
+                                                                </div> 
+                                                    </div>
+                                                        
+                                                    
+                                        
+                                                    </a>
+                                                    </div>
+                                                    @endforeach
+
+
+                                        </div>
+                                        @else
+                                        <div align="center">
+                                            <h1>Aucun résultat trouvé</h1>
+                                        </div>
+                                        @endif
+                                        </div>
+                                    </div>
+                        
+                                </div><!--tab End-->
+                            </div>
+                        </div>
                         <div class="tab-pane" id="d">
                             <div class="ed_dashboard_inner_tab">
                                 <div role="tabpanel">
@@ -120,21 +172,21 @@
                                          </ul>
                         
                                     <!-- Tab panes -->
-                                    @if (count($projets))
+                                    
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="py">
-                                            <div class="ed_inner_dashboard_info">
-                                         <div class="ed_course_single_info">
+                                                @if (count($projets))
+                                         <div class="ed_inner_dashboard_info ed_course_single_info">
                                                 <h2> &nbsp;Total Projets : <span>{{count($projets)}} Projet</span></h2>
-                                                   
-            
+                                         </div>
+                                                <div class="ed_inner_dashboard_info">
             @foreach ($projets as $projet)
             <div class=" pub" ><a href="{{url('template/'.$projet->id.'/detail_projet')}}">
                 <div class="row">
                     <div class="col-md-3">
                         
-                        @if ($projet->image !='')
-                            <img src="{{asset($projet->image)}} " alt="item1" class="img-thumbnail">
+                        @if (isset($projet->image_projet))
+                            <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-thumbnail">
                          @else
                             <img src="{{asset('images/content/'.$projet->type.'.jpg')}}" class="img-thumbnail" alt="" srcset="">
                          @endif
@@ -142,7 +194,7 @@
                     <div>
                             <strong>INTITULE :</strong><span>{{$projet->intitule}}</span><br>
                             <strong>TYPE : {{$projet->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                            <strong>Résume :</strong><span>{{$projet->resume}}</span>
+                            <strong>Résume :</strong><span>{!!$projet->resume!!}</span>
                         </div> 
             </div>
                     
@@ -151,33 +203,51 @@
                  </a>
                  </div>
                 @endforeach
-                @else
-                <div align="center">
-                    <h1>Aucun résultat trouvé</h1>
-            </div>
-                @endif
-
+                                                </div>
+                
+                                                @else
+                                                <div align="center">
+                                                    <h1>Aucun résultat trouvé</h1>
+                                                </div>
+                                                @endif
             
                                             </div>
-                                        </div>
+                                        
                                      </div>
                                      
                                     </div>
                         
                                 </div><!--tab End-->
                             </div>
+                            
                         </div>
                         
+                        
+                       
+                    
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+            </div>
+        
+    
+    <!--instructor single end-->
+    
 
-                        <div class="tab-pane" id="c">
+@endsection
+
+
+ <!--<div class="tab-pane" id="c">
                             <div class="ed_dashboard_inner_tab">
                                 <div role="tabpanel">
-                                    <!-- Nav tabs -->
+                                    
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#py" aria-controls="my" role="tab" data-toggle="tab">Articles</a></li>
                                          </ul>
                         
-                                    <!-- Tab panes -->
+                                    
                                     @if (count($articles))
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="py">
@@ -217,19 +287,6 @@
                                      
                                     </div>
                         
-                                </div><!--tab End-->
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                </div>
-                
-                
-            </div>
-        </div>
-    </div>
-    <!--instructor single end-->
-    
-
-@endsection
+                        </div>-->

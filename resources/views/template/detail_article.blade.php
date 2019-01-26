@@ -112,7 +112,7 @@
                                                     
                                                 </table>
                                                 <h4>Résumé</h4>
-                                                <p>{{$article->resume}}</p>
+                                                <p>{!! $article->resume !!}</p>
                                                 <br>
                                              
                                         </div>

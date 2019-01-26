@@ -45,7 +45,24 @@
             <li ><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -109,9 +126,10 @@
                 <tr>
                   <th>Intitulé</th>
                   <th>Type</th>
-                  <th>Partenaires</th>
+                  
                   <th>Chef</th>
                   <th>Membres</th>
+                  <th>Membres externes</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -121,12 +139,9 @@
                   <tr>
                     <td>{{ $projet->intitule }}</td>
                     <td>{{ $projet->type }}</td>
-                    <td> @foreach ($projet->contacts as $contact) 
-                      <ul>
-                          <li><a href="{{url('contacts/'.$contact->id.'/details')}}">{{ $contact->nom }} {{ $contact->prenom }}</a></li>
-                      </ul>
-                    @endforeach</td>
+                    
                     <td><a href="{{url('membres/'.$projet->chef_id.'/details')}}">{{ $projet->chef->name}} {{ $projet->chef->prenom}}</a></td>
+                    
                     <td>
                       @foreach ($projet->users as $user) 
                       <ul>
@@ -135,6 +150,11 @@
                     @endforeach
 
                     </td>
+                    <td> @foreach ($projet->contacts as $contact) 
+                        <ul>
+                            <li><a href="{{url('contacts/'.$contact->id.'/details')}}">{{ $contact->nom }} {{ $contact->prenom }}</a></li>
+                        </ul>
+                      @endforeach</td>
                     <td>
 
 
@@ -195,9 +215,10 @@
                  <tr>
                   <th>Intitulé</th>
                   <th>Type</th>
-                  <th>Partenaires</th>
+                  
                   <th>Chef</th>
                   <th>Membres</th>
+                  <th>Membres externes</th>
                   <th>Actions</th>
                 </tr>
                 </tfoot>

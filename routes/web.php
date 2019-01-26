@@ -34,9 +34,7 @@ Route::get('template/{id}/profil_member', 'interface_AccueilController@details')
 
 //===================================== Routes des intefaces ===================================
 Route::get('/template/apropos', 'interface_apropos@index');
-Route::get('/template/contact', function () {
-    return view('template.contact');
-});
+Route::get('/template/contact','interface_AccueilController@contact');
 
 
 /*    partenaires        */
@@ -99,6 +97,7 @@ Route::get('/template/articles/type/{type}','interface_ArticleController@search_
 Route::get('template/{id}/detail_article', 'interface_ArticleController@details');
 //===================================== Routes des Chart ===================================
 Route::get('charts', 'ChartsController@index');
+Route::get('charts/projets', 'ChartsController@graph_projets');
 Route::get('charts/graph2', 'ChartsController@graph2');
 Route::get('charts/graph3', 'ChartsController@graph3');
 
@@ -201,8 +200,10 @@ Route::post('materiells', 'MaterielController@store2');
 Route::post('materiels/affectations/membre', 'MaterielController@affecter_mat_membre');
 Route::post('materiels/affectations/equipe', 'MaterielController@affecter_mat_equipe');
 Route::get('materiels/supprimer/{id}','MaterielController@supprimerMateriel');
+Route::get('materiels/supprimer_nonaffect/{id}','MaterielController@supprimerMateriel_nonaffect');
 Route::post('materiels/historique','MaterielController@voirhistorique');
 Route::post('materiels/modifier','MaterielController@modifierA');
+Route::post('materiels/modifier_nonAffect','MaterielController@modifierA_nonAffect');
 
 //Route::post('materiels/quantite','MaterielController@quantite');
 /*

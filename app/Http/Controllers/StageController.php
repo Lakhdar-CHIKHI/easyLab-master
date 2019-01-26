@@ -39,8 +39,8 @@ class StageController extends Controller
 
     public function create()
     {
-        if( Auth::user()->role->nom == 'admin')
-            {
+        /*if( Auth::user()->role->nom == 'admin')
+            {*/
                 $membres = DB::table('users')
                 ->wherenotExists(function ($query) {
                      $query->select(DB::raw('user_id'))
@@ -65,11 +65,11 @@ class StageController extends Controller
                     'partenaires'=>$partenaires,
                     'labo'=>$labo,
                 ]);;
-            }
+            /*}
             else{
                 $labo = Parametre::find('1');
                 return view('errors.403', ['labo'=>$labo]);
-            }
+            }*/
     
     }
 

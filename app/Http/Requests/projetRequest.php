@@ -27,8 +27,8 @@ class projetRequest extends FormRequest
             'intitule' => 'required|min:3',
             'resume' => 'required|min:10',
             'type' => 'required', 
-            'chef_id' => 'required'
-
+            'chef_id' => 'required',
+            'membre'=>'required'
         ];
     }
 }

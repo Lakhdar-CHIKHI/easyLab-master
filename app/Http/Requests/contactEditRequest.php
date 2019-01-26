@@ -30,7 +30,7 @@ class contactEditRequest extends FormRequest
             'adresse_mail' => 'required',
            
             'fonction' => 'required',
-            'partenaire' => 'required'
+            'partenaire_id' => 'required'
 
         ];
 

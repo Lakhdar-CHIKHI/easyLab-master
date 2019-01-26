@@ -47,7 +47,24 @@
             <li class="active"><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -132,7 +149,7 @@
                       <label class="col-md-3 control-label">Résumé (*)</label>
                       <div class="col-md-9 inputGroupContainer  @if($errors->get('resume')) has-error @endif">
                         <div style="width: 100%">
-                          <textarea name="resume" class="form-control" rows="3" placeholder="Résumé ...">{{old('resume')}}</textarea>
+                          <textarea name="resume" id="mytextarea" class="form-control" rows="3" placeholder="Résumé ...">{{old('resume')}}</textarea>
                           <span class="help-block">
                                 @if($errors->get('resume'))
                                   @foreach($errors->get('resume') as $message)

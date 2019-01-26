@@ -89,8 +89,8 @@
                                                             <div class=" pub" ><a href="{{url('template/'.$projet->id.'/detail_article')}}">
                                                                 <div class="row">
                                                                         <div class="col-md-3">
-                                                                                @if ($projet->image !='')
-                                                                                <img src="{{asset($projet->image)}} " alt="item1" class="img-thumbnail">
+                                                                                @if ($projet->image_projet !='')
+                                                                                <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-thumbnail">
                                                                              @else
                                                                                 <img src="{{asset('images/content/'.$projet->type.'.jpg')}}" class="img-thumbnail" alt="" srcset="">
                                                                              @endif
@@ -100,7 +100,7 @@
                                                                                 <strong>INTITULE :</strong><span>{{$projet->intitule}}
                                                                                 </span><br>
                                                                                 <strong>TYPE : {{$projet->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                                                                                <strong>RESUME :</strong><span>{{$projet->resume}}</span></div> 
+                                                                                <strong>RESUME :</strong><span>{!!$projet->resume!!}</span></div> 
                                                                 </div>
                                                      
                                                                  </a>
@@ -128,7 +128,7 @@
                                                                             <div class="col-md-3"><img src="{{asset('images/content/'.$article->type.'.jpg')}}" class="img-thumbnail" srcset=""></div>    
                                                                             <div> <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->mois}} {{$article->annee}}</strong><br>
                                                                                     <strong>TITRE :</strong><span>{{$article->titre}}</span><br>
-                                                                                    <strong>RESUME :</strong><span>{{$article->resume}}</span>
+                                                                                    <strong>RESUME :</strong><span>{!!$article->resume!!}</span>
                                                                                 </div> 
                                                                     </div>
                                                          
@@ -148,15 +148,19 @@
                                                                     <div class="ed_inner_dashboard_info">
                                                                             
                                                                     @if ($membre->these)
-                                                                    <h5><strong>Encadreur :</strong> {{$membre->these->encadreur_int}}{{$membre->these->encadreur_ext}}<br>
-                                                                        <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}{{$membre->these->coencadreur_ext}} 
-                                             @if($these->encext )   <br>  <strong>Encadreur Externe:</strong>{{$membre->these->encext->nom}} {{$membre->these->encext->prenom}}   @endif
-                                           @if($these->cooencext )  <br>  <strong>Coencadreur Externe:</strong>{{$membre->these->cooencext->nom}} {{$membre->these->cooencext->prenom}} @endif
-                                                                     
+                                                                    <h5><strong>Encadreur :</strong> {{$membre->these->encadreur_int}} <br>
+                                                                        <strong>Coencadreur :</strong> {{$membre->these->coencadreur_int}}<br> 
+                                                                       @if ($membre->these->encext)
+                                                                       <strong>Encadreur ext:</strong> {{$membre->these->encext->nom}} {{$membre->these->encext->prenom}}<br>
+                                                                       @endif
+                                                                        @if ($membre->these->cooencext)
+                                                                        <strong>Coencadreur ext:</strong>  {{$membre->these->cooencext->nom}} {{$membre->these->cooencext->prenom}}<br>
+                                                                        @endif
+                                                                        
                                                                     </h5>
                                                                     <h3><strong>Titre : </strong>{{$membre->these->titre}}</h3>
                                                                     <h3><strong>Resume : </strong></h3>
-                                                                    <p>{{$membre->these->sujet}}</p>
+                                                                    <p>{!!$membre->these->sujet!!}</p>
                                                                     @if ($membre->these->detail)
                                                                     <h3><strong>Piece Joint : </strong><a href='{{asset($membre->these->detail)}}'>&nbsp;&nbsp;<i class="glyphicon glyphicon-floppy-save"></i> Télécharger Fichier</a></h3>
                                                                     @endif

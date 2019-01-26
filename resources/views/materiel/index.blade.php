@@ -45,6 +45,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
+        <li class="active">
+                <a href="{{url('partenaires')}}">
+                  <i class="fa fa-group"></i> 
+                  <span>Partenaires</span>
+                </a>
+              </li>
+              <li >
+                  <a href="{{url('contacts')}}">
+                    <i class="fa fa-list"></i> 
+                    <span>Contacts</span>
+                  </a>
+                </li>
+                <li>
+                    <a href="{{url('stages')}}">
+                      <i class="fa fa-file-pdf-o"></i> 
+                      <span>Stages</span>
+                    </a>
+                  </li>
          <li >
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -94,10 +112,10 @@
       <div class="col-md-12">
             <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                           <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
+                           <li class="active"><a href="#apropos" data-toggle="tab">Affectable</a></li>
                            @if(Auth::user()->role->nom == 'admin' )
              
-                           <li><a href="#modifier" data-toggle="tab">Modifier</a></li>
+                           <li><a href="#modifier" data-toggle="tab">Non affectable</a></li>
                            @endif
                          </ul>
                          <div class="tab-content">
@@ -107,7 +125,7 @@
           <div class="container" style="padding-top: 30px">
           <div class="row" style="padding-bottom: 20px">
              <div class="box-header col-xs-9">
-              <h3 class="box-title">Liste des matériaux</h3>
+              <h3 class="box-title">Liste des matériaux affectable</h3>
             </div>
             
           </div>
@@ -428,16 +446,135 @@
             
             
         </div> 
-        <div class="active tab-pane" id="modifier">
+
+        <!-- debut 2eme pane -->
+        <div class="tab-pane" id="modifier" >
+            <div class="container" style="padding-top: 30px">
+          <div class="row" style="padding-bottom: 20px">
+             <div class="box-header col-xs-9">
+              <h3 class="box-title">Liste des matériaux non affectable</h3>
+            </div>
+            
+          </div>
+          </div>
+                    
+            <!-- /.box-header -->
+           
+            <div class="box-body">
+              @if(Auth::user()->role->nom == 'admin' )
+              <div class=" pull-right">
+              <a href="{{url('materiels/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"></i> Nouveau matériel</a>
+            </div>
+            @endif
+              <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Materiel </th>
+                  <th>Quantite</th>
+                  <th>Action</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                  @foreach($categories as $categorie)
+                  @if($categorie->affectable == "non")
+                  <tr>
+                    <td>{{$categorie->nom_mat}}</td>
+                    <td>{{$categorie->quantite_mat}}</td>
+                    
+                   
+                    <td>
+                    <div class="btn-group">
+                    
+                  
+                    <a href="#mod{{ $categorie->nom_mat }}Modall" role="button" class="glyphicon glyphicon-remove" data-toggle="modal"></a>
+                    <div class="modal fade" id="mod{{ $categorie->nom_mat }}Modall" tabindex="-1" role="dialog" aria-labelledby="mod{{ $categorie->nom_mat }}Modall" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      Voulez-vous vraiment supprimer ce matériel ? 
+                                  </div> 
+                                  <div class="modal-footer">
+                                        <form class="form-inline" action="{{ url('materiels/supprimer_nonaffect/'.$categorie->nom_mat) }}"  method="get">
+                                            {{csrf_field()}}
+                                            {{method_field('DELETE')}}
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
+                                            <button type="submit" class="btn btn-danger">Oui</button>
+                                        </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    
+                      
+                    <a href="#modd{{ $categorie->nom_mat }}Moda" role="button" class="glyphicon glyphicon-pencil btn_modifier" data-toggle="modal" data-id_modifier="{{ $categorie->nom_mat }}" data-id_modifierr="{{ $materiel->nom_mat }}" ></a>
+                    <div class="modal fade" id="modd{{ $categorie->nom_mat }}Moda" tabindex="-1" role="dialog" aria-labelledby="modd{{ $categorie->nom_mat }}ModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                      
+                                      <form action="{{ url('materiels/modifier_nonAffect') }}" method="post">
+                                      {{ csrf_field() }}
+                                      <input type="hidden" name="id" value="{{ $categorie->nom_mat }}">
+                                      <p>Saisir un nouveau nom au matériel</p><input name="inpCat" type="text" >
+                                      <div class="modal-footer">
+                                      
+                                      <button type="submit" class="btn btn-danger" >OK</button>
+                                      <button type="button" class="btn " data-dismiss="modal">annuler</button>
+                                  </div>
+                                      </form>
+                                  </div> 
+                                  
+                              </div>
+                          </div>
+                      </div>
+                      
+                    
+                    </div>
+                    
+                    
+                    </td>
+                  </tr>
+                  @endif
+                  @endforeach
+                 </tbody>
+                <tfoot>
+                <tr>
+                <th>Materiel </th>
+                  <th>Quantité</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          
+            
+            
+        </div> 
+
         </div>
+        <!-- fin 2eme pane -->
     
+
+
     </div> </div>
 
       </div>
       
     </div>
     
-    <!--pane2-->
+   <!--pane2-->
 
     <!--pane2-->
 

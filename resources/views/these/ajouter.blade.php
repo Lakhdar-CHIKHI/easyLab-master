@@ -47,6 +47,24 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li class="active">
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -137,7 +155,7 @@
                       <label class="col-md-3 control-label">Sujet (*)</label>
                       <div class="col-md-9 inputGroupContainer @if($errors->get('sujet')) has-error @endif" >
                         <div style="width: 100%">
-                          <textarea name="sujet" class="form-control" rows="3" placeholder="Entrez ...">{{old('sujet')}}</textarea>
+                          <textarea name="sujet" class="form-control" rows="3" id="mytextarea" placeholder="Entrez ...">{{old('sujet')}}</textarea>
 
                             <span class="help-block">
                                 @if($errors->get('sujet'))
@@ -164,7 +182,7 @@
                         <div class="col-xs-9 inputGroupContainer @if($errors->get('user_id')) has-error @endif">
                           <div style="width: 100%">
                             <select name="user_id" class="form-control select2" >
-                              <option{{old('user_id')}}></option>
+                              <option value="{{old('user_id')}}">{{old('user_id')}}</option>
                                @foreach($membres as $membre)
                               <option value="{{$membre->id}}">{{$membre->name}} {{$membre->prenom}}</option>
                                @endforeach
@@ -195,7 +213,7 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 100%">
                             <select name="encadreur_int" class="form-control select2">
-                              <option></option>
+                                <option value="{{old('encadreur_int')}}">{{old('encadreur_int')}}</option>
                                @foreach($membres as $membre)
                               <option value="{{$membre->name}} {{$membre->prenom}}">{{$membre->name}} {{$membre->prenom}}</option>
                                @endforeach
@@ -216,7 +234,7 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 100%">
                             <select name="coencadreur_int" class="form-control select2">
-                              <option></option>
+                                <option value="{{old('coencadreur_int')}}">{{old('coencadreur_int')}}</option>
                                @foreach($membres as $membre)
                               <option value="{{$membre->name}} {{$membre->prenom}}">{{$membre->name}} {{$membre->prenom}}</option>
                                @endforeach
@@ -239,7 +257,7 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 100%">
                             <select name="encadreur_ext" id="contact1" class="form-control select2">
-                              <option></option>
+                                <option value="{{old('encadreur_ext')}}">{{old('encadreur_ext')}}</option>
                                @foreach($contacts as $contact)
                               <option value="{{$contact->id}}">{{$contact->nom}} {{$contact->prenom}}</option>
                                @endforeach
@@ -255,7 +273,7 @@
                         <div class="col-xs-9 inputGroupContainer">
                           <div style="width: 100%">
                             <select name="coencadreur_ext" id="contact2" class="form-control select2">
-                              <option></option>
+                                <option value="{{old('coencadreur_ext')}}">{{old('coencadreur_ext')}}</option>
                                @foreach($contacts as $contact)
                               <option value="{{$contact->id}} ">{{$contact->nom}} {{$contact->prenom}}</option>
                                @endforeach

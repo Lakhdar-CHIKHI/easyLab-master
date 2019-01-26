@@ -67,13 +67,7 @@ class EquipeController extends Controller
     {
         $labo = Parametre::find('1');
         $equipe = new equipe();
-        if($request->hasFile('img_equipe')){
-
-            $file = $request->file('img_equipe');
-            $file_name = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('/uploads/equipes'),$file_name);
-            $equipe->image = '/uploads/equipes/'.$file_name;
-        }
+        
         $equipe->intitule = $request->input('intitule');
         $equipe->resume = $request->input('resume');
         $equipe->achronymes = $request->input('achronymes');
@@ -101,17 +95,7 @@ class EquipeController extends Controller
 
         if( Auth::user()->role->nom == 'admin')
             {
-                if($request->hasFile('img_equipe_mod')){
-                    if (file_exists($equipe->image)) 
-                       {
-                         unlink($equipe->image);
-                          
-                      }
-                    $file = $request->file('img_equipe_mod');
-                    $file_name = time().'.'.$file->getClientOriginalExtension();
-                    $file->move(public_path('/uploads/equipes'),$file_name);
-                    $equipe->image = 'uploads/equipes/'.$file_name;
-                }
+                
                 if($request->hasFile('logo_mod')){
                     if (file_exists($equipe->logo)) 
                        {

@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('type',20)->nullable();
             $table->string('titre',100)->nullable();
-            $table->string('resume',400)->nullable();
+            $table->text('resume')->nullable();
             $table->string('lieu_ville',45)->nullable();
             $table->string('lieu_pays',45)->nullable();
             $table->string('conference',45)->nullable();

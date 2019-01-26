@@ -47,7 +47,24 @@
             <li ><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-
+        <li class="active">
+            <a href="{{url('partenaires')}}">
+              <i class="fa fa-group"></i> 
+              <span>Partenaires</span>
+            </a>
+          </li>
+          <li >
+              <a href="{{url('contacts')}}">
+                <i class="fa fa-list"></i> 
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+                <a href="{{url('stages')}}">
+                  <i class="fa fa-file-pdf-o"></i> 
+                  <span>Stages</span>
+                </a>
+              </li>
          <li>
           <a href="{{url('theses')}}">
             <i class="fa fa-file-pdf-o"></i> 
@@ -126,7 +143,7 @@
                       <label class="col-md-3 control-label">Résumé</label>
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 100%">
-                          <textarea class="form-control" name="resume" rows="3"> {{ $projet -> resume}}
+                          <textarea class="form-control" id="mytextarea" name="resume" rows="3"> {!!$projet->resume!!}
                           </textarea>
                         </div>
                       </div>
@@ -244,18 +261,10 @@
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                         <label class="col-xs-3 control-label">Lien</label>  
                         <div class="col-xs-9 inputGroupContainer">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                           <div style="width: 100%">
                             <input  name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
-=======
-                          <div style="width: 70%">
-                            <input   name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
-=======
-                          <div style="width: 70%">
-                            <input   name="lien" value="{{ $projet -> lien}}"  class="form-control" placeholder="URL" type="url">
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+
                           </div>
                         </div>
                   </div> 
@@ -270,29 +279,13 @@
 <div class=" col-md-12 ">   <div class="form-group col-md-10 ">   
                       <label class="col-md-3 control-label">Détails</label>
                       <div class="col-md-9 inputGroupContainer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <div style="width: 100%">
-                          <input name="detail" type="file">
-                        </div>
-                      </div>
-                  </div>
-</div>
 
-
-=======
                         <div style="width: 70%">
                           <input name="detail" type="file" class="form-control" style="height: auto;">
                         </div>
                       </div>
                   </div>
-=======
-                        <div style="width: 70%">
-                          <input name="detail" type="file" class="form-control" style="height: auto;">
-                        </div>
-                      </div>
-                  </div>
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+
                   <div class="form-group">
                       <label class="col-md-3 control-label">Photo</label>  
                       <div class="col-md-9 inputGroupContainer">
@@ -301,10 +294,7 @@
                         </div>
                      </div>
                     </div>
-<<<<<<< HEAD
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
-=======
->>>>>>> 26fe8661b064ef38f68b2f0940d050ec2eb528b6
+
 
               </fieldset>
 

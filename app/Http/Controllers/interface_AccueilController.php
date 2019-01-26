@@ -42,6 +42,16 @@ class interface_AccueilController extends Controller
                                                 ]);
     	
     }
+    public function contact(){
+       
+        $labo =  Parametre::find('1');
+
+        return view('template.contact' )->with([
+                                                'labo'=>$labo,
+                                                
+                                                ]);
+    	
+    }
 
     public function details($id)
     {
