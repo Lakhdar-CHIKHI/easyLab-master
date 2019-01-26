@@ -36,10 +36,11 @@ class interface_ProjetController extends Controller
         $labo =  Parametre::find('1');
         $projet = Projet::find($id);
         $membres = Projet::find($id)->users()->orderBy('name')->get();
-
+        $contacts = Projet::find($id)->contacts()->orderBy('nom')->get();
         return view('template.detail_projet')->with([
             'projet' => $projet,
             'membres'=>$membres,
+            'contacts'=>$contacts,
             'labo'=>$labo,
         ]);;
     } 

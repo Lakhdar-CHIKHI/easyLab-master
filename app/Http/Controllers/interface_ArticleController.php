@@ -87,17 +87,18 @@ class interface_ArticleController extends Controller
 
     public function details($id)
     {
-    	//$labo = Parametre::find('1');
+    	$labo = Parametre::find('1');
          $article = Article::find($id);
        //  $type = 
         $membres = Article::find($id)->users()->orderBy('name')->get();
-     
+        $contacts = Article::find($id)->contacts()->orderBy('nom')->get();
 
 	 	//return view('article.details')->with([
 			return view('template.detail_article')->with([
 	 		'article' => $article,
-	 		'membres'=>$membres,
-	 		//'labo'=>$labo,
+             'membres'=>$membres,
+             'contacts'=>$contacts,
+	 		'labo'=>$labo,
 	 	]);;
     }
 
