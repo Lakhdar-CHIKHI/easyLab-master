@@ -47,7 +47,7 @@
             <li class="active"><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-        <li class="active">
+        <li >
             <a href="{{url('partenaires')}}">
               <i class="fa fa-group"></i> 
               <span>Partenaires</span>
@@ -85,13 +85,14 @@
           </a>
         </li>
 
-        <li >
+        @if(Auth::user()->role->nom == 'admin' )
+        <li>
           <a href="{{url('materiels')}}">
             <i class="glyphicon glyphicon-blackboard"></i> 
             <span>Materiels</span>
           </a>
         </li>
-        
+        @endif
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>

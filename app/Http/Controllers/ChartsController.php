@@ -83,23 +83,29 @@ return $equipes;
                 ->orwhere('theses.date_soutenance','>=',$date->a)->get()->count();
             }*/
             $i=0;
+            
             while ($i < 10) {
                 $j=0;
+                $k=0;
+                
                 foreach ($theses as $these) {
                     if (isset($these->date_soutenance)) {
-                        if ((date('Y',strtotime($these->date_debut))<=$dates-$i)&&((date('Y',strtotime($these->date_soutenance))>=$dates-$i))) {
-                            $result[$dates-$i]=++$j;
+                        /*if ((date('Y',strtotime($these->date_debut))<=$dates-$i)&&((date('Y',strtotime($these->date_soutenance))>=$dates-$i))) {
+                            $result['encours'][$dates-$i]=++$j;
                         } else{
-                            $result[$dates-$i]=0;
-                        }
-                        /*if ((date('Y',strtotime($these->date_soutenance))==$dates-$i)) {
-                            $result2[$dates-$i]=++$j;
+                            $result['encours'][$dates-$i]=0;
+                            
                         }*/
+                        if ((date('Y',strtotime($these->date_soutenance))==$dates-$i)) {
+                            $result['sout'][$dates-$i]=++$k;
+                        }else{
+                            $result['sout'][$dates-$i]=0;
+                        }
                     }else{
                         if ((date('Y',strtotime($these->date_debut))<=$dates-$i)) {
-                            $result[$dates-$i]=++$j;
+                            $result['encours'][$dates-$i]=++$j;
                         }else{
-                            $result[$dates-$i]=0;
+                            $result['encours'][$dates-$i]=0;
                         } 
                     }
                     
@@ -111,9 +117,62 @@ return $equipes;
 
                 $i++;
             }
-         
-       
+            $c=9;
+            $result['date']=array($dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--);
         return json_encode($result);
+    }
+
+
+    function graph_equipe(){
+        //$dates=DB::select("SELECT date_debut AS a from theses UNION SELECT date_soutenance as a FROM theses WHERE date_soutenance is NOT null");
+       // $dates=date('Y');
+        //$theses1=These::all();
+        //$theses=Equipe::find(1)->membres()->theses;
+           /* foreach ($dates as $date) {
+                $result[$date->a]=DB::table('theses')
+                ->whereNull('theses.deleted_at')
+                ->where('theses.date_debut','<=',$date->a)
+                ->orwhere('theses.date_soutenance','>=',$date->a)->get()->count();
+            }*/
+           /* $i=0;
+            
+            while ($i < 10) {
+                $j=0;
+                $k=0;
+                
+                foreach ($theses as $these) {
+                    if (isset($these->date_soutenance)) {
+                        /*if ((date('Y',strtotime($these->date_debut))<=$dates-$i)&&((date('Y',strtotime($these->date_soutenance))>=$dates-$i))) {
+                            $result['encours'][$dates-$i]=++$j;
+                        } else{
+                            $result['encours'][$dates-$i]=0;
+                            
+                        }*/
+                        /*if ((date('Y',strtotime($these->date_soutenance))==$dates-$i)) {
+                            $result['sout'][$dates-$i]=++$k;
+                        }else{
+                            $result['sout'][$dates-$i]=0;
+                        }
+                    }else{
+                        if ((date('Y',strtotime($these->date_debut))<=$dates-$i)) {
+                            $result['encours'][$dates-$i]=++$j;
+                        }else{
+                            $result['encours'][$dates-$i]=0;
+                        } 
+                    }
+                    
+                    /*$result[$dates-$i]=DB::table('theses')
+                    ->whereNull('theses.deleted_at')
+                    ->where(DB::raw("DATE_FORMAT(STR_TO_DATE(date_debut,'%m/%d/%Y'),'%Y')"),'<=',$dates-$i)
+                    ->where(DB::raw("DATE_FORMAT(STR_TO_DATE(date_soutenance,'%m/%d/%Y'),'%Y')"),'>=',$dates-$i)->get()->count();*/
+               /* }
+
+                $i++;
+            }
+            $c=9;
+            //$result['date']=array($dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--);
+        //return json_encode($result);*/
+        return 'jjj';
     }
 }
 

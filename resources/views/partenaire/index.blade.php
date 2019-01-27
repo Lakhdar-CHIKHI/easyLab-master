@@ -19,7 +19,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
          <li >
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -78,25 +82,16 @@
             <span>Projets</span>
           </a>
         </li>
-        <li class="active">
-          <a href="{{url('partenaires')}}">
-            <i class="fa fa-group"></i> 
-            <span>Partenaires</span>
+        @if(Auth::user()->role->nom == 'admin' )
+        <li>
+          <a href="{{url('materiels')}}">
+            <i class="glyphicon glyphicon-blackboard"></i> 
+            <span>Materiels</span>
           </a>
         </li>
+        @endif
 
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Contacts</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
-            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
-          </ul>
-        </li>
+         
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -152,7 +147,7 @@
                       </form> -->
 
 
-                      <a href="#supprimer{{ $partenaire->id }}Modal" role="button" class="btn btn-box-tool" data-toggle="modal"><i class="fa fa-times"></i></a>
+                      <a href="#supprimer{{ $partenaire->id }}Modal"  data-id="{{ $partenaire->id }}" role="button" class="btn btn-box-tool btn_supp_par" data-toggle="modal"><i class="fa fa-times"></i></a>
                       <div class="modal fade" id="supprimer{{ $partenaire->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $partenaire->id }}ModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                               <div class="modal-content">

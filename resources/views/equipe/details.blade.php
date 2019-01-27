@@ -46,7 +46,7 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-        <li class="active">
+        <li>
             <a href="{{url('partenaires')}}">
               <i class="fa fa-group"></i> 
               <span>Partenaires</span>
@@ -85,12 +85,14 @@
             <span>Projets</span>
           </a>
         </li>
-        <li >
-            <a href="{{url('materiels')}}">
-              <i class="glyphicon glyphicon-blackboard"></i> 
-              <span>Materiels</span>
-            </a>
-          </li>
+        @if(Auth::user()->role->nom == 'admin' )
+        <li>
+          <a href="{{url('materiels')}}">
+            <i class="glyphicon glyphicon-blackboard"></i> 
+            <span>Materiels</span>
+          </a>
+        </li>
+        @endif
           @if(Auth::user()->role->nom == 'admin' )
 
           <li>
@@ -102,12 +104,13 @@
 @endsection
 
 @section('content')
-	<div class="row">
+        <div class="row">
 
             <div class="col-md-8">
       <div class="nav-tabs-custom">
        <ul class="nav nav-tabs">
               <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
+              <li><a href="#statistique" data-toggle="tab">Statistique</a></li>
               @if(Auth::user()->role->nom == 'admin' )
 
               <li><a href="#modifier" data-toggle="tab">Modifier</a></li>
@@ -258,6 +261,29 @@
                <button type="submit" class=" btn btn-lg btn-primary"><i class="fa fa-check"></i> Modifier</button> 
               </div>
             </form>
+      </div>
+      <div class="tab-pane" id="statistique">
+          <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Nombre des articles par type (LRIT)</h3>
+          
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+              <div class="box-body" ><center>
+                  <div id="piechart"></div>
+                  <?= $lava::render('PieChart', 'IMDB', 'piechart'); ?>
+                </center>
+               
+                
+                
+              </div>
+              
+                      <!-- /.box-body -->
+            </div>
       </div>
       </div>
       </div>

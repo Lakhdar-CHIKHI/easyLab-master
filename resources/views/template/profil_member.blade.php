@@ -80,68 +80,79 @@
                                         <!-- Tab panes -->
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane active" id="my" style="">
-                                                    <div class="ed_course_single_info">
-                                                                @if (count($membre->projets))
-                                                                
-                                                                <h2> &nbsp;Total Projets : <span>{{count($membre->projets)}} projets</span></h2>
-            
-                                                                @foreach ($membre->projets as $projet)
-                                                            <div class=" pub" ><a href="{{url('template/'.$projet->id.'/detail_article')}}">
-                                                                <div class="row">
-                                                                        <div class="col-md-3">
-                                                                                @if ($projet->image_projet !='')
-                                                                                <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-thumbnail">
-                                                                             @else
-                                                                                <img src="{{asset('images/content/'.$projet->type.'.jpg')}}" class="img-thumbnail" alt="" srcset="">
-                                                                             @endif
-                                                                        </div>    
-                                                                        <div>
-                                                                                
-                                                                                <strong>INTITULE :</strong><span>{{$projet->intitule}}
-                                                                                </span><br>
-                                                                                <strong>TYPE : {{$projet->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                                                                                <strong>RESUME :</strong><span>{!!$projet->resume!!}</span></div> 
-                                                                </div>
-                                                     
-                                                                 </a>
-                                                                 </div>
-                                                                @endforeach
-                                                                @else
-                                                                
-                                                                    <div align="center">
-                                                                            <h1>Aucun résultat trouvé</h1>
-                                                                    </div>
-                                                                
-                                                                    @endif
-                                                                </div>
+                                                    @if (count($membre->projets))
+                                         <div class="ed_inner_dashboard_info ed_course_single_info">
+                                                <h2> &nbsp;Total Projets : <span>{{count($membre->projets)}} Projet</span></h2>
+                                         </div>
+                                                <div class="ed_inner_dashboard_info">
+            @foreach ($membre->projets as $projet)
+            <div class=" pub" ><a href="{{url('template/'.$projet->id.'/detail_projet')}}">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+                        @if (isset($projet->image_projet))
+                            <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-thumbnail">
+                         @else
+                            <img src="{{asset('images/content/'.$projet->type.'.jpg')}}" class="img-thumbnail" alt="" srcset="">
+                         @endif
+                    </div>    
+                    <div>
+                            <strong>INTITULE :</strong><span>{{$projet->intitule}}</span><br>
+                            <strong>TYPE : {{$projet->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                            <strong>Résume :</strong><div class="fixed_taille_p">{!!$projet->resume!!}</div>
+                            <div style="float:right;margin-right: 15px;"><a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </div> 
+            </div>
+                    
+                
+     
+                 </a>
+                 </div>
+                @endforeach
+                                                </div>
+                
+                                                @else
+                                                <div align="center">
+                                                    <h1>Aucun résultat trouvé</h1>
+                                                </div>
+                                                @endif
                                                                 
                                                             </div>
                                                             <div role="tabpanel" class="tab-pane" id="result" style="">
-                                                                    <div class="ed_course_single_info">
                                                                     @if (count($membre->articles))
-                                                                    
-                                                                    <h2> &nbsp;Total Articles : <span>{{count($membre->articles)}} Articles</span></h2>
-                
-                                                                    @foreach ($membre->articles as $article)
-                                                                <div class=" pub" ><a href="{{url('template/'.$article->id.'/detail_article')}}">
-                                                                    <div class="row">
-                                                                            <div class="col-md-3"><img src="{{asset('images/content/'.$article->type.'.jpg')}}" class="img-thumbnail" srcset=""></div>    
-                                                                            <div> <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->mois}} {{$article->annee}}</strong><br>
-                                                                                    <strong>TITRE :</strong><span>{{$article->titre}}</span><br>
-                                                                                    <strong>RESUME :</strong><span>{!!$article->resume!!}</span>
-                                                                                </div> 
+                                        <div class="ed_inner_dashboard_info ed_course_single_info">
+                                            <h2> &nbsp;Total Articles : <span>{{count($membre->articles)}} Articles</span></h2>
+                                        </div>
+                                        <div class="ed_inner_dashboard_info">
+                                            @foreach ($membre->articles as $article)
+                                                <div class=" pub" ><a href="{{url('template/'.$article->id.'/detail_article')}}">
+                                                    <div class="row">
+                                                            <div class="col-md-3"><img src="{{asset('images/content/'.$article->type.'.jpg')}}" class="img-thumbnail" srcset=""></div>    
+                                                            <div>
+                                                                    <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->mois}} {{$article->annee}}</strong><br>
+                                                                    <strong>TITRE :</strong><span>{{$article->titre}}                           
+                                                                    </span><br>
+                                                                    <strong>RESUME :</strong><div class="fixed_taille_p2">{!!$article->resume!!}                           
                                                                     </div>
-                                                         
-                                                                     </a>
-                                                                     </div>
-                                                                    @endforeach
-                                                                    @else
-                                                                    <div align="center">
-                                                                            <h1>Aucun résultat trouvé</h1>
+                                                                    <div style="float:right;margin-right: 15px;"><a href="{{ url('template/'.$article->id.'/detail_article')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                                                     </div>
-                                                                
-                                                                    @endif
-                                                                </div> </div>
+                                                                </div> 
+                                                    </div>
+                                                        
+                                                    
+                                        
+                                                    </a>
+                                                    </div>
+                                                    @endforeach
+
+
+                                        </div>
+                                        @else
+                                        <div align="center">
+                                            <h1>Aucun résultat trouvé</h1>
+                                        </div>
+                                        @endif </div>
 
 
                                                             <div role="tabpanel" class="tab-pane" id="status" style="">

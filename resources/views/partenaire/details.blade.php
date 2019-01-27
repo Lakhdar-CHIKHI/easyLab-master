@@ -22,7 +22,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
          <li >
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -82,25 +86,14 @@
           </a>
         </li>
         
-        <li class="active">
-          <a href="{{url('partenaires')}}">
-            <i class="fa fa-group"></i> 
-            <span>Partenaires</span>
+        @if(Auth::user()->role->nom == 'admin' )
+        <li>
+          <a href="{{url('materiels')}}">
+            <i class="glyphicon glyphicon-blackboard"></i> 
+            <span>Materiels</span>
           </a>
         </li>
-
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Contacts</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('trombinoscopecontact')}}"><i class="fa fa-id-badge"></i> Trombinoscope</a></li>
-            <li><a href="{{url('contacts')}}"><i class="fa fa-list"></i> Liste</a></li>
-          </ul>
-        </li>
+        @endif
 
           @if(Auth::user()->role->nom == 'admin' )
 

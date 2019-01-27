@@ -30,22 +30,22 @@
                     @foreach ($projets as $projet)
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="ed_mostrecomeded_course">
-                                    <div class="ed_item_img">
+                                    <div class="ed_item_img" style="margin-bottom: 10px;">
                                         @if ($projet->image_projet !='')
-                                        <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-responsive">
+                                        <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-responsive" style="height: 230px;">
                                         @else
-                                        <img src="{{asset('images/content/'.$projet->type.'.jpg')}} " alt="item1" class="img-responsive">
+                                        <img src="{{asset('images/content/'.$projet->type.'.jpg')}} " alt="item1" class="img-responsive" style="height: 230px;">
                                         @endif
                                         </div>
                                 <div class="ed_item_description ed_most_recomended_data">
-                                    <h4><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
+                                    <h4 style="height: 45px;overflow:hidden;"><strong><a href="{{ url('template/'.$projet->id.'/detail_projet')}}">{{ $projet->intitule }} </a></strong></h4>
                                     <div class="row">
                                         <div class="ed_rating">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 
                                                     <div class="course_detail">
                                                         <div class="course_faculty">
-                                                                <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $projet->type }} </a></strong>
+                                                                <strong> TYPE  :  <a href="{{ url('template/'.$projet->id.'/detail_projet')}}"> {{ $projet->type }} </a></strong>
                                                         </div>
                                                     </div>
                                                     
@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div style="height: 110px;overflow: hidden;margin: 2%;">{!!$projet->resume!!}</div>
+                                    <div class="det_act" style="height: 110px;overflow: hidden;">{!!$projet->resume!!}</div>
                                     <a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                     </div>
                 </aside>
             <aside class="widget widget_categories">
-                    <h4 class="widget-title">Types</h4>
+                    <h4 class="widget-title">Filter par équipe</h4>
                     <ul>
                         <li><a href="{{url('/template/projets/tous')}}"><i class="fa fa-chevron-right"></i> Tous les Groupes</a></li>
                         @foreach ($equipes as $equipe)

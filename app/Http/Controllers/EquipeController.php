@@ -8,6 +8,7 @@ use App\Parametre;
 use App\Equipe;
 use App\User;
 use Auth;
+use Khill\Lavacharts\Laravel\LavachartsFacade as Lava;
 
 class EquipeController extends Controller
 {
@@ -55,11 +56,81 @@ class EquipeController extends Controller
         $labo = Parametre::find('1');
         $equipe = Equipe::find($id);
         $membres = User::where('equipe_id', $id)->get();
+        $articles2=array(0,0,0,0,0,0,0);
+      $articles=DB::select("SELECT DISTINCT(articles.id) as id1,articles.type as types from article_user inner join articles 
+      on articles.id=article_user.article_id
+       inner join users on article_user.user_id=users.id
+       where users.equipe_id=$id 
+      ");
+      
+      $i=0;
+      $j=0;
+      foreach ($articles as $value) {
+          switch ($value->types) {
+              case 'Poster':
+              $articles2[0]=++$articles2[0];
+                  break;
+                  case 'Article court':
+                  $articles2[1]=++$articles2[1];
+                  break;
+                  case 'Article long':
+                  $articles2[2]=++$articles2[2];
+                  break;
+                  case 'Publication(Revue)':
+                  $articles2[3]=++$articles2[3];
+                  break;
+                  case 'Chapitre d\'un livre':
+                  $articles2[4]=++$articles2[4];
+                  break;
+                  case 'Livre':
+                  $articles2[5]=++$articles2[5];
+                  break;
+                  case 'Brevet':
+                  $articles2[6]=++$articles2[6];
+                  break;
+              
+          }
+          
+          
+          
+      }
+      //return $articles2;
+        $lava=new Lava;
+        $data = $lava::DataTable();
+        $data->addStringColumn('Reasons')
+             ->addNumberColumn('Percent');
+        
+           
+           $data->addRow(['Poster',$articles2[0]]);
+           $data->addRow(['Article court',$articles2[1]]);
+           $data->addRow(['Article long',$articles2[2]]);
+           $data->addRow(['Publication(Revue)',$articles2[3]]);
+           $data->addRow(['Chapitre d\'un livre',$articles2[4]]);
+           $data->addRow(['Livre',$articles2[5]]);
+           $data->addRow(['Brevet',$articles2[6]]);
+        
 
+       // return $articles;
+        $lava::PieChart('IMDB', $data, [
+            'title'  => 'Nombre de publication par type ( LRIT )',
+            'width'      => 600,
+            'height'=>300,
+            'is3D'   => true,
+            'slices' => [
+                ['offset' => 0.2],
+                ['offset' => 0.3],
+                ['offset' => 0.3],
+                ['offset' => 0.3],
+                ['offset' => 0.3],
+                ['offset' => 0.2]
+                
+            ]
+            ]);
         return view('equipe.details')->with([
             'equipe' => $equipe,
             'membres' => $membres,
             'labo'=>$labo,
+           'lava'=>$lava,
         ]);
     } 
 

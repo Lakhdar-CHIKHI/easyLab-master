@@ -4184,8 +4184,8 @@ a.ed_getinvolved:hover i {
 
 .ed_mostrecomeded_course {
     margin-bottom: 30px;
-    box-shadow: 0px 0 10px;
-    border-radius: 5px;
+    box-shadow: 0px 0 5px;
+    /* border-radius: 5px;*/
 }
 
 .ed_courses .ed_blog_bottom_pagination {

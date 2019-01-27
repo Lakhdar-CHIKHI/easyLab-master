@@ -30,25 +30,25 @@
                     @foreach ($articles as $article)
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <div class="ed_mostrecomeded_course">
-                                <div class="ed_item_img" style="margin-bottom: 12px;">
-                                    <img src="{{asset('images/content/'.$article->type.'.jpg')}} " alt="item1" class="img-responsive">
+                                <div class="ed_item_img" style="margin-bottom: 10px;">
+                                    <img src="{{asset('images/content/'.$article->type.'.jpg')}} " alt="item1" class="img-responsive" style="height: 230px;">
                                 </div>
                                 <div class="ed_item_description ed_most_recomended_data">
-                                    <h4><strong><a href="{{ url('template/'.$article->id.'/detail_article')}}">{{ $article->titre }} </a></strong></h4>
+                                    <h4 style="height: 45px;overflow:hidden;"><strong><a href="{{ url('template/'.$article->id.'/detail_article')}}">{{ $article->titre }} </a></strong></h4>
                                         <div class="row">
                                         <div class="ed_rating">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 
                                                     <div class="course_detail">
                                                         <div class="course_faculty">
-                                                                <strong> TYPE  :  <a href="instructor_dashboard.html"> {{ $article->type }} </a></strong>
+                                                                <strong> TYPE  :  <a href="{{ url('template/'.$article->id.'/detail_article')}}"> {{ $article->type }} </a></strong>
                                                         </div>
                                                     </div>
                                             </div>                                            
                                         </div>
                                     </div>
                                     
-                                    <div style="height: 100px;overflow: hidden;">{!! $article->resume !!}</div>
+                                    <div class="det_act" style="height: 110px;overflow: hidden;">{!! $article->resume !!}</div>
                                     <a href="{{ url('template/'.$article->id.'/detail_article')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>

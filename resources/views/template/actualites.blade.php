@@ -33,11 +33,11 @@
                     
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="ed_mostrecomeded_course">
-                                                <div class="ed_item_img">
-                                                    <img src="{{asset($actualite->photo)}} " alt="item1" class="img-responsive">
+                                                <div class="ed_item_img" style="margin-bottom: 10px;">
+                                                    <img src="{{asset($actualite->photo)}} " alt="item1" class="img-responsive" style="height: 230px;">
                                                 </div>
                                                 <div class="ed_item_description ed_most_recomended_data">
-                                                    <h4><strong><a href="{{ url('template/'.$actualite->id.'/detail_actualite')}}">{{ $actualite->titre }} </a></strong></h4>
+                                                    <h4 style="height: 45px;overflow:hidden;"><strong><a href="{{ url('template/'.$actualite->id.'/detail_actualite')}}">{{ $actualite->titre }} </a></strong></h4>
                                                         <div class="row">
                                                         <div class="ed_rating">
                                                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">

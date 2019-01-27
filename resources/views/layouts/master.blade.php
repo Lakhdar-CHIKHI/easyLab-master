@@ -65,7 +65,7 @@
 
   <header class="main-header" style="position: fixed; width: 100%">
     <!-- Logo -->
-    <a href="dashboard.php" class="logo">
+    <a href="{{url('template/accueil')}}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><img src="{{asset($labo->logo)}}" style="width: 50px"></span>
       <!-- logo for regular state and mobile devices -->
@@ -266,6 +266,7 @@
 <!-- charts -->
 <script src="{{ asset('js/canvasjs.min.js')}}"></script>
 <script src="{{ asset('js/charts.js')}}"></script>
+<script src="{{ asset('js/chart_equipe.js')}}"></script>
 <script src="{{ asset('js/Chart.min.js')}}"></script>
 
 <script src="{{ asset('js/his.js')}}"></script>
@@ -346,6 +347,11 @@
     $('#example2').DataTable();
     $('#example3').DataTable();
     $('#example4').DataTable();
+    $('.btn_supp_par').on('click',function(){
+       var t= $(this).data('id');
+       //alert(t);
+      $('#example1'+t).DataTable();
+    });
     
   });
 </script>

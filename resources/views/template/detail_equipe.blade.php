@@ -139,8 +139,10 @@
                                                                     <strong>TYPE : {{$article->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><i class="fa fa-clock-o icon"></i>&nbsp; {{$article->mois}} {{$article->annee}}</strong><br>
                                                                     <strong>TITRE :</strong><span>{{$article->titre}}                           
                                                                     </span><br>
-                                                                    <strong>RESUME :</strong><span>{!!$article->resume!!}                           
-                                                                        </span>
+                                                                    <strong>RESUME :</strong><div class="fixed_taille_p2">{!!$article->resume!!}                           
+                                                                    </div>
+                                                                    <div style="float:right;margin-right: 15px;"><a href="{{ url('template/'.$article->id.'/detail_article')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                                                                    </div>
                                                                 </div> 
                                                     </div>
                                                         
@@ -194,7 +196,9 @@
                     <div>
                             <strong>INTITULE :</strong><span>{{$projet->intitule}}</span><br>
                             <strong>TYPE : {{$projet->type}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                            <strong>Résume :</strong><span>{!!$projet->resume!!}</span>
+                            <strong>Résume :</strong><div class="fixed_taille_p">{!!$projet->resume!!}</div>
+                            <div style="float:right;margin-right: 15px;"><a href="{{ url('template/'.$projet->id.'/detail_projet')}}" class="btn ed_btn ed_orange">Voir Plus &nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                            </div>
                         </div> 
             </div>
                     

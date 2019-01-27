@@ -20,6 +20,7 @@ use App\Parametre;
 use App\User;
 use App\Equipe;
 use App\Role;
+use App\actualites;
 use Auth;
 
 
@@ -28,6 +29,7 @@ class interface_AccueilController extends Controller
 {
     public function index(){
         $projets = Projet::all();
+        $actualites=actualites::all();
         //$projets = Projet::orderBy('id','asc')->paginate(1);
         $labo =  Parametre::find('1');
         $equipes = Equipe::all();
@@ -39,6 +41,7 @@ class interface_AccueilController extends Controller
                                                 'labo'=>$labo,
                                                 'membres'=>$membres,
                                                 'equipes'=>$equipes,
+                                                'actualites'=>$actualites,
                                                 ]);
     	
     }

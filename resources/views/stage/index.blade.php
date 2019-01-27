@@ -20,7 +20,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
+        <li>
+            <a href="{{url('actualites')}}">
+                <i class="fa fa-newspaper-o"></i> <span>Actualites</span>
+            </a>
+          </li>
          <li>
           <a href="{{url('equipes')}}">
             <i class="fa fa-group"></i> 
@@ -40,7 +44,7 @@
             <li><a href="{{url('membres')}}"><i class="fa fa-list"></i> Liste</a></li>
           </ul>
         </li>
-        <li class="active">
+        <li >
             <a href="{{url('partenaires')}}">
               <i class="fa fa-group"></i> 
               <span>Partenaires</span>
@@ -52,7 +56,7 @@
                 <span>Contacts</span>
               </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="{{url('stages')}}">
                   <i class="fa fa-file-pdf-o"></i> 
                   <span>Stages</span>
@@ -78,7 +82,14 @@
             <span>Projets</span>
           </a>
         </li>
-        
+        @if(Auth::user()->role->nom == 'admin' )
+        <li>
+          <a href="{{url('materiels')}}">
+            <i class="glyphicon glyphicon-blackboard"></i> 
+            <span>Materiels</span>
+          </a>
+        </li>
+        @endif
        
 
           @if(Auth::user()->role->nom == 'admin' )
