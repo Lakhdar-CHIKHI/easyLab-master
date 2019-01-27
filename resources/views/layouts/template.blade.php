@@ -42,7 +42,7 @@
 
                                             </div>
                                             <div class="form-group" align="center">
-                                                  <label>{{Auth::user()->name}} {{Auth::user()->prenom}}</label>
+                                                  <label style="color: black;">{{Auth::user()->name}} {{Auth::user()->prenom}}</label>
                       
                                             </div>
                                             <div class="container col-md-12">
@@ -159,7 +159,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2">
                             <div class="educo_logo">
-                                <a href="index.html"><img src="{{asset($labo->logo)}}" alt="logo" style="margin-top: -3px;"></a>
+                                <a href="{{ url('template/accueil')}}"><img src="{{asset($labo->logo)}}" alt="logo" style="margin-top: -3px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">

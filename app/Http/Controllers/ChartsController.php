@@ -121,26 +121,31 @@ return $equipes;
             $result['date']=array($dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--);
         return json_encode($result);
     }
+    
 
-
-    function graph_equipe(){
-        //$dates=DB::select("SELECT date_debut AS a from theses UNION SELECT date_soutenance as a FROM theses WHERE date_soutenance is NOT null");
-       // $dates=date('Y');
-        //$theses1=These::all();
-        //$theses=Equipe::find(1)->membres()->theses;
-           /* foreach ($dates as $date) {
-                $result[$date->a]=DB::table('theses')
-                ->whereNull('theses.deleted_at')
-                ->where('theses.date_debut','<=',$date->a)
-                ->orwhere('theses.date_soutenance','>=',$date->a)->get()->count();
-            }*/
-           /* $i=0;
+    function graph_equipe(Request $request){
+        $dates=date('Y');
+        $membres=Equipe::find($request->id)->membres;
+        $theses=array();
+        
+        foreach ($membres as  $membre) {
+            if ($membre->these) {
+                //array_push($theses, $membre->these);
+                $theses[$membre->id]=$membre->these;
+            }
+            
+        }
+       
+        //return json_encode($theses);
+            
+           $i=0;
             
             while ($i < 10) {
                 $j=0;
                 $k=0;
                 
                 foreach ($theses as $these) {
+                    
                     if (isset($these->date_soutenance)) {
                         /*if ((date('Y',strtotime($these->date_debut))<=$dates-$i)&&((date('Y',strtotime($these->date_soutenance))>=$dates-$i))) {
                             $result['encours'][$dates-$i]=++$j;
@@ -148,7 +153,7 @@ return $equipes;
                             $result['encours'][$dates-$i]=0;
                             
                         }*/
-                        /*if ((date('Y',strtotime($these->date_soutenance))==$dates-$i)) {
+                        if ((date('Y',strtotime($these->date_soutenance))==$dates-$i)) {
                             $result['sout'][$dates-$i]=++$k;
                         }else{
                             $result['sout'][$dates-$i]=0;
@@ -165,14 +170,34 @@ return $equipes;
                     ->whereNull('theses.deleted_at')
                     ->where(DB::raw("DATE_FORMAT(STR_TO_DATE(date_debut,'%m/%d/%Y'),'%Y')"),'<=',$dates-$i)
                     ->where(DB::raw("DATE_FORMAT(STR_TO_DATE(date_soutenance,'%m/%d/%Y'),'%Y')"),'>=',$dates-$i)->get()->count();*/
-               /* }
+                }
 
                 $i++;
             }
             $c=9;
-            //$result['date']=array($dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--);
-        //return json_encode($result);*/
-        return 'jjj';
+            $result['date']=array($dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--,$dates-$c--);
+        return json_encode($result);
+    }
+    function graph_equipe2(Request $request){
+        $articles=DB::select("SELECT DISTINCT(articles.id) as id1,articles.type as types from article_user inner join articles 
+      on articles.id=article_user.article_id
+       inner join users on article_user.user_id=users.id
+       where users.equipe_id=$request->idd 
+      ");
+      
+        $dates=Article::select('annee')->orderBy('annee','asc')->distinct()->get();
+
+        foreach ($articles as $article) {
+            foreach ($dates as $date) {
+                $result[$article->types][$date->annee]=DB::table('articles')->select('annee')
+                ->whereNull('articles.deleted_at')
+                ->where('articles.type','=',$article->types)
+                ->where('articles.annee','=',$date->annee)->get()->count();
+            }
+            
+        }
+    
+        return json_encode($result);
     }
 }
 

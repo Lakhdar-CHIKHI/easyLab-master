@@ -177,8 +177,8 @@ Route::get('template/{id}/detail_article', 'interface_ArticleController@details'
 Route::get('charts', 'ChartsController@index');
 Route::get('charts/graph2', 'ChartsController@graph2');
 Route::get('charts/graph3', 'ChartsController@graph3');
-Route::get('charts/graph_equipe', 'ChartsController@graph_equipe');
-
+Route::post('equipes/{id}/graph_equipe', 'ChartsController@graph_equipe');
+Route::post('equipes/{id}/graph_equipe2', 'ChartsController@graph_equipe2');
 
 
 

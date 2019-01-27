@@ -164,7 +164,7 @@
   <div style="display:inline-flex;">
     <div class="box box-success">
       <div class="box-header with-border">
-        <h3 class="box-title">Nombre des articles par type (LRIT)</h3>
+        <h3 class="box-title">Articles publiés par type (LRIT)</h3>
   
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -185,7 +185,7 @@
     </div>
     <div class="box box-success" style="margin-left:1%;">
       <div class="box-header with-border">
-        <h3 class="box-title">Nombre de membres par équipe (LRIT)</h3>
+        <h3 class="box-title">membres du laboratoire par équipe (LRIT)</h3>
   
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -206,7 +206,7 @@
   </div>
   <div class="box box-success">
     <div class="box-header with-border">
-      <h3 class="box-title">Nombre des articles pour un équipe chaque année</h3>
+      <h3 class="box-title">Articles publiés par équipe</h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -225,7 +225,7 @@
   </div>
   <div class="box box-success">
       <div class="box-header with-border">
-        <h3 class="box-title">Nombre des projets pour un équipe chaque année</h3>
+        <h3 class="box-title">projets par équipe</h3>
   
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -244,7 +244,7 @@
     </div>
   <div class="box box-success">
     <div class="box-header with-border">
-      <h3 class="box-title">Nombre d'articles publies chaque année</h3>
+      <h3 class="box-title">Aarticles publiés par type</h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -263,7 +263,7 @@
   </div>
   <div class="box box-success">
     <div class="box-header with-border">
-      <h3 class="box-title">Nombre de théses soutenues chaque année</h3>
+      <h3 class="box-title">Théses soutenues / en cours</h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

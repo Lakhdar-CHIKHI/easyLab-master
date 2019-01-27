@@ -266,7 +266,7 @@
 <!-- charts -->
 <script src="{{ asset('js/canvasjs.min.js')}}"></script>
 <script src="{{ asset('js/charts.js')}}"></script>
-<script src="{{ asset('js/chart_equipe.js')}}"></script>
+
 <script src="{{ asset('js/Chart.min.js')}}"></script>
 
 <script src="{{ asset('js/his.js')}}"></script>

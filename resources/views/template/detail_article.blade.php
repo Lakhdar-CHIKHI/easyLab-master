@@ -155,7 +155,7 @@
                                                 <h2>&nbsp;Total members externes : <span>{{count($contacts)}}</span></h2>
                                                 @foreach ($contacts as $contact)
                                                 <div class="ed_add_students">
-                                          
+                                                    <img src="{{asset('uploads/photo/userDefault.png')}}" alt="">
                                                         <span>{{$contact->nom}} {{$contact->prenom}}</span>
                                                     
                                                     

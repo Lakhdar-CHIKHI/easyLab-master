@@ -30,8 +30,8 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ed_course_single_item">
                             <div class="ed_course_single_image">
-                                    @if ($projet->image !='')
-                                <img src="{{asset($projet->image)}} " alt="item1" class="img-responsive">
+                                    @if ($projet->image_projet !='')
+                                <img src="{{asset($projet->image_projet)}} " alt="item1" class="img-responsive">
                                 @else
                                 <img src="{{asset('images/content/'.$projet->type.'.jpg')}}"  class="img-responsive">
                                  @endif
@@ -113,7 +113,7 @@
                                                 <h2>&nbsp;Total members externes : <span>{{count($contacts)}}</span></h2>
                                                 @foreach ($contacts as $contact)
                                                 <div class="ed_add_students">
-                                          
+                                                    <img src="{{asset('uploads/photo/userDefault.png')}}" alt="">
                                                         <span>{{$contact->nom}} {{$contact->prenom}}</span>
                                                     
                                                     

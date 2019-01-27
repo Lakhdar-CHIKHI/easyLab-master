@@ -110,7 +110,7 @@
       <div class="nav-tabs-custom">
        <ul class="nav nav-tabs">
               <li class="active"><a href="#apropos" data-toggle="tab">A propos</a></li>
-              <li><a href="#statistique" data-toggle="tab">Statistique</a></li>
+       <li><a href="#statistique" class="page_equipe" data-id_equipe="{{$equipe->id}}" data-toggle="tab">Statistique</a></li>
               @if(Auth::user()->role->nom == 'admin' )
 
               <li><a href="#modifier" data-toggle="tab">Modifier</a></li>
@@ -265,7 +265,7 @@
       <div class="tab-pane" id="statistique">
           <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title">Nombre des articles par type (LRIT)</h3>
+                <h3 class="box-title">Articles publiés par type (LRIT)</h3>
           
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -282,6 +282,44 @@
                 
               </div>
               
+                      <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Théses soutenues / en cours</h3>
+          
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+              
+              <div class="box-body" >
+                <!--<div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+                <canvas id="chartContainer6" class="reg"></canvas>
+               <!-- <div id="chartContainer3" style="height: 500px; width: 100%;"></div>-->
+                
+              </div>
+                      <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Articles publies par type</h3>
+          
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+              
+              <div class="box-body" >
+                <!--<div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+                
+                <div id="chartContainer2" style="height: 500px; width: 100%;"></div>
+                
+              </div>
                       <!-- /.box-body -->
             </div>
       </div>
