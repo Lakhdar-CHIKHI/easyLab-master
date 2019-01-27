@@ -18,7 +18,7 @@ class interface_ProjetController extends Controller
 {
     public function index(){
         $equipes = Equipe::all();
-        $projets = Projet::orderBy('id','asc')->paginate(3);
+        $projets = Projet::orderBy('id','asc')->paginate(9);
         $labo =  Parametre::find('1');
 
         

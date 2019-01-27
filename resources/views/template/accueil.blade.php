@@ -152,7 +152,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="ed_heading_top ed_toppadder50">
-                            <h3>Projets de Laboratoire ( LRIT )</h3>
+                            <h3>Actualites du Laboratoire ( LRIT )</h3>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
