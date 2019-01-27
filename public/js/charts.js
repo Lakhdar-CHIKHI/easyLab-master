@@ -204,7 +204,7 @@ $(document).ready(function() {
 
     function getMessage3() {
         $.getJSON('charts/graph3', function(data3) {
-            //console.log(data3);
+            console.log(data3);
             var dataPoints2 = [];
             var datasets = [];
             var date = [];
@@ -285,7 +285,7 @@ $(document).ready(function() {
             /* remind that 'data' is the response of the AjaxController */
             success: function(data3) {
 
-                //console.log(data3);
+                // console.log(data3);
 
                 var dataPoints2 = [];
                 var datasets = [];

@@ -105,8 +105,8 @@ return $equipes;
                         if ((date('Y',strtotime($these->date_debut))<=$dates-$i)) {
                             $result['encours'][$dates-$i]=++$j;
                         }else{
-                            $result['encours'][$dates-$i]=0;
-                        } 
+                            $result['encours'][$dates-$i]=$j;
+                        }
                     }
                     
                     /*$result[$dates-$i]=DB::table('theses')
@@ -162,8 +162,8 @@ return $equipes;
                         if ((date('Y',strtotime($these->date_debut))<=$dates-$i)) {
                             $result['encours'][$dates-$i]=++$j;
                         }else{
-                            $result['encours'][$dates-$i]=0;
-                        } 
+                            $result['encours'][$dates-$i]=$j;
+                        }
                     }
                     
                     /*$result[$dates-$i]=DB::table('theses')

@@ -36,10 +36,10 @@
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['170','175','155','115']" data-width="none" data-height="none"
                                             data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                                            data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1510" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap; font-size: 50px; color:#fff;     font-family: 'Roboto Slab', serif;">Pour voir tous les équipes</div>
+                                            data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1510" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap; font-size: 50px; color:#fff;     font-family: 'Roboto Slab', serif;">Pour voir toutes les équipes</div>
                                         <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['230','215','180','170']" data-width="none" data-height="none"
                                             data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                                            data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1810" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap; font-size: 50px; color:#fff;     font-family: 'Roboto Slab', serif;">De Laboratoire </div>
+                                            data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1810" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap; font-size: 50px; color:#fff;     font-family: 'Roboto Slab', serif;">Du Laboratoire </div>
                                         <!-- LAYER NR. 2 -->
                                         <div class="li_slide tp-caption NotGeneric-CallToAction ed_btn ed_green tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']" data-y="['top','top','top','top']" data-voffset="['350','276','226','151']" data-whitespace="nowrap"
                                             data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -122,19 +122,19 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="ed_counter">
                                                             <h2 class="timer"  data-from="0" data-to="{{count($equipes)}}" data-speed="3000"></h2>
-                                                            <h4><strong >EQUIPES DU LABORATOIRE</strong></h4>
+                                                            <h4><strong >EQUIPES</strong></h4>
                                                         </div>
                                                     </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="ed_counter">
                                                     <h2 class="timer"  data-from="0" data-to="{{count($membres)}}" data-speed="3000"></h2>
-                                                    <h4><strong >MEMBRES DU LABORATOIRE</strong></h4>
+                                                    <h4><strong >MEMBRES</strong></h4>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="ed_counter">
                                                     <h2 class="timer" data-from="0" data-to="{{count($projets)}}" data-speed="3000"></h2>
-                                                    <h4><strong >POJETS DU LABORATOIRE</strong></h4>
+                                                    <h4><strong >POJETS</strong></h4>
                                                     
                                                 </div>
                                             </div>
