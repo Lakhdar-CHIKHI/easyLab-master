@@ -64,6 +64,7 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">description</a></li>
                                     <li role="presentation"><a href="#students" aria-controls="students" role="tab" data-toggle="tab">Members</a></li>
+                                    <li role="presentation"><a href="#studext" aria-controls="students" role="tab" data-toggle="tab">Members Externes</a></li>
                                 </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content">
@@ -130,6 +131,38 @@
                                                     
                                                 </div>
                                                 @endforeach
+                                                
+                                                <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="row">
+                                                        <div class="ed_blog_bottom_pagination ed_toppadder40">
+                                                            <nav>
+                                                                <ul class="pagination">
+                                                                    <li><a href="#">1</a></li>
+                                                                    <li><a href="#">2</a></li>
+                                                                    <li><a href="#">3</a></li>
+                                                                    <li class="active"><a href="#">Next <span class="sr-only">(current)</span></a></li>
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="studext">
+                                        <div class="ed_inner_dashboard_info">
+                                            <div class="ed_course_single_info">
+                                                <h2>&nbsp;Total members externes : <span>{{count($contacts)}}</span></h2>
+                                                @foreach ($contacts as $contact)
+                                                <div class="ed_add_students">
+                                          
+                                                        <span>{{$contact->nom}} {{$contact->prenom}}</span>
+                                                    
+                                                    
+                                                </div>
+                                                @endforeach
+                                                
+                                                
                                                 
                                                 <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="row">

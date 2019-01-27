@@ -91,12 +91,13 @@ class interface_ArticleController extends Controller
          $article = Article::find($id);
        //  $type = 
         $membres = Article::find($id)->users()->orderBy('name')->get();
-     
+        $contacts = Article::find($id)->contacts()->orderBy('nom')->get();
 
 	 	//return view('article.details')->with([
 			return view('template.detail_article')->with([
 	 		'article' => $article,
-	 		'membres'=>$membres,
+             'membres'=>$membres,
+             'contacts'=>$contacts,
 	 		'labo'=>$labo,
 	 	]);;
     }
