@@ -96,8 +96,8 @@
                         <div class="ed_event_single_address_info ed_toppadder50 ed_bottompadder50">
                             <h4 class="ed_bottompadder30">Informations de contact</h4>
                             <p class="ed_bottompadder40 ed_toppadder10">Vous pouvez toujours nous joindre via les coordonnées suivantes. Nous ferons de notre mieux pour vous joindre le plus possible.</p>
-                            <p>Téléphone: <span>0560-45-75-33</span></p>
-                            <p>Email: <a href="#">lakhdar.chikhi5@gmail.com</a></p>
+                            <p>Téléphone: <span>{{$labo->tel}}</span></p>
+                            <p>Email: <a href="#">{{$labo->mail}}</a></p>
                             <p>Site Internet: <a href="#">http://www.LRIT.com</a></p>
                         </div>
                     </div>

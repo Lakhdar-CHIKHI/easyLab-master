@@ -118,7 +118,7 @@
               <fieldset>
 
                 <!-- Form Name -->
-                <legend><center><h2><b>Nouveau Membre</b></h2></center></legend><br>
+                <legend><center><h2><b>Nouveau Contact</b></h2></center></legend><br>
 
                 <!-- Text input-->
                     <div class="col-md-12">

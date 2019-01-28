@@ -297,6 +297,9 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
+                      <div class=" pull-right">
+                          <a href="{{url('contacts/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-user-plus"></i> Nouveau contact</a>
+                        </div>
                   <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -310,6 +313,67 @@
                        
                         <a class="users-list-name" href="{{url('contacts/'.$contact->id.'/details')}}">{{$contact->nom}} {{$contact->prenom}}</a>
                         <span class="users-list-date">{{$contact->fonction}}</span>
+                      </td> </tr> 
+                      @endforeach
+                     
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th></th>
+                   
+                  </tr>
+                  </tfoot>
+                </table>
+                    
+               
+                  <!-- /.box-body -->
+                </div>
+                <!--/.box -->
+              </div>
+        
+              <!-- timeLine start -->
+        
+        
+        </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-12">
+      
+                <!-- USERS LIST -->
+        
+                <div class="box box-primary"  style="padding: 30px">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Stages dans le partenaire</h3>
+        
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                      <div class=" pull-right">
+                          <a href="{{url('stages/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"></i> Nouveau stage</a>
+                        </div>
+                  <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th> Stages </th>
+                    <th> stagiere </th>
+                    <th> sujet </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($stages as $stage)
+             <tr>   <td>        
+                       
+                        <a class="users-list-name" href="{{url('stages/'.$stage->id.'/details')}}">{{$stage->titre}} </a>
+                        
+                      </td>
+                      <td>        
+                        <a class="users-list-name" href="{{url('membres/'.$stage->user->id.'/details')}}">{{$stage->user->name}}  {{$stage->user->prenom}} </a>
+
+                      </td>
+                      <td>        
+                       {{$stage->sujet}}
                       </td> </tr> 
                       @endforeach
                      

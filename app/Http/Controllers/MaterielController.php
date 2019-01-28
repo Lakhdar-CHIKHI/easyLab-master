@@ -52,9 +52,18 @@ class MaterielController extends Controller
     public function voirhistorique(Request $request){
        $result= DB::select("SELECT user_mat.id,users.name,users.prenom,id_mat,date_debut,date_fin FROM user_mat LEFT JOIN users ON user_mat.id_user=users.id WHERE id_mat = '".$request->input('numeroMat')."'");
        $result2= DB::select("SELECT equipe_mat.id,equipes.intitule,equipe_mat.id_materiel,date_debut,date_fin FROM equipe_mat LEFT JOIN equipes ON equipe_mat.id_equipe=equipes.id WHERE id_materiel='".$request->input('numeroMat')."' ");
-       $affichage = "<tr>
-        <td>numéro d'affectation</td><td>prunteur</td><td>materiel</td><td>du</td><td>à</td>
-        </tr>";
+       $affichage = "<thead>
+       <tr >
+              
+                       <th class='text-center'>numéro d'affectation</th>
+                       <th class='text-center'>prunteur</th>
+                       <th class='text-center'>materiel</th>
+                       <th class='text-center'>du</th>
+                       <th class='text-center'>à</th>
+                       
+         
+       </tr>
+       </thead>";
         foreach ($result as $row) {
             $affichage.="<tr >
             <td>$row->id</td>

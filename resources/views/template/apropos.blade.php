@@ -37,9 +37,8 @@
                                 <img src="../images/content/2_2.jpg" alt="" style="box-shadow:0 0 20px;border-radius:5px;">
                                 </div>
                                 <p class="col-md-6" style="" contenteditable="true">
-                                        <h2 class="">LRIT</h2>
-                                    &nbsp;La recherche scientifique constitue un enjeu déterminant au 21éme siècle eu égard aux défis technologiques et à la mondialisation qui sera le champ de confrontation entre les nations industrialisées et modernes, confrontation
-                                    qui risque de reléguer au second plan les sociétés qui ne se donnent pas les moyens de se développer.</p>
+                                        <h2 class="">{{$labo->nom}}</h2>
+                                    &nbsp;{!!$labo->propos!!}</p>
                     </div>
                     
                 </div>

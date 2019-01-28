@@ -352,6 +352,12 @@
        //alert(t);
       $('#example1'+t).DataTable();
     });
+    $('.btn_historique').on('click',function(){
+       var t= $(this).data('id_historique');
+       
+      $('#examples'+t).DataTable();
+    });
+    
     
   });
 </script>

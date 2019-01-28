@@ -67,7 +67,7 @@ strong {
 }
 
 .fixed_taille_p {
-    height: 78px;
+    height: 78px !important;
     overflow: hidden;
     margin: 2% 0 5% 0;
     padding: 0px;

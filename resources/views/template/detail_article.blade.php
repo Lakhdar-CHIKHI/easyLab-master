@@ -109,6 +109,12 @@
                                                         <td>{{$article->doi }}</td>
                                                     </tr> 
                                                     @endif
+                                                    @if($article->detail)
+                                                    <tr>
+                                                        <td>Detail du projet</td>
+                                                    <td><a href="{{asset($article->detail )}}"></a>Detail</td>
+                                                    </tr> 
+                                                    @endif
                                                     
                                                 </table>
                                                 <h4>Résumé</h4>
@@ -122,7 +128,7 @@
                                     <div role="tabpanel" class="tab-pane" id="students">
                                         <div class="ed_inner_dashboard_info">
                                             <div class="ed_course_single_info">
-                                                <h2>&nbsp;Total members : <span>{{count($membres)}}</span></h2>
+                                                <h2>&nbsp;Total members : <span>{{count($membres)}} Membre</span></h2>
                                                 @foreach ($membres as $membre)
                                                 <div class="ed_add_students">
                                                     <a href="{{ url('template/'.$membre->id.'/profil_member')}}"><img src="{{asset($membre->photo)}}" alt="">
@@ -152,11 +158,11 @@
                                     <div role="tabpanel" class="tab-pane" id="studext">
                                         <div class="ed_inner_dashboard_info">
                                             <div class="ed_course_single_info">
-                                                <h2>&nbsp;Total members externes : <span>{{count($contacts)}}</span></h2>
+                                                <h2>&nbsp;Total members externes : <span>{{count($contacts)}} Membre</span></h2>
                                                 @foreach ($contacts as $contact)
                                                 <div class="ed_add_students">
                                                     <img src="{{asset('uploads/photo/userDefault.png')}}" alt="">
-                                                        <span>{{$contact->nom}} {{$contact->prenom}}</span>
+                                                        <span>{{$contact->nom}} {{$contact->prenom}} &nbsp;&nbsp;&nbsp;&nbsp;<strong>({{$contact->partenaire->nom}})</strong></span>
                                                     
                                                     
                                                 </div>

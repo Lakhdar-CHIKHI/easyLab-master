@@ -80,7 +80,7 @@
                     <div class="input-group">
                         <form action="{{url('/template/projets/search_projet')}}" method="get">
                                 {{ csrf_field() }}
-                        <input name="search" type="text" style="width: 84%;" class="form-control" placeholder="Search...">
+                        <input name="search" type="text" style="width: 80%;" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
                             <button class="btn btn-default" style="padding: 6px 12px;border-bottom-right-radius: 20px !important;"  type="submit"><i class="fa fa-search"></i></button>
                         

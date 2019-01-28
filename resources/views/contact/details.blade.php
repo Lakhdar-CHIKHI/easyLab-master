@@ -324,7 +324,7 @@
                   @foreach ($contact->thesese as $these) 
                   <tr>
                   <td>{{$these->titre}}</td>
-                    <td>{{$these->sujet}}</td>
+                    <td>{!!$these->sujet!!}</td>
                     <td><a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a></td>
                                       <td>{{$these->date_debut}}</td>
                     <td>
@@ -425,7 +425,7 @@
                   @foreach ($contact->thesesc as $these) 
                   <tr>
                    <td>{{$these->titre}}</td>
-                <td>{{$these->sujet}}</td>
+                <td>{!!$these->sujet!!}</td>
                 <td><a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a></td>
                             <td>{{$these->date_debut}}</td>
                     <td>

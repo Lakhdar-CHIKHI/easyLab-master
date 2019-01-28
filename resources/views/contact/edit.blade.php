@@ -295,7 +295,7 @@
                 <a href="{{url('theses/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel these</i></a>
               </div>
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr><th>Titre</th>
                   <th>Sujet</th>
@@ -311,7 +311,7 @@
                   @foreach ($contact->thesese as $these) 
                   <tr>
                   <td>{{$these->titre}}</td>
-                    <td>{{$these->sujet}}</td>
+                    <td>{!!$these->sujet!!}</td>
                     <td><a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a></td>
                     <td>{{$these->date_debut}}</td>
                     <td>
@@ -372,7 +372,7 @@
                 <a href="{{url('theses/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouvel these</i></a>
               </div>
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example3" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                 <th>Titre</th>
@@ -389,7 +389,7 @@
                   @foreach ($contact->thesesc as $these) 
                   <tr>
                    <td>{{$these->titre}}</td>
-                <td>{{$these->sujet}}</td>
+                <td>{!!$these->sujet!!}</td>
                 <td></td>
                 <td><a href="{{url('membres/'.$these->user_id.'/details')}}">{{$these->user->name}} {{$these->user->prenom}}</a></td>
                    
@@ -444,7 +444,7 @@
                 <a href="{{url('projets/create')}}" type="button" class="btn btn-block btn-success btn-lg"><i class="fa fa-plus"> Nouveau projet</i></a>
               </div>
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example4" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Intitulé</th>

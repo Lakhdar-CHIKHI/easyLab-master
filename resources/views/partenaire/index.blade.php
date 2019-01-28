@@ -148,8 +148,8 @@
 
 
                       <a href="#supprimer{{ $partenaire->id }}Modal"  data-id="{{ $partenaire->id }}" role="button" class="btn btn-box-tool btn_supp_par" data-toggle="modal"><i class="fa fa-times"></i></a>
-                      <div class="modal fade" id="supprimer{{ $partenaire->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $partenaire->id }}ModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                      <div class="modal fade bd-example-modal-lg" id="supprimer{{ $partenaire->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="supprimer{{ $partenaire->id }}ModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                   <div class="modal-header">
                                     <!--   <h5 class="modal-title" id="supprimer{{ $partenaire->id }}ModalLabel">Supprimer</h5> -->
@@ -168,14 +168,14 @@
                                   <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
           
-              <li><a href="#timeline" class="active" data-toggle="tab">Contacts</a></li>
-              <li><a href="#timeline1" data-toggle="tab">Stages</a></li>
+              <li><a href="#timeline{{$partenaire->id}}" class="active" data-toggle="tab">Contacts</a></li>
+              <li><a href="#timeline1{{$partenaire->id}}" data-toggle="tab">Stages</a></li>
            
             </ul>
 
             <div class="tab-content">
 
-            <div class="tab-pane active" id="timeline">
+            <div class="tab-pane active" id="timeline{{$partenaire->id}}">
                
           
             <table id="example1{{$partenaire->id}}" class="table table-bordered table-striped">
@@ -230,7 +230,7 @@
             </div>  
             
 
-            <div class="tab-pane" id="timeline1">
+            <div class="tab-pane" id="timeline1{{$partenaire->id}}">
                
           
                <table id="example2{{$partenaire->id}}" class="table table-bordered table-striped">

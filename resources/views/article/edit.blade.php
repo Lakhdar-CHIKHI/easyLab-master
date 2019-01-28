@@ -386,8 +386,8 @@
 
 
 
-<div class=" col-md-12 ">   <div class="form-group col-md-10 ">                     <label class="col-md-3 control-label">Détails</label>
-                      <div class="col-md-9 inputGroupContainer">
+<div class=" col-md-12 ">   <!--<div class="form-group col-md-10 "> -->                    <!--<label class="col-md-3 control-label">Détails</label>-->
+                      <!--<div class="col-md-9 inputGroupContainer">
 
                         <div style="width: 100%">
                           
@@ -395,8 +395,8 @@
 
                        
                       </div>
-                  </div>
-                  <div class="form-group">
+                  </div>-->
+                  <div class="col-md-9 inputGroupContainer">
                       <label class="col-md-3 control-label">Photo</label>  
                       <div class="col-md-9 inputGroupContainer">
                         <div style="width: 100%">

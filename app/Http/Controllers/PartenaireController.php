@@ -53,11 +53,13 @@ class PartenaireController extends Controller
         $labo = Parametre::find('1');
         $partenaire = Partenaire::find($id);
         $contacts = Contact::where('partenaire_id', $id)->get();
+        $stages = Stage::where('partenaire_id', $id)->get();
 
         return view('partenaire.details')->with([
             'partenaire' => $partenaire,
             'contacts' => $contacts,
             'labo'=>$labo,
+            'stages'=>$stages,
         ]);
     } 
 

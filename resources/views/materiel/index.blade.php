@@ -358,8 +358,8 @@
                           </div>
                       </div>
                       <a href="#mod{{ $materiel->numero }}Moda" role="button" class="glyphicon glyphicon-file btn_historique" data-toggle="modal" data-id_historique="{{ $materiel->numero }}" ></a>
-                    <div class="modal fade" id="mod{{ $materiel->numero }}Moda" tabindex="-1" role="dialog" aria-labelledby="mod{{ $materiel->numero }}ModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                    <div class="modal fade bd-example-modal-lg" id="mod{{ $materiel->numero }}Moda" tabindex="-1" role="dialog" aria-labelledby="mod{{ $materiel->numero }}ModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                   <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -367,8 +367,21 @@
                                       </button>
                                   </div>
                                   <div class="modal-body text-center">
-                                      <table class="table table-striped table_historique">
-                                     
+                                      <table id="examples{{ $materiel->numero }}" class="table table-striped table_historique">
+                                        <thead  >
+                                            <tr>
+                                                   
+                                                            <th>numéro d'affectation</th>
+                                                            <th>prunteur</th>
+                                                            <th>materiel</th>
+                                                            <th>du</th>
+                                                            <th>à</th>
+                                                            
+                                              
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
                                       
                                       </table> 
                                   </div> 
