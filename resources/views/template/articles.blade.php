@@ -117,7 +117,7 @@
         <div class="col-lg-12" >
             <div class="ed_blog_bottom_pagination">
                 <nav>
-                    {!! $articles->appends(["search"=>Request::get('search')])->links() !!}
+                        {!! $articles->appends(["search"=>Request::get('search')])->links() !!}
                 </nav>
             </div>
         </div>
